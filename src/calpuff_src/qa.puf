@@ -1,0 +1,19 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /QA/ -- Model QA parameters                  CALPUFF
+c----------------------------------------------------------------------
+c
+      character*12 ver,level
+      character*8 rtime
+      character*10 rdate
+c
+      common/QA/ncommout,rcpu,ver,level,rdate,rtime
+c
+c --- COMMON BLOCK /QA/ Variables:
+c     NCOMMOUT - integer     - Number of comment lines written to
+c        RCPU - real         - Computed CPU time of the run
+c         VER - character*12 - Version number of CALPUFF
+c       LEVEL - character*12 - Level number of CALPUFF
+c       RDATE - character*8  - System date at start of run
+c                              (MM-DD-YYYY)
+c       RTIME - character*8  - System time at start of run
+c                              (HH:MM:SS)

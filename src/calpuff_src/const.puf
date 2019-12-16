@@ -1,0 +1,33 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /CONST/ --- CTSG constants                    CALPUFF
+c-----------------------------------------------------------------------
+
+      common/const/ zero,one,two,three,four,half,twoby3,rt2,
+     *              pi,pii,piby2,twopi,rtpi,rtpii,rt2pi,dtor,
+     *              alphai,small,expmax,hslfac,epsint,
+     *              epsrefl,mxrefl
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c-----------------------------------------------------------------------
+c rt2           square root of 2                                     [r]
+c pi            (3.14159)                                            [r]
+c pii           1/pi                                                 [r]
+c piby2         pi/2                                                 [r]
+c twopi         2*pi                                                 [r]
+c rtpi          square root pi                                       [r]
+c rtpii         1/rtpi                                               [r]
+c rt2pi         square root 2*pi                                     [r]
+c dtor          degrees-to-radians factor                            [r]
+c alphai        factor for converting length scale at half the hill  [r]
+c               height to length scale of the hill-shape function
+c small         used to signify when a computed difference is        [r]
+c               considered "zero"
+c expmax        maximum argument allowed for EXP function            [r]
+c hslfac        fraction of cut-off hill height used as a minimum    [r]
+c               streamline height for obtaining distortion factors
+c epsint        fractional convergence criterion used in integration [r]
+c               subroutine QATR
+c epsrefl       fractional convergence criterion used to exit loop   [r]
+c               over reflection terms in vertical distribution factor
+c mxrefl        maximum number of reflections allowed from mixing lid[i]
+c----------------------------------------------------------------------

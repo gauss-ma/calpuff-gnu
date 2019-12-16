@@ -1,0 +1,47 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /SAMP/ --- SAMPLER Processing                 CALPOST
+c-----------------------------------------------------------------------
+      real xsamp(mxsdat)
+      integer irmap(mxsamp),irsamp(mxsdat),issamp(mxsdat)
+      integer ibdathr(mxsdat),iedathr(mxsdat)
+      character*28 cbsamp(mxsdat),cesamp(mxsdat)
+      character*24 cidsamp(mxsamp)
+      character*12 csspec(mxsdat)
+
+c --- Concentration processing arrays
+      real     caverage(mxdrec,mxsdat)
+      integer  naverage(mxsdat)
+
+      common/samp/nsamp,nsdat,ibutc,ibutcs,ieutc,ieutcs,
+     &            xsamp,irsamp,issamp,ibdathr,iedathr,
+     &            caverage,naverage,irmap,
+     &            cidsamp,csspec,cbsamp,cesamp
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS   [i]=integer   [r]=real   [a]=array   [L]=logical
+c-----------------------------------------------------------------------
+c nsamp           number of samplers in SAMP.DAT file                [i]
+c nsdat           number of data records in SAMP.DAT file            [i]
+c ibutc           starting UTC time (date-hour) as YYYYJJJHH         [i]
+c ibutcs          starting UTC seconds (0-3600)                      [i]
+c ieutc           ending UTC time (date-hour) as YYYYJJJHH           [i]
+c ieutcs          ending UTC seconds (0-3600)                        [i]
+c
+c xsamp(mxsdat)   measure or scaling factor for each data record    [ra]
+c irsamp(mxsdat)  receptor index for sampler in each data record    [ia]
+c issamp(mxsdat)  species index for each data record                [ia]
+c ibdathr(mxsdat) starting date-hour for each data record           [ia]
+c iedathr(mxsdat) ending date-hour for each data record             [ia]
+c
+c caverage(mxdrec,mxsdat)
+c                 concentration sums/averages for each data record  [ra]
+c naverage(mxsdat)number of concs in sums for each data record      [ia]
+c
+c irmap(mxsamp)   receptor index for each sampler                   [ia]
+c cidsamp(mxsamp) sampler identifier                                [ca]
+c csspec(mxsdat)  species name for each data record                 [ca]
+c cbsamp(mxsdat)  starting date-time for each data record  *        [ca]
+c cesamp(mxsdat)  ending date-time for each data record    *        [ca]
+
+
+*Note:  May be UTC or a local time (as input in SAMPDAT file)

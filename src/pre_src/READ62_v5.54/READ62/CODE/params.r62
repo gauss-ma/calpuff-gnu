@@ -1,0 +1,33 @@
+c----------------------------------------------------------------------
+c --- PARAMETER statements -- READ62 Preprocessor
+c----------------------------------------------------------------------
+c --- Specify model version
+      character*12 mver, mlevel
+      integer envpop
+      parameter(mver='5.54',mlevel='070627')
+      parameter(envpop=0)
+c
+c --- Specify parameters
+      parameter(mxlev=200)
+      parameter(io5=5,io6=6,io8=8,io9=9,io18=18)
+      parameter(iomesg=0)
+c
+c --- Parameter definitions:
+c       MVER    - version number of READ62
+c       MLEVEL  - level (e.g. release date code) of READ62
+c       MXLEV   - maximum number of sounding levels
+c      ENVPOP   - toggle environment configurations (these will evolve
+c                 in time) - Current meaning:
+c                   ENVPOP=0  UP.DAT header as in 1/2000 Users Guide
+c                   ENVPOP=1  UP.DAT header with draft station locations
+c
+c --- FORTRAN I/O unit numbers:
+c       IOMESG  - unit number for screen         - output
+c       IO5     - Control file (READ62.INP)      - input  - formatted
+c       IO6     - Run list File (READ62.LST)     - output - formatted
+c       IO8     - Input sounding data file (SOUNDING.DAT)
+c                                                - input  - formatted
+c       IO9     - Output UP?.DAT file (UP.DAT)   - output - formatted
+c       IO18    - Input sounding data file for
+c                 substitutions (SUBSOUND.DAT)   - input  - formatted
+ 

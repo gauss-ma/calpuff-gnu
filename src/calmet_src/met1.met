@@ -1,0 +1,106 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /MET1/ -- Met. station data                   CALMET
+c----------------------------------------------------------------------
+      character*4 csnam,cunam,cpnam
+      logical lcfsfc,lcfupr,lcfprc
+c
+      common/met1/nssta,nusta,npsta,iforms,iformp,ios,iou,iop,
+     1 ispack,ippack,idssta(mxss),idusta(mxus),idpsta(mxps),
+     2 csnam(mxss),xssta(mxss),yssta(mxss),xslat(mxss),xslon(mxss),
+     3 xstz(mxss),zanem(mxss),zlogsta(mxss),iadj(mxss),cunam(mxus),
+     4 xusta(mxus),yusta(mxus),xulat(mxus),xulon(mxus),xutz(mxus),
+     5 uelev(mxus),cpnam(mxps),xpsta(mxps),ypsta(mxps),xplat(mxps),
+     6 xplon(mxps),jlandu(mxss),nflagp,sigmap,cutp,noobs,itprog,icloud,
+     7 iformc,ifmtu(mxus),lcfsfc,lcfupr,lcfprc
+c
+c --- COMMON BLOCK /MET1/ Variables:
+c         NSSTA - integer - Number of surface met. stations
+c         NUSTA - integer - Number of upper air met. stations
+c         NPSTA - integer - Number of precipitation stations
+c        IFORMS - integer - Surface meteorological data file format
+c                           (1 = unformatted (e.g., SMERGE output))
+c                           (2 = formatted(free-formatted user input))
+c        IFORMP - integer - Precipitation data file format
+c                           (1 = unformatted (e.g., PMERGE output))
+c                           (2 = formatted(free-formatted user input))
+c           IOS - integer - Fortran unit no. of surface data file
+c           IOU - integer - Fortran unit no. of first upper air data
+c                           file (2nd, 3rd, etc = IOU+1, IOU+2, ...)
+c           IOP - integer - Fortran unit no. of precipitation file
+c        ISPACK - integer - Packing code for surface data
+c        IPPACK - integer - Packing code for precipitation data
+c                           (0=not packed, 1=packed)
+c  IDSSTA(mxss) - int. array   - Surface station ID numbers
+c  IDUSTA(mxus) - int. array   - Upper air station ID numbers
+c  IDPSTA(mxps) - int. array   - Precipitation station station codes
+c   CSNAM(mxss) - char*4 array - Surface station names
+c   XSSTA(mxss) - real array   - Surface station X coordinates (m)
+c                                relative to grid origin at (0.0, 0.0)
+c   YSSTA(mxss) - real array   - Surface station Y coordinates (m)
+c                                relative to grid origin at (0.0, 0.0)
+c   XSLAT(mxss) - real array   - Surface station latitude (deg.)
+c   XSLON(mxss) - real array   - Surface station longitude (deg.)
+c    XSTZ(mxss) - real array   - Surface station time zone
+c   ZANEM(mxss) - real array   - Surface station anemometer hts. (m)
+c ZLOGSTA(mxss) - real array   - Surface station vert. extrapolation
+c                                scaling parameter
+c Z  IADJ(mxss) - real array   - Surface station anenometer adjustment
+c                                flag (0 if znamem=zmid(1), 1 otherwise)
+c   SELEV(mxss) - real array   - Surface station elevation (m) MSL
+c
+c   CUNAM(mxus) - char*4 array - Upper air station names
+c   XUSTA(mxus) - real array   - Upper air station X coordinates (m)
+c                                relative to grid origin at (0.0, 0.0)
+c   YUSTA(mxus) - real array   - Upper air station Y coordinates (m)
+c                                relative to grid origin at (0.0, 0.0)
+c   XULAT(mxus) - real array   - Upper air station latitude (deg.)
+c   XULON(mxus) - real array   - Upper air station longitude (deg.)
+c    XUTZ(mxus) - real array   - Upper air station time zone
+c   UELEV(mxus) - real array   - Upper air station elevation (m) MSL
+c
+c   CPNAM(mxps) - char*4 array - Precip. station names
+c   XPSTA(mxps) - real array   - Precip. station X coordinates (m)
+c                                relative to grid origin at (0.0, 0.0)
+c   YPSTA(mxps) - real array   - Precip. station Y coordinates (m)
+c                                relative to grid origin at (0.0, 0.0)
+c   XPLAT(mxps) - real array   - Precip. station latitude (deg.)
+c   XPLON(mxps) - real array   - Precip. station longitude (deg.)
+c  JLANDU(mxps) - int. array   - Land use of station location
+c                                 (0 = land, 1+ = water bodies)
+c                                NOT CURRENTLY INPUT TO CALMET
+c        NFLAGP - integer      - Precipitation interpolation method
+c                                  (1 = 1/Radius, 2=1/Radius**2,
+c                                   3=[1/Radius**2]*exp)
+c        SIGMAP - real         - Radius of influence for precipitation
+c                                interpolation (km)
+c                                  (only used when NFLAGP = 3)
+c          CUTP - real         - Minimum allowed precipitation (mm/hr)
+c
+c FRR(09/2001 - change to NOOBS(previously mm4only :additional option)
+c         NOOBS - integer      - Observations used with prognostic data?
+c                                  0 = sfc and upper air stations used
+c                                  1 = sfc stations used (no upper air)
+c                                  2 = only prognostic data
+c
+c FRR (09/2001) - addtional parameter (temperature from 3D prognostic data)
+c        ITPROG - integer      - Use temperature from 3D prognostic data?
+c                                  0 = temperature from observations
+c                                  1 = temperature from prognostic data
+c
+c        ICLOUD - integer      - Gridded cloud field options
+c                                  0 = gridded CLOUD.DAT file not used
+c                                  1 = gridded CLOUD.DAT file generated
+c                                      as OUTPUT
+c                                  2 = gridded CLOUD.DAT file read as
+c                                      INPUT
+c                                  3 = gridded cloud data computed from
+c                                      prognostic relative humidity
+c        IFORMC - integer      - Cloud data file format
+c                                (1 = unformatted)
+c                                (2 = formatted)
+c   IFMTU(mxus) - integer array- UP.DAT file format 
+c                                 1=original slash-delimited (/) format
+c                                 2=comma-delimited data records)
+c        LCFSFC - logical      - T: surface station data in control file
+c        LCFUPR - logical      - T: upper station data in control file
+c        LCFPRC - logical      - T: precip station data in control file

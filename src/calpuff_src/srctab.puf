@@ -1,0 +1,50 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /SRCTAB/ -- Source-related Arrays            CALPUFF
+c                             (Rise and Downwash Tables)
+c----------------------------------------------------------------------
+c --- These are work arrays named for numerical plume rise variables
+c --- and PRIME downwash variables for wake and cavity properties for
+c --- point sources, but are used (where appropriate) to store
+c --- similar variables for other source types.
+c----------------------------------------------------------------------
+
+      common/SRCTAB/NTR,NWK,NCV,
+     1              XTR(mxrise),ZTR(mxrise),RTR(mxrise),HTR(mxrise),
+     2              XWK(mxrise),SYWK(mxrise),SZWK(mxrise),DRWK(mxrise),
+     3              XCV(mxrise),SYCV(mxrise),SZCV(mxrise)
+c
+c --- COMMON BLOCK /SRCTAB/ Variables:
+c
+c               NTR - integer  - Number of points in trajectory arrays
+c               NWK - integer  - Number points in wake arrays
+c               NCV - integer  - Number points in cavity arrays
+c       XTR(mxrise) - real     - Downwind distance (m) for trajectory,
+c                                Or, for buoyant line sources,
+c                                Distance from furthest upwind
+c                                part of group of line sources,
+c                                to points at which rise is
+c                                tabulated
+c       ZTR(mxrise) - real     - Height above ground (m) for trajectory
+c                                Or, for buoyant line sources,
+c                                Computed rise at each XTR,
+c                                for puff released at the point
+c                                farthest upwind
+c                 - ** note ** - Element 1 is at "XFB", the point
+c                                in the group of line sources that
+c                                is furthest downwind, while element
+c                                NTR is at final rise.
+c       RTR(mxrise) - real     - Plume radius (m)
+c       HTR(mxrise) - real     - Plume rise (m) without streamline
+c                                modifications (used for BID)
+c       XWK(mxrise) - real     - Downwind distance (m) from primary
+c                                source in wake region
+c      SYWK(mxrise) - real     - Sigma-y (m) for primary source
+c      SZWK(mxrise) - real     - Sigma-z (m) for primary source
+c      DRWK(mxrise) - real     - Plume growth rate expressed as
+c                                d/dx(plume radius) for equivalent
+c                                top-hat
+c       XCV(mxrise) - real     - Downwind distance (m) from cavity
+c                                source in wake region
+c      SYCV(mxrise) - real     - Sigma-y (m) for cavity source
+c      SZCV(mxrise) - real     - Sigma-z (m) for cavity source
+c

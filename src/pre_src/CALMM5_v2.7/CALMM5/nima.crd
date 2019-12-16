@@ -1,0 +1,34 @@
+c************************************************************
+c
+c --- BUILD manufactored NIMA INCLUDE statement
+c --- NIMA.CRD
+c --- Uses NIMA text file dated: 02-21-2003
+c --- Uses BUILD version: VERSION 1.3
+c
+c************************************************************
+c
+      Parameter (ndt = 132)
+      Parameter (nd = 234)
+c
+c --- Stamp this NIMA include file
+      Character*12 daten
+      Parameter (daten='02-21-2003  ')
+c
+      Character*60 geodat1, geodat2, geodat3
+      Character*8 datcod
+      Character*52 datum
+      Character*20 atlas
+      Character*12 dateb,dstamp
+c
+      Real*4 dxmod, dymod, dzmod
+      Real*8 dradim, dflat, dec2
+c
+      Integer*4 dattyp
+c
+      common /datr4/ dxmod(nd), dymod(nd), dzmod(nd)
+      common /datr8/ dradim(nd), dflat(nd), dec2(nd)
+      common /datchr/ datcod(nd), geodat1(nd), geodat2(nd),
+     1 geodat3(nd), atlas(ndt), datum(ndt),
+     2 dstamp,dateb
+      common /dati4/ kmax, nudat, dattyp(nd)
+c

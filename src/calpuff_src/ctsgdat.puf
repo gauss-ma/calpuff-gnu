@@ -1,0 +1,76 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /CTSGDAT/ -- Subgrid-scale complex terrain   CALPUFF
+c                               information
+c----------------------------------------------------------------------
+c
+      common/CTSGDAT/NHILL,NCTREC,MHILL,
+     1 XHILL2M,ZHILL2M,XCTDMKM,YCTDMKM,XMETCT0M,YMETCT0M,
+     2 HILLDAT(11,mxhill),XRCT(mxrect),YRCT(mxrect),ELRECT(mxrect),
+     3 IHILL(mxrect)
+c
+c --- COMMON BLOCK /CTSGDAT/ Variables:
+c
+c                  NHILL - integer  - Number of subgrid-scale terrain
+c                                     features
+c                 NCTREC - integer  - Number of special complex terrain
+c                                     receptors
+c                  MHILL - integer  - Method for input of hill terrain
+c                                     data
+c                                       1 = Created by CTDM processor
+c                                           programs (in CTDM format)
+c                                       2 = Created by CALPUFF OPTHILL
+c                                           processor & read in Input
+c                                           Group (6b)
+c                XHILL2M - real     - scale factor to convert horizontal
+c                                     hill dimensions to meters for
+c                                     MHILL=1 (CTDM Files)
+c                ZHILL2M - real     - scale factor to convert vertical
+c                                     hill dimensions to meters for
+c                                     MHILL=1 (CTDM Files)
+c                XCTDMKM - real     - x-origin of CTDM coordinate system
+c                                     referenced to "UTM" coordinate
+c                                     system used in CALPUFF (km)
+c                                     MHILL=1 (CTDM Files)
+c                YCTDMKM - real     - y-origin of CTDM coordinate system
+c                                     referenced to "UTM" coordinate
+c                                     system used in CALPUFF (km)
+c                                     MHILL=1 (CTDM Files)
+c               XMETCT0M - real     - x-origin of CTDM coordinate system
+c                                     referenced to SW corner of
+c                                     CALPUFF MET grid (m)
+c                                     MHILL=1 (CTDM Files)
+c               YMETCT0M - real     - y-origin of CTDM coordinate system
+c                                     referenced to SW corner of
+c                                     CALPUFF MET grid (m)
+c                                     MHILL=1 (CTDM Files)
+c     HILLDAT(11,mxhill) - real     - Hill data for MHILL=2
+c                          (1,-)= XC -- X coordinate of center of hill
+c                                 (met. grid units)
+c                          (2,-)= YC -- Y coordinate of center of hill
+c                                 (met. grid units)
+c                          (3,-)= THETAH -- Orientation of major axis of
+c                                 hill (clockwise from North)
+c                          (4,-)= ZGRID -- Height of the "zero-plane"
+c                                 of the grid above mean sea level
+c                          (5,-)= RELIEF -- Height of the crest of the
+c                                 hill above the grid elevation
+c                          (6,-)= EXPO 1 -- Hill-shape exponent for the
+c                                 major axis
+c                          (7,-)= EXPO 2 -- Hill-shape exponent for the
+c                                 major axis
+c                          (8,-)= SCALE 1 -- Horizontal length scale
+c                                 along the major axis
+c                          (9,-)= SCALE 2 -- Horizontal length scale
+c                                 along the minor axis
+c                         (10,-)= AMAX -- Maximum allowed axis length
+c                                 for the major axis
+c                         (11,-)= BMAX -- Maximum allowed axis length
+c                                 for the major axis
+c           XRCT(mxrect) - real     - X coordinate of complex terrain
+c                                     receptor (met. grid units)
+c           YRCT(mxrect) - real     - Y coordinate of complex terrain
+c                                     receptor (met. grid units)
+c         ELRECT(mxrect) - real     - Ground elevation (m MSL) of each
+c                                     complex terrain receptor
+c          IHILL(mxrect) - integer  - Hill number associated with each
+c                                     complex terrain receptor

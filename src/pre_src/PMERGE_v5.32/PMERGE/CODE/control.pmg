@@ -1,0 +1,49 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /CONTROL/ -- run control variables            PMERGE
+c----------------------------------------------------------------------
+c
+      logical lprev
+
+      common/control/iotz,maxap,ioform,iopack,
+     1               npf,ifstn(mxpf),istz(mxpf),
+     2               ibstn(mxps),idstn(mxps),idbstn(mxps),
+     3               nbstn,nstnb,ntstn,ipform,ippack,icount(mxpf,7),
+     4               lprev
+c
+c --- COMMON BLOCK /CONTROL/ Variables:
+c          IOTZ - integer    - Requested time zone of data for
+c                              output PRECIP.DAT file
+c         MAXAP - integer    - Maximum accumulation period (hours)
+c        IOFORM - integer    - Output PRECIP.DAT format
+c                              (1 = unformatted, 2 = formatted)
+c        IOPACK - integer    - Data packing code for output file
+c                              (0 = unpacked, 1 = packed)
+c                              (USED ONLY IF IOFORM=1, unformatted)
+c           NPF - integer    - Number of formatted precipitation
+c                              input data files (stations)
+c         IFSTN - int. array - Array of station ids (for each formatted
+c                              precipitation data input files)
+c          ISTZ - int. array - Array of time zone corresponding to each
+c                              formatted precipitation data input
+c                              file
+c         IBSTN - int. array - Array of 5-digit station numbers of the
+c                              stations in the existing file to extract
+c                              (USED ONLY IF: LPREV=T, NBSTN .GT. 0)
+c         IDSTN - int. array - Array of 5-digit station numbers written
+c                              to output PRECIP.DAT file
+c        IDBSTN - int. array - Array of 5-digit station numbers read
+c                              from existing PREV.DAT input file
+c         NBSTN - integer    - Number of stations to extract from the
+c                              existing PREV.DAT input file (0 = all
+c                              stations in file) (USED ONLY IF LPREV=T)
+c         NSTNB - integer    - Number of stations available in binary
+c         NTSTN - integer    - Total number of stations to written to 
+c                              output PRECIP.DAT file
+c        IPFORM - integer    - Format code for previous PRECIP.DAT
+c                              (1 = unformatted, 2 = formatted)
+c        IPPACK - integer    - Data packing code for previous PRECIP.DAT
+c                              file (0 = unpacked, 1 = packed)
+c                              (USED ONLY IF IPFORM=1, unformatted)
+cICOUNT(mxpf,7) - int. array - Data status array for valid hours
+c         LPREV - logical    - Flag denoting use of previous PRECIP.DAT
+c                              file for continuation run

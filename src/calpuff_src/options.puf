@@ -1,0 +1,16 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /OPTIONS/ -- Slug specific information       CALPUFF
+c----------------------------------------------------------------------
+c
+      logical lsigex
+c
+      common/OPTIONS/lsigex
+c
+c --- COMMON BLOCK /OPTIONS/ Variable:
+c
+c              LSIGEX - real      -.TRUE. implies use of exact receptor
+c                                  specific sigma values (sy,sz).
+c                                 -.FALSE. implies use of interpolated
+c                                  slug end-point sigma values (sy,sz).
+c
+c ---------------------------------------------------------------------

@@ -1,0 +1,21 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /D3/ -- Wind field common block #3 -BARRIERS- CALMET
+c----------------------------------------------------------------------
+c
+      COMMON /D3/  NBAR, KBAR, BARXY(4,MXBAR), IFIN, SLPIN(2,MXBAR)
+C     
+C              NBAR           (I)  - NUMBER OF BARRIERS (UP TO MXBAR)
+c              KBAR           (I)  - Vertical level up to which barriers are applied 
+c           
+C              BARXY(1,MXBAR) (R)  - X COORDINATE OF FIRST BARRIER END POINT
+c                                   (in km relative to CALMET origin)
+C              BARXY(2,MXBAR) (R)  - Y COORDINATE OF FIRST BARRIER END POINT
+c                                   (in km relative to CALMET origin)
+C              BARXY(3,MXBAR) (R)  - X COORDINATE OF SECOND BARRIER END POINT
+c                                   (in km relative to CALMET origin)
+C              BARXY(4,MXBAR) (R)  - Y COORDINATE OF SECOND BARRIER END POINT
+c                                   (in km relative to CALMET origin)
+C              IFIN           (I)  - IF 0 SET UP PT SLOPE LINES
+c              SLPIN(1,mxbar) (R)  - SLOPE OF LINE
+C              SLPIN(2,mxbar) (R)  - INTERCEPT OF LINE
+

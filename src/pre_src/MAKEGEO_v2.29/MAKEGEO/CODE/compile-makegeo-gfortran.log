@@ -1,0 +1,425 @@
+calutils.for:1539.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i1(index),i1(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1543.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i2(index),i2(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1547.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i3(index),i3(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1551.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i4(index),i4(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1555.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i5(index),i5(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1559.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i6(index),i6(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1563.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i7(index),i7(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1567.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i8(index),i8(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1571.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i9(index),i9(index),        
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1575.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i10(index),i10(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1579.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i11(index),i11(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1583.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i12(index),i12(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1587.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i13(index),i13(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1591.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i14(index),i14(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1595.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i15(index),i15(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1599.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i16(index),i16(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1603.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i17(index),i17(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1607.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i18(index),i18(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1611.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i19(index),i19(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1615.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i20(index),i20(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1619.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i21(index),i21(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1623.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i22(index),i22(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1627.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i23(index),i23(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1631.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i24(index),i24(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1635.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i25(index),i25(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1639.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i26(index),i26(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1643.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i27(index),i27(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1647.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i28(index),i28(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1651.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i29(index),i29(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1655.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i30(index),i30(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1659.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i31(index),i31(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1663.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i32(index),i32(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1667.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i33(index),i33(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1671.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i34(index),i34(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1675.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i35(index),i35(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1679.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i36(index),i36(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1683.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i37(index),i37(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1687.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i38(index),i38(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1691.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i39(index),i39(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1695.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i40(index),i40(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1699.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i41(index),i41(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1703.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i42(index),i42(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1707.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i43(index),i43(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1711.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i44(index),i44(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1715.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i45(index),i45(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1719.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i46(index),i46(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1723.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i47(index),i47(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1727.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i48(index),i48(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1731.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i49(index),i49(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1735.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i50(index),i50(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1739.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i51(index),i51(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1743.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i52(index),i52(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1747.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i53(index),i53(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1751.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i54(index),i54(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1755.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i55(index),i55(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1759.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i56(index),i56(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1763.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i57(index),i57(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1767.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i58(index),i58(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1771.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i59(index),i59(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+calutils.for:1775.44:
+    Included at makegeo.for:245:
+
+      call setvar(itype,irep,rlno,ino,lv,cv,i60(index),i60(index),      
+                                            1
+Warning: Type mismatch in argument 'xarr' at (1); passed INTEGER(4) to REAL(4)
+makegeo.for:628.7:
+
+     1 ctemp(1,1),ctemp(1,2),ctemp(1,3),ctemp(1,4),ctemp(1,5),          
+       1
+Warning: Type mismatch in argument 'i1' at (1); passed CHARACTER(1) to INTEGER(4)
+makegeo.for:683.7:
+
+     1 LTERR,IXQA,IYQA,IMAGE,LLU2,                                      
+       1
+Warning: Type mismatch in argument 'i1' at (1); passed LOGICAL(4) to INTEGER(4)
+makegeo.for:724.7:
+
+     1 CPMAP,IUTMZN,UTMHEM,                                             
+       1
+Warning: Type mismatch in argument 'i1' at (1); passed CHARACTER(1) to INTEGER(4)
+makegeo.for:800.7:
+
+     1 NOUTCAT,IWAT1,IWAT2,                                             
+       1
+Warning: Rank mismatch in argument 'i1' at (1) (rank-1 and scalar)
+makegeo.for:822.7:
+
+     2 idum,idum,idum,idum,idum,idum,idum,idum,idum,idum,idum,idum,     
+       1
+Warning: Rank mismatch in argument 'i2' at (1) (rank-1 and scalar)
+makegeo.for:846.7:
+
+     1 NINCAT,NUMWAT,NSPLIT,CFRACT,IMISS,FLUMIN,                        
+       1
+Warning: Rank mismatch in argument 'i1' at (1) (rank-1 and scalar)
+makegeo.for:863.10:
+
+     1    X8,                                                           
+          1
+Warning: Type mismatch in argument 'i1' at (1); passed REAL(4) to INTEGER(4)
+makegeo.for:896.10:
+
+     2    idum,idum,idum,idum,idum,idum,idum,idum,idum,idum,idum,idum,  
+          1
+Warning: Rank mismatch in argument 'i2' at (1) (rank-1 and scalar)
+makegeo.for:916.10:
+
+     1    XSPLIT,                                                       
+          1
+Warning: Type mismatch in argument 'i1' at (1); passed REAL(4) to INTEGER(4)
+makegeo.for:1819.23:
+
+       call out(percal,idum,1,5,ldate,messag,1,1,nx,ny)                 
+                       1
+Warning: Rank mismatch in argument 'iarray' at (1) (rank-2 and scalar)
+makegeo.for:1836.15:
+
+      call out(orgx,ipercal,2,3,ldate,messag,1,1,nx,ny)                 
+               1
+Warning: Rank mismatch in argument 'rarray' at (1) (rank-2 and scalar)
+makegeo.for:1854.15:
+
+      call out(orgx,ipercal,2,3,ldate,messag,1,1,nx,ny)                 
+               1
+Warning: Rank mismatch in argument 'rarray' at (1) (rank-2 and scalar)
+makegeo.for:1862.21:
+
+      call out(dum2d,idum,1,5,ldate,messag,1,1,nx,ny)                   
+                     1
+Warning: Rank mismatch in argument 'iarray' at (1) (rank-2 and scalar)

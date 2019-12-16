@@ -1,0 +1,30 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /AMBIENT/ -- Selected met. data at one       CALPUFF
+c                               grid cell;  used in numerical
+c                               plume rise computation
+c----------------------------------------------------------------------
+c
+      common/AMBIENT/nza,nzap1,zfacea(mxprfp1),zgpta(mxprfz),
+     1 uamb(mxprfz),ramb(mxprfz),dedz(mxprfp1),tamb(mxprfz),
+     1 tamb0,ramb0,adia,ptgrad0
+c
+c --- COMMON BLOCK /AMBIENT/ Variables:
+c
+c                    NZA - integer - Number of layers
+c                  NZAP1 - integer - Number of layers
+c        ZFACEA(mxprfp1) - real    - Heights (m) of cell faces
+c          ZGPTA(mxprfz) - real    - Heights (m) of grid points
+c                                    (cell centers)
+c           UAMB(mxprfz) - real    - Wind speed profile (m/s) - winds
+c                                    defined at cell CENTERS
+c           RAMB(mxprfz) - real    - Ambient air density profile
+c                                    (kg/m^3) - defined at cell CENTERS
+c          DEDZ(mxprfp1) - real    - Pot. temperature gradient profile
+c                                    (K/m) - defined at cell FACES
+c           TAMB(mxprfz) - real    - Temperature profile (K) - defined
+c                                    at cell CENTERS
+c                  TAMB0 - real    - Surface air temperature (K)
+c                  RAMB0 - real    - Surface air density (kg/m^3)
+c                   ADIA - real    - Dry adiabatic lapse rate (deg. K/m)
+c                PTGRAD0 - real    - Minimum potential temperature lapse
+c                                    rate (deg. K/m)

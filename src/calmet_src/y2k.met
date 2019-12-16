@@ -1,0 +1,10 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /Y2K/ -- YY to YYYY conversion variables      CALMET
+c----------------------------------------------------------------------
+c
+      common/y2k/iyylo,icclo
+c
+c --- COMMON BLOCK /Y2K/ Variables:
+c         IYYLO - integer    - Smallest 2-digit year for which 'old'
+c                              century marker is used
+c         ICCLO - integer    - 2-digit ('old') century

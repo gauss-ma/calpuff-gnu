@@ -1,0 +1,43 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /CONTROL/ -- run control variables           PXTRACT
+c----------------------------------------------------------------------
+      integer istate(mxs), istn(mxstn)
+      character*2 state(mxs)
+      character*6 stn(mxstn)
+
+      common /CONTROL/ IBYR,IBMO,IBDY,ibjul,ibeg,
+     &                 IEYR,IEMO,IEDY,iejul,iend,
+     &                 icode,nsta,istate,istn,
+     &                 state,stn
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c ibyr           beginning year for processing                       [i]
+c ibmo           beginning month for processing                      [i]
+c ibdy           beginning day for processing                        [i]
+c ibjul          beginning Julian day for processing                 [i]
+c ibeg           beginning YYYYJJJ                                   [i]
+c ieyr           ending year for processing                          [i]
+c iemo           ending month for processing                         [i]
+c iedy           ending day for processing                           [i]
+c iejul          ending Julian day for processing                    [i]
+c iend           ending YYYYJJJ                                      [i]
+c icode          Method for selecting stations to extract            [i]
+c                   1 = Extract all stations within specified states
+c                       (2-digit state codes are entered in Input 
+c                        Group 2)
+c                   2 = Extract specified stations (6-digit station 
+c                        codes are entered in Input Group 3)
+c                   3 = Extract all stations in the TD3240 file
+c nsta           Number of states OR stations to extract             [i]
+c                   (Used only if ICODE= 1 OR 2)
+c istate(mxs)    IDs for states to extract                          [ia]
+c                   (Used only if ICODE= 1)
+c istn(mxstn)    IDs for stations to extract                        [ia]
+c                   (Used only if ICODE= 2)
+c state(mxs)     IDs for states to extract                          [ca]
+c                   (Used only if ICODE= 1)
+c stn(mxstn)     IDs for stations to extract                        [ca]
+c                   (Used only if ICODE= 2)
+c-----------------------------------------------------------------------

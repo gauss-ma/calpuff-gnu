@@ -1,0 +1,88 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /FILNAM/ -- CALMET file names                 CALMET
+c----------------------------------------------------------------------
+c
+      character*132 metinp,geodat,srfdat,prcdat,diadat,prgdat,
+     1 mm4dat,wtdat,updat,seadat,metlst,metdat,pacdat,tstprt,
+     2 tstout,tstkin,tstfrd,tstslp,clddat,m3ddat,igfdat,dcstgd
+      logical lcfiles
+c
+      common/filnam/metinp,geodat,srfdat,prcdat,diadat,prgdat,
+     1 mm4dat,wtdat,updat(mxus),seadat(mxows),metlst,metdat,pacdat,
+     2 tstprt,tstout,tstkin,tstfrd,tstslp,clddat,m3ddat(mxm3d),
+     3 igfdat(mxigf),dcstgd
+      common/fillog/lcfiles
+c
+c --- COMMON BLOCK /FILNAM/, /FILLOG/ Variables:
+c          METINP - char*132 - Path & filename for the control file
+c                             (default: CALMET.INP)
+c          GEODAT - char*132 - Path & filename for the geophysical data
+c                             file (default: GEO.DAT)
+c          SRFDAT - char*132 - Path & filename for the hourly surface
+c                             meteorological data file
+c                             (default: SURF.DAT)
+c          PRCDAT - char*132 - Path & filename for the hourly
+c                             precipitation data file
+c                             (default: PRECIP.DAT)
+c          DIADAT - char*132 - Path & filename for the preprocessed
+c                             meteorological diagnostic wind data
+c                             (default: DIAG.DAT)
+c          PRGDAT - char*132 - Path & filename for the gridded CSUMM
+c                             meteorological fields
+c                             (default: PROG.DAT)
+c          MM4DAT - char*132 - Path & filename for the gridded MM4
+c                             meteorological fields
+c                             (default: MM4.DAT)
+c          WTDAT  - char*132 - Path & filename for the gridded terrain
+c                             weighting factors used to weight observed
+c                             winds and the MM4 winds
+c                             (default: WT.DAT)
+c     UPDAT(mxus) - char*132 - Path & filenames for the upper air data
+c                   array     files (default: UPn.DAT, n=1,2,3,...)
+c   SEADAT(mxows) - char*132 - Path & filenames for the overwater data
+c                   array     files (default: SEAn.DAT, n=1,2,3,...)
+c          METLST - char*132 - Path & filename for the output CALMET
+c                             list file
+c                             (default: CALMET.LST)
+c          METDAT - char*132 - Path & filename for the output CALMET
+c                             binary meteorological file in
+c                             CALPUFF/CALGRID format
+c                             (default: CALMET.DAT)
+c          PACDAT - char*132 - Path & filename for the output CALMET
+c                             binary meteorological file in MESOPUFF II
+c                             format
+c                             (default: PACOUT.DAT)
+c          TSTPRT - char*132 - Path & filename for the test/debug output
+c                             file from the wind field module containing
+c                             intermediate winds and misc. input and
+c                             internal variables
+c                             (default: TEST.DAT)
+c          TSTOUT - char*132 - Path & filename for the test/debug output
+c                             file from the wind field module containing
+c                             the final wind fields
+c                             (default: TEST.OUT)
+c          TSTKIN - char*132 - Path & filename for the test/debug output
+c                             file from the wind field module containing
+c                             the wind fields after kinematic effects
+c                             (default: TEST.KIN)
+c          TSTFRD - char*132 - Path & filename for the test/debug output
+c                             file from the wind field module containing
+c                             the wind fields after Froude No. effects
+c                             (default: TEST.FRD)
+c          TSTSLP - char*132 - Path & filename for the test/debug output
+c                             file from the wind field module containing
+c                             the wind fields after slope flow effects
+c                             (default: TEST.SLP)
+c         LCFILES - logical - Switch indicating if all characters in the
+c                             filenames are to be converted to lower case
+c                             letters (LCFILES=T) or converted to UPPER
+c                             case letters (LCFILES=F).
+c          CLDDAT - char*132 - Path & filename for the hourly gridded
+c                             cloud data file
+c                             (default: CLOUD.DAT)
+c   M3DDAT(mxm3d) - char*132 - Path & filenames for 3D.DAT files
+c                   array     (default: MM5n.DAT, n=1,2,3,...)
+c   IGFDAT(mxigf) - char*132 - Path & filenames for IGF.DAT files
+c                   array     (default: IGFn.DAT, n=1,2,3,...)
+c          DCSTGD - char*132 - Path & filename for the "distance-to-the-coast
+c                             file  (.GRD format)

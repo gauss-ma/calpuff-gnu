@@ -1,0 +1,31 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /FILNAM/ -- File names                           BUOY
+c-----------------------------------------------------------------------
+      character*132 prevdat,runinp,outfil,lstfil,buyfil,pltfil
+      character datafil*132, datatyp*6, justname*132
+      character*16 dataver
+      logical lcfiles
+
+      common /FILNAM/ nbdf,runinp,outfil,lstfil,pltfil,prevdat,
+     &                datafil(mxfil),justname(mxfil),datatyp(mxfil),
+     &                dataver
+      common /FILLOG/ lcfiles
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c nbdf           Number of buoy DB files for this run             [i]
+c runinp         Path & filename for the control file                [c]
+c                (default: BUOY.INP)
+c outfil         Path & filename for the output BUOY data file     [c]
+c                (default: BUOY.DAT)
+c lstfil         Path & filename for the output BUOY list file     [c]
+c                (default: BUOY.LST)
+c datafil        name of each DB file, may include path info.       [ca]
+c justname       name of each DB file, no path info.                [ca]
+c datatyp        type of each data file (NDBC or NODC)              [ca]
+c lcfiles        Switch indicating if all characters in the          [l]
+c                filenames are to be converted to lower case
+c                letters (LCFILES=T) or converted to UPPER
+c                case letters (LCFILES=F).
+c-----------------------------------------------------------------------

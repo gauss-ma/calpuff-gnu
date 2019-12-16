@@ -1,0 +1,52 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /ZIPARM/ -- Mixing height parameters          CALMET
+c----------------------------------------------------------------------
+c
+      common/ziparm/constb,conste,constn,threshl,dptmin,dzzi,zimax,
+     1 zimin,cmech(mxnx,mxny),twodte,onedte,iavezi,mnmdav,hafang,
+     2 ilevzi,fcoriol,fcori(mxnx,mxny)
+c
+c --- COMMON BLOCK /ZIPARM/ Variables:
+c       CONSTB - real     - Constant for neutral, mechanical eqn.
+c                           Default: 1.41
+c       CONSTE - real     - Constant for convective mixing ht. eqn.
+c                           Default: 0.15
+c       CONSTN - real     - Constant for stable mixing ht. eqn.
+c                           Default: 2400.
+c      THRESHL -real      - Threshold buoyancy flux required for convective
+c                           boundary layer growth overland - Expressed as
+c                           a heat flux per meter of mixing height (W/m2/m)
+c       DPTMIN - real     - Minimum potential temperature lapse
+c                           rate in the stable layer above the
+c                           current convective mixing ht. (deg. K/m)
+c                           Default: 0.001 deg. K/m
+c         DZZI - real     - Depth of layer above current conv.
+c                           mixing height through which lapse
+c                           rate is computed (m) 
+c                           Default: 200. m
+c        ZIMAX - real     - Maximum overland mixing height (m)
+c                           Default: 2500. m
+c        ZIMIN - real     - Minimum overland mixing height (m)
+c                           Default: 20. m
+c        CMECH - real     - Computed mixing ht. constant
+c                           (cmech=100.*constb)
+c       TWODTE - real     - Computed mixing ht. constant
+c                           (twodte=7200.*conste)
+c       ONEDTE - real     - Computed mixing ht. constant
+c                           (onedte=3600.*(1.+conste))
+c       IAVEZI - integer  - Switch indicating if spatial averaging
+c                           of mixing heights is to be done
+c                           (0=no, 1=yes)
+c       MNMDAV - integer  - Maximum grid cell search radius in
+c                           averaging process (outside of HAFAVG cone
+c                           region)
+c       HAFANG - real     - Half-angle (degrees) of upwind looking
+c                           cone for averaging
+c       ILEVZI - integer  - Level of winds used in upwind averaging
+c                           module
+c      FCORIOL - real     - Absolute value of the Coriolis parameter
+c                           (1/s) - Either user=input value (old pre 040630
+c                           versions) or 999 flag to compute gridded field
+c        FCORI -real array- Gridded values of the Coriolis parameter. Computed
+c                           internally as a function of the latitudes, or set
+c                           to single value (if given by the user)

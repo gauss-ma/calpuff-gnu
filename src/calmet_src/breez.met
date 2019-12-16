@@ -1,0 +1,9 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /BREEZ/ -- Lake Breeze common block          CALMET
+c----------------------------------------------------------------------
+c
+      logical llbreze
+      COMMON /Breez/ xbcst(mxbox),xecst(mxbox),ybcst(mxbox),
+     1         yecst(mxbox),nlb(mxbox),iboxid(mxbox,mxwnd),
+     2         xg1(mxbox),xg2(mxbox),yg1(mxbox),yg2(mxbox),
+     3         llbreze,nbox

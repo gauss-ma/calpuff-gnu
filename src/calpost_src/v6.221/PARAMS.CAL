@@ -1,0 +1,12 @@
+c----------------------------------------------------------------------
+c --- PARAMETER statements                                     CALUTILS
+c----------------------------------------------------------------------
+c --- Specify parameters
+      parameter(mxvar=60,mxcol=132)
+c
+c --- CONTROL FILE READER definitions:
+c         MXVAR - Maximum number of variables in each input group
+c         MXCOL - Maximum length (bytes) of a control file input record
+c----------------------------------------------------------------------
+
+ 

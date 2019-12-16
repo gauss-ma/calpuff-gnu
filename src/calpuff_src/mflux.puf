@@ -1,0 +1,40 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /MFLUX/ -- User-Supplied Boundary Lines      CALPUFF
+c                             and arrays for Mass Flux Output
+c----------------------------------------------------------------------
+c
+      logical*1 lbndry(mxnx,mxny)
+      character*16 cnambdy(mxbndry)
+      common/MFLUX/nbndry,npbndry(2,mxbndry),bndrygrd(2,mxptbdy),
+     &             ymxpbm(2,mxptbdy),flxin(mxspec,mxbndry),
+     &             flxout(mxspec,mxbndry),cnambdy,lbndry
+c
+c --- COMMON BLOCK /MFLUX/ Variables:
+c
+c               NBNDRY - integer - Number of boundaries defined
+c   NPBNDRY(2,mxbndry) - integer - Pointer to locations in BNDRYGRD
+c                                  array containing data for each line
+c                                  where element 1 is the start and
+c                                  element 2 is the end
+c  BNDRYGRD(2,mxptbdy) - real    - x,y coordinates (MET GRID UNITS) of
+c                                  points along each line, where
+c                                  element 1 is x, element 2 is y
+c    YMXPBM(2,mxptbdy) - real    - Slope 'm' and intercept 'b' for line
+c                                  defined by each boundary segment
+c                                  element 1 is 'm', element 2 is 'b'
+cFLXIN(mxspec,mxbndry) - real    - Mass flux of each species INTO
+c                                  region for each boundary (g/s)
+cFLXOUT(mxspec,mxbndry)- real    - Mass flux of each species OUT of
+c                                  region for each boundary (g/s)
+c     CNAMBDY(mxptbdy) - C*16    - Name of boundary
+c    LBNDRY(mxnx,mxny) - logical - Logical marker indicating if a MET
+c                                  GRID cell contains a boundary line
+c----------------------------------------------------------------------
+c NOTE:  More than 1 boundary can be defined, but all are appended in
+c        the BNDRYGRD array.  The NPBNDRY provides the index for the
+c        start and the end of each coast line.  Also, the ordering of
+c        the points follows the convention that the region INTO which
+c        the mass moves is to the RIGHT of the line traced out by these
+c        points.  
+c        Mass flux from LEFT to RIGHT is summed in the FLXIN array.
+c        Mass flux from RIGHT to LEFT is summed in the FLXOUT array.

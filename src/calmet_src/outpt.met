@@ -1,0 +1,53 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /OUTPT/ -- Output options and flags           CALMET
+c----------------------------------------------------------------------
+c
+      logical lsave,lprint,ldb,ldbcst,ldbhr
+c
+      common/outpt/lsave,iformo,lprint,iprinf,ldb,ldbhr,nn1,nn2,
+     1 ldbcst,iuvout(mxnz),iwout(mxnz),itout(mxnz),imtout(8),iomet,
+     2 iqaplot
+c
+c --- COMMON BLOCK /OUTPT/ Variables:
+c           LSAVE - logical    - Flag to save computed gridded met.
+c                                fields in the output file "CALMET.DAT"
+c                                or "PACOUT.DAT" (depending on value of
+c                                IFORMO)
+c          IFORMO - integer    - Format of output file (1=CALMET format,
+c                                2=MESOPAC II format)
+c          LPRINT - logical    - Flag to control printing of met.
+c                                fields
+c          IPRINF - integer    - Interval between printing of gridded
+c                                fields (e.g., 2=print every 2nd hour)
+c             LDB - logical    - Flag to control printing of internal
+c                                data (useful for debugging)
+c           LDBHR - logical    - Flag to control printing of internal
+c                                data on hourly basis (useful for debugging)
+c             NN1 - integer    - First time step for which internal
+c                                data are printed
+c             NN2 - integer    - Last time step for which internal
+c                                data are printed
+c          LDBCST - logical    - Flag to control printing of distance to
+c                                the coast in grd format (useful for QA-ing)
+c    IUVOUT(mxnz) - int. array - Flags to control which layers of
+c                                U, V winds are printed
+c     IWOUT(mxnz) - int. array - Flags to control which levels of
+c                                W winds are printed
+c     ITOUT(mxnz) - int. array - Flags to control which levels of
+c                                3-D temperature are printed
+c       IMTOUT(8) - int. array - Flags to control which met. variables
+c                                are printed. The elements of the array
+c                                correspond to:
+c                                   (1) Stability class,
+c                                   (2) Friction velocity
+c                                   (3) Monin-Obukhov length
+c                                   (4) Mixing height
+c                                   (5) Convective velocity scale
+c                                   (6) Precipitation rate
+c                                   (7) Sensible heat flux
+c                                   (8) Convective mixing height
+c           IOMET - integer    - Fortran unit no. output met. data file
+c                                (CALMET.DAT)
+c         IQAPLOT - integer    - Flag for creating QA plot file(s) of
+c                                station locations
+c                                (0 = No;  1 = YES)

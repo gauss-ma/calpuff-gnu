@@ -1,0 +1,57 @@
+c-----------------------------------------------------------------------
+c --- READ62    Version: 5.1            Level: 020330       CONTROL.R62
+c               D. Strimaitis, Earth Tech, Inc.
+c
+c PURPOSE:      Program control data read & derived from user input
+c-----------------------------------------------------------------------
+      logical lht,ltemp,lwd,lws,lxtop,lxsfc
+
+      common /CONTROL/ IBYR,IBMO,IBDY,IBHR,ibjul,
+     &                 IEYR,IEMO,IEDY,IEHR,iejul,
+     &                 jdat,ifmt,pstop,lht,ltemp,lwd,lws,
+     &                 isub,pvtop,zvsfc,lxtop,lxsfc
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c ibyr           beginning year for processing                       [i]
+c ibmo           beginning month for processing                      [i]
+c ibdy           beginning day for processing                        [i]
+c ibhr           beginning hour for processing (GMT)                 [i]
+c ibjul          beginning Julian day for processing                 [i]
+c ieyr           ending year for processing                          [i]
+c iemo           ending month for processing                         [i]
+c iedy           ending day for processing                           [i]
+c iehr           ending hour for processing (GMT)                    [i]
+c iejul          ending Julian day for processing                    [i]
+c jdat           type of NCDC input sounding data file               [i]
+c                   1 = TD-6201
+c                   2 = NCDC FSL
+c ifmt           format of output data records                       [i]
+c                   1 = Delimiter between data in a sounding level is
+c                       a slash (/) and wind speed and direction are
+c                       written as integers
+c                   2 = Delimiter between data in a sounding level is 
+c                       a comma (,) and all data are written as reals
+c                       (more significant digits)
+c pstop          top pressure(mb) level for which data are extracted [r]
+c                (e.g., 850 mb, 700 mb, 500 mb, etc.)
+c lht            eliminate level if height is missing?               [L]
+c ltemp          eliminate level if temperature is missing?          [L]
+c lwd            eliminate level if wind direction is missing?       [L]
+c lws            eliminate level if wind speed is missing?           [L]
+c isub           control for substitute sounding data file           [i]
+c                   0 = NO substitue sounding file is used
+c                   1 = Delimiter between data in a sounding level is
+c                       a slash (/) and wind speed and direction are
+c                       written as integers
+c                   2 = Delimiter between data in a sounding level is 
+c                       a comma (,) and all data are written as reals
+c                       (more significant digits)
+c pvtop          maximum pressure(mb) level for accepting valid data [r]
+c                used to extrapolate missing data to PSTOP
+c zvsfc          maximum height (m AGL) for accepting valid data     [r]
+c                used to extrapolate missing data to surface
+c lxtop          extrapolate missing data to PSTOP?                  [L]
+c lxsfc          extrapolate missing data to surface?                [L]
+c-----------------------------------------------------------------------

@@ -1,0 +1,27 @@
+c --- calmm5.cm3 ------
+c     Common blocks for MM5 header arrays
+
+      integer bhi,ibflag,isflag,idebug
+      real bhr
+      character*80 bhic,bhrc
+
+      integer ndim5
+      real time
+      integer start_index(4), end_index(4)
+      character*4 staggering
+      character*4 ordering
+      character*24 start_date
+      character*24 current_date
+      character*9 name
+      character*25 units
+      character*46 description
+      logical newtime
+
+      common /header/bhi(50,20) ,bhr(20,20),
+     &               bhic(50,20),bhrc(20,20)
+
+      common /headflg/ibflag,isflag,idebug,ifirst
+
+      common /subheader/ndim5,time,start_index,end_index
+     &   ,staggering,ordering,start_date,current_date,name
+     &   ,units,description,newtime

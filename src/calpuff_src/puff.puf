@@ -1,0 +1,157 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /PUFF/ -- Puff characteristics               CALPUFF
+c----------------------------------------------------------------------
+c
+      common/puff/xpb(mxpuff),ypb(mxpuff),zpb(mxpuff),
+     1 zimax(mxpuff),ziold(mxpuff),zitibl(mxpuff),
+     2 sigyb(mxpuff),sigzb(mxpuff),xtotb(mxpuff),
+     3 tmtotb(mxpuff),zfinal(mxpuff),xfinal(mxpuff),bidfnl(mxpuff),
+     4 fb(mxpuff),fm(mxpuff),xbfin(mxpuff),xmfin(mxpuff),zbfin(mxpuff),
+     5 zmfin(mxpuff),stipdw(mxpuff),qu(mxspec,mxpuff),qm(mxspec,mxpuff),
+     6 irlsnum(mxpuff),isrcnum(mxpuff),isrctyp(mxpuff),
+     7 ipufcd(mxpuff),elbase(mxpuff),
+     8 tcon(3,2,mxpuff),npuffs,isplit(mxpuff),
+     9 idw0(mxpuff),ht0(mxpuff),exitw0(mxpuff),diam0(mxpuff),
+     1 ws0(mxpuff),istab0(mxpuff),sqrts0(mxpuff),srat0(mxpuff),
+     2 temit0(mxpuff),hb0(mxpuff),hw0(mxpuff),heff20(mxpuff),
+     3 iru0(mxpuff),sigv0(mxpuff),sigw0(mxpuff),el0(mxpuff),
+     4 plexp0(mxpuff),zly0(mxpuff),r0(mxpuff),
+     5 sysrc0(mxpuff),szsrc0(mxpuff),
+     6 xshift0(mxpuff),sy0(mxpuff),sz0(mxpuff)
+c
+c --- COMMON BLOCK /PUFF/ Variables:
+c       XPB(mxpuff) - real    - Met. grid X coordinate of puff center
+c                               (or youngest end of slug)
+c       YPB(mxpuff) - real    - Met. grid Y coordinate of puff center
+c                               (or youngest end of slug)
+c       ZPB(mxpuff) - real    - Height above ground (m) of puff center
+c     ZIMAX(mxpuff) - real    - Highest mixing ht. (m) to which puff
+c                               has been exposed
+c     ZIOLD(mxpuff) - real    - Previous hour's mixing ht. (m) for the
+c                               puff
+c    ZITIBL(mxpuff) - real    - Current TIBL height (m) for the puff
+c                               <0: no TIBL interaction anticipated
+c                               =0: TIBL interaction possible, but puff
+c                                   has not crossed coastline
+c                               >0: TIBL active
+c     SIGYB(mxpuff) - real    - Sigma y (m) for the puff center (or
+c                               youngest end of slug) without BID
+c     SIGZB(mxpuff) - real    - Sigma z (m) for the puff center (or
+c                               youngest end of slug) without BID
+c     XTOTB(mxpuff) - real    - Total integrated travel distance (m) of
+c                               the puff (or youngest end of slug) at
+c                               start of step
+c    TMTOTB(mxpuff) - real    - Total integrated travel time (s) of
+c                               the puff (or youngest end of slug) at
+c                               start of step
+c    ZFINAL(mxpuff) - real    - Final effective plume height (m) of
+c                               the puff center (or youngest end of
+c                               slug)
+c                               (i.e., stack height + plume rise)
+c    XFINAL(mxpuff) - real    - Distance to final plume rise (m)
+c    BIDFNL(mxpuff) - real    - Buoyancy-enhanced sigma, squared (m^2)
+c        FB(mxpuff) - real    - Buoyancy flux (m**4/s**3)
+c        FM(mxpuff) - real    - Momentum flux (m**4/s**2)
+c     XBFIN(mxpuff) - real    - Distance to final buoyant rise (m)
+c     XMFIN(mxpuff) - real    - Distance to final momentum rise (m)
+c     ZBFIN(mxpuff) - real    - Height of final buoyant rise (m)
+c     ZMFIN(mxpuff) - real    - Height of final momentum rise (m)
+c    STIPDW(mxpuff) - real    - Stack-tip downwash magnitude (m)
+c QU(mxspec,mxpuff) - real    - Pollutant mass (g) in the layer above
+c                               the mixing height
+c QM(mxspec,mxpuff) - real    - Pollutant mass (g) in the layer below
+c                               the mixing height
+c   IRLSNUM(mxpuff) - integer - The number of the puff released this
+c   ISRCNUM(mxpuff) - integer - step from source #ISRCNUM 
+c   ISRCTYP(mxpuff) - integer - of type ISRCTYP
+c                               Source Types are:
+c                                1 = Point         Constant Emissions
+c                                2 = Point         Variable Emissions
+c                                3 = Poly. Area    Constant Emissions
+c                                4 = Poly. Area    Variable Emissions
+c                                5 = Line          Constant Emissions
+c                                6 = Line          Variable Emissions
+c                                7 = Volume        Constant Emissions
+c                                8 = Grid Volume   Variable Emissions
+c                                9 = Boundary Condition
+c    IPUFCD(mxpuff) - integer - Puff status code:
+c                                1 = Puff within mixed layer & Gaussian
+c                                2 = Puff within mixed layer & uniform
+c                                3 = Puff above mixed layer & Gaussian
+c                                4 = Puff above mixed layer & uniform
+c                                5 = Puff currently above mixed layer
+c                                    (but previously below) & Gaussian
+c                                6 = Puff currently above mixed layer
+c                                    (but previously below) & uniform
+c                               11 = Slug within mixed layer & Gaussian
+c                               12 = Slug within mixed layer & uniform
+c                               13 = Slug above mixed layer & Gaussian
+c                               14 = Slug above mixed layer & uniform
+c                               15 = Slug currently above mixed layer
+c                                    (but previously below) & Gaussian
+c                               16 = Slug currently above mixed layer
+c                                    (but previously below) & uniform
+c                               99 = Puff/slug off computational grid
+c    ELBASE(mxpuff) - real    - Stack base elevation (m) of source
+c                               emitting current puff/slug
+c  TCON(3,2,mxpuff) - real    - Average puff concentrations
+c                               (g/m**3) within each puff
+c                                  (1,-,-) = SO4
+c                                  (2,-,-) = NOx (NO + NO2 as NO2)
+c                                  (3,-,-) = TNO3 (HNO3 + NO3 as NO3)
+c                                  (-,1,-) = within mixed layer
+c                                  (-,2,-) = above mixed layer
+c            NPUFFS - integer - Total number of puffs or slugs
+c----------------------------------------------------------------------
+c -----   Puff Splitting Information  -----
+c----------------------------------------------------------------------
+c    ISPLIT(mxpuff) - integer - Flag indicating if puff may be split
+c                               0: Do not split this puff
+c                               1: Split this puff
+c----------------------------------------------------------------------
+c -----   Data associated with puff at the time of release  -----
+c----------------------------------------------------------------------
+c      IDW0(mxpuff) - integer - Downwash flag: 0 = no bldg downwash
+c                                              1 = H-S downwash
+c                                              2 = S-S downwash
+c                                              3 = PRIME downwash
+c                                                  (primary source)
+c                                              4 = PRIME downwash
+c                                                  (cavity source)
+c       HT0(mxpuff) - real    - Height at which puff was released (m)
+c    EXITW0(mxpuff) - real    - Exit velocity (m/s)
+c     DIAM0(mxpuff) - real    - Stack diameter (m)
+c       WS0(mxpuff) - real    - Stack height wind speed (m/s)
+c    ISTAB0(mxpuff) - real    - Stability class
+c    SQRTS0(mxpuff) - real    - SQRT of the stability parameter "S"
+c     SRAT0(mxpuff) - real    - Ratio of vector to scalar wind speed
+c    TEMIT0(mxpuff) - real    - Duration of emission (s)
+c       HB0(mxpuff) - real    - Direction-specific building height (m)
+c       HW0(mxpuff) - real    - Direction-specific building width (m)
+c    HEFF20(mxpuff) - real    - Height of gradual rise at 2*HB (m)
+c      ZLY0(mxpuff) - real    - Effective line length based on sigma-y
+c                               at 3*HL
+c        R0(mxpuff) - real    - Effective source radius based on sigma-z
+c                               at 3*HL
+c      IRU0(mxpuff) - integer - Rural(0)/Urban(1) indicator
+c     SIGV0(mxpuff) - real    - Sigma-v velocity (m/s)
+c     SIGW0(mxpuff) - real    - Sigma-w velocity (m/s)
+c       EL0(mxpuff) - real    - Monin-Obukhov length (m)
+c    PLEXP0(mxpuff) - real    - Power law wind shear exponent
+c    SYSRC0(mxpuff) - real    - Initial sigma-y (m) for source
+c    SZSRC0(mxpuff) - real    - Initial sigma-z (m) for source
+c----------------------------------------------------------------------
+c   XSHIFT0(mxpuff) - real    - Distance from source to the end of
+c                               the cavity (+15%) for a point source
+c                               with PRIME downwash (m)
+c                               [puff contributions are not computed
+c                               over this distance]
+c       ---   OR   ---
+c   XSHIFT0(mxpuff) - real    - Distance of center of element on line
+c                               source from upwind edge (m)
+c----------------------------------------------------------------------
+c       SY0(mxpuff) - real    - Initial sigma-y (m) due to
+c                               downwash (line source), or other effects
+c       SZ0(mxpuff) - real    - Initial sigma-z (m) due to
+c                               downwash (line source), or other effects
+c----------------------------------------------------------------------

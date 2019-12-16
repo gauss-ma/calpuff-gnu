@@ -1,0 +1,110 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /CSIGMA/ -- Dispersion coefficient constants  CALPUFF
+c-----------------------------------------------------------------------
+c
+      common/csigma/ayt,azt(6),syh,szh,thfty,thftz,avefac,avefaci,
+     1              tyidr,tzidr,tzisdr,
+     2              aypgt(6),bypgt(6),aypgti(6),bypgti(6),
+     3              azpgt(6),bzpgt(6),azpgti(6),bzpgti(6),
+     4              ayurb(6),xiyurb(6),azurb(6),xizurb(6),
+     5              nzbrur(6),xzbrur(10,6),szbrur(10,6),
+     6              azrur(10,6),bzrur(10,6),azruri(10,6),bzruri(10,6),
+     7              idoptys,idoptzs,irus,uavgs,kstabs,els,bvfs,mhftszs,
+     8              tsigvs,tsigws,symins,szmins
+c
+c --- COMMON BLOCK /CSIGMA/ Variables:
+c
+c
+c *** For MDISP = all
+c     Heffter(1965) time dependent growth coeffs. for long range.
+c                  AYT  - real const - Time dependent Y growth rate for
+c                                      all PGT classes.
+c               AZT(6)  - real array - Time dependent Z growth rates for
+c                                      each PGT class.
+c                  SYH  - real const - Horizontal sigma (m) beyond which
+c                                      time dependent growth assumed.
+c                  SZH  - real const - Vertical sigma (m) beyond which
+c                                      time dependent growth assumed.
+c                THFTY  - real       - Virtual travel time (s) associated
+c                                      with SYH for "current" met.;
+c                                      transition to Heffter growth law.
+c                THFTZ  - real       - Virtual travel time (s) associated
+c                                      with SZH for "current" met.;
+c                                      transition to Heffter growth law.
+c
+c *** For MDISP = 3,4
+c               AVEFAC  - real       - Averaging time adjustment factor
+c                                      for sigma-y; (avet/3 min)**0.2
+c                                      used for PG sigmas.
+c              AVEFACI  - real       - 1./AVEFAC
+c
+c *** For MDISP = 1,2
+c     Dispersion determined by local turbulence (sigv,sigw) and the
+c     Irwin(1983) recommended forms of (fy,fz) of Draxler(1976):
+c     fy = 1.0 / (1.0 + 0.9 * sqrt(tyidr * t) )
+c     fz = 1.0 / (1.0 + 0.9 * sqrt(tzidr * t) )         for L < 0
+c     fz = 1.0 / (1.0 + 0.945 * (tzisdr * t)**0.806 )   for L > 0
+c                TYIDR  - real const - Reciprocal time scale (1/s) for
+c                                      Draxler form of fy.
+c                TZIDR  - real const - Reciprocal time scale (1/s) for
+c                                      Draxler form of fz for L < 0
+c               TZISDR  - real const - Reciprocal time scale (1/s) for
+c                                      Draxler stable form of fz (L > 0)
+c
+c *** For MDISP = 4
+c     Pasquill-Gifford-Turner(PGT) coeffs. for RURAL conditions.
+c     Values of coeffs. and exponents from MESOPUFF II approximations.
+c             AYPGT(6)  - real array - PGT Y coeffs. for each PGT class.
+c             BYPGT(6)  - real array - PGT Y expons. for each PGT class.
+c            AYPGTI(6)  - real array - Reciprocals of AYPGT(6).
+c            BYPGTI(6)  - real array - Reciprocals of BYPGT(6).
+c             AZPGT(6)  - real array - PGT Z coeffs. for each PGT class.
+c             BZPGT(6)  - real array - PGT Z expons. for each PGT class.
+c            AZPGTI(6)  - real array - Reciprocals of AZPGT(6).
+c            BZPGTI(6)  - real array - Reciprocals of BZPGT(6).
+c
+c *** For MDISP = 3 and 4
+c     Briggs urban coeffs. for each PGT class for URBAN conditions.
+c             AYURB(6)  - real array - Urban Y coeffs. by PGT class.
+c            XIYURB(6)  - real array - Reciprocal length scale (1/m)
+c                                      for SIGY for each PGT class.
+c             AZURB(6)  - real array - PGT Z coeffs. for each PGT class.
+c            XIZURB(6)  - real array - Reciprocal length scale (1/m)
+c                                      for SIGZ for each PGT class.
+c
+c *** For MDISP = 3
+c     Pasquill-Gifford-Turner(PGT) coeffs. for RURAL conditions.
+c     Values of coeffs. and exponents from ISC approximations.
+c              NZBRUR(6)- int. array - Number segments per PGT class.
+c           XZBRUR(10,6)- real array - Junction x's (km) per PGT class.
+c           SZBRUR(10,6)- real array - Junction sigmas per PGT class.
+c            AZRUR(10,6)- real array - PGT Z coeffs. for each PGT class.
+c            BZRUR(10,6)- real array - PGT Z expons. for each PGT class.
+c           AZRURI(10,6)- real array - Reciprocals of AZRUR(10,6).
+c           BZRURI(10,6)- real array - Reciprocals of BZRUR(10,6).
+c
+c ---------------------------------------------------------------------
+c --- Current configuration and meteorological information
+c ---------------------------------------------------------------------
+c     IDOPTYS - integer   - Dispersion method option for SIGY **
+c     IDOPTZS - integer   - Dispersion method option for SIGZ **
+c                          **  computed from:
+c                               1,2 = SIGMA V,W
+c                                 3 = PG curves (rural), MP (urban)
+c                                 4 = MESOPUFF II curves (rural),
+c                                     MP (urban)
+c                                 5 = CTDM (neutral/stable),
+c                                     IDOPT(1) (other)
+c                               (All IDOPT - use Heffter eqns. for
+c                                long travel times)
+c        IRUS - integer   - Rural cell indicator (rural=0 ; urban=1)
+c       UAVGS - real      - Mean transport speed (m/s)
+c      KSTABS - integer   - PGT stability class at puff
+c         ELS - real      - Current Monin-Obukhov length (m)
+c        BVFS - real      - Current Brunt-Vaisala freq (1/s)
+c     MHFTSZS - integer   - Flag indicating use of Heffter growth for z
+c                              (0: NO Heffter   1: Heffter)
+c      TSIGVS - real      - Current sigma-v velocity (m/s)
+c      TSIGWS - real      - Current sigma-w velocity (m/s)
+c      SYMINS - real      - Minimum value of sigma-y (m)
+c      SZMINS - real      - Minimum value of sigma-z (m)

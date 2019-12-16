@@ -1,0 +1,57 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /DRYGAS/ -- Dry deposition parameters        CALPUFF
+c----------------------------------------------------------------------
+c
+      common/DRYGAS/pdiff(mxspec),alphas(mxspec),react(mxspec),
+     1 rm(mxspec),henry(mxspec),rgg(mxspec),rgw1(mxspec),rcut(mxspec),
+     2 rd1(mxspec),rcutr,rgr,reactr,pconst,bmin,bmax,qswmax,dconst1,
+     3 dconst2,dconst3
+c
+c --- COMMON BLOCK /DRYGAS/ Variables:
+c       PDIFF(mxspec) - real    - Molecular diffusivity (m**2/s)
+c                                 of each pollutant.
+c                                 SEE NOTE #1
+c      ALPHAS(mxspec) - real    - Solubility enhancement factor due
+c                                 to the aqueous phase reactivity of
+c                                 the pollutant.
+c       REACT(mxspec) - real    - Reactivity factor for each
+c                                 pollutant.
+c          RM(mxspec) - real    - Mesophyll resistance (s/m)
+c                                 SEE NOTE #2
+c       HENRY(mxspec) - real    - Henry's law constant (ratio of
+c                                 gas to aqueous phase concentration
+c                                 of the pollutant).
+c         RGG(mxspec) - real    - Resistance (s/m) to direct
+c                                 transfer of the pollutant to the
+c                                 ground.
+c        RGW1(mxspec) - real    - Ratio of HENRY(i)/(ALPHAS(i)*d3)
+c                                 where d3 is a constant.  Used in
+c                                 computing resistance directly to
+c                                 water surface.
+c        RCUT(mxspec) - real    - Cuticle resistance (s/m).
+c         RD1(mxspec) - real    - Ratio d1*SC**d2/k, where d1,d2 are
+c                                 constants, SC is the Schmidt
+c                                 number, and k is the von Karman
+c                                 constant
+c               RCUTR - real    - Reference cuticle resistance (s/m)
+c                                 SEE NOTE #2
+c                 RGR - real    - Reference ground resistance (s/m)
+c                                 SEE NOTE #2
+c              REACTR - real    - Reference pollutant reactivity
+c              PCONST - real    - Stomatal constant (m**2)
+c                BMIN - real    - Minimum width of the stomatal
+c                                 opening (m)
+c                BMAX - real    - Maximum width of the stomatal
+c                                 opening (m)
+c              QSWMAX - real    - Short-wave solar radiation (W/m**2)
+c                                 level at which full opening of the
+c                                 stomata occurs
+c     DCONST1,DCONST2 - real    - Empirical constants in deposition
+c                                 layer resistance equation
+c             DCONST3 - real    - Constant in the "ground" resistance
+c                                 to water surfaces
+c
+c  NOTE #1: Input units of this variable are cm**2/s.  Conversion to m**2/s
+c           is made internally in the SETUP phase.
+c
+c  NOTE #2: Input units of s/cm are converted to s/m in the SETUP phase.

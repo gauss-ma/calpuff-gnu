@@ -1,0 +1,84 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /VOL2/   -- Volume source data for sources   CALPUFF
+c                              with variable characterisitics
+c                              in VOLEMARB.DAT files
+c----------------------------------------------------------------------
+c
+      character*12 fname4,label4,cslst4
+      character*16 cid4
+c
+      common/VOL2/ NVL2,IUTMZ4,NSE4,XNLAT1VL2,XNLAT2VL2,RNLAT0VL2,
+     1             RWLON0VL2,MFVL2(mxemdat),IVRS4(mxemdat),
+     2             IBSRC4(mxemdat),IESRC4(mxemdat),IBDAT4(mxemdat),
+     3             IBTIM4(mxemdat),IEDAT4(mxemdat),IETIM4(mxemdat),
+     4             XMWEM4(mxspec),IXREM4(mxspec),IBEG4(mxemdat),
+     5             IEND4(mxemdat),XVL2GRD(mxvol),YVL2GRD(mxvol),
+     6             HTVL2(mxvol),ELVL2(mxvol),SY0VL2(mxvol),
+     7             SZ0VL2(mxvol),QVL2(mxspec,mxvol),NEWVL2(mxvol),
+     8             FNAME4,LABEL4(mxemdat),CSLST4(mxspec),
+     9             CID4(mxvol)
+c
+c --- COMMON BLOCK /VOL2/ Variables:
+c             NVL2 - integer    - Number of volume sources
+c           IUTMZ4 - integer    - UTM zone in which source coordinates
+c                                 are specified
+c             NSE4 - integer    - Number of emitted species in the file
+c        XNLAT1VL2 - real       - Standard parallel #1 for LC map
+c                                 projection (degrees N. Latitude)
+c        XNLAT2VL2 - real       - Standard parallel #1 for LC map
+c                                 projection (degrees N. Latitude)
+c        RNLAT0VL2 - real       - N. Latitude of origin of LC map
+c                                 projection (degrees)
+c        RWLON0VL2 - real       - W. Longitude of origin of LC map
+c                                 projection (degrees)
+c   MFVL2(mxemdat) - integer    - Flag for file type
+c                                 0: UNFORMATTED
+c                                 1: FORMATTED
+c   IVRS4(mxemdat) - integer    - Data set version expressed as integer
+c                                 (5.4 is 54)
+c  IBSRC4(mxemdat) - integer    - Index for first source in a VOLEMARB.DAT
+c                                 file
+c  IESRC4(mxemdat) - integer    - Index for last source in a VOLEMARB.DAT
+c                                 file
+c  IBDAT4(mxemdat) - integer    - Date of the first data record in the
+c                                 file  (YYYYJJJ, where YYYY=year,
+c                                 JJJ=Julian day)
+c  IBTIM4(mxemdat) - integer    - Hour of the first data record in the
+c                                 file  (00-23 LST)
+c  IEDAT4(mxemdat) - integer    - Date of the last data record in the
+c                                 file  (YYYYJJJ, where YYYY=year,
+c                                 JJJ=Julian day)
+c  IETIM4(mxemdat) - integer    - Hour of the last data record in the
+c                                 file  (00-23 LST)
+c   XMWEM4(mxspec) - real       - Molecular weight for each species
+c   IXREM4(mxspec) - integer    - Cross referencing array of NSE4
+c                                 values relating species ordering
+c                                 in the emissions file to the
+c                                 ordering in the main conc. array
+c   IBEG4(mxemdat) - integer    - Starting time for which emissions
+c                                 data in current set of
+c                                 records are valid (YYYYJJJHH)
+c   IEND4(mxemdat) - integer    - Ending time for which emissions
+c                                 data in current set of
+c                                 records are valid (YYYYJJJHH)
+c   XVL2GRD(mxvol) - real       - X coordinate of a volume
+c                                 source in grid units
+c                                 (i.e., origin at (0.0,0.0))
+c   YVL2GRD(mxvol) - real       - Y coordinate of a volume
+c                                 source in grid units
+c                                 (i.e., origin at (0.0,0.0))
+c     HTVL2(mxvol) - real       - Effective release height (m)
+c     ELVL2(mxvol) - real       - Ground elevation (m) above sea
+c                                 level
+c    SY0VL2(mxvol) - real       - Initial sigma y (m)
+c    SZ0VL2(mxvol) - real       - Initial sigma z (m)
+c QVL2(mxspec,mxvol) - real     - Emission rate (g/s) for each
+c                                 pollutant
+c    NEWVL2(mxvol) - integer    - Number of puffs released by each
+c                                 source during the current step
+c
+c ---  Character data ---
+c           FNAME4 - char*12    - Data set name "VOLEMARB"
+c  LABEL4(mxemdat) - char*12    - Data set label
+c   CSLST4(mxspec) - char*12    - Species identifiers
+c      CID4(mxvol) - char*16    - Source identifiers

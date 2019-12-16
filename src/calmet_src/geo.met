@@ -1,0 +1,39 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /GEO/ -- Geophysical data                     CALMET
+c----------------------------------------------------------------------
+c
+      common/geo/ilandu(mxnx,mxny),elev(mxnx,mxny),z0(mxnx,mxny),
+     1 xlai(mxnx,mxny),ilucat(mxlu),z0lu(mxlu),alblu(mxlu),bowlu(mxlu),
+     2 hcglu(mxlu),qflu(mxlu),xlailu(mxlu),iwat1,iwat2,nlu,iogeo
+c
+c --- COMMON BLOCK /GEO/ Variables:
+c   ILANDU(mxnx,mxny) - int. array - Land use category at each grid
+c                                    point
+c     ELEV(mxnx,mxny) - real array - Terrain elevation (m) above MSL
+c       Z0(mxnx,mxny) - real array - Surface roughness length (m)
+c     XLAI(mxnx,mxny) - real array - Leaf area index
+c        ILUCAT(mxlu) - int. array - Array of possible land use
+c                                    categories
+c          Z0LU(mxlu) - real array - Default or user-input roughness
+c                                    length associated with each land
+c                                    use category
+c         ALBLU(mxlu) - real array - Default or user-input albedo
+c                                    associated with each land use
+c                                    category
+c         BOWLU(mxlu) - real array - Default or user-input Bowen ratio
+c                                    associated with each land use
+c                                    category
+c         HCGLU(mxlu) - real array - Default or user-input soil heat
+c                                    flux parameter associated with
+c                                    each land use category
+c          QFLU(mxlu) - real array - Default or user-input anthropogenic
+c                                    heat flux associated with each land
+c                                    use category
+c        XLAILU(mxlu) - real array - Default or user-input leaf area
+c                                    index associated with each land
+c                                    use category
+c         IWAT1,IWAT2 - integers   - Range of land use categories
+c                                    associated with water surfaces
+c                 NLU - integer    - Number of land use categories
+c               IOGEO - integer    - Fortran unit number of geophysical
+c                                    data file (GEO.DAT)

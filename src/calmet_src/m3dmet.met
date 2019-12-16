@@ -1,0 +1,22 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /M3DMET/ -- 3D.DAT variables               CALMET
+c---------------------------------------------------------------------- 
+
+      common/m3dmet/tairp(mxnxp,mxnyp),sstp(mxnxp,mxnyp),
+     1             rhp(mxnxp,mxnyp),z1p(mxnxp,mxnyp)
+           
+
+c --- COMMON BLOCK /3MDMET/ Variables:
+c
+c    TAIRP(mxnxp*mxnyp) - real array    - air temperature at first half-sigma
+c                                         level at each 3D.DAT gridpoint
+c                                         (in degrees kelvin)
+c    SSTP(mxnxp*mxnyp)  - real array    - surface temperature at each 3D.DAT 
+c                                         gridpoint (in degrees kelvin)
+c    RHP(mxnxp*mxnyp)   - real array    - relative humidity at first half-sigma 
+c                                         level at each 3D.DAT gridpoint
+c                                         (in %)                                          
+c    Z1P(mxnxp*mxnyp)   - real array    - height above ground of first half-sigma
+c                                         level at each 3D.DAT gridpoint
+c                                         (in meters)
+c

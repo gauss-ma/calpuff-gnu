@@ -1,0 +1,32 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /DATEHR/ -- Date/time variables               SMERGE
+c----------------------------------------------------------------------
+c
+      common/datehr/jyr,jmo,jday,jjul,jhr,ndate,xbtz,
+     &              ibdathr,iedathr,kbdathr,kedathr,kbtz,
+     &              ikbdathr,ikedathr
+c
+c --- COMMON BLOCK /DATEHR/ Variables:
+c           JYR - integer    - Current 4 digit year
+c           JMO - integer    - Current month
+c          JDAY - integer    - Current day of month
+c          JJUL - integer    - Current Julian day
+c           JHR - integer    - Current hour (00-23)
+c         NDATE - integer    - Code date and time (YYYYJJJHH, where
+c                              YYYY=year, JJJ=Julian day, HH=hour)
+c          XBTZ - real       - Base time zone for current date/time
+
+c ------------------------------
+c           IBDATHR - integer     - Beginning date of requested time period
+c                                   in output time zone YYYYJJJHH
+c           IEDATHR - integer     - Ending date of requested time period in
+c                                   output time zone YYYYJJJHH
+c              KBTZ - integer     - Time zone of binary input data
+c           KBDATHR - integer     - Beginning date of available binary data
+c                                   in output time zone YYYYJJJHH
+c           KEDATHR - integer     - Ending date of available binary data
+c                                   in output time zone YYYYJJJHH
+c          IKBDATHR - integer     - Beginning date of available binary data
+c                                   in binary input time zone YYYYJJJHH
+c          IKEDATHR - integer     - Ending date of available binary data
+c                                   YYYYJJJHH

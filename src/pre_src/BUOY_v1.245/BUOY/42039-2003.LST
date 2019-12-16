@@ -1,0 +1,55 @@
+
+
+
+                          BUOY OUTPUT SUMMARY
+                   VERSION:  1.245    LEVEL:  070327  
+
+
+
+ 
+ --------------------------
+     SETUP Information
+ --------------------------
+ 
+ 
+ Control File Used -----
+ BUOY.INP = buoy.inp                                                                                                                            
+ 
+ Buoy Data Input File Names -------------
+ data files:
+ File Type: NODC  
+ dbfile :    42039_200301.TXT                                                                                                                    
+ dbfile :    42039_200302.TXT                                                                                                                    
+ dbfile :    42039_200303.TXT                                                                                                                    
+ 
+ Input Datum-Region used --------
+ Datum : WGS-84  
+ 
+ Output File Names -------------
+ lstfil   : 42039-2003.LST                                                                                                                      
+ outfil   : 42039-2003.DAT                                                                                                                      
+ 
+ Location Info (for output) ---------------------
+ datum   : WGS-84  
+ pmap    : LCC     
+ fEast  :  0.00000000E+00
+ fNorth :  0.00000000E+00
+ rlat(N):  28.0000000
+ rlon(E):  -90.0000000
+ xlat1  :  23.0000000
+ xlat2  :  33.0000000
+  
+ Time Period -------
+ Period to Extract:    1 / 1 / 2003 1 :00  to   3 / 1 / 2003 1 :00
+ 
+ Buoy Specifications ---------
+ Buoy Name   : 'PENSACOLA 115 NM ESE OF PENSACOLA FL'                                                                                              
+ Buoy Number :  42039
+ Lat(N)      :  28.796N        
+ Lon(E)      :  86.056W        
+ 
+ 
+ Record of missing or replaced data
+ ------------------------------------------
+  missing data record  2003 3 9
+  missing data record  2003 11 7

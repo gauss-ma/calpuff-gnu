@@ -1,0 +1,68 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /METHR/ -- Hourly meteorological fields      CALPUFF
+c                             from the meteorological data
+c                             file(s)
+c----------------------------------------------------------------------
+c
+      common/METHR/umet(mxnx,mxny,mxnz),vmet(mxnx,mxny,mxnz),
+     1 tmet(mxnx,mxny,mxnz),ipgt(mxnx,mxny),htmix(mxnx,mxny),
+     2 ustar(mxnx,mxny),xmonin(mxnx,mxny),wstar(mxnx,mxny),
+     3 rmm(mxnx,mxny),tempss(mxss),rhoss(mxss),qswss(mxss),
+     4 ccss(mxss),czenss(mxss),
+     5 irhss(mxss),ipcode(mxss),ptg(2),plexp,dptinvo,
+     6 wsprf(mxprfz),wdprf(mxprfz),tprf(mxprfz),svprf(mxprfz),
+     7 swprf(mxprfz),ssprf(mxprfz),zprf(mxprfz),nzprf,
+     8 wdiv(mxnx,mxny,mxnz),
+c frr (09/01) - 2D fields for CALMET version >= V5.3 Lev 010901
+     : temp2d(mxnx,mxny),rho2d(mxnx,mxny),qsw2d(mxnx,mxny),
+     : cc2d(mxnx,mxny),czen2d(mxnx,mxny),
+     : irh2d(mxnx,mxny),ipcode2d(mxnx,mxny)
+c
+c --- COMMON BLOCK /METHR/ Variables:
+c
+c   UMET(mxnx,mxny,mxnz) - real    - U-component of the wind (m/s) at
+c                                    each grid point
+c   VMET(mxnx,mxny,mxnz) - real    - V-component of the wind (m/s)
+c   TMET(mxnx,mxny,mxnz) - real    - 3-D temperature field (deg. K)
+c        IPGT(mxnx,mxny) - integer - PGT stability class (1-6)
+c       HTMIX(mxnx,mxny) - real    - Mixing height (m)
+c       USTAR(mxnx,mxny) - real    - Friction velocity (m/s)
+c      XMONIN(mxnx,mxny) - real    - Monin-Obukhov length (m)
+c       WSTAR(mxnx,mxny) - real    - Convective velocity scale (m/s)
+c         RMM(mxnx,mxny) - real    - Precipitation rate (mm/hr)
+c           TEMPSS(mxss) - real    - Temperature (deg. K) at each
+c                                    surface met. station
+c            RHOSS(mxss) - real    - Air density (kg/m**3)
+c            QSWSS(mxss) - real    - Short-wave solar radiation (W/m**2)
+c             CCSS(mxss) - real    - Cloud cover (tenths)
+c           CZENSS(mxss) - real    - Cosine of solar zenith angle
+c            IRHSS(mxss) - integer - Relative humidity (%)
+c           IPCODE(mxss) - integer - Precipitation code at each surface
+c                                    met. station
+c                 PTG(2) - real    - Default potential temperature grad.
+c                                     for stability 5,6 (deg. K/m)
+c                  PLEXP - real    - Power law exponent for wind profile
+c                DPTINVO - real    - Strength of inversion above CBL
+c                                    (jump in potential temperature K)
+c          WSPRF(mxprfz) - real    - Vector avg. wind speed (m/s) from
+c                                    PROFILE.DAT
+c          WDPRF(mxprfz) - real    - Vector wind direction (deg) from
+c                                    PROFILE.DAT
+c           TPRF(mxprfz) - real    - Temperature (K) from PROFILE.DAT
+c          SVPRF(mxprfz) - real    - Sigma-v (m/s) from PROFILE.DAT
+c          SWPRF(mxprfz) - real    - Sigma-w (m/s) from PROFILE.DAT
+c          SSPRF(mxprfz) - real    - Scalar avg. wind speed (m/s) from
+c                                    PROFILE.DAT
+c           ZPRF(mxprfz) - real    - Heights at which PROFILE.DAT data
+c                                    are provided (m)
+c                  NZPRF - integer - Number of heights in PROFILE.DAT
+c   WDIV(mxnx,mxny,mxnz) - real    - Vertical divergence dw/dz (1/s)
+c
+c frr (09/01) - additional fields needed for CALMET V5.3 level 010901 and up  
+c      TEMP2D(mxnx,mxny) - real    - Surface Temperature (deg. K)
+c       RHO2D(mxnx,mxny) - real    - Air density (kg/m**3)
+c       QSW2D(mxnx,mxny) - real    - Short-wave solar radiation (W/m**2)
+c        CC2D(mxnx,mxny) - real    - Cloud cover (tenths)
+c      CZEN2D(mxnx,mxny) - real    - Cosine of solar zenith angle
+c       IRH2D(mxnx,mxny) - integer - Relative humidity (%)
+c    IPCODE2D(mxnx,mxny) - integer - Precipitation code 

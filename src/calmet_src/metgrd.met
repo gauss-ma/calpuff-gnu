@@ -1,0 +1,18 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /METGRD/ -- Hourly gridded met. fields        CALMET
+c----------------------------------------------------------------------
+c
+      common/metgrd/ipgt(mxnx,mxny),qh(mxnx,mxny),
+     1 ustar(mxnx,mxny),zi(mxnx,mxny),el(mxnx,mxny),
+     2 wstar(mxnx,mxny),rmm(mxnx,mxny),ztemp(mxnx,mxny,mxnz)
+c
+c --- COMMON BLOCK /METGRD/ Variables:
+c       IPGT(mxnx,mxny) - int. array - PGT stability class (1-6) at
+c                                      each grid point
+c         QH(mxnx,mxny) - real array - Sensible heat flux (W/m**2)
+c      USTAR(mxnx,mxny) - real array - Surface friction velocity (m/s)
+c         ZI(mxnx,mxny) - real array - Mixing height (m)
+c         EL(mxnx,mxny) - real array - Monin-Obukhov Length (m)
+c      WSTAR(mxnx,mxny) - real array - Convective velocity scale (m/s)
+c        RMM(mxnx,mxny) - real array - Precipitation rate (mm/hr)
+c ZTEMP(mxnx,mxny,mxnz) - real array - 3-D temperature field (deg. K)

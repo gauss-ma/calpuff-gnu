@@ -1,0 +1,256 @@
+README for calmm5.f
+
+Last update: 04/02/2001)
+
+Revised Code in this directory was put in 
+   p:/calmet/official/calmm5/v2.0/010402 on 4/01/01)
+
+See file.lst for files related to calmm5.f
+See calmm5.his for modification history
+
+A. Purpose: 
+     1. Convert MM5 model output to CALMET MM5/3D data fromats. It also creates
+        an additional file for 2-D variables.  
+     2. Convert MM5 model output to CALMET MM4 data fromats. 
+     3. Convert MM5 model output to GrADS fromat.
+     4. Convert MM5 model output to Vis5D fromat.
+     5. Convert MM5 model output to NetCDF fromat.
+     6. Convert MM5 model output to GRIB fromat.
+
+B. Proceedures to run: 
+     1. Edit and check calmm5.par to make sure the array limits are big enough.
+     2. Compile: make
+        Note 1 - Need Fortran and C compilers on the machine. Also need 
+                 to change C compiling options for different platforms 
+                 in makefile.
+        Note 2 - Need a NetCDF library, libnetcdf.a, in right path. To build
+                 this libaray, visit the web site:
+                 http://www.unidata.ucar.edu/packages/netcdf.
+     3. Edit calmm5.inp for correct input/output file names, latitude and 
+        longitude ranges, and time period for extraction. The range and 
+        time period must be within MM5 model output ranges
+     4. Run: calmm5
+     
+C. Output files:
+     1. Two output files for Format 1 (MM53D and MM52D) if iosrf flag set to 1,
+        otherwise only one output file (MM53D).
+     2. One output file for Formats 2,4,5,6 (MM4, NetCDF, Vis5D, GRIB).
+     3. Two output files for Option 3, GrADS format.  An additional file is
+          GrADS control file. The control file shares the same name with GrADS 
+          data file except the extension of "ctl".
+
+D. How to edit calmm5.inp
+     I. General comments:
+        a. There are five output format options (select only one): 
+           1: MM5.DAT, 2: MM4.DAT (ASCII), 3: GrADS, 4: VIS5D, 5: NetCDF,
+           6: GRIB.
+        b. Contents after "!" are comments, except first line which is 
+           title line and no comment is allowed. At least one blank space 
+           is needed before "!"
+        c. The lines above "Keep this line..." are needed for all format 
+           options, the ones below depend on the selected output format.
+           See individual sample control file below for details. Do not 
+           delete the line of "Keep this line..." . 
+
+    II. Details of each lines:
+        Line 1: title line (maximum 80 characters)
+        Line 2: Input MM5 file name (output file of MM5)
+	Line 3: Output CALMM5 file name
+	Line 4: List file name of CALMM5 run
+        Line 5: Options for selecting a CALMM5 region 
+                (1, use latitude/longitude; 2, use grid J/I)
+        Line 6: Southernmost latitude/J  
+                (lat in decimals; + for NH, - for SH)
+                (J increases from south to north)	
+        Line 7: Northernmost  latitude/J  
+        Line 8: Westernmost  longitude/I 
+                (Lon in decimals; - for WH, + for EH)
+                (I increases from west to east)
+        Line 9: Easternmost  longitude/I
+        Line 10: Starting date for CALMM5 output 
+                (yymmddhh: year-month-day-UTC hour)
+	Line 11: Ending date
+	Line 12: CALMM5 output format (1,2,3,4,5,6)
+        Line 13: Signal line (Keep this line...)
+        Lines 14 and after: vary depending on the output format selected
+                For details, see sample control files for each option
+              i) For the output option 1 (MM5.DAT):
+                 a. Line 14:
+                    Five integers (0/1) on one line are needed, which 
+                    determine to output or not eight variables. The eight 
+                    variables are: 
+                    Integer 1: W (vertical velocity) (Variable 1) 
+                    Integer 2: humidity and mixing ratio (Variables 2,3) 
+                    Integer 3: cloud and rain mixing ratio (Variables 4,5) 
+                    Integer 4: ice and snow mixing ratio (Variables 6,7) 
+                    Integer 5: graupel mixing ratio (Variable 8)
+                 b. Line 15:
+                    0/1: Flag for output 2-D vaiables (MM52D.DAT)
+                 c. Line 16:
+                    MM52D.DAT file name if the flag on Line 15 is 1
+                 d. Line 17: Lowest level to extract
+                 e  Line 18: Highest level to extract
+
+             ii) For the output option 2 (MM4.DAT), nothing more is needed
+            iii) For the output option 3 (GrADS), see the following sample 
+                 for more input lines. Note that the variable names must be 
+                 the same as those used in MM5 output. Use absolute path for 
+                 output file name since GrADS doesn't like relative path 
+                 if the data file is not in the same directory as GrADS. 
+             iv) For the output option 4 (VIS5D), see the following sample 
+                 for more input lines. These lines are similar to GrADS 
+                 input lines. 
+              v) For the output option 5 (NetCDF), see the following sample 
+                 for more input lines. These lines are very similar to 
+                 GrADS input lines
+             vi) For the output option 6 (GRIB), see the following sample 
+                 for more input lines. These lines are very similar to 
+                 GrADS input lines
+
+
+
+**********************************************************************************
+
+E. Sample calmm5.inp files for five output format options: 
+   (Also see mm5.inp, mm4.inp, grads.inp, v5d.inp, and netcdf.inp)
+
+1. ---------- calmm5.inp - MM5 output format --------------------
+
+CALMM5 Output from Saudi Arabia Domain (CALMM5/3D-2D format)
+mm5sa27_d6.dat.v2 ! MM5 data input file name (no space before or within filename)  
+samp3d.mm5        ! CALMM5/M3D output file name (no space before or within filename)
+calmm5.lst        ! List file name (no space before or within filename)  
+2                 ! Options for selecting a region (1: use lat/long; 2: use J/I)
+2                 ! Southernmost latitude (in decimal, positive for NH), or J1/Y1
+5                 ! Northermost  latitude (in decimal, positive for NH), or J2/Y2
+3                 ! Westernmost  longitude (in decimal, negative for WH), or I1/X1
+6                 ! Easternmost  longitude (in decimal, negative for WH), or I2/X2
+1999062701        ! Starting date (year-month-day-UTC_hour)(yyyymmddhh)
+1999062702        ! Ending date (year-month-day-UTC_hour)(yyyymmddhh)
+1                 ! Output format (1,2,3,4,5 - 1 for CALMM5/M3D-M2D format)
+Keep this line - The following lines vary depending on the output format selected
+1 1 1 1 1         ! Output W, RH, cloud and rain, ice and snow, graupel
+1                 ! Flag for 2-D variables output (1/0: output/not)
+samp2d.mm5        ! File name for 2-D variable output (needed only 2-D Flag=1)
+1                 ! Lowest extraction level in MM5 
+14                ! Highest extraction level in MM5 
+
+2. --------- calmm5.inp - MM4 output format -------------------
+
+CALMM5 Processing for SW Wyoming project
+domain2.mm5    ! MM5 data input file name (no space before or within filename)  
+mm5.mm4        ! CALMM5 output file name  (no space before or within filename)
+calmm5.lst     ! CALMM5 list file name    (no space before or within filename)  
+2              ! Options for selecting a region (1: use lat/long; 2: use J/I)
+5              ! Southernmost latitude/J  (lat in decimals; + for NH, - for SH)
+17             ! Northermost  latitude/J  (J: increases from south to north)
+78             ! Westernmost  longitude/I (Lon in decimals; - for WH, + for EH)
+82             ! Easternmost  longitude/I (I: increases from west to east)
+1              ! Lowest extraction level in MM5 
+14             ! Highest extraction level in MM5 
+95011001       ! Starting date (year-month-day-UTC hour)(yymmddhh)
+95011008       ! Ending date
+2              ! Output format (1,2,3,4,5)
+Keep this line - The following lines vary depending on the output format selected
+
+
+3. -------- calmm5.inp - GrADS output format --------------------
+
+CALMM5 Processing for SW Wyoming project
+domain2.mm5    ! MM5 data input file name (no space before or within filename)  
+mm5.grd        ! CALMM5 output file name  (no space before or within filename)
+calmm5.lst     ! CALMM5 list file name    (no space before or within filename)
+1              ! Options for selecting a region (1: use lat/long; 2: use J/I)  
+40.8           ! Southernmost latitude    (positive for Northern Hemisphere)
+42.5           ! Northermost  latitude    (in degrees - decimals)
+-112.          ! Westernmost  longitude   (negative for Western Hemisphere)
+-110.4         ! Easternmost  longitude   (in degrees - decimals)
+1              ! Lowest extraction level in MM5 
+14             ! Highest extraction level in MM5 
+95011001       ! Starting date (year-month-day-UTC hour)(yymmddhh)
+95011008       ! Ending date
+3              ! Output format (1,2,3,4,5)
+Keep this line - The following lines vary depending on the output format selected
+2,3            ! Numbers of 3-D variables and levels in GrADS (see Note 3 below)
+1,2,3          ! Output levels of 3-D in MM5 (must equal number of levels)
+U              ! 1st 3-D variable (the total must equal number of variables)
+V              ! 2nd 3-D variable
+1              ! Numbers of 2-D variables in GrADS (see Note 3 below)
+TERRAIN        ! 2nd 2-D variable
+0              ! Numbers of 1-D variables
+
+
+4. -------- calmm5.inp - Vis5D output format --------------------
+
+CALMM5 Processing for SW Wyoming project
+domain2.mm5    ! MM5 data input file name (no space before or within filename)  
+mm5.v5d        ! CALMM5 output file name  (no space before or within filename)
+calmm5.lst     ! CALMM5 list file name    (no space before or within filename)  
+1              ! Options for selecting a region (1: use lat/long; 2: use J/I)  
+40.8           ! Southernmost latitude    (positive for Northern Hemisphere)
+42.5           ! Northermost  latitude    (in degrees - decimals)
+-112.          ! Westernmost  longitude   (negative for Western Hemisphere)
+-110.4         ! Easternmost  longitude   (in degrees - decimals)
+1              ! Lowest extraction level in MM5 
+14             ! Highest extraction level in MM5 
+95011001       ! Starting date (year-month-day-UTC hour)(yymmddhh)
+95011008       ! Ending date
+4              ! Output format (1,2,3,4,5)
+Keep this line - The following lines vary depending on the output format selected
+2,3            ! Numbers of 3-D variables and levels in Vis5D (see Note 3 below)
+1,2,3          ! Output levels of 3-D in MM5 (must equal number of levels)
+U              ! 1st 3-D variable (the total must equal number of variables)
+V              ! 2nd 3-D variable
+2              ! Numbers of 2-D variables in Vis5D (see Note 3 below)
+PSTARCRS       ! 1st 2-D variable (the total must equal number of variables)
+TERRAIN        ! 2nd 2-D variable
+0              ! Numbers of 1-D variables
+
+5. -------- calmm5.inp - NetCDF output format --------------------
+
+CALMM5 NetCDF Output for SW Wyoming Project
+domain2.mm5    ! MM5 data input file name (no space before or within filename)  
+mm5.nc         ! CALMM5 output file name  (no space before or within filename)
+calmm5.lst     ! CALMM5 list file name    (no space before or within filename)  
+1              ! Options for selecting a region (1: use lat/long; 2: use J/I)  
+40.8           ! Southernmost latitude    (positive for Northern Hemisphere)
+42.5           ! Northermost  latitude    (in degrees - decimals)
+-112.          ! Westernmost  longitude   (negative for Western Hemisphere)
+-110.4         ! Easternmost  longitude   (in degrees - decimals)
+1              ! Lowest extraction level in MM5 
+14             ! Highest extraction level in MM5 
+95011001       ! Starting date (year-month-day-UTC hour)(yymmddhh)
+95011008       ! Ending date
+5              ! Output format (1,2,3,4,5 - see Note E for details)
+Keep this line - The following lines vary depending on the output format selected
+2,3            ! Numbers of 3-D variables and levels in NetCDF (see Note 3 below)
+1,3,5          ! Output levels of 3-D in GrADS (must equal number of levels)
+U              ! 1st 3-D variable (the total must equal number of variables)
+V              ! 2nd 3-D variable
+1              ! Numbers of 2-D variables in NetCDF (see Note 3 below)
+GROUND T       ! 2nd 2-D variable
+0              ! Numbers of 1-D variables
+
+6. -------- calmm5.inp - GRIB output format --------------------
+
+CALMM5 Output in GRIB format (Format 6) from Saudi Arabia Domain
+/usr8/saudi/mm5out/mm5sa01_d5.dat.v2 ! MM5 data input file name (no space before or within filename)  
+saudi.grb    ! CALMM5 output file name  (no space before or within filename)
+calmm5.lst   ! CALMM5 list file name    (no space before or within filename)  
+2              ! Options for selecting a region (1: use lat/long; 2: use J/I)
+10             ! Southernmost latitude (in decimal, positive for NH), or J1/Y1
+25             ! Northermost  latitude (in decimal, positive for NH), or J2/Y2
+05             ! Westernmost  longitude (in decimal, negative for WH), or I1/X1
+15             ! Easternmost  longitude (in decimal, negative for WH), or I2/X2
+1998123101     ! Starting date (year-month-day-UTC hour)(yymmddhh)
+1998123102     ! Ending date
+6              ! Output format (1,2,3,4,5, 6 - see readme.cm5 for details)
+Keep this line - The following lines vary depending on the output format selected
+2,1           ! Numbers of 3-D variables and levels in GrADS (see Note 3 below)
+1             ! Output levels of 3-D in GRIB (must equal number of levels)
+U             ! 1st 3-D variable (the total must equal number of variables)
+V             ! 2nd 3-D variable
+1             ! Numbers of 2-D variables in GRIB (see Note 3 below)
+SLP           ! 2nd 2-D variable
+0             ! Numbers of 1-D variables
+

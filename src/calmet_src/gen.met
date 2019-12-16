@@ -1,0 +1,42 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /GEN/ -- General run data                     CALMET
+c----------------------------------------------------------------------
+c
+      logical*4 lcalgrd
+c
+      common/gen/ibyr,ibmo,ibdy,ibjul,ibhr,ibtz,irlg,nyr,nmo,nday,njul,
+     1 nhr,nhrind,ndathr,irtype,lcalgrd,nendhr,itimstep,
+     2 sinalp(mxnx,mxny,24),mreg
+c
+c --- COMMON BLOCK /GEN/ Variables:
+c             IBYR - integer - Beginning year of run (4 digits)
+c             IBMO - integer - Beginning month of run
+c             IBDY - integer - Beginning day of run
+c            IBJUL - integer - Beginning Julian day of run
+c             IBHR - integer - Beginning hour of run (00-23)
+c             IBTZ - integer - Base time zone 
+c             IRLG - integer - Run length (hours)
+c              NYR - integer - Year of current time step
+c              NMO - integer - Month of current time step
+c             NDAY - integer - Day of current time step
+c             NJUL - integer - Julian day of current time step
+c              NHR - integer - Hour of current time step (00-23)
+c           NHRIND - integer - Array index (1-24) of current hour
+c           NDATHR - integer - Coded integer containing date & hour
+c                              of current time step (YYYYJJJHH)
+c           IRTYPE - integer - Run type flag
+c                              (0 = Computes wind fields only
+c                               1 = Computes wind fields and
+c                                   micrometeorological variables)
+c          LCALGRD - logical*4 - Flag to control calculation of special
+c                              data fields needed by CALGRID (i.e.,
+c                              3-D W winds and temperatures)
+c           NENDHR - integer - Flag for last hour in the run
+c                              (1 = last hour; 0 = otherwise)
+c         ITIMSTEP - integer - Current timestep
+c SINALP(mxnx,     - real    - Sine of solar elevation angle at each
+c        mxny,24)              gridpoint 
+c             MREG - integer - Regulatory configuration option
+c                              (0 = NO checks are made
+c                               1 = Technical options must conform to
+c                                   USEPA guidance

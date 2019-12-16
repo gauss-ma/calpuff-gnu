@@ -1,0 +1,69 @@
+
+
+
+                          SMERGE OUTPUT SUMMARY
+                   VERSION:  5.57     LEVEL:  070627  
+
+
+
+ 
+ -------------------------------------------------
+ NOTICE: Starting year in control file sets the
+         expected century for the simulation.  All
+         YY years are converted to YYYY years in
+         the range:  1940 2039
+ -------------------------------------------------
+ 
+ 
+ Control file name: smerge1.inp                                                                                                                         
+ Output list file name: smerge1.lst                                                                                                                         
+ Output file name: firstrun.dat                                                                                                                        
+ Continuation Run?  F
+ 
+
+
+ Station ID  Time Zone      Formatted CD144 Surface Data  
+                                   Input Files 
+
+      14606       5        bangor.144                                                                                                                          
+      14611       5        brunswk.144                                                                                                                         
+      14745       5        concord.144                                                                                                                         
+      14742       5        burling.144                                                                                                                         
+
+
+ Period to Extract (in time zone  5):    1/ 8/1990   1:00  to   1/15/1990   0:00
+
+ Multiple ( 2) weather codes (10100) at:1990  11 18, Station:      14742
+ Multiple ( 2) weather codes (10100) at:1990  12  1, Station:      14606
+ No. Missing Values for    WS    WD ICEIL   ICC TEMPK   IRH  PRES
+                            0     0     0     0     0     0     0
+
+
+                          ********************
+
+
+
+ Characteristics of SMERGE Output (SURF.DAT) File:
+
+   Time Zone:     5
+   File Format (1=unformatted, 2=formatted):  2
+
+ Surface Stations in Output File:  
+    No.       ID         No.       ID         No.       ID         No.       ID
+
+     1       14606        2       14611        3       14745        4       14742
+ 
+ 
+ 
+
+
+  LAST DAY/HOUR PROCESSED:
+     Year: 1990  Month:  1   Day: 15   Julian day:  15   Hour:  0
+
+
+  End of run -- Clock time: 22:56:57
+                      Date: 06-27-2007
+
+        Elapsed clock time:        1.0 (seconds)
+
+                  CPU time:        1.0 (seconds)

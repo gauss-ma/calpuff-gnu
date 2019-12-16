@@ -1,0 +1,23 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /MET2/ -- Hourly surface met. data            CALMET
+c----------------------------------------------------------------------
+c
+      common/met2/ws(mxss),wd(mxss),iceil(mxss),icc(mxss),otempk(mxss),
+     1 tempk(mxss),irh(mxss),pres(mxss),ipcode(mxss),ibuf(3,mxss)
+c
+c --- COMMON BLOCK /MET2/ Variables:
+c      WS(mxss) - real array - Wind speed (m/s) at each surface
+c                              met. station
+c      WD(mxss) - real array - Wind direction (deg.)
+c   ICEIL(mxss) - int. array - Ceiling height (hundreds of ft)
+c     ICC(mxss) - int. array - Opaque sky cover (tenths)
+c   TEMPK(mxss) - real array - Air temperature (deg. K)- after missfc
+c                              no missing temp (replaced by nearest station
+c                              value
+c   OTEMPK(mxss)- real array - Air temperature (deg. K) including missing data
+c     IRH(mxss) - int. array - Relative humidity (%)
+c    PRES(mxss) - real array - Station pressure (mb)
+c  IPCODE(mxss) - int. array - Precipitation code
+c  IBUF(3,mxss) - int. array - Buffer to temporarily store packed
+c                              data (used only if packing option
+c                              used, i.e., ISPACK = 1)

@@ -1,0 +1,26 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /WEATHR/ --- Current Weather                  CALPOST
+c-----------------------------------------------------------------------
+      Character*140 aweather,pweather
+
+      common/weathr/itype,mdathr,mmin,mdathrp,mminp,
+     &               aweather,pweather,vsrkm3(mxnxp,mxnyp)
+
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c                       [c]=character   [L]=logical
+c-----------------------------------------------------------------------
+c itype         type of DATSAV3 file                                 [i]
+c                  1: uses call name in field 2
+c                  2: uses WBAN number in field 2
+c               or liquid water content file
+c                  3: liquid water content from 3D.DAT
+c mdathr        current YYYYJJJHH                                    [i]
+c mmin          current minute (MM)                                  [i]
+c mdathrp       previous YYYYJJJHH                                   [i]
+c mminp         previous minute (MM)                                 [i]
+c aweather      current record read from DATSAV3 file                [c]
+c pweather      previous record read from DATSAV3 file               [c]
+c vsrkm3        visual range at each MM5 grid point if itype=3       [ar]
+c               at mdathr

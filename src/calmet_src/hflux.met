@@ -1,0 +1,27 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /HFLUX/ -- Heat flux parameters               CALMET
+c----------------------------------------------------------------------
+c
+      common/hflux/qf(mxnx,mxny),hcg(mxnx,mxny),albedo(mxnx,mxny),
+     1 bowen(mxnx,mxny),ha1,ha2,hb1,hb2,hc1,hc2,hc3,hc3p1,imixh
+c
+c --- COMMON BLOCK /HFLUX/ Variables:
+c       QF(mxnx,mxny) - real array - Anthropogenic heat flux (W/m**2)
+c                                    at each grid point
+c      HCG(mxnx,mxny) - real array - Soil heat flux parameter at each
+c                                    grid point
+c   ALBEDO(mxnx,mxny) - real array - Albedo at each grid point
+c    BOWEN(mxnx,mxny) - real array - Bowen ratio at each grid point
+c               IMIXH - integer    - mixing height parametirzation option
+c                                     1: Maul Carson for land and water
+c                                    -1: Maul Carson for land only (OCD for OW)
+c                                     2: Batchvarova & Gryning for land and water
+c                                    -2: Batchvarova & Gryning for land only (OCD for OW)
+c
+c --- Energy budget variables -- Holtslag and van Ulden (1973)
+c                HA1, HA2, HB1, HB2, HC1, HC2, HC3
+c
+c        UNITS:  HA1 (W/m**2),   HA2 (W/m**2),
+c                HB1 (no units), HB2 (no units)
+c                HC1 (W/m**2/deg. K**6), HC2 (W/m**2), HC3 (no units)
+c                HC3P1 (=HC3+1) (no units)

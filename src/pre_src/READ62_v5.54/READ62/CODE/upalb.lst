@@ -1,0 +1,59 @@
+
+
+
+                          READ62 OUTPUT SUMMARY
+                   VERSION:  5.53         LEVEL:  040109      
+
+
+
+
+ STARTING DATE:                ENDING DATE:
+
+                YEAR = 1990                  YEAR = 1990
+          JULIAN DAY =    8            JULIAN DAY =   15
+                HOUR =    1 (GMT)            HOUR =    0 (GMT)
+
+
+ PRESSURE LEVELS EXTRACTED:
+
+                     SURFACE TO   700. MB
+
+
+ INPUT FILE FORMAT (1=TD6201,2=NCDC CD-ROM):   1
+ OUTPUT FILE FORMAT (1=/ DELIMITED,2=COMMA DELIMITED):   2
+
+
+ ALT. SOUNDING FILE FOR SUBSTITUTIONS IS NOT USED 
+
+
+ DATA LEVEL ELIMINATED IF HEIGHT MISSING ?         F
+
+ DATA LEVEL ELIMINATED IF TEMPERATURE MISSING ?    F
+
+ DATA LEVEL ELIMINATED IF WIND DIRECTION MISSING ? F
+
+ DATA LEVEL ELIMINATED IF WIND SPEED MISSING ?     F
+
+
+ MISSING PROFILE DATA EXTRAPOLATED TO TOP ?         F
+
+ Last valid data must be above pressure (mb):      850.0
+
+ MISSING PROFILE DATA EXTRAPOLATED TO SURFACE ?     F
+
+ First valid data must be below height (m AGL):      200.0
+
+
+ FILENAMES: 
+     Control file:          read62.inp                                                            
+     Input upper air file:  90010100.ALB                                                          
+     Output upper air file: UPALB.DAT                                                             
+     Output list file:      UPALB.LST                                                             
+ 
+ -------------------------------------------------
+ NOTICE: Starting year in control file sets the
+         expected century for the simulation.  All
+         YY years are converted to YYYY years in
+         the range:  1940 2039
+ -------------------------------------------------
+ 

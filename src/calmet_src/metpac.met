@@ -1,0 +1,28 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /METPAC/ -- Meteorological parameters         CALMET
+c                              needed for MESOPAC II output
+c                              format
+c----------------------------------------------------------------------
+c
+      common/metpac/xscoor(mxss),yscoor(mxss),xucoor(mxus),
+     1 yucoor(mxus),srad(mxss),ul(mxnx,mxny),vl(mxnx,mxny),
+     2 uup(mxnx,mxny),vup(mxnx,mxny)
+c
+c --- COMMON BLOCK /METPAC/ Variables:
+c   XSCOOR(mxss) - real array   - Surface station X coordinates (in
+c                                 grid units relative to the MESOPAC II
+c                                 origin at (1.0, 1.0))
+c   YSCOOR(mxss) - real array   - Surface station Y coordinates (in
+c                                 grid units relative to the MESOPAC II
+c                                 origin at (1.0, 1.0))
+c   XUCOOR(mxss) - real array   - Upper air station X coordinates (in
+c                                 grid units relative to the MESOPAC II
+c                                 origin at (1.0, 1.0))
+c   YUCOOR(mxss) - real array   - Upper air station Y coordinates (in
+c                                 grid units relative to the MESOPAC II
+c                                 origin at (1.0, 1.0))
+c     SRAD(mxss) - real array   - Solar radiation (KW/m**2)
+c  UL(mxnx,mxny) - real array   - Lower-layer U wind components (m/s)
+c  VL(mxnx,mxny) - real array   - Lower-layer V wind components (m/s)
+c UUP(mxnx,mxny) - real array   - Upper-layer U wind components (m/s)
+c VUP(mxnx,mxny) - real array   - Upper-layer V wind components (m/s)

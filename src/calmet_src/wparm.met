@@ -1,0 +1,13 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /WPARM/ -- Wind module parameters             CALMET
+c----------------------------------------------------------------------
+      logical lvary
+c
+      common/wparm/iwfcod,rmin,rmax1,rmax2,rmax3,r1,r2,divlim,
+     1 niter,nsmth(mxnz),nintr2(mxnz),iextrp,rmin2,fextr2(mxnz),critfn,
+     2 terrad,ifradj,ikine,alpha,nzprn2,ipr0,ipr1,ipr2,ipr3,ipr4,
+     3 ipr5,ipr6,ipr7,ipr8,icalc,ioutd,i3dctw,nsurf,nwind,nupper,
+     4 utmxor,utmyor,namst(mxwnd),tinf,lvary,
+     5 htfac,ifilek,ifilef,ifiles,iobr,iprog,rprog,ioprog,
+     6 idiopt(5),isurft,iupt,zupt,iupwnd,zupwnd(2),iiupt,jjupt,
+     7 bias(mxnz),islope,icalm,igfmet,isfcmet,ipsifcn

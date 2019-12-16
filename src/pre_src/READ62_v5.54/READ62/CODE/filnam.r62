@@ -1,0 +1,30 @@
+c-----------------------------------------------------------------------
+c --- READ62    Version: 5.54           Level: 070627        FILNAM.R62
+c               D. Strimaitis
+c
+c PURPOSE:      File names
+c-----------------------------------------------------------------------
+      character*132 runinp,runlst,indat,subdat,updat
+      logical lcfiles
+
+      common /FILNAM/ runinp,runlst,indat,subdat,updat
+      common /FILLOG/ lcfiles
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c runinp         Path & filename for the control file                [c]
+c                (default: READ62.INP)
+c runlst         Path & filename for the output READ62 list file     [c]
+c                (default: READ62.LST)
+c indat          Path & filename for the input sounding data file    [c]
+c                (default: SOUNDING.DAT)
+c subdat         Path & filename for the input substitution data file[c]
+c                (default: SUBSOUND.DAT)
+c updat          Path & filename for UP?.DAT data file               [c]
+c                (default: UP.DAT)
+c lcfiles        Switch indicating if all characters in the          [l]
+c                filenames are to be converted to lower case
+c                letters (LCFILES=T) or converted to UPPER
+c                case letters (LCFILES=F).
+c-----------------------------------------------------------------------

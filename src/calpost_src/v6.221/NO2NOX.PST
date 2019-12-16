@@ -1,0 +1,22 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /NO2NOX/ --- NO2/NOX Fraction               CALPOST
+c-----------------------------------------------------------------------
+      parameter (NBIN=14)
+      common/no2nox/fno2nox,rno2nox,bincnox(nbin),binfno2(nbin)
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c                       [c]=character   [L]=logical
+c-----------------------------------------------------------------------
+c fno2nox       NO2/NOX CONSTANT fraction control files bfore v6.2  [r]
+c rno2nox       NO2/NOX CONSTANT fraction (replaces FNO2NOX)        [r]
+c bincnox       NOX concentration (g/m3) for each point             [ar]
+c binfno2       NO2/NOX fraction for each point                     [ar]
+c
+c NOTE:  Values in arrays (table) are ordered by INCREASING NOX
+c        concentrations.  The NO2/NOX fraction for all NOX less than
+c        BINCNOX(1) is equal to BINFNO2(1).  The NO2/NOX fraction for
+c        all NOX greater than BINCNOX(nbin) is equal to BINFNO2(nbin).
+c        The fraction for NOX concentrations between tabulated entries
+c        is interpolated.
+c

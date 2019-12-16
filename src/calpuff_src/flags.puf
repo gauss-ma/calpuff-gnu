@@ -1,0 +1,169 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /FLAGS/ -- Module control flags              CALPUFF
+c----------------------------------------------------------------------
+c
+      logical ldevel
+c
+      common/flags/mgauss,mctadj,mctsg,mslug,mtrans,mchem,mdry,mwet,
+     1  mdisp,mdisp2,mtauly,mcturb,mturbvw,mrough,mtip,mshear,msplit,
+     2  mpartl,mtinv,mhftsz,mpdf,msgtibl,mbcon,mfog,maqchem,mbdw,mreg,
+     3  mdepbc,mtilt,mtauadv,ldevel
+c
+c --- COMMON BLOCK /FLAGS/ Variables:
+c
+c        MGAUSS - integer - Gaussian vertical distribution in the
+c                           near field ?
+c                            0 = no  (i.e., uniform distribution assumed
+c                                     in the vertical
+c                            1 = yes (i.e., Gaussian distribution with
+c                                     reflections used)
+c        MCTADJ - integer - Terrain adjustment method
+c                            0 = no terrain adjustment
+c                            1 = ISC-type of terrain adjustment
+c                            2 = simple, CALPUFF-type of terrain
+c                                adjustment
+c                            3 = partial plume height adjustment
+c                                using a plume-path coefficient
+c                                (e.g. half-height correction)
+c         MCTSG - integer - Subgrid-scale complex terrain modeled ?
+c                           (0 = no, 1 = yes)
+c         MSLUG - integer - Near-field puffs modeled as elongated
+c                           "slugs" ?
+c                            0 = no  (i.e., circular puffs always used)
+c                            1 = yes (i.e., slug model used in the
+c                                     near field)
+c        MTRANS - integer - Transitional plume rise computed ?
+c                            0 = no  (i.e., final rise only)
+c                            1 = yes (i.e., transitional rise computed)
+c         MCHEM - integer - Chemical transformation mechanism flag
+c                            0 = no chemistry
+c                            1 = MESOPUFF II transformation scheme
+c                            2 = user-specified transformation rates
+c                            3 = transformation rates computed
+c                                internally (RIVAD/ARM3 scheme)
+c          MDRY - integer - Dry deposition modeled ?
+c                            0 = no
+c                            1 = yes
+c          MWET - integer - Wet deposition modeled ?
+c                            0 = no
+c                            1 = yes
+c         MDISP - integer - Method flag for computation of dispersion
+c                           coefficients
+c                            1 = sigma y, sigma z computed from values
+c                                of measured sigma v, sigma w read from
+c                                file
+c                            2 = sigma y, sigma z computed from micro-
+c                                meteorological variables (u*, w*, L)
+c                            3 = PG dispersion coefficients for RURAL
+c                                areas (computed using the ISCST multi-
+c                                segment approximation and MP coef-
+c                                ficients in URBAN areas
+c                            4 = same as 3 except PG coefficients are
+c                                computed using the MESOPUFF II eqns.
+c                            5 = CTDM sigmas used for stable and neutral
+c                                conditions.  For unstable conditions,
+c                                sigmas are computed as in MDISP=1.
+c                                MDISP=5 assumes that turbulence data
+c                                are read.
+c        MDISP2 - integer - Method flag for BACKUP computation of
+c                           dispersion coefficients (no meas. turb.)
+c                            2 = sigma y, sigma z computed from micro-
+c                                meteorological variables (u*, w*, L)
+c                            3 = PG dispersion coefficients for RURAL
+c                                areas (computed using the ISCST multi-
+c                                segment approximation and MP coef-
+c                                ficients in URBAN areas
+c                            4 = same as 3 except PG coefficients are
+c                                computed using the MESOPUFF II eqns.
+c        MTAULY - integer - Method flag for assigning Lagrangian time
+c                           scale for Fy formulation
+c                            0 = Draxler default 617.284 (s)
+c                            1 = Computed as Lag. Length / (.75 q)
+c                                 -- after SCIPUFF
+c                           10 = Direct user input (s)
+c       MTAUADV - integer - Method flag for assigning advective-decay
+c                           timescale for turbulence advection
+c                            0 = No turbulence advection
+c                            1 = NOT IMPLEMENTED
+c                           10 = Direct user input of timescale (s)
+c        MCTURB - integer - Method flag for computating turbulence
+c                           sigma-v & sigma-w
+c                            1 = Standard CALPUFF subroutines
+c                            2 = AERMOD subroutines
+c       MTURBVW - integer - Use sigma-v and/or sigma-w measurements?
+c                            1 = yes, use sigma-v or sigma-theta
+c                                from PROFILE.DAT to compute sigma-y
+c                                (valid for METFM=1,2,3,4,5)
+c                            2 = yes, use sigma-w measurements
+c                                from PROFILE.DAT to compute sigma-z
+c                                (valid for METFM=1,2,3,4,5)
+c                            3 = yes, use BOTH measurements from
+c                                PROFILE.DAT to compute sig-y and sig-z
+c                                (valid for METFM=1,2,3,4,5)
+c                            4 = yes, use sigma-theta measurements
+c                                from PLMMET.DAT to compute sigma-y
+c                                (valid only if METFM=3)
+c        MROUGH - integer - Roughness adjustment applied to PG sigma-z?
+c                            0 = no
+c                            1 = yes
+c          MTIP - integer - Stack tip downwash modeled ?
+c                            0 = no
+c                            1 = yes
+c        MSHEAR - integer - vertical wind shear above stack top
+c                           modeled in plume rise?
+c                            0 = no
+c                            1 = yes
+c        MSPLIT - integer - Split puffs in vertical to track vertical
+c                           wind shear ?
+c                            0 = no
+c                            1 = yes
+c        MPARTL - integer - partial penetration of elevated inversion
+c                           modeled ?
+c                            0 = no
+c                            1 = yes
+c        MTINV  - integer - Strength of inversion above CBL read from
+c                           PROFILE.DAT for partial penetration?
+c                            0 = no
+c                            1 = yes
+c        MHFTSZ - integer - Heffter sigma-z growth at large distance
+c                           modeled ?
+c                            0 = no
+c                            1 = yes
+c          MPDF - integer - Prob. Dist. Fcn. used for Convective B.L. ?
+c                            0 = no
+c                            1 = yes
+c         MBCON - integer - Boundary Conditions (concentration) applied ?
+c                            0 = no
+c                            1 = yes, BCON.DAT file
+c                            2 = yes, CONC.DAT file
+c       MSGTIBL - integer - Sub-Grid TIBL module used for shoreline ?
+c                            0 = no
+c                            1 = yes
+c          MFOG - integer - FOG model computations ?
+c                            0 = no
+c                            1 = Plume-length Mode
+c                            2 = Receptor Mode
+c       MAQCHEM - integer - Aqueous phase transformation flag
+c                           (Valid for MCHEM = 1 or 3)
+c                            0 = no aqueous phase transformation
+c                            1 = transformation rates adjusted
+c                                for aqueous phase reactions
+c          MBDW - integer - Method to simulate buiding downwash
+c                            1 = ISC method
+c                            2 = PRIME method
+c          MREG - integer - Impose regulatory options?
+c                            0 = no
+c                            1 = yes - USEPA short range (e.g.ISC)
+c                            2 = yes - USEPA long range/visibility
+c                            3 = yes - Australia EPA short range
+c        MDEPBC - integer  - Flag for concentration profile adj. for
+c                            surface depletion effects with BC puffs
+c                            0: Do not adjust
+c                            1: Adjust for depletion
+c         MTILT - integer - Gravitational settling (plume tilt)?
+c                           (puff center falls at the gravitational
+c                            settling velocity for 1 particle species)
+c                            0 = no
+c                            1 = yes
+c        LDEVEL - logical - Report output associated with new features
+c                            or options currently under development

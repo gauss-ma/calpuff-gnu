@@ -1,0 +1,17 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /QA/ -- Model version data                    CALMET
+c----------------------------------------------------------------------
+c
+      character*8 ver,level,rtime
+      character*10 rdate
+c
+      common/qa/ncommout,rcpu,ver,level,rtime,rdate
+c
+c --- COMMON BLOCK /QA/ Variables:
+c         NCOMMOUT - integer - Number of comment lines written to
+c                              CALMET.DAT header for QA
+c             RCPU - real    - Computed CPU time of the run
+c              VER - char*8  - Model version number
+c            LEVEL - char*8  - Model level number
+c            RTIME - char*8  - System time of the run (hh:mm:ss)
+c            RDATE - char*10 - System date of the run (mm-dd-yyyy)

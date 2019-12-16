@@ -1,0 +1,101 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /CHEMDAT/ -- Chemistry data                  CALPUFF
+c
+c----------------------------------------------------------------------
+c
+      character*12 vrsoz,laboz,vrsh2o2,labh2o2
+      character*12 ch2o2
+      character*16 cidoz,cidh2o2
+c
+      common/CHEMDAT/MOZ,BCKO3,BCKO3M(12),BCKNH3,BCKNH3M(12),
+     1 RNITE1,RNITE2,RNITE3,MH2O2,BCKH2O2,BCKH2O2M(12),
+     2 BCKPMF(12),OFRAC(12),VCNX(12),
+     3 CHEMT(24,3),NOZSTA,IUTMOZ,IBDATO,IBTIMO,IEDATO,IETIMO,VRSOZ,
+     4 LABOZ,CIDOZ(mxoz),XOZM(mxoz),YOZM(mxoz),OZCONC(mxoz),
+     5 NEAROZ(mxnx,mxny),ITIMOZ,
+     6 NH2O2STA,IUTMH2O2,IBDATH,IBTIMH,IEDATH,IETIMH,VRSH2O2,
+     7 LABH2O2,CIDH2O2(mxaq),XH2O2M(mxaq),YH2O2M(mxaq),
+     8 H2O2CONC(mxaq),NEARH2O2(mxnx,mxny),CH2O2(2)
+c
+c --- COMMON BLOCK /CHEMDAT/ Variables:
+c
+c             MOZ - integer - Ozone data input flag
+c                              (0 = use a monthly background O3 value)
+c                               1 = read hourly O3 data)
+c           BCKO3 - real    - Current background ozone conc (ppb)
+c      BCKO3M(12) - real    - Monthly background ozone concs (ppb)
+c          BCKNH3 - real    - Current background ammonia conc (ppb)
+c     BCKNH3M(12) - real    - Monthly background ammonia concs (ppb)
+c          RNITE1 - real    - Nighttime SO2 loss rate (percent/hr)
+c          RNITE2 - real    - Nighttime NOx loss rate (percent/hr)
+c          RNITE3 - real    - Nighttime HNO3 formation rate (percent/hr)
+c           MH2O2 - integer - H2O2 data input flag
+c                              (0 = use constant background H2O2 value)
+c                               1 = read hourly H2O2 data)
+c         BCKH2O2 - real    - Current background H2O2 conc (ppb)
+c    BCKH2O2M(12) - real    - Monthly background H2O2 concs (ppb)
+c     CHEMT(24,3) - real    - User-specified chemical transformation
+c                             rates (percent/hr)
+c                             (-,1) -- (k1)  SO2 --> SO4
+c                             (-,2) -- (k2)  NOx --> All products
+c                             (-,3) -- (k3)  NOx --> HNO3
+c
+c --- SOA (MCHEM=4) monthly background data
+c      BCKPMF(12) - real    - Fine particulate concentration in ug/m^3
+c       OFRAC(12) - real    - Organic fraction of fine particulates
+c        VCNX(12) - real    - VOC / NOX ratio (after reaction)
+c
+c --- Data from OZONE.DAT data file
+c ----------------------------------
+c          NOZSTA - integer - Number of ozone stations in the OZONE.DAT
+c                             file
+c          IUTMOZ - integer - UTM zone in which the sozone station
+c                             coordinates are specified
+c          IBDATO - integer - Date of beginning of data (YYJJJ, where
+c                             YY=year, JJJ=Julian day)
+c          IBTIMO - integer - Hour of beginning of data (00-23, LST)
+c          IEDATO - integer - Date of ending of data (YYJJJ, where
+c                             YY=year, JJJ=Julian day)
+c          IETIMO - integer - Hour of ending of data (00-23, LST)
+c           VRSOZ - C*12    - Data set version
+c           LABOZ - C*12    - Data set label
+c     CIDOZ(mxoz) - C*16    - Station identifier
+c      XOZM(mxoz) - real    - X coordinate (m) of the ozone station
+c                             relative to the origin of the met. grid
+c      YOZM(mxoz) - real    - Y coordinate (m) of the ozone station
+c                             relative to the origin of the met. grid
+c    OZCONC(mxoz) - real    - Ozone concentration (ppb) at each station
+c
+c --- Computed from data in OZONE.DAT
+c NEAROZ(mxnx,mxny)-real    - Station number of closest ozone station to
+c                             each grid point
+c          ITIMOZ - integer - Flag for format of times in file
+c                             1: End time as year, Julian day, hour
+c                             2: Begin & End times as year, Julian
+c                                day, hour and second (0-3599)
+c
+c --- Data from H2O2.DAT data file
+c ----------------------------------
+c        NH2O2STA - integer - Number of H2O2 stations in the H2O2.DAT
+c                             file
+c        IUTMH2O2 - integer - UTM zone in which the H2O2 station
+c                             coordinates are specified
+c          IBDATH - integer - Date of beginning of data (YYJJJ, where
+c                             YY=year, JJJ=Julian day)
+c          IBTIMH - integer - Hour of beginning of data (00-23, LST)
+c          IEDATH - integer - Date of ending of data (YYJJJ, where
+c                             YY=year, JJJ=Julian day)
+c          IETIMH - integer - Hour of ending of data (00-23, LST)
+c         VRSH2O2 - C*12    - Data set version
+c         LABH2O2 - C*12    - Data set label
+c   CIDH2O2(mxaq) - C*16    - Station identifier
+c    XH2O2M(mxaq) - real    - X coordinate (m) of the H2O2 station
+c                             relative to the origin of the met. grid
+c    YH2O2M(mxaq) - real    - Y coordinate (m) of the H2O2 station
+c                             relative to the origin of the met. grid
+c  H2O2CONC(mxaq) - real    - H2O2 concentration (ppb) at each station
+c        CH2O2(2) - C*12    - Data type name ('H2O2','h2o2')
+c
+c --- Computed from data in H2O2.DAT
+cNEARH2O2(mxnx,mxny)-real   - Station number of closest H2O2 station
+c                             to each grid point

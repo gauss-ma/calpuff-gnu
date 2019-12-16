@@ -1,0 +1,22 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /QA/ -- Model QA parameters                   SMERGE
+c----------------------------------------------------------------------
+c
+      character*12 model,ver,level,pmodel,pver,plev
+      character*10 rdate
+      character*8 rtime
+c
+      common/QA/rcpu,rdate,rtime,model,ver,level,pmodel,pver,plev
+c
+c --- COMMON BLOCK /QA/ Variables:
+c        RCPU - real         - Computed CPU time of the run
+c       RDATE - character*10 - System date at start of run
+c                              (MM-DD-YYYY)
+c       RTIME - character*8  - System time at start of run
+c                              (HH:MM:SS)
+c       MODEL - character*12 - 'SMERGE'
+c         VER - character*12 - Version number of SMERGE
+c       LEVEL - character*12 - Level number of SMERGE
+c      PMODEL - character*12 - Processor used to create prev. SURF.DAT
+c        PVER - character*12 - Version number of previous processor
+c        PLEV - character*12 - Level number of previous processor

@@ -1,0 +1,119 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /BCS/ -- Data for boundary condition         CALPUFF
+c                           sources
+c----------------------------------------------------------------------
+c
+      character*12 cnamtyp,fnamebc,lblbc,cspecbc,cunitsbc
+
+      common/BCS/VRSBC,NSPECBC,NTYPEBC1,NTYPEBC2,XLENBC,YLENBC,
+     1 IBCU,FUNITSBC(4),NBC,HTMINBC,RSAMPBC,CONBC0,
+     2 XBCGRD(mxbc),YBCGRD(mxbc),ITYPEBC(mxbc),
+     2 IBC(mxbc),NEWBC(mxbc),IRECBC(mxbc),JRECBC(mxbc),D2RECBC(mxbc),
+     3 HTBC(mxbc),CONBC(mxspec,mxbc),
+     4 XMWTBC(mxspec),IXREMBC(mxspec),
+     5 ivbc(mxspec,mxbc),iq12bc(mxspec,mxbc),
+     6 IBYDBC,IBHBC,IEYDBC,IEHBC,IBEGBC,IENDBC,
+     7 FNAMEBC,LBLBC,CNAMTYP(mxbc),CSPECBC(mxspec),CUNITSBC(4)
+c
+c --- COMMON BLOCK /BCS/ Variables:
+c
+c                 VRSBC - real     - Data set version
+c               NSPECBC - integer  - Number of species in BCON file
+c              NTYPEBC1 - integer  - Number of air mass types defined
+c                                    (constant or factored variation)
+c              NTYPEBC2 - integer  - Number of air mass types defined
+c                                    (arbitrary time variation)
+c                XLENBC - real     - Length of each segment along X (m)
+c                YLENBC - real     - Length of each segment along Y (m)
+c                  IBCU - integer  - Units for boundary concentrations
+c                                    1:  g/m**3
+c                                    2:  ug/m**3
+c                                    3:  ppm
+c                                    4:  ppb
+c           FUNITSBC(4) - real     - Units conversion factor to g/m**3
+c                   NBC - integer  - Number of boundary condition
+c                                    segments
+c               HTMINBC - real     - Minimum layer depth (m) for BC
+c                                    puffs when released (MBCON=2)
+c               RSAMPBC - real     - Search radius (km) for sampling
+c                                    BC puffs
+c                CONBC0 - real     - Concentration (g/m3) of species
+c                                    'BCON' imposed on all BC puffs
+c                                    emitted (always generate active
+c                                    BC puffs even when boundary air is
+c                                    clean)
+c
+c -------- Section for data for each boundary segment ---------
+c
+c          XBCGRD(mxbc) - real     - X coordinate of each segment (met.
+c                                    grid units w/ origin at (0.0,0.0))
+c          YBCGRD(mxbc) - real     - Y coordinate of each segment (met.
+c                                    grid units w/ origin at (0.0,0.0))
+c         ITYPEBC(mxbc) - integer  - Type of air mass associated with
+c                                    each segment
+c             IBC(mxbc) - integer  - Boundary on which each segment is
+c                                    located
+c                                    1 = North
+c                                    2 = South
+c                                    3 = East
+c                                    4 = West
+c           NEWBC(mxbc) - integer  - Number of puffs released by each
+c                                    segment during current time step
+c
+c -------- Section for MBCON=2 identifying CONC.DAT receptors ---------
+c
+c          IRECBC(mxbc) - integer  - receptor 'i' used for each segment
+c          JRECBC(mxbc) - integer  - receptor 'j' used for each segment
+c                                    (j=0 for discrete receptors)
+c         D2RECBC(mxbc) - real     - squared distance from segment to
+c                                    receptor (met grid units)
+c
+c -------- Section for data for each air-mass type and species ---------
+c
+c            HTBC(mxbc) - real     - 'Top' of air mass layer (m)
+c    CONBC(mxspec,mxbc) - real     - Concentration of each modeled species
+c                                    in air mass (g/m**3)
+c        XMWTBC(mxspec) - real     - Molecular weight for each species
+c       IXREMBC(mxspec) - integer  - Cross referencing array of NSPECBC
+c                                    values relating species ordering
+c                                    in the BCON file to the
+c                                    ordering in the main conc. array
+c     IVBC(mxspec,mxbc) - integer  - IVARY flag defining how air mass
+c                                    concentration scaling factors vary
+c                                    0:  NO variation
+c                                    1:  Diurnal (24 values)
+c                                    2:  Monthly (12 values)
+c                                    3:  Hour & Season (96 values)
+c                                    4:  Speed & Stability (36 values)
+c                                    5:  Temperature (12 values)
+c   IQ12BC(mxspec,mxbc) - integer  - Pointer for starting address in
+c                                    VQFAC array to assign scaling
+c                                    factors for this air mass/species
+c
+c -------- Section for date/time information in BCON file ---------
+c
+c                IBYDBC - integer  - Date of the first data record in
+c                                    file  (YYYYJJJ, where YYYY=year,
+c                                    JJJ=Julian day)
+c                 IBHBC - integer  - Hour of the first data record in
+c                                    file  (00-23 LST)
+c                IEYDBC - integer  - Date of the last data record in
+c                                    file  (YYYYJJJ, where YYYY=year,
+c                                    JJJ=Julian day)
+c                 IEHBC - integer  - Hour of the last data record in
+c                                    file  (00-23 LST)
+c                IBEGBC - integer  - Starting time for which emissions
+c                                    data in current set of
+c                                    records is valid (YYYYJJJHH)
+c                IENDBC - integer  - Ending time for which emissions
+c                                    data in current set of
+c                                    records is valid (YYYYJJJHH)
+c
+c -------- Section for character data -----------
+c
+c               FNAMEBC - char*12  - Data set name "BCON"
+c                 LBLBC - char*12  - Data set label
+c         CNAMTYP(mxbc) - char*12  - Air-mass names
+c       CSPECBC(mxspec) - char*12  - Species identifiers
+c           CUNITSBC(4) - char*12  - Species concentration units
+c

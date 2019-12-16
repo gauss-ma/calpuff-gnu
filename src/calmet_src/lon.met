@@ -1,0 +1,14 @@
+c-------------------------------------------------------------------------
+c --- COMMON BLOCK /LON/ -- Delta longitude data for Met. stations  CALMET
+c-------------------------------------------------------------------------
+c
+      common/lon/dlongs(mxss),dlongu(mxus)
+c
+c --- COMMON BLOCK /LON/ Variables:
+c
+c  DLONGS(mxss) - real array   - Difference in W. Longitude between the 
+c                                map reference, rlon0, and each surface
+c                                station xslon(i):  rlon0-xslon(i)
+c  DLONGU(mxus) - real array   - Difference in W. Longitude between the 
+c                                map reference, rlon0, and each upper air
+c                                station xulon(i):  rlon0-xulon(i)

@@ -1,0 +1,27 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /TSER/ --- Timeseries Variables              CALPOST
+c-----------------------------------------------------------------------
+      real xtser(mxtser),ytser(mxtser)
+      integer ixtser(mxtser),iytser(mxtser)
+      character*4 atser(mxtser)
+
+      common/tser/ntser,ngtser,ndtser,nrtser,nttser,nstser,nrpr,nrpt,
+     *            atser,ixtser,iytser,xtser,ytser
+c-----------------------------------------------------------------------
+c     DEFINITIONS   [i]=integer   [r]=real   [a]=array   [L]=logical
+c-----------------------------------------------------------------------
+c ntser          Number of receptors in timeseries                   [i]
+c ngtser         Number of gridded receptors in timeseries           [i]
+c ndtser         Number of discrete receptors in timeseries          [i]
+c nrtser         Number of discrete receptor rings in timeseries     [i]
+c nttser         Number of CTDG receptors in timeseries              [i]
+c nstser         Number of sources in timeseries                     [i]
+c nrpr           Number of receptors per record in timeseries file   [i]
+c                allowed by format statement
+c nrpt           Number of records per time in timeseries file       [i]
+c                needed to write all NTSER receptors
+c atser          Receptor type (GRID, DISC, or CTSG)                [ca]
+c ixtser         Receptor index (or ix for gridded receptors)       [ia]
+c iytser         Receptor index iy for gridded receptors            [ia]
+c xtser          Receptor coordinate (km) in 'easting' direction    [ra]
+c ytser          Receptor coordinate (km) in 'northing' direction   [ra]

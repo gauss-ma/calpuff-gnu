@@ -1,0 +1,30 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /CONTROL/ -- Program control data read         BUOY
+c                             & derived from user input
+c----------------------------------------------------------------------
+      logical lutm,llcc,lps,lem,llaza,lttm,lprev
+
+      character*8 pmap,dndbc,dnodc
+
+      common /CONTROL/ lutm,llcc,lps,lem,llaza,lttm,
+     &                 pmap,dndbc,dnodc,lprev
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c                --- Output Projection Logicals ---
+c lutm           flag indicating Universal Transverse Mercator       [l]
+c llcc           flag indicating Lambert Conformal Conic             [l]
+c lps            flag indicating Polar Stereographic                 [l]
+c lem            flag indicating Equatorial Mercator                 [l]
+c llaza          flag indicating Lambert Azimuthal Equal Area        [l]
+c lttm           flag indicating Tangential Transverse Mercator      [l]
+c
+c pmap           character code for output map projection            [c]
+c                UTM :  Universal Transverse Mercator
+c                LCC :  Lambert Conformal Conic
+c                PS  :  Polar Stereographic
+c                EM  :  Equatorial Mercator
+c                LAZA:  Lambert Azimuthal Equal Area
+c dndbc          default code for Datum-Region of NDBC files    [c]
+c dnodc          default code for Datum-Region of NODC DB files    [c]
+c-----------------------------------------------------------------------

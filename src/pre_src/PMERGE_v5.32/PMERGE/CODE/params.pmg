@@ -1,0 +1,34 @@
+c----------------------------------------------------------------------
+c --- PARAMETER statements                                       PMERGE
+c----------------------------------------------------------------------
+c --- Specify model version
+      character*12 mver, mlevel
+      parameter(mver='5.32',mlevel='070627')
+c
+c --- Specify parameters
+      parameter(mxpf=150)
+      parameter(mxps=300)
+      parameter(io5=1,io6=2,ioprev=3,ioprec=4)
+      parameter(iomesg=0)
+c
+c --- GENERAL PARAMETER definitions:
+c          MVER - Version number of PMERGE
+c        MLEVEL - Level (e.g. release date code) of PMERGE
+c          MXPF - Maximum number of formatted station data files
+c          MXPS - Maximum number of precipitation stations
+c
+c --- FORTRAN I/O unit numbers:
+c      NOTE *** - Formatted station files are opened using I/O unit 7
+c                 and above
+c           IO5 - Control file (PMERGE.INP)     - input  - formatted
+c           IO6 - List file (PMERGE.LST)        - output - formatted
+c        IOPREV - Previous PMERGE output file
+c                                    (PREV.DAT) - input  - unformatted
+c        IOPREC - PMERGE output file (PRECIP.DAT)-output - either format
+c        IOMESG - Fortran unit number for screen- output - formatted
+c                 output (NOTE: This unit is
+c                 NOT opened -- it must be a
+c                 preconnected unit to the screen)
+c -----------------------------------------------------------------
+
+ 

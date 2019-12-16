@@ -1,0 +1,88 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /CHIFLX/ -- Concentration & flux arrays      CALPUFF
+c----------------------------------------------------------------------
+c
+      common/CHIFLX/chisam(mxnxg,mxnyg,mxspec),chirec(mxrec,mxspec),
+     1 chict(mxrect,mxspec),
+     2 dfsam(mxnxg,mxnyg,mxspec),dfrec(mxrec,mxspec),
+     3 wfsam(mxnxg,mxnyg,mxspec),wfrec(mxrec,mxspec),
+     4 tchisam(mxnxg,mxnyg,mxspec),tchirec(mxrec,mxspec),
+     5 tchict(mxrect,mxspec),
+     6 tdfsam(mxnxg,mxnyg,mxspec),tdfrec(mxrec,mxspec),
+     7 twfsam(mxnxg,mxnyg,mxspec),twfrec(mxrec,mxspec),
+     8 cbcsam(mxnxg,mxnyg,mxspec),cbcrec(mxrec,mxspec),
+     9 cbcct(mxrect,mxspec),
+     & dbcsam(mxnxg,mxnyg,mxspec),dbcrec(mxrec,mxspec),
+     1 wbcsam(mxnxg,mxnyg,mxspec),wbcrec(mxrec,mxspec),
+     2 rbcsam(mxnxg,mxnyg),rbcrec(mxrec),rbcct(mxrect)
+c
+c --- COMMON BLOCK /CHIFLX/ Variables:
+c
+c     CHISAM(mxnxg,mxnyg,mxspec) - real   - Concentrations (g/m**3) at
+c                                           gridded receptors
+c           CHIREC(mxrec,mxspec) - real   - Concentrations (g/m**3) at
+c                                           non-gridded receptors
+c           CHICT(mxrect,mxspec) - real   - Concentrations (g/m**3) at
+c                                           complex terrain (CTSG)
+c                                           receptors
+c
+c      DFSAM(mxnxg,mxnyg,mxspec) - real   - Dry fluxes (g/m**2/s) at
+c                                           gridded receptors
+c            DFREC(mxrec,mxspec) - real   - Dry fluxes (g/m**2/s) at
+c                                           non-gridded receptors
+c
+c      WFSAM(mxnxg,mxnyg,mxspec) - real   - Wet fluxes (g/m**2/s) at
+c                                           gridded receptors
+c            WFREC(mxrec,mxspec) - real   - Wet fluxes (g/m**2/s) at
+c                                           non-gridded receptors
+c
+c --- Additional arrays to hold total contribution from all sources
+c
+c    TCHISAM(mxnxg,mxnyg,mxspec) - real   - Concentrations (g/m**3) at
+c                                           gridded receptors
+c          TCHIREC(mxrec,mxspec) - real   - Concentrations (g/m**3) at
+c                                           non-gridded receptors
+c          TCHICT(mxrect,mxspec) - real   - Concentrations (g/m**3) at
+c                                           complex terrain (CTSG)
+c                                           receptors
+c
+c     TDFSAM(mxnxg,mxnyg,mxspec) - real   - Dry fluxes (g/m**2/s) at
+c                                           gridded receptors
+c           TDFREC(mxrec,mxspec) - real   - Dry fluxes (g/m**2/s) at
+c                                           non-gridded receptors
+c
+c     TWFSAM(mxnxg,mxnyg,mxspec) - real   - Wet fluxes (g/m**2/s) at
+c                                           gridded receptors
+c           TWFREC(mxrec,mxspec) - real   - Wet fluxes (g/m**2/s) at
+c                                           non-gridded receptors
+c
+c --- Additional arrays to hold contribution from BC puff
+c
+c     CBCSAM(mxnxg,mxnyg,mxspec) - real   - Concentrations (g/m**3) at
+c                                           gridded receptors
+c           CBCREC(mxrec,mxspec) - real   - Concentrations (g/m**3) at
+c                                           non-gridded receptors
+c           CBCCT(mxrect,mxspec) - real   - Concentrations (g/m**3) at
+c                                           complex terrain (CTSG)
+c                                           receptors
+c
+c     DBCSAM(mxnxg,mxnyg,mxspec) - real   - Dry fluxes (g/m**2/s) at
+c                                           gridded receptors
+c           DBCREC(mxrec,mxspec) - real   - Dry fluxes (g/m**2/s) at
+c                                           non-gridded receptors
+c
+c     WBCSAM(mxnxg,mxnyg,mxspec) - real   - Wet fluxes (g/m**2/s) at
+c                                           gridded receptors
+c           WBCREC(mxrec,mxspec) - real   - Wet fluxes (g/m**2/s) at
+c                                           non-gridded receptors
+c            RBCSAM(mxnxg,mxnyg) - real   - Nearest approach distance of
+c                                           a BC puff to each gridded
+c                                           receptor (grid cell units)
+c                  RBCREC(mxrec) - real   - Nearest approach distance of
+c                                           a BC puff to each discrete
+c                                           receptor (grid cell units)
+c                  RBCCT(mxrect) - real   - Nearest approach distance of
+c                                           a BC puff to each  complex
+c                                           terrain (CTSG) receptor
+c                                           (grid cell units)
+c

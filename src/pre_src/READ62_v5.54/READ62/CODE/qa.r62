@@ -1,0 +1,22 @@
+c-----------------------------------------------------------------------
+c --- READ62    Version: 5.1            Level: 011003            QA.R62
+c               D. Strimaitis, EarthTech
+c
+c PURPOSE:      Model QA parameters
+c-----------------------------------------------------------------------
+      character*12 model,ver,level
+      character*8 rtime
+      character*10 rdate
+c
+      common/QA/rcpu,rtime,rdate,model,ver,level
+c
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c model          'READ62'                                            [c]
+c ver            version number of READ62                            [c]
+c level          level number of READ62                              [c]
+c rcpu           computed CPU time of the run                        [r]
+c rtime          system time at start of run (HH:MM:SS)              [c]
+c rdate          system date at start of run (MM-DD-YY)              [c]
+c-----------------------------------------------------------------------

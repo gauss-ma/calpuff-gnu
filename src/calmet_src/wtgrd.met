@@ -1,0 +1,12 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /WT/ -- Gridded weighting factors             CALMET
+c----------------------------------------------------------------------
+c
+      common/wt/wo(mxnx,mxny,mxnz)
+c
+c --- COMMON BLOCK /WT/ Variables:
+c
+c  WO(mxnx,mxny,mxnz)    real array  - Gridded weighting factors used
+c                                      for station observations vs the
+c                                      MM4 gridded wind data used as
+c                                      observations

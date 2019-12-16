@@ -1,0 +1,19 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /NONGRD/ - Discrete (non-gridded) receptor   CALPUFF
+c                             information                              
+c----------------------------------------------------------------------
+c
+      common/NONGRD/NREC,XNG(mxrec),YNG(mxrec),ZNG(mxrec),ELEVNG(mxrec)
+c
+c
+c --- COMMON BLOCK /NONGRD/ Variables:
+c                  NREC - integer  - Number of discrete (non-gridded)
+c                                    receptors
+c            XNG(mxrec) - real     - X coordinate of the receptor (met.
+c                                    grid units w/ origin at (0.0,0.0))
+c            YNG(mxrec) - real     - Y coordinate of the receptor (met.
+c                                    grid units w/ origin at (0.0,0.0))
+c            ZNG(mxrec) - real     - Z coordinate of the receptor
+c                                    (height above ground, m)
+c         ELEVNG(mxrec) - real     - Ground-level elevation (m) above
+c                                    sea level at the receptor

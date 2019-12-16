@@ -1,0 +1,174 @@
+c-----------------------------------------------------------------------
+c --- Declaration Statements For Major Arrays                  CALPOST
+c-----------------------------------------------------------------------
+c  Summing/averaging arrays
+      real  av1cg(mxgx,mxgy),av1cd(mxdrec),av1ct(mxctrec),
+     *      av3cg(mxgx,mxgy),av3cd(mxdrec),av3ct(mxctrec),
+     *      av24cg(mxgx,mxgy),av24cd(mxdrec),av24ct(mxctrec),
+     *      avNcg(mxgx,mxgy),avNcd(mxdrec),avNct(mxctrec),
+     *      avRcg(mxgx,mxgy),avRcd(mxdrec),avRct(mxctrec)
+      real  av1bg(mxgx,mxgy),av1bd(mxdrec),av1bt(mxctrec),
+     *      av3bg(mxgx,mxgy),av3bd(mxdrec),av3bt(mxctrec),
+     *      av24bg(mxgx,mxgy),av24bd(mxdrec),av24bt(mxctrec),
+     *      avNbg(mxgx,mxgy),avNbd(mxdrec),avNbt(mxctrec),
+     *      avRbg(mxgx,mxgy),avRbd(mxdrec),avRbt(mxctrec)
+      real  av1hg(mxgx,mxgy),av1hd(mxdrec),av1ht(mxctrec),
+     *      av3hg(mxgx,mxgy),av3hd(mxdrec),av3ht(mxctrec),
+     *      av24hg(mxgx,mxgy),av24hd(mxdrec),av24ht(mxctrec),
+     *      avNhg(mxgx,mxgy),avNhd(mxdrec),avNht(mxctrec),
+     *      avRhg(mxgx,mxgy),avRhd(mxdrec),avRht(mxctrec)
+      real  av1pg(mxgx,mxgy),av1pd(mxdrec),av1pt(mxctrec),
+     *      av3pg(mxgx,mxgy),av3pd(mxdrec),av3pt(mxctrec),
+     *      av24pg(mxgx,mxgy),av24pd(mxdrec),av24pt(mxctrec),
+     *      avNpg(mxgx,mxgy),avNpd(mxdrec),avNpt(mxctrec),
+     *      avRpg(mxgx,mxgy),avRpd(mxdrec),avRpt(mxctrec)
+      real  av24ng(mxgx,mxgy),av24nd(mxdrec),av24nt(mxctrec),
+     *      avRng(mxgx,mxgy),avRnd(mxdrec),avRnt(mxctrec)
+c  Exceedence count arrays
+      integer    ixc1g(mxgx,mxgy),ixc1d(mxdrec),ixc1t(mxctrec),
+     *           ixc3g(mxgx,mxgy),ixc3d(mxdrec),ixc3t(mxctrec),
+     *           ixc24g(mxgx,mxgy),ixc24d(mxdrec),ixc24t(mxctrec),
+     *           ixcPg(mxgx,mxgy),ixcPd(mxdrec),ixcPt(mxctrec),
+     *           ixcNg(mxgx,mxgy),ixcNd(mxdrec),ixcNt(mxctrec),
+     *           ixcdayg(0:mxday,mxgx,mxgy),ixcdayd(0:mxday,mxdrec),
+     *           ixcdayt(0:mxday,mxctrec)
+      integer ixcday(mxday)
+c  Top 50 table arrays
+      real  t50c1(50),t50c3(50),t50c24(50),t50cN(50),t50cR(50),
+     &      t50cP(50)
+      real  t50xy1(50,2),t50xy3(50,2),t50xy24(50,2),t50xyN(50,2),
+     &      t50xyR(50,2),t50xyP(50,2)
+      real  t50b1(50),t50b3(50),t50b24(50),t50bN(50),t50bR(50),
+     &      t50bP(50)
+      real  t50h1(50),t50h3(50),t50h24(50),t50hN(50),t50hR(50),
+     &      t50hP(50)
+      integer it501(50,5),it503(50,5),it5024(50,5),it50N(50,5),
+     &        it50R(50,5),it50P(50,5)
+      character ct501(50),ct503(50),ct5024(50),ct50N(50),ct50R(50),
+     &          ct50P(50)
+c  Top N at each receptor arrays (gridded receptors)
+      real  tng1(mxgx,mxgy,mxrnk),tng3(mxgx,mxgy,mxrnk),
+     *      tng24(mxgx,mxgy,mxrnk),tngN(mxgx,mxgy,mxrnk),
+     *      tngP(mxgx,mxgy,mxrnk)
+c --------------------------------------------------------
+c     real  tngb1(mxgx,mxgy,mxrnk),tngb3(mxgx,mxgy,mxrnk),
+c    *      tngb24(mxgx,mxgy,mxrnk),tngbN(mxgx,mxgy,mxrnk),
+c    *      tngbP(mxgx,mxgy,mxrnk)
+c     real  tngh1(mxgx,mxgy,mxrnk),tngh3(mxgx,mxgy,mxrnk),
+c    *      tngh24(mxgx,mxgy,mrnkp),tnghN(mxgx,mxgy,mxrnk),
+c    *      tnghP(mxgx,mxgy,mxrnk)
+c --------------------------------------------------------
+      integer ng1(2,mxgx,mxgy,mxrnk),ng3(2,mxgx,mxgy,mxrnk),
+     *        ng24(2,mxgx,mxgy,mxrnk),ngN(2,mxgx,mxgy,mxrnk),
+     *        ngP(2,mxgx,mxgy,mxrnk)
+c  Top N at each receptor arrays (discrete receptors)
+      real  tnd1(mxdrec,mxrnk),tnd3(mxdrec,mxrnk),tnd24(mxdrec,mxrnk),
+     *      tndN(mxdrec,mxrnk),tndP(mxdrec,mxrnk)
+c --------------------------------------------------------
+c     real  tndb1(mxdrec,mxrnk),tndb3(mxdrec,mxrnk),
+c    *      tndb24(mxdrec,mxrnk),tndbN(mxdrec,mxrnk),
+c    *      tndbP(mxdrec,mxrnk)
+c     real  tndh1(mxdrec,mxrnk),tndh3(mxdrec,mxrnk),
+c    *      tndh24(mxdrec,mxrnk),tndhN(mxdrec,mxrnk),
+c    *      tndhP(mxdrec,mxrnk)
+c --------------------------------------------------------
+      integer nd1(2,mxdrec,mxrnk),nd3(2,mxdrec,mxrnk),
+     *        nd24(2,mxdrec,mxrnk),ndN(2,mxdrec,mxrnk),
+     *        ndP(2,mxdrec,mxrnk)
+c  Top N at each receptor arrays (complex terrain receptors)
+      real  tnt1(mxctrec,mxrnk),tnt3(mxctrec,mxrnk),
+     *      tnt24(mxctrec,mxrnk),tntN(mxctrec,mxrnk),
+     *      tntP(mxctrec,mxrnk)
+c --------------------------------------------------------
+c     real  tntb1(mxctrec,mxrnk),tntb3(mxctrec,mxrnk),
+c    *      tntb24(mxctrec,mxrnk),tntbN(mxctrec,mxrnk),
+c    *      tntbP(mxctrec,mxrnk)
+c     real  tnth1(mxctrec,mxrnk),tnth3(mxctrec,mxrnk),
+c    *      tnth24(mxctrec,mxrnk),tnthN(mxctrec,mxrnk),
+c    *      tnthP(mxctrec,mxrnk)
+c --------------------------------------------------------
+      integer nt1(2,mxctrec,mxrnk),nt3(2,mxctrec,mxrnk),
+     *        nt24(2,mxctrec,mxrnk),ntN(2,mxctrec,mxrnk),
+     *        ntP(2,mxctrec,mxrnk)
+c  Arrays used in GETRCRD
+      real tcg(mxgx,mxgy),tcd(mxdrec),tct(mxctrec)
+c  Dummy arrays used in subroutines
+c     real tng(mxgx,mxgy,mxrnk),tnd(mxdrec,mxrnk),tnt(mxctrec,mxrnk),
+c    *     tngtemp(mxgx,mxgy)
+c     integer ng(2,mxgx,mxgy,mxrnk),nd(2,mxdrec,mxrnk),nt(2,mxctrec,mxrnk)
+c     character*70 messag(4)
+c     real t50c(50)
+c     integer it50(50,5)
+c     character*1 ct50(50)
+c-----------------------------------------------------------------------
+c     DEFINITIONS
+c-----------------------------------------------------------------------
+c av1c[g,d,t]   Arrays of current sum/average over 1 hour           [ra]
+c av3c[g,d,t]   Arrays of current sum/average over 3 hours          [ra]
+c av24c[g,d,t]  Arrays of current sum/average over 24 hours         [ra]
+c avNc[g,d,t]   Arrays of current sum/average over N periods        [ra]
+c avRc[g,d,t]   Arrays of current sum/average over period of run    [ra]
+c av24n[g,d,t]  Number of entries in current 24-sums/averages       [ra]
+c avRn[g,d,t]   Number of entries in run-length sums/averages       [ra]
+c ixc1[g,d,t]   Arrays of exceedence counts for 1 hour averages     [ia]
+c ixc3[g,d,t]   Arrays of exceedence counts for 3 hour averages     [ia]
+c ixc24[g,d,t]  Arrays of exceedence counts for 24 hour averages    [ia]
+c ixcN[g,d,t]   Arrays of exceedence counts for N*mavg period       [ia]
+c ixcP[g,d,t]   Arrays of exceedence counts for 1 period            [ia]
+c ixcday[g,d,t] Arrays of daily exceedence counts                   [ia]
+c               (current cumulative counts stored in iday=0)
+c ixcday        YYYYJJJ marker for corresponding day in daily counts[ia]
+c t50c1(50)     Top 50 concentrations for 1 hour averages           [ra]
+c t50c3(50)     Top 50 concentrations for 3 hour averages           [ra]
+c t50c24(50)    Top 50 concentrations for 24 hour averages          [ra]
+c t50cN(50)     Top 50 concentrations for N*mavg period             [ra]
+c t50cR(50)     Top 50 concentrations for period of run             [ra]
+c t50cP(50)     Top 50 concentrations for 1*mavg period             [ra]
+c t50xy1(50)    Receptor x,y coord (km) for Top 50 (1 hour average) [ra]
+c t50xy3(50)    Receptor x,y coord (km) for Top 50 (3 hour average) [ra]
+c t50xy24(50)   Receptor x,y coord (km) for Top 50 (24 hour average)[ra]
+c t50xyN(50)    Receptor x,y coord (km) for Top 50 (N*mavg period)  [ra]
+c t50xyR(50)    Receptor x,y coord (km) for Top 50 (period of run)  [ra]
+c t50xyP(50)    Receptor x,y coord (km) for Top 50 (1*mavg period)  [ra]
+c it501(50,5)   Yr,day,time,rec(ix,iy;_,i)  Top 50 (1 hour average) [ia]
+c it503(50,5)   Yr,day,time,rec(ix,iy;_,i)  Top 50 (3 hour average) [ia]
+c it5024(50,5)  Yr,day,time,rec(ix,iy;_,i)  Top 50 (24 hour average)[ia]
+c it50N(50,5)   Yr,day,time,rec(ix,iy;_,i)  Top 50 (N*mavg period)  [ia]
+c it50R(50,5)   Yr,day,time,rec(ix,iy;_,i)  Top 50 (period of run)  [ia]
+c it50P(50,5)   Yr,day,time,rec(ix,iy;_,i)  Top 50 (1*mavg period)  [ia]
+c ct501(50)     G,D,or T receptor type for Top 50 (1 hour average)  [ca]
+c ct503(50)     G,D,or T receptor type for Top 50 (3 hour average)  [ca]
+c ct5024(50)    G,D,or T receptor type for Top 50 (24 hour average) [ca]
+c ct50N(50)     G,D,or T receptor type for Top 50 (N*mavg period)   [ca]
+c ct50R(50)     G,D,or T receptor type for Top 50 (R*mavg period)   [ca]
+c ct50P(50)     G,D,or T receptor type for Top 50 (1*mavg period)   [ca]
+c tn[g,d,t]1    Top N concentrations - each rec.  (1 hour average)  [ra]
+c tn[g,d,t]3    Top N concentrations - each rec.  (3 hour average)  [ra]
+c tn[g,d,t]24   Top N concentrations - each rec.  (24 hour average) [ra]
+c tn[g,d,t]N    Top N concentrations - each rec.  (N*mavg period)   [ra]
+c tn[g,d,t]P    Top N concentrations - each rec.  (1*mavg period)   [ra]
+c n[g,d,t]1(1,) YYYYDDD associated with each Top N (1 hour average) [ia]
+c n[g,d,t]3(1,) YYYYDDD associated with each Top N (3 hour average) [ia]
+c n[g,d,t]24(1,)YYYYDDD associated with each Top N (24 hour average)[ia]
+c n[g,d,t]N(1,) YYYYDDD associated with each Top N (N*mavg period)  [ia]
+c n[g,d,t]P(1,) YYYYDDD associated with each Top N (1*mavg period)  [ia]
+c n[g,d,t]1(2,) HHMM associated with each Top N (1 hour average)    [ia]
+c n[g,d,t]3(2,) HHMM associated with each Top N (3 hour average)    [ia]
+c n[g,d,t]24(2,)HHMM associated with each Top N (24 hour average)   [ia]
+c n[g,d,t]N(2,) HHMM associated with each Top N (N*mavg period)     [ia]
+c n[g,d,t]P(2,) HHMM associated with each Top N (1*mavg period)     [ia]
+c tn[g,d,t]     Top N concentrations - each rec.  (?*mavg period)   [ra]
+c tn[g,d,t]temp Top N concentrations - each rec.  (?*mavg period)   [ra]
+c n[g,d,t](1,)  YYYYDDD associated with each Top N (?*mavg period)  [ia]
+c n[g,d,t](2,)  HHMM associated with each Top N (?*mavg period)     [ia]
+c messag        Title information for grid maps                     [ca]
+c t50c(50)      50 top concentration averages     (?*mavg period)   [ra]
+c it50(50,5)    Yr,day,time,(ix,iy):(irec) for above                [ia]
+c ct50(50)      Receptor type [g,d,t]                               [ca]
+c-----------------------------------------------------------------------
+c New variables for summing arrays, Top50 and TopN table arrays
+c letter b = background extinction
+c letter h = relative humidity GROWTH factor
+c letter p = ratios of percent changes (source extinction/background
+c            extinction)
+c-----------------------------------------------------------------------

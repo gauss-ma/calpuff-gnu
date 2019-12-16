@@ -1,0 +1,42 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /STATION/ -- Station variables                SMERGE
+c----------------------------------------------------------------------
+c
+      character*4 cfname(mxff),cbname(mxss),cname(mxss)
+      character*16 cflat(mxff),cflon(mxff)
+      character*16 cblat(mxss),cblon(mxss)
+      character*16 clat(mxss),clon(mxss)
+
+      common/station/ifstn(mxff),istz(mxff),fanem(mxff),elev(mxff),
+     1               idbstn(mxss),banem(mxss),idstn(mxss),anem(mxss),
+     2               cfname,cflat,cflon,
+     2               cbname,cblat,cblon,
+     2               cname,clat,clon
+c
+c --- COMMON BLOCK /STATION/ Variables:
+c
+c --- Data for station-files read in 
+c         IFSTN - integer array - Station ID for each formatted surface
+c                                 data input file
+c          ISTZ - integer array - Time zone corresponding to each
+c                                 formatted surface data input file
+c         FANEM - real array    - Anemometer height at each station (m)
+c          ELEV - real array    - Base elevation of each station (m)
+c        CFNAME - char*4 array  - Name of each station (----)
+c         CFLAT - char*16 array - Latitude of each station (deg[N/S])
+c         CFLON - char*16 array - Longitude of each station (deg[E/W])
+c
+c --- Data for stations in previous SURF.DAT file (INPUT)
+c        IDBSTN - integer array - Station ID for each station in the
+c                                 previous SURF.DAT file
+c         BANEM - real array    - Anemometer height at each station (m)
+c        CBNAME - char*4 array  - Name of each station (----)
+c         CBLAT - char*16 array - Latitude of each station (deg[N/S])
+c         CBLON - char*16 array - Longitude of each station (deg[E/W])
+c
+c --- Data for stations written to SURF.DAT file (OUTPUT)
+c         IDSTN - integer array - Station ID
+c          ANEM - real array    - Anemometer height at each station (m)
+c         CNAME - char*4 array  - Name of each station (----)
+c          CLAT - char*16 array - Latitude of each station (deg[N/S])
+c          CLON - char*16 array - Longitude of each station (deg[E/W])

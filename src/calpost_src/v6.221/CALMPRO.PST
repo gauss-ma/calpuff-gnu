@@ -1,0 +1,20 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /CALMPRO/ --- CALM Processing                CALPOST
+c-----------------------------------------------------------------------
+      common/calmpro/icalmflag,fcalm,met1fmt,ncalmplm,nmissplm
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS   [i]=integer   [r]=real   [a]=array   [L]=logical
+c-----------------------------------------------------------------------
+c icalmflag       Calm-period (hour) flag (0=non-calm, 1=CALM)       [i]
+c                 (applies to period that is not modeled)
+c fcalm           Fraction of periods in any average that can be     [r]
+c                 removed from an average if calm (expect fcalm=0.25)
+c                 For fcalm=0.25 and Navg=24, up to 6 calm periods can
+c                 be removed from the average.  Note that
+c                 concentrations are zero for calm periods.
+c met1fmt         Format of the single-point met data file used      [i]
+c                 to run the plume model
+c                 (currently set 1=AERMOD SURFACE file)
+c ncalmplm        Number of calm periods (hour) found                [i]
+c nmissplm        Number of missing periods (hour) found             [i]

@@ -1,0 +1,40 @@
+
+
+
+                          CTGCOMP OUTPUT SUMMARY
+                   VERSION:  2.25         LEVEL:  070327      
+
+
+
+ 
+ --------------------------
+     SETUP Information
+ --------------------------
+ 
+ 
+ Control File Used -----
+ ctgcomp1.inp                                                                                                                        
+ 
+ File Names ------------
+List File        : CTGCOMP1.LST                                                                                                                        
+Input CTG File   : LEWISTON.CTG                                                                                                                        
+COMPRESSED FILE  : LEWISTON.CMP                                                                                                                        
+ 
+ CTG Data File Header Records
+       575    884064       808    0  200    4   17   19    1   7874016      1973
+    1    1  808  575    0  556   21    0  415   13  809   20  802  575  401  373
+    440000    720000    450000    720000    450000    710000    450000    700000
+    440000    700000    440000    710000    259500   4987100     84180          
+LEWISTON, ME VT NH 1:250,000 QUAD LU PB CN HU                                   
+ 
+ Compression Complete !
+   Total Number of Records Read:  442037
+   Total Number of Missing LU Categories:  225
+
+
+  End of run -- Clock time: 22:39:26
+                      Date: 06-27-2007
+
+        Elapsed Clock Time:        1.0 (seconds)
+
+                  CPU Time:        1.0 (seconds)

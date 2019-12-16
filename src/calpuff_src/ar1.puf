@@ -1,0 +1,59 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /AR1/ -- Constant Area source data           CALPUFF
+c
+c----------------------------------------------------------------------
+      character*16 cnamar1
+c
+      common/AR1/XAR1GRD(mxvertp1,mxarea),YAR1GRD(mxvertp1,mxarea),
+     1 NVERT1(mxarea),HTAR1(mxarea),ELAR1(mxarea),SZ0AR1(mxarea),
+     2 QAR1(mxspec,mxarea),NEWAR1(mxarea),NAR1,AREA1(mxarea),
+     3 IARU,ivar1(mxspec,mxarea),iq12ar1(mxspec,mxarea),
+     4 cnamar1(mxarea)
+c
+c --- COMMON BLOCK /AR1/ Variables:
+c
+c *************  Discrete area source data ***************************
+c
+c XAR1GRD(mxvertp1,mxarea) - real     - X coordinate of a vertex of a
+c                                       discrete area source in grid units
+c                                       (i.e., origin at (0.0,0.0))
+c YAR1GRD(mxvertp1,mxarea) - real     - Y coordinate of a vertex of a
+c                                       discrete area source in grid units
+c                                       (i.e., origin at (0.0,0.0))
+c           NVERT1(mxarea) - real     - Number of sides bounding area
+c
+c (NOTE:  The mean x,y for the polygon is computed as vertex NVERT+1)
+c
+c            HTAR1(mxarea) - real     - Effective release height (m)
+c            ELAR1(mxarea) - real     - Ground elevation (m) above sea
+c                                       level
+c           SZ0AR1(mxarea) - real     - Initial sigma z (m)
+c
+c (NOTE:  The initial sigma-y is computed as function of wind direction)
+c
+c      QAR1(mxspec,mxarea) - real     - Emission rate (g/s) for each
+c                                       pollutant
+c           NEWAR1(mxarea) - integer  - Number of puffs released by each
+c                                       source during the current step
+c                     NAR1 - integer  - Number of discrete area sources
+c            AREA1(mxarea) - real     - Area of each source (m^2)
+c                     IARU - integer  - Units for emission rates in
+c                                       control file
+c                                       1:   g/s/m**2
+c                                       2:  kg/hr/m**2
+c                                       3:  lb/hr/m**2
+c                                       4:  ton/yr/m**2
+c                                       5:  Odour Unit * m/s
+c                                       6:  Odour Unit * m/min
+c     IVAR1(mxspec,mxarea) - integer  - IVARY flag defining how emission
+c                                       rate scaling factors vary
+c                                       0:  NO variation
+c                                       1:  Diurnal (24 values)
+c                                       2:  Monthly (12 values)
+c                                       3:  Hour & Season (96 values)
+c                                       4:  Speed & Stability (36 values)
+c                                       5:  Temperature (12 values)
+c   IQ12AR1(mxspec,mxarea) - integer  - Pointer for starting address in
+c                                       VQFAC array to assign scaling
+c                                       factors for this source/species
+c          CNAMAR1(mxarea) - c*16 arr - Source names

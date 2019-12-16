@@ -1,0 +1,154 @@
+c----------------------------------------------------------------------
+c --- PARAMETER statements -- CALMET model
+c----------------------------------------------------------------------
+c
+c --- Specify model version
+      character*8 mver,mlevel
+      parameter(mver='5.8.5',mlevel='151214')
+c
+c --- Specify parameters
+      parameter(mxnx=265,mxny=265,mxnz=12)
+      parameter(mxss=350,mxus=99,mxps=700,mxows=30)
+      parameter(mxm3d=52,mxigf=52)
+      parameter(mxlev=99,mxlu=52)
+      parameter(mxbar=20,mxbox=5,mxwb = 1)
+      parameter(mxsg=9)
+      parameter(mxnxp=200,mxnyp=200,mxnzp=50)
+      parameter(mxnxi=50,mxnyi=50,mxnzi=50)
+      parameter(iox=3,io5=15,io6=16)
+      parameter(io2=2,io4=4,io7=7,io8=8,io10=10,io12=12)
+      parameter(io18=18,io19=19,io20=20)
+      parameter(io21=21,io22=22,io23=23,io24=24,io25=25,io26=26)
+      parameter(io27=27,io28=28)
+      parameter(io30=30)
+      parameter(io80=80)
+      parameter(io98=98)
+c
+c --- Compute derived parameters
+      parameter(mxwnd=mxss+mxows+mxus)
+      parameter(mxtmp=mxss+mxows)
+      parameter(mxnzp1=mxnz+1)
+      parameter(mxnzm1=mxnz-1)
+      parameter(mxxy=mxnx*mxny)
+      parameter(mxbxwnd=mxwnd*mxbox)
+      parameter(mxxyz=mxnx*mxny*mxnz)
+      parameter(mxadd=mxlev+mxnzp1)
+      parameter(mxwk3=mxwnd+2*mxnz+3)
+      parameter(mxb3d=2*mxnxp+2*mxnyp-3)
+c
+c --- GENERAL GRID and MET. definitions:
+c       MXNX    - Maximum number of X grid cells
+c       MXNY    - Maximum number of Y grid cells
+c       MXNZ    - Maximum number of layers
+c       MXSS    - Maximum number of surface meteorological stations
+c       MXUS    - Maximum number of upper air stations
+c       MXPS    - Maximum number of precipitation stations
+c       MXOWS   - Maximum number of overwater stations
+c       MXM3D   - Maximum number of 3D.DAT files 
+c       MXBAR   - Maximum number of barriers allowed
+c       MXBOX   - Maximum number of seabreeze regions allowed
+c       MXWB    - Maximum number of water bodies that will be treated
+c                 separately in the temperature interpolation
+c                 (currently must be 1!)
+c       MXLEV   - Maximum number of vertical levels in upper air
+c                 data input files
+c       MXLU    - Maximum number of land use categories
+c       MXNXP   - Maximum number of X grid cells in the prognostic
+c                 wind model's grid
+c       MXNYP   - Maximum number of Y grid cells in the prognostic
+c                 wind model's grid
+c       MXNZP   - Maximum number of layers in the prognostic
+c                 wind model's grid
+c
+c --- CONTROL FILE READER definitions:
+c       MXSG    - Maximum number of input groups in control file
+c
+c --- FORTRAN I/O unit numbers:
+c       IOX     - Scratch file for holding      - i/o    - formatted
+c                 'comment' records for
+c                 header of CALMET.DAT file
+c
+c       IO2     - Preprocessed met. data for    - input  - formatted
+c                 diagnostic wind module
+c                 (DIAG.DAT)
+c
+c       IO4     - Unit for QA files             - output - formatted
+c                 QA3D.DAT - 3D/MM5/MM4.DAT grid points 
+c                            (X,Y,long,lat)
+c
+c       IO5     - Control file (CALMET.INP)     - input  - formatted
+c
+c       IO6     - List file (CALMET.LST)        - output - formatted
+c
+c       IO7     - Gridded wind & met. fields    - output - unformatted
+c                 produced by CALMET
+c                 (CALMET.DAT or PACOUT.DAT)
+c
+c       IO8     - Geophysical data fields       - input  - formatted
+c                 (GEO.DAT)
+c
+c       IO10    - Hourly surface observations   - input  - formatted or
+c                 (SURF.DAT)                               unformatted
+c
+c       IO12    - Hourly precipitation data     - input  - formatted
+c                 (PRECIP.DAT)
+c
+c       IO18    - IGF-CALMET files               - input  - unformatted
+c                 (IGFMET.DAT)
+c
+c       IO19    - Gridded weighting factors     - input  - formatted
+c                 for surface station data vs MM4 data
+c                 (WT.DAT)
+c
+c       IO20    - Gridded fields of prognostic  - input  - unformatted
+c                 wind fields to use as input
+c                 to the diagnostic model
+c                 (PROG.DAT or MM4.DAT or MM5.DAT)
+c
+c       IO30    - Upper air data observations   - input  - formatted
+c                 for upper air station #1
+c                 (UP1.DAT)
+c       IO30+1  - Same as IO30 except for upper
+c                 air station #2
+c                 (UP2.DAT)
+c                 ...
+c       (Repeated for each of "NUSTA" upper air station, i.e., Fortran
+c        units IO30 to IO30+NUSTA-1 are used for upper air data files)
+c       (Upper air file names are UP1.DAT, UP2.DAT, ... UP(# of stns).DAT)
+c
+c       IO80    - Overwater meteorological data - input  - formatted
+c                 for station #1
+c                 (SEA1.DAT)
+c       IO80+1  - Same as IO80 except for
+c                 overwater station #2
+c                 (SEA2.DAT)
+c                 ...
+c       (Repeated for each of "NOWSTA" overwater station, i.e., Fortran
+c        units IO80 to IO80+NOWSTA-1 are used for overwater data files)
+c       (Overwater file names are SEA1.DAT, SEA2.DAT,...SEA(# of stns).DAT)
+c
+c --- WIND FIELD MODEL TESTING AND DEBUG OUTPUT FILES
+c       IO21    - Intermediate winds and misc.  - output - formatted
+c                 input and internal variables
+c                 (TEST.PRT)
+c       IO22    - Final wind fields             - output - formatted
+c                 (TEST.OUT)
+c       IO23    - Winds after kinematic effects - output - formatted
+c                 (TEST.KIN)
+c       IO24    - Winds after Froude number     - output - formatted
+c                 effects (TEST.FRD)
+c       IO25    - Winds after slope flow        - output - formatted
+c                 effects (TEST.SLP)
+c
+c       IO26    - Gridded cloud field file      - input  - unformatted
+c                 (CLOUD.DAT)                      or
+c                                                 output
+c       IO27    - Gridded field of distance     - output - formatted
+c                 to the coast (GRD format)
+c
+c       IO28    - QA file(s) of station         - output - formatted
+c                 locations for plotting
+c
+c       IO98    - Scratch file for use in READCF to replace internal
+c                 read to allow wider compatibility with compilers
+ 

@@ -1,0 +1,28 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /UPMET/ -- Upper meteorological data          CALMET
+c----------------------------------------------------------------------
+c
+      common/upmet/paa(mxus,mxlev),zlaa(mxus,mxlev),
+     1 tzaa(mxus,mxlev),uaa(mxus,mxlev),vaa(mxus,mxlev),
+     2 pbb(mxus,mxlev),zlbb(mxus,mxlev),tzbb(mxus,mxlev),
+     3 ubb(mxus,mxlev),vbb(mxus,mxlev),nlaa(mxus),nlbb(mxus),
+     4 justa(mxus),jusdt(mxus),ntzaa(mxus),ntzbb(mxus)
+c
+c --- COMMON BLOCK /UPMET/ Variables:
+c      Paa(mxus,mxlev) - real array - aa GMT pressure (mb)
+c     ZLaa(mxus,mxlev) - real array - aa GMT height (m above LGL)
+c     TZaa(mxus,mxlev) - real array - aa GMT air temp. (deg. K)
+c      Uaa(mxus,mxlev) - real array - aa GMT U wind component (m/s)
+c      Vaa(mxus,mxlev) - real array - aa GMT V wind component (m/s)
+c      Pbb(mxus,mxlev) - real array - bb GMT pressure (mb)
+c     ZLbb(mxus,mxlev) - real array - bb GMT height (m above LGL)
+c     TZbb(mxus,mxlev) - real array - bb GMT air temp. (deg. K)
+c      Ubb(mxus,mxlev) - real array - bb GMT U wind component (m/s)
+c      Vbb(mxus,mxlev) - real array - bb GMT V wind component (m/s)
+c           NLaa(mxus) - int. array - Number of aa GMT sounding levels
+c           NLbb(mxus) - int. array - Number of bb GMT sounding levels
+c          JUSTA(mxus) - int. array - Flag (+1,-1) indicating that aa
+c                                     data (preceeds,follows) bb data
+c          JUSDT(mxus) - int. array - No. hours between sounding times.
+c          NTZaa(mxus) - int. array - Julian YYYYDDDHH GMT for aa data.
+c          NTZbb(mxus) - int. array - Julian YYYYDDDHH GMT for bb data.

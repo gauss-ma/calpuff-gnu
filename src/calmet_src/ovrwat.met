@@ -1,0 +1,169 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /OVRWAT/ -- Overwater param.+ met station data - CALMET
+c----------------------------------------------------------------------
+c
+      character*132 chowsta
+
+      real*8 vectiow,vectoow
+      character*12 cactionow
+
+      logical*4 lremap
+      character*8 datumow, pmapow
+      character*12 datenow
+      character*4 utmhemow
+
+c --- Put double-precision arrays first, and all character variables
+c --- last
+
+      common/ovrwat/vectiow(9),vectoow(9),
+     1 nowsta,ioow(mxows),xowsta(mxows),yowsta(mxows),
+     2 zowsta(mxows),ztair(mxows),zsst(mxows),
+     2 iowbeg(mxows),iowend(mxows),dtow(mxows),
+     3 tairow(mxows),rhow(mxows),ziow(mxows),ziminw,zimaxw,constw,
+     4 xor2,yor2,tgrada(mxows),tgradb(mxows),idowsta(mxows),
+     5 xowlon(mxows),xowlat(mxows),wsow(mxows),wdow(mxows),
+     6 rverow(mxows),icoare,jwave,dshelf,iwarm,icool,twave(mxows),
+     6 hwave(mxows),zlogwsta(mxows),z0ow(mxows),itwprog,threshw,
+     7 lremap,iutmznow,feastow,fnorthow,
+     8 rnlat0ow,relon0ow,xlat1ow,xlat2ow,
+     9 chowsta(mxows),pmapow,utmhemow,datumow,datenow,cactionow
+c
+c --- COMMON BLOCK /OVRWAT/ Variables:
+c          NOWSTA - integer    - Number of overwater met. stations
+c     IOOW(mxows) - int. array - Fortran unit no. of each overwater
+c                                met. station file
+c   XOWSTA(mxows) - real array - Overwater met. station X coordinates
+c                                (km)
+c   YOWSTA(mxows) - real array - Overwater met. station Y coordinates
+c                                (km)
+c   ZOWSTA(mxows) - real array - Anemometer height (m) above water of
+c                                each station's data
+c    ZTAIR(mxows) - real array - Air Temp Measurement height (m) above 
+c                                water of each station's data
+c     ZSST(mxows) - real array - SST measurement depth (m) below water 
+c                                surface (>0 downward) of each station's data
+c   IOWBEG(mxows) - int. array - Beginning date/time of current
+c                                record's data (YYYYJJJHH)
+c   IOWEND(mxows) - int. array - Ending date/time of current
+c                                record's data (YYYYJJJHH)
+c     DTOW(mxows) - real array - Air-water temperature difference
+c                                (K)
+c   TAIROW(mxows) - real array - Air temperature (K)
+c     RHOW(mxows) - real array - Relative humidity (%)
+c     ZIOW(mxows) - real array - Overwater mixing height (m)
+c   TGRADB(mxows) - real array - Temperature gradient below mixing
+c                                height over water (K/m)
+c                                  9999. = missing
+c   TGRADA(mxows) - real array - Temperature gradient above mixing
+c                                height over water (K/m)
+c                                  9999. = missing
+c  IDOWSTA(mxows) - int. array - Station IDs (number)
+c  CHOWSTA(mxows) - ch*132 array - Station IDs (character)
+c   XOWLON(mxows) - real array - Station Longitudes (EAST!!!)
+c   XOWLAT(mxows) - real array - Station Latitudes (North)
+c     WSOW(mxows) - real array - Station Wind Speeds (m/s)
+c                                  9999. = missing
+c     WDOW(mxows) - real array - Station Wind Directions (degrees)
+c                                  9999. = missing
+c
+c   RVEROW(mxows) - real array - SEA.DAT version number (>=2.1 for COARE<0)
+c          ZIMINW - real       - Minimum calculated overwater mixing
+c                                height (m) -- Not used in overwater
+c                                mixing heights have been specified in
+c                                ZIOW
+c          ZIMAXW - real       - Maximum calculated overwater mixing
+c                                height (m) -- Not used in overwater
+c                                mixing heights have been specified in
+c                                ZIOW
+c          CONSTW - real       - Overwater mixing ht. constant (default
+c                                value = 0.16)
+c            XOR2 - real       - Reference X coordinate of southwest
+c                                corner of grid (km)
+c            YOR2 - real       - Reference Y coordinate of southwest
+c                                corner of grid (km)
+c
+c Overwater boundary layer method:
+c ICOARE          - integer - Overwater method  
+c                             0: original deltaT method (OCD)
+c                             10,11,12: COARE with wave method jwave=0,1,2 
+c JWAVE           - integer - Wave method
+c                             0: COARE wave method jwave=0 (Charnok)
+c                             1: COARE wave method jwave 1 (Oost et al)
+c                             2: COARE wave option 2 (Taylor and Yelland)
+c DSHELF          - real    - Coastal/shallow water lengthscale in km                                         
+c IWARM           - integer - COARE warm layer computation option
+c                             1: on -  0: off 
+c ICOOL           - integer - COARE cool skin computation option
+c                             1: on -  0: off 
+c TWAVE (mxows)   - real    - Dominant wave period (seconds)
+c HWAVE (mxows)   - real    - Dominant wave height (meters)       
+c
+c ZLOGWSTA(MXOWS) - real    - Scaling factor for adjustment from anemometer
+c                             height to first CALMET level
+c     Z0OW(MXOWS) - real    - Overwater roughness length
+c
+c        THRESHW  - real    - threshold surface buoyancy flux required for mixing height 
+c                             growth overwater
+c                             (unit: energy flux per meter of marine boundary layer i.e. W/m3) 
+c                             (default: 0.05 W/m2 /m)
+c
+c        ITWPROG  - integer - Flag to use SEA.DAT and/or prognostic offshore temperatures
+c                             and lapse rates
+c                             0 : use SEA.DAT air/sea temperatures and lapse rates
+c                             1 : use SEA.DAT air/sea temperatures and prognostic lapse rates
+c                             2 : use prognostic air/sea temperatures and prognostic lapse rates
+c
+c --- Map Projection Information
+c
+c LREMAP        - logical*4 - Flag for remapping (X,Y) to match CALMET
+c VECTIOW(9)   - real*8 arr - Input Coordinate description vector:
+c                                 UTM zone or TM Scale Factor
+c                                 Reserved
+c                                 Reserved
+c                                 Matching Equator-ward N.Latitude
+c                                 Matching Pole-ward N.Latitude
+c                                 Map origin E.Longitude
+c                                 Map origin N.Latitude
+c                                 False Easting
+c                                 False Northing
+c VECTOOW(9)   - real*8 arr - Output Coordinate description vector:
+c                                 UTM zone override (ignore if 999.0D0)
+c                                     or TM Scale Factor
+c                                 Reserved
+c                                 Reserved
+c                                 Matching Equator-ward N.Latitude
+c                                 Matching Pole-ward N.latitude
+c                                 Map origin E.Longitude
+c                                 Map origin N.Latitude
+c                                 False Easting
+c                                 False Northing
+c IUTMZNOW      - integer   - UTM zone for UTM projection
+c FEASTOW (km)  - real      - False Easting at projection origin
+c FNORTHOW (km) - real      - False Northing at projection origin
+c RNLAT0OW,     - real      - N. latitude & E. longitude of x=0 and y=0
+c RELON0OW (deg)              of map projection (Used only if PMAP =
+c                             LCC, PS, EM, TTM or LAZA) 
+c                             NOTE: longitude neg in western hemisphere
+c XLAT1OW,      - real      - Matching N. latitude(s) for projection
+c XLAT2OW (deg)               (Used only if PMAP= LCC, PS, or EM)
+c                             LCC :  Projection cone slices through
+c                                    Earth's surface at XLAT1 and XLAT2
+c                             PS  :  Projection plane slices through
+c                                    Earth at XLAT1
+c                             EM  :  Projection cylinder slices through
+c                                    Earth at [+/-] XLAT1
+c PMAPOW        - character - Character code for output map projection
+c                             UTM :  Universal Transverse Mercator
+c                             LCC :  Lambert Conformal Conic
+c                             PS  :  Polar Stereographic
+c                             EM  :  Equatorial Mercator
+c                             LAZA:  Lambert Azimuthal Equal Area
+c                             TTM :  Tangential Transverse Mercator
+c UTMHEMOW      - character - Base hemisphere for UTM projection
+c                             (S=southern, N=northern)
+c DATUMOW       - character - Datum-Region for grid coordinates
+c DATENOW       - character - NIMA date for datum parameters
+c                             (MM-DD-YYYY  )
+c CACTIONOW     - char*12   - Map conversion string (e.g., UTM2LCC)
+c                             to remap overwater (x,y) to CALMET
+c                             (x,y)

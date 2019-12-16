@@ -1,0 +1,31 @@
+c-----------------------------------------------------------------------
+c --- Declaration Statements For SPECIES-Arrays                  CALPOST
+c --- (introduced to store results for more than 1 selected species
+c ---  and currently implemented for visibility)
+c-----------------------------------------------------------------------
+c  Summing/averaging arrays
+      real  av1acg(mxgx,mxgy,mxspec),av1acd(mxdrec,mxspec),
+     *      av1act(mxctrec,mxspec),
+     2      av3acg(mxgx,mxgy,mxspec),av3acd(mxdrec,mxspec),
+     *      av3act(mxctrec,mxspec),
+     3      av24acg(mxgx,mxgy,mxspec),av24acd(mxdrec,mxspec),
+     *      av24act(mxctrec,mxspec),
+     4      avNacg(mxgx,mxgy,mxspec),avNacd(mxdrec,mxspec),
+     *      avNact(mxctrec,mxspec),
+     5      avRacg(mxgx,mxgy,mxspec),avRacd(mxdrec,mxspec),
+     *      avRact(mxctrec,mxspec)
+      real  av24ang(mxgx,mxgy,mxspec),av24and(mxdrec,mxspec),
+     *      av24ant(mxctrec,mxspec),
+     2      avRang(mxgx,mxgy,mxspec),avRand(mxdrec,mxspec),
+     *      avRant(mxctrec,mxspec)
+c-----------------------------------------------------------------------
+c     DEFINITIONS
+c-----------------------------------------------------------------------
+c av1ac[g,d,t]  Arrays of current sum/average over 1 hour           [ra]
+c av3ac[g,d,t]  Arrays of current sum/average over 3 hours          [ra]
+c av24ac[g,d,t] Arrays of current sum/average over 24 hours         [ra]
+c avNac[g,d,t]  Arrays of current sum/average over N periods        [ra]
+c avRac[g,d,t]  Arrays of current sum/average over period of run    [ra]
+c av24an[g,d,t] Number of entries in current 24-sums/averages       [ra]
+c avRan[g,d,t]  Number of entries in run-length sums/averages       [ra]
+c-----------------------------------------------------------------------

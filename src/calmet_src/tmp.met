@@ -1,0 +1,31 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /TMP/ -- Flags for Temperature Calculation    CALMET
+c----------------------------------------------------------------------
+c
+      common/tmp/irad,iavet,numwb,tgdefb,tgdefa,
+     &           jwat1(mxwb),jwat2(mxwb),tradkm,trad,numts
+c
+c --- COMMON BLOCK /TMP/ Variables:
+c             IRAD - integer  - Type of interpolation
+c                                  1 = 1/Radius, 2 = 1/Radius**2
+c            IAVET - integer  - (0/1) 1 = use spatial averaging of
+c                               temperature
+c            NUMWB - integer  - Number of bodies of water to be treated
+c                               separately in temperature interpolation.
+c                               (Currently hardwired to 1 - not input)
+c           TGDEFB - real     - Default temperature gradient below the
+c                               mixing height over water (K/m).
+c           TGDEFA - real     - Default temperature gradient above the
+c                               mixing height over water (K/m).
+c            JWAT1 - integer  - Range of land uses to be considered as
+c            JWAT2   array      water in the land/water 3-D temperature
+c                               calculation for each of NUMWB bodies of
+c                               water.
+c                               (Currently only 1 allowed)
+c           TRADKM - real     - Radius of influence for temperature
+c                               interpolation (in km)
+c             TRAD - real     - Radius of influence for temperature
+c                               interpolation (in grid cells) -
+c                               computed from TRADKM and DGRIDKM
+c            NUMTS - integer  - Maximum # of sites to include in temperature
+c                               interpolation

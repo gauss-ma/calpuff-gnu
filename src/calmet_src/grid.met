@@ -1,0 +1,54 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /GRID/ -- Grid parameters                     CALMET
+c----------------------------------------------------------------------
+c
+      common/grid/nx,ny,nz,nzp1,dgrid,zface(mxnzp1),zmid(mxnz),
+     1 xorigr,yorigr,xlat0,xlon0,xmap0,ymap0,nears(mxnx,mxny),
+     2 nearu(mxnx,mxny),nearp(mxnx,mxny),disthmax(mxnx,mxny),
+     3 dx,dy,dz(mxnz),nzprnt,disthmin(mxnx,mxny),hmin(mxnx,mxny),
+     4 dcoast(mxnx,mxny),xlat(mxnx,mxny),xlon(mxnx,mxny)
+c
+c --- COMMON BLOCK /GRID/ Variables:
+c              NX - integer    - Number of grid points in X direction
+c              NY - integer    - Number of grid points in Y direction
+c              NZ - integer    - Number of vertical levels
+c            NZP1 - integer    - Number of vertical cell faces (NZ+1)
+c           DGRID - real       - Grid spacing (m)
+c   ZFACE(mxnzp1) - real array - Cell face heights (m) (NZP1 values)
+c      ZMID(mxnz) - real array - Cell center (grid point) heights (m)
+c          XORIGR - real       - Reference X coordinate (m) of
+c                                southwest corner of grid
+c          YORIGR - real       - Reference Y coordinate (m) of
+c                                southwest corner of grid
+c           XLAT0 - real       - Latitude (deg.) of SW corner of
+c                                grid (positive - No. Hemisphere,
+c                                negative - So. Hemisphere)
+c           XLON0 - real       - Longitude (deg.) of SW corner of
+c                                grid (positive - Western Hemisphere,
+c                                negative - Eastern Hemisphere)
+c    XMAP0, YMAP0 - real       - Reference coordinates (km) of SW grid
+c                                corner = (XORIGR, YORIGR) /1000
+c NEARS(MXNX,MXNY)- int. array - Number of the closest surface met.
+c                                station to each grid point
+c NEARU(MXNX,MXNY)- int. array - Number of the closest upper air met.
+c                                station to each grid point
+c NEARP(MXNX,MXNY)- int. array - Number of the closest precipitation
+c                                station to each grid point
+c DISTHMAX(MXNX,MXNY)- real    - Distance from the gridpoint to the 
+c                      array     highest peak within a radius TERRAD
+c DISTHMIN(MXNX,MXNY)- real    - Distance from the gridpoint to the 
+c                      array     lowest valley bottom within a radius TERRAD
+c HMIN(MXNX,MXNY)    - real    - Altitude of the lowest valley bottom
+c                      array     within a radius TERRAD
+c DCOAST(MXNX,MXNY)  - real    - Distance to coast (for water cells)
+c                      array
+c   XLAT(MXNX,MXNY)  - real    - Gridpoint North latitude
+c                      array
+c   XLON(MXNX,MXNY)  - real    - GridPoint East longitude
+c                      array
+c The following variables used to be in D5.MET (before 12/20/96)
+c                DX - real     - Grid spacing in the X direction (=DGRID)
+c                DY - real     - Grid spacing in the Y direction (=DGRID)
+c        DZ(MXNZ) - real array - Grid spacing in the Z direction
+c             NZPRNT - integer - Number of vertical levels to print
+c                                 (=NZPRN2 in WPARM.MET)

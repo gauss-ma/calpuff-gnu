@@ -1,0 +1,21 @@
+CALMM5 Output from Saudi Arabia Domain (CALMM5/3D-2D format)
+mm5sa27_d6.dat.v2 ! MM5 data input file name (no space before or within filename)  
+samp3d.mm5        ! CALMM5/M3D output file name (no space before or within filename)
+calmm5.lst        ! List file name (no space before or within filename)  
+2                 ! Options for selecting a region (1: use lat/long; 2: use J/I)
+2                 ! Southernmost latitude (in decimal, positive for NH), or J1/Y1
+5                 ! Northermost  latitude (in decimal, positive for NH), or J2/Y2
+3                 ! Westernmost  longitude (in decimal, negative for WH), or I1/X1
+6                 ! Easternmost  longitude (in decimal, negative for WH), or I2/X2
+1999062701        ! Starting date (year-month-day-UTC_hour)(yyyymmddhh)
+1999062702        ! Ending date (year-month-day-UTC_hour)(yyyymmddhh)
+1                 ! Output format (1,2,3,4,5 - 1 for CALMM5/M3D-M2D format)
+Keep this line - The following lines vary depending on the output format selected
+1 1 1 1 1         ! Output W, RH, cloud and rain, ice and snow, graupel
+1                 ! Flag for 2-D variables output (1/0: output/not)
+samp2d.mm5        ! File name for 2-D variable output (needed only 2-D Flag=1)
+1                 ! Lowest extraction level in MM5 
+14                ! Highest extraction level in MM5 
+
+
+

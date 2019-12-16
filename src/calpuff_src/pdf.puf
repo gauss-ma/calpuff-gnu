@@ -1,0 +1,27 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /PDF/ -- PDF dispersion variables            CALPUFF
+c----------------------------------------------------------------------
+c
+      logical lpdf
+      common/pdf/lpdf,swupf,swdnf,szupb,szdnb,wup,wdn,zup,zdn,
+     &           wtup,wtdn,risq,ryz,dhfac,rfacsq
+c
+c --- COMMON BLOCK /PDF/ Variables:
+c          LPDF - logical - PDF computation active when .TRUE.
+c         SWUPF - real    - Updraft (sigma-w / full sigma-w)**2
+c         SWDNF - real    - Downdraft (sigma-w / full sigma-w)**2
+c         SZUPB - real    - Updraft BID**2 term (m2)
+c         SZDNB - real    - Downdraft BID**2 term (m2)
+c           WUP - real    - Updraft w (indirect path)(m/s)
+c           WDN - real    - Downdraft w (direct path)(m/s)
+c           ZUP - real    - Updraft puff ht (m)
+c           ZDN - real    - Downdraft puff ht (m)
+c          WTUP - real    - Updraft path weight (indirect path)
+c          WTDN - real    - Downdraft path weight (direct path)
+c          RISQ - real    - Initial plume radius (squared) at CBL
+c                           top (m^2)
+c           RYZ - real    - Growth rate of elliptical plume
+c                           crossection (m**2/s**2)
+c         DHFAC - real    - Effective rise factor, where effective
+c                           rise given by t*dhfac/SQRT(risq+ryz*t^2)
+c        RFACSQ - real    - Gradual rise adj to BID**2

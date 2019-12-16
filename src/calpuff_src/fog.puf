@@ -1,0 +1,48 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /FOG/ -- FOG option data                     CALPUFF
+c----------------------------------------------------------------------
+c
+      parameter (mxpt=mxpt1+mxpt2)
+      real xrfog(mxrfog)
+      real zrfog(mxrfog,mxpt)
+      integer ipcp(51), ifdays(366), ipfog(mxpt)
+      character*20 ftitle(4)
+      logical lpmode,ladtfog
+c
+      common/FOG/ftitle,nfrec,nfpts,ipcp,ifyr,ifdays,nipfog,ipfog,
+     &           xrfog,zrfog,issta,ixsrc,iysrc,txsmxfog,
+     &           lpmode,ladtfog
+c
+c --- COMMON BLOCK /FOG/ Variables:
+c --------------------------------------------------------------------
+c --- Output file header variables
+c --------------------------------
+c      FTITLE - character*4  - Title line for FOG output file
+c       NFREC - integer      - Number of discrete receptors (ndrec)
+c       NFPTS - integer      - Number of point sources
+c        IPCP - integer      - Array of 51*0 (not used in Fog Model)
+c        IFYR - integer      - Year of simulation (assumes only 1 year)
+c      IFDAYS - integer      - Days to process in year 
+c                                0:  Do Not Process Day
+c                                1:  Process Day
+c                             (All days set to 0 to signal CALPUFF run)
+c      LPMODE - logical      - Plume-mode indicator (T/F)
+c --------------------------------------------------------------------
+c --- Computational variables (Plume Mode)
+c ----------------------------------------
+c      NIPFOG - integer      - Number of active fog sources this hour
+c       IPFOG - integer      - Puff index for first puff released
+c                              from each active source this hour
+c       XRFOG - real         - Receptor distances from source (m)
+c                              for output -- MXRFOG values
+c       ZRFOG - real         - Receptor height (m AGL) at the XRFOG
+c                              distances for each each source
+c --------------------------------------------------------------------
+c --- Computational variables 
+c ----------------------------
+c       ISSTA - integer      - Surface met station nearest source
+c IXSRC,IYSRC - integer      - Met grid cell nearest sources
+c    TXSMXFOG - real         - Maximum temperature excess (K) allowed
+c                              when summing contributions at receptor
+c     LADTFOG - logical      - Use summmed temperature excess at
+c                              receptor, from all puffs (T/F)

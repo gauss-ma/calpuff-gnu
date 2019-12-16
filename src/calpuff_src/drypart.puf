@@ -1,0 +1,29 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /DRYPART/ -- Particle dry dep. parameters    CALPUFF
+c----------------------------------------------------------------------
+c
+      common/DRYPART/nspart,gdiam(mxpdep),gsig(mxpdep),rho(mxpdep),
+     1 npsint,dconst4,pdiam(mxint,mxpdep),sc23(mxint,mxpdep),
+     2 vgrav(mxint,mxpdep),tstop(mxint,mxpdep),fract(mxint,mxpdep),
+     3 vairms
+c
+c --- COMMON BLOCK /DRYPART/ Variables:
+c                  NSPART - real    - Number of particle species
+c           GDIAM(mxpdep) - real    - Geometric mass mean diameter
+c                                     (microns)
+c            GSIG(mxpdep) - real    - Geometric standard deviation of
+c                                     particle distribution (microns)
+c             RHO(mxpdep) - real    - Particle density (g/cm**3)
+c                  NPSINT - integer - Number of size intervals used to
+c                                     evaluate the effective particle
+c                                     deposition velocity
+c                 DCONST4 - real    - Empirical constant in particle 
+c                                     deposition layer resistance eqn.
+c     PDIAM(mxint,mxpdep) - real    - Geometric mean diameter (microns)
+c                                     of each interval
+c      SC23(mxint,mxpdep) - real    - Schmidt number ** DCONST4
+c     VGRAV(mxint,mxpdep) - real    - Gravitational settling velocity
+c                                     (m/s)
+c     TSTOP(mxint,mxpdep) - real    - Stopping time (s)
+c     FRACT(mxint,mxpdep) - real    - Mass fraction in each size interval
+c                  VAIRMS - real    - Viscosity of air (m**2/s)

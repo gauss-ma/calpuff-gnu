@@ -1,0 +1,25 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /SPECOUT/ --- Output Species information      CALPOST
+c-----------------------------------------------------------------------
+c --- Output here means used in CALPOST to create results
+      integer mapospec(mxsplv)
+      character*15 osplst(mxsplv)
+
+      common/specout/nospec,iso4,ino2,inox,ino3,ipmf,ipmc,ioc,iec,
+     *               mapospec,osplst
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c                       [c]=character   [L]=logical
+c-----------------------------------------------------------------------
+c nospec        Number of output species                             [i]
+c iso4          Index for SO4 in osplst array                        [i]
+c ino2          Index for NO2 in osplst array                        [i]
+c inox          Index for NOX in osplst array                        [i]
+c ino3          Index for NO3 in osplst array                        [i]
+c ipmf          Index for PMF in osplst array                        [i]
+c ipmc          Index for PMC in osplst array                        [i]
+c ioc           Index for OC  in osplst array                        [i]
+c iec           Index for EC  in osplst array                        [i]
+c mapospec      Index of input species-level in osplst array         [i]
+c               (0 if not in output list)
+c osplst        List of output species/level names                  [ca]

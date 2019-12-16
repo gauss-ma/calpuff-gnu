@@ -1,0 +1,104 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /PT1/ -- Emission parameters for sources     CALPUFF
+c                           with constant emission characeristics
+c----------------------------------------------------------------------
+      character*16 cnampt1
+c
+      common/PT1/XPT1GRD(mxpt1),YPT1GRD(mxpt1),HTSTAK(mxpt1),
+     1 ELSTAK(mxpt1),DIAM(mxpt1),EXITW(mxpt1),TSTAK(mxpt1),
+     2 IDOWNW(mxpt1),QSTAK(mxspec,mxpt1),NPT1,
+     3 syipt1(mxpt1),szipt1(mxpt1),fmfpt1(mxpt1),zplatpt1(mxpt1),
+     4 NEWPT1(mxpt1),BWIDTH(36,mxpt1),BHT(36,mxpt1),
+     5 BLN1(36,mxpt1),XBADJ1(36,mxpt1),YBADJ1(36,mxpt1),
+     6 IPTU,ivpt1(mxspec,mxpt1),iq12pt1(mxspec,mxpt1),
+     7 NTRPT1(mxpt1),XTRPT1(mxrise,mxpt1),ZTRPT1(mxrise,mxpt1),
+     8 RTRPT1(mxrise,mxpt1),HTRPT1(mxrise,mxpt1),
+     9 NWKPT1(mxpt1),XWKPT1(mxrise,mxpt1),SYWKPT1(mxrise,mxpt1),
+     & SZWKPT1(mxrise,mxpt1),DRWKPT1(mxrise,mxpt1),
+     1 NCVPT1(mxpt1),XCVPT1(mxrise,mxpt1),SYCVPT1(mxrise,mxpt1),
+     2 SZCVPT1(mxrise,mxpt1),FQCVPT1(mxpt1),
+     3 CNAMPT1(mxpt1)
+c
+c --- COMMON BLOCK /PT1/ Variables:
+c        XPT1GRD(mxpt1) - real     - X coordinate of the stack (in met.
+c                                    grid units w/ origin at (0.0,0.0))
+c        YPT1GRD(mxpt1) - real     - Y coordinate of the stack (in met.
+c                                    grid units w/ origin at (0.0,0.0))
+c         HTSTAK(mxpt1) - real     - Stack height (m)
+c         ELSTAK(mxpt1) - real     - Stack base elevation (m) above
+c                                    sea level
+c           DIAM(mxpt1) - real     - Stack diameter (m)
+c          EXITW(mxpt1) - real     - Exit velocity (m/s)
+c          TSTAK(mxpt1) - real     - Exit temperature (deg. K)
+c         IDOWNW(mxpt1) - real     - Building downwash flag (0=no, 1=yes)
+c   QSTAK(mxspec,mxpt1) - real     - Emission rate (g/s) for each
+c                                    pollutant
+c                  NPT1 - integer  - Number of sources with constant
+c                                    emission parameters
+c         SYIPT1(mxpt1) - real     - Initial sigma-y (m)  [optional]
+c         SZIPT1(mxpt1) - real     - Initial sigma-z (m)  [optional]
+c         FMFPT1(mxpt1) - real     - Momentum flux factor (0 or 1)
+c       ZPLATPT1(mxpt1) - real     - Platform height (m AGL) [optional]
+c         NEWPT1(mxpt1) - integer  - Number of puffs released by each
+c                                    source during the current time step
+c      BWIDTH(36,mxpt1) - real     - Wind direction specific building
+c                                    widths (m)
+c         BHT(36,mxpt1) - real     - Wind direction specific building
+c                                    heights (m)
+c        BLN1(36,mxpt1) - real     - Wind direction specific building
+c                                    lengths (m)
+c      XBADJ1(36,mxpt1) - real     - Wind direction specific along-wind
+c                                    distance from stack to center of
+c                                    upwind face of projected building,
+c                                    x-axis lies along the flow (m)
+c      YBADJ1(36,mxpt1) - real     - Wind direction specific cross-wind
+c                                    distance from stack to center of
+c                                    upwind face of projected building,
+c                                    x-axis lies along the flow (m)
+c                  IPTU - integer  - Units for emission rates in
+c                                    control file
+c                                    1:   g/s
+c                                    2:  kg/hr
+c                                    3:  lb/hr
+c                                    4:  ton/yr
+c                                    5:  Odour Unit * m**3/s
+c                                    6:  Odour Unit * m**3/min
+c   IVPT1(mxspec,mxpt1) - integer  - IVARY flag defining how emission
+c                                    rate scaling factors vary
+c                                    0:  NO variation
+c                                    1:  Diurnal (24 values)
+c                                    2:  Monthly (12 values)
+c                                    3:  Hour & Season (96 values)
+c                                    4:  Speed & Stability (36 values)
+c                                    5:  Temperature (12 values)
+c IQ12PT1(mxspec,mxpt1) - integer  - Pointer for starting address in
+c                                    VQFAC array to assign scaling
+c                                    factors for this source/species
+c        CNAMPT1(mxpt1) - c*16 arr - Source names
+c
+c ---  Numerical Plume Rise & PRIME Downwash Arrays ---
+c
+c        NTRPT1(mxpt1) - integer  - Number points in trajectory arrays
+c XTRPT1(mxrise,mxpt1) - real     - Downwind distance (m) of trajectory
+c ZTRPT1(mxrise,mxpt1) - real     - Height (m AGL) of trajectory
+c RTRPT1(mxrise,mxpt1) - real     - Plume radius (m)
+c HTRPT1(mxrise,mxpt1) - real     - Plume rise (m) without streamline
+c                                   modifications (used for BID)
+c
+c        NWKPT1(mxpt1) - integer  - Number points in wake arrays
+c XWKPT1(mxrise,mxpt1) - real     - Downwind distance (m) from primary
+c                                   source in wake region
+cSYWKPT1(mxrise,mxpt1) - real     - Sigma-y (m) for primary source
+cSZWKPT1(mxrise,mxpt1) - real     - Sigma-z (m) for primary source
+cDRWKPT1(mxrise,mxpt1) - real     - Plume growth rate expressed as
+c                                   d/dx(plume radius) for equivalent
+c                                   top-hat
+c
+c        NCVPT1(mxpt1) - integer  - Number points in cavity arrays
+c XCVPT1(mxrise,mxpt1) - real     - Downwind distance (m) from cavity
+c                                   source in wake region
+cSYCVPT1(mxrise,mxpt1) - real     - Sigma-y (m) for cavity source
+cSZCVPT1(mxrise,mxpt1) - real     - Sigma-z (m) for cavity source
+c       FQCVPT1(mxpt1) - real     - Fraction of emission rate captured
+c                                   in the cavity
+

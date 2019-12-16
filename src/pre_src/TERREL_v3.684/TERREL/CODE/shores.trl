@@ -1,0 +1,36 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /SHORES/ -- Land/water interface info          TERREL
+c-----------------------------------------------------------------------
+      real xp(mxcoastp),yp(mxcoastp)
+      integer nshore,nspts(mxcoast),itypes(mxcoast),istart(mxcoast),
+     &        isourcep(mxcoast),ipolyid(mxcoast)
+      real pxmax(mxcoast),pymax(mxcoast),pxmin(mxcoast),pymin(mxcoast)
+
+
+      common /SHORES/ nshore,nspts,itypes,istart,isourcep,ipolyid,
+     &                xp,yp,pxmax,pymax,pxmin,pymin
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c nshore         number of polygons defining land-water interface    [i]
+c nspts          array of 'nshore' numbers of points in each polygon [i]
+c itypes         array of 'nshore' types of each polygon             [i]
+c                  1 - mainland and marine island
+c                  2 - lake
+c                  3 - island in lake
+c                  4 - pond within island
+c istart         array of 'nshore' indices of start of each polygon  [i]
+c                in the coordinate arrays (xp, yp)
+c isourcep       array indicating the original source of the polygon [i]
+c                  1 - WDBII
+c                  2 - WVS
+c ipolyid        array indicating the GSHHS_F id of the polygon      [i]
+c xp             array of x-coordinates of the points in all         [r]
+c                polygons, in output datum
+c yp             array of y-coordinates of the points in all         [r]
+c                polygons, in output datum
+c pxmax, pymax   array of maximum values of x- and y-coordinates for [r]
+c                each of the 'nshore' polygons, in output datum
+c pxmin, pymin   array of minimum values of x- and y-coordinates for [r]
+c                each of the 'nshore' polygons, in output datum
+c-----------------------------------------------------------------------

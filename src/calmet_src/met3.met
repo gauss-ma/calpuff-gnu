@@ -1,0 +1,10 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /MET3/ -- Hourly precipitation data           CALMET
+c----------------------------------------------------------------------
+c
+      common/met3/xprecp(mxps)
+c
+c --- COMMON BLOCK /MET3/ Variables:
+c  XPRECP(mxps) - real array - Hourly precipitation amounts (mm/hr)
+c                              at each precip. station (9999. indicates
+c                              a missing value)

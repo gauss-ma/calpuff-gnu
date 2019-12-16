@@ -1,0 +1,23 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /FILNAM/ -- PXTRACT file names               PXTRACT
+c----------------------------------------------------------------------
+      character*132 runinp,runlst,precdat
+      logical lcfiles
+
+      common /FILNAM/ runinp,runlst,precdat
+      common /FILLOG/ lcfiles
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c runinp         Path & filename for the control file                [c]
+c                (default: PXTRACT.INP)
+c runlst         Path & filename for the output PXTRACT list file    [c]
+c                (default: PXTRACT.LST)
+c precdat        Path & filename for the input TD3240 data file      [c]
+c                (default: TD3240.DAT)
+c lcfiles        Switch indicating if all characters in the          [l]
+c                filenames are to be converted to lower case
+c                letters (LCFILES=T) or converted to UPPER
+c                case letters (LCFILES=F).
+c-----------------------------------------------------------------------

@@ -1,0 +1,16 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /DATEHR/ -- Date/time variables              CALPUFF
+c----------------------------------------------------------------------
+c
+      common/datehr/nyr,nmo,nday,njul,nhr,nhrind,ndathr,xbtz
+c
+c --- COMMON BLOCK /DATEHR/ Variables:
+c           NYR - integer    - 4 digit year
+c           NMO - integer    - Month
+c          NDAY - integer    - Day of month
+c          NJUL - integer    - Julian day
+c           NHR - integer    - Current hour (00-23)
+c        NHRIND - integer    - Hour index (01-24)
+c        NDATHR - integer    - Code date and time (YYYYJJJHH, where
+c                              YYYY=year, JJJ=Julian day, HH=hour)
+c          XBTZ - real       - Base time zone for current date/time

@@ -1,0 +1,256 @@
+-------------------------------------------------------------------------------
+
+                     BUOY PROCESSOR CONTROL FILE
+                    -----------------------------
+
+  The Buoy processor reads data from either the National Oceanographic
+  Data Center (NODC) web site or the National Data Buoy Center (NDBC)
+  web site and produces a SEA.DAT file for use with CALMET.
+
+-------------------------------------------------------------------------------
+
+INPUT GROUP: 0 -- Input and Output Files
+--------------
+
+-------------
+Subgroup (0a)
+-------------
+
+     Number of Buoy Data Files provided in Subgroup 0b
+
+     (NBDF)                     Default: 0      ! NBDF = 3  !
+
+     Output version of the SEA.DAT file
+
+     (DATAVER)                  Default: 2.11   ! DATAVER = 2.11  !
+     --------------------------------------------------------------------------
+
+     Output dataset versions  2.0:  Data format prior to 10/2005
+                                    with no wave data
+                              2.1:  Data format with 2 wave parameters
+                                    (not recommended)
+                              2.11: Data format with 2 wave parameters
+                                    and base time zone record
+                              2.2:  Data format with sub-hourly
+                                    time steps.
+                              3.0:  Data format with sub-hourly
+                                    time steps, additional
+                                    wave records and temperature-
+                                    salinity profiles (for future use)
+
+     Other Input and Output files:
+     -----------------------------
+
+     Default Name  Type          File Name
+     ------------  ----          ---------
+    PREV.DAT       input    * PREVDAT =            *
+    SEA.DAT        output   ! OUTFIL = 42039-2003.dat !
+    BUOY.LST       output   ! LSTFIL = 42039-2003.lst !
+    ---------------------------------------------------------
+
+    All file names will be converted to lower case if LCFILES = T
+    Otherwise, if LCFILES = F, file names will be converted to UPPER CASE
+    (LCFILES)                   Default: T      ! LCFILES = F     !
+             T = lower case
+             F = UPPER CASE
+    
+    NOTE: File/path names can be up to 70 characters in length
+
+!END!
+
+-------------
+Subgroup (0b)
+-------------
+
+     The following Data Files are processed in order.
+     Enter NBDF lines identifying the file name for each,
+     followed by a group terminator.  Each file should
+     represent a different time period for the same buoy
+     station.  The type of data base for each file is
+     designated by the assignment name:
+
+    (NODC)     Designates National Oceanagraphic Data Center (www.nodc.noaa.gov)
+               Contains all wave parameters
+    (NDBC)     Designates National Data Buoy Center Data (www.ndbc.noaa.gov)
+               Contains Wave Period and Wave Height for Version 2.1, 2.2 output
+               but not extended wave variables for Version 3.0 output
+
+     1 !NODC = 42039_200301.txt!     !END!
+     2 !NODC = 42039_200302.txt!     !END!
+     3 !NODC = 42039_200303.txt!     !END!
+
+
+-------------
+Subgroup (0c)
+-------------
+
+     DATUM -region
+     ------------
+
+     The Datum-Region for coordinates in the input Data Files needs to be identified.
+     Check the file documentation and change the default if needed.  The list of
+     Datum-Regions with official transformation parameters is provided by the National
+     Imagery and Mapping Agency (NIMA).
+
+     Datum-region for input Buoy Data File coordinates
+     (DNDBC)                  Default: WGS-84    ! DNDBC  = WGS-84 !
+     (DNODC)                  Default: WGS-84    ! DNODC  = WGS-84 !
+
+
+
+  !END!
+
+--------------------------------------------------------------------------------
+
+INPUT GROUP: 1 -- Processing Options
+--------------
+
+   --- Processing Period ---
+
+       Starting date:  Year (IBYR) -- No default   ! IBYR = 2003  !
+                      Month (IBMO) -- No default   ! IBMO = 1  !
+                        Day (IBDY) -- No default   ! IBDY = 1  !
+               [00-23] Hour (IBHR) -- No default   ! IBHR = 1  !
+
+       Ending date:    Year (IEYR) -- No default   ! IEYR = 2003  !
+                      Month (IEMO) -- No default   ! IEMO = 3  !
+                        Day (IEDY) -- No default   ! IEDY = 1  !
+               [00-23] Hour (IEHR) -- No default   ! IEHR = 1  !
+
+       Base time zone:      (ABTZ) -- No default   ! ABTZ = UTC-0500  !
+         PST = UTC-0800, MST = UTC-0700
+         CST = UTC-0600, EST = UTC-0500
+         GMT = UTC+0000
+
+   -----------------------
+   NOTE:  The hour is defined by the time at the end of the hour
+          in time zone ABTZ.
+
+ --- File Options ---
+
+     Previous SEA.DAT file is used in this run?
+     (LPREV)                    No Default      ! LPREV = F !
+        T = PREV.DAT file is used
+        F = PREV.DAT file is NOT used
+
+
+!END!
+
+--------------------------------------------------------------------------------
+
+INPUT GROUP: 2 -- Map Projection and Grid Information for Output
+--------------
+
+    Projection
+    ----------
+
+    Map projection for all X,Y (km)
+    (PMAP)                      Default: UTM    ! PMAP = LCC     !
+       UTM :  Universal Transverse Mercator
+       TTM :  Tangential Transverse Mercator
+       LCC :  Lambert Conformal Conic
+       PS  :  Polar Stereographic
+       EM  :  Equatorial Mercator
+       LAZA:  Lambert Azimuthal Equal Area
+
+    False Easting and Northing (km) at the projection origin
+    (Used only if PMAP = TTM, LCC, or LAZA)
+    (FEAST)                     Default: 0.0    ! FEAST  = 0.0     !
+    (FNORTH)                    Default: 0.0    ! FNORTH = 0.0     !
+
+    UTM ZONE (1 to 60)
+    (Used only if PMAP = UTM)
+    (IUTMZN)                    No Default      ! IUTMZN  = 17     !
+
+    Hemisphere for UTM projection
+    (Used only if PMAP = UTM)
+    (UTMHEM)                    Default: N      ! UTMHEM = N     !
+        N    :  Northern hemisphere projection
+        S    :  Southern hemisphere projection
+
+    Latitude and Longitude (decimal degrees) for projection origin
+    (Used only if PMAP = TTM, LCC, PS, EM, or LAZA)
+    (RLAT0)                     No Default      ! RLAT0 = 28.0N     !
+    (RLON0)                     No Default      ! RLON0 = 90.0W     !
+
+        TTM :  RLON0 identifies central (true N/S) meridian of projection
+               RLAT0 selected for convenience
+        LCC :  RLON0 identifies central (true N/S) meridian of projection
+               RLAT0 selected for convenience
+        PS  :  RLON0 identifies central (grid N/S) meridian of projection
+               RLAT0 selected for convenience
+        EM  :  RLON0 identifies central meridian of projection
+               RLAT0 is REPLACED by 0.0N (Equator)
+        TTM :  RLON0 identifies longitude of tangent-point of mapping plane
+               RLAT0 identifies latitude of tangent-point of mapping plane
+
+    Matching parallel(s) of latitude (decimal degrees) for projection
+    (Used only if PMAP = LCC or PS)
+    (RLAT1)                     No Default      ! RLAT1 = 23.0N     !
+    (RLAT2)                     No Default      ! RLAT2 = 33.0N     !
+        LCC :  Projection cone slices through Earth's surface at RLAT1 and RLAT2
+        PS  :  Projection plane slices through Earth at RLAT1
+               (RLAT2 is not used)
+
+    -------------
+    NOTE:  Latitudes and longitudes should be positive, and include a
+           letter N, S, E, or W indicating north or south latitude, and
+           east or west longitude.  For example,
+           35.9  N Latitude =   35.9N
+           118.7 E Longitude = 118.7E
+
+    Output Datum-Region
+    -------------------
+
+    The Datum-Region for the output coordinates is identified by a character
+    string.  Many mapping products currently available use the model of the 
+    Earth known as the World Geodetic System 1984 (WGS-84).  Other local
+    models may be in use, and their selection in BUOY will make its output 
+    consistent with local mapping products.  The list of Datum-Regions with 
+    official transformation parameters is provided by the National Imagery 
+    and Mapping Agency (NIMA)
+
+    Datum-Region for output coordinates
+    (DATUM)                     Default: WGS-84  ! DATUM = WGS-84     !
+!END!
+
+--------------------------------------------------------------------------------
+
+INPUT GROUP: 3 -- Station Identification Information
+--------------
+
+    (BNAM) Name for Buoy       Default: None    ! BNAM = PENSACOLA 115 NM ESE OF PENSACOLA FL     !
+
+          For output dataset version 2.0 or 2.1 this
+          character string must be 4 characters or less.
+          For output dataset versions 2.11 or later it can be
+          a description of up to 132 characters.
+
+    (RASN) Air Temperature Sensor Height
+                               Default: None    ! RASN = 4.0     !
+
+    (RWSN) Water Temperature Sensor Depth
+                               Default: None    ! RWSN = 0.6     !
+
+
+     Additional Station Identification Information for NDBC files.
+     (These are read directly from the NODC F291 format data file)
+
+     ID Number for Buoy
+    (IDNUM)                    Default: None    ! IDNUM = 45005     !
+
+     Stationary Buoy Location
+    (BLAT)  Station Latitude   Default: None    ! BLAT = 41.68N     !
+    (BLON)  Station Longitude  Default: None    ! BLON = 82.40W     !
+    (BANM)  Anemometer Height  Default: None    ! BANM = 5.0     !
+
+!END!
+
+-------------------------------------------------------------------------------
+    NIMA Datum-Regions  (Documentation Section)
+-------------------------------------------------------------------------------
+WGS-84    WGS-84 Reference Ellipsoid and Geoid, Global coverage (WGS84)
+NAS-C     NORTH AMERICAN 1927 Clarke 1866 Spheroid, MEAN FOR CONUS (NAD27)
+NAR-C     NORTH AMERICAN 1983 GRS 80 Spheroid, MEAN FOR CONUS (NAD83)
+NWS-84    NWS 6370KM Radius, Sphere
+ESR-S     ESRI REFERENCE 6371KM Radius, Sphere

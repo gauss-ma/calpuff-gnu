@@ -1,0 +1,67 @@
+
+
+
+                          PXTRACT OUTPUT SUMMARY
+                   VERSION:  4.25         LEVEL:  070327      
+
+
+
+ 
+ -------------------------------------------------
+ NOTICE: Starting year in control file sets the
+         expected century for the simulation.  All
+         YY years are converted to YYYY years in
+         the range:  1940 2039
+ -------------------------------------------------
+ 
+
+
+ FILENAMES: 
+     Control file:          pxtract.inp                                                                                                                         
+     Input TD3240 file:     TD3240.DAT                                                                                                                          
+     Output list file:      PXTRACT.LST                                                                                                                         
+
+
+  Data Requested by Station ID
+
+  Period to Extract:    1/ 1/1990  to   1/15/1990
+
+
+  Requested Precipitation Station ID Numbers -- :
+
+    No.    ID            No.    ID            No.    ID            No.    ID
+
+     1   170273           5   270741           9   274732          13   276234
+     2   176905           6   270998          10   274808          14   276818
+     3   177325           7   272842          11   275639          15   278885
+     4   178641           8   273182          12   275780          16   437054
+
+
+
+  Station      Starting     Ending       No. of
+    Code         Date        Date        Records
+
+  170273        1/ 1/1990   1/17/1990      6
+  176905        1/ 1/1990   1/16/1990     13
+  177325        1/ 1/1990   1/16/1990      6
+  178641        1/ 1/1990   1/21/1990      6
+  270741        1/ 1/1990   1/16/1990      5
+  270998        1/ 1/1990   1/18/1990      6
+  272842        1/ 1/1990   1/17/1990      8
+  273182        1/ 1/1990   1/21/1990      6
+  274732        1/ 1/1990   1/16/1990      9
+  274808        1/ 1/1990   1/17/1990      6
+  275639        1/ 1/1990   1/16/1990     83
+  275780        1/ 1/1990   1/18/1990      5
+  276234        1/ 1/1990   1/17/1990      9
+  276818        1/ 1/1990   1/17/1990     13
+  278885        1/ 1/1990   1/18/1990      7
+  437054        1/ 1/1990   1/16/1990      5
+
+
+  End of run -- Clock time: 23:00:18
+                      Date: 06-27-2007
+
+        Elapsed Clock Time:        1.0 (seconds)
+
+                  CPU Time:        1.0 (seconds)

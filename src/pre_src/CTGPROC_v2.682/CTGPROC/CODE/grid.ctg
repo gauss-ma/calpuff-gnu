@@ -1,0 +1,52 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /GRID/ -- Grid for output data                CTGCOMP
+c-----------------------------------------------------------------------
+      logical lzone,ldatum
+      character*4 utmhem
+      character*8 datum
+      character*12 daten
+      character*16 clat0,clon0,clat1,clat2
+
+      common /GRID/ nx,ny,dgrid,xorigin,yorigin,xllk,yllk,xurk,yurk,
+     &              izone,reflat,reflon,xlat1,xlat2,ictgzone,
+     &              feast,fnorth,
+     &              lzone,ldatum,utmhem,datum,daten,
+     &              clat0,clon0,clat1,clat2
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c nx,ny            actual number of cells in x,y (or r,theta)        [i]
+c dgrid       (km) length of side of output grid Cartesian grid cell [r]
+c (x,y)origin (km) reference coordinates of grid origin              [r]
+c (x,y)llk    (km) reference coordinates of grid lower left-hand     [r]
+c                  corner
+c (x,y)urk    (km) reference coordinates of grid upper right-hand    [r]
+c                  corner
+c izone            base zone for UTM grid                            [i]
+c reflat,          latitude & longitude of x=0 and y=0 of map        [r]
+c reflon (deg)     projection (Used only if PMAP= LCC, PS, EM, or LAZA) 
+c                  NOTE: longitude is East Longitude (neg in west hem)
+c xlat1,           matching latitude(s) used for projection          [r]
+c xlat2 (deg)      (Used only if PMAP= LCC, PS, or EM)
+c                  LCC :  Projection cone slices through Earth's surface
+c                         at XLAT1 and XLAT2
+c                  PS  :  Projection plane slices through Earth at XLAT1
+c                  EM  :  Projection cylinder slices through Earth at
+c                         [+/-] XLAT1
+c ictgzone         UTM zone for CTG data                             [i]
+c feast  (km)      False Easting at projection origin                [r]
+c fnorth (km)      False Northing at projection origin               [r]
+c lzone            flag indicating data and base UTM zones differ    [l]
+c                  (T = zones are different;  F = zones are the same)
+c ldatum           flag indicating data and base DATUMS differ       [l]
+c                  (T = datums are different;  F = datums are the same)
+c utmhem           base hemisphere for output UTM projection         [c]
+c                  (S=southern, N=northern)
+c datum            Datum-Region for grid coordinates                 [c]
+c daten            NIMA date for datum parameters (MM-DD-YYYY  )     [c]
+c clat0            character version of RLAT                         [c]
+c clon0            character version of RLON                         [c]
+c clat1            character version of XLAT1                        [c]
+c clat2            character version of XLAT2                        [c]
+c-----------------------------------------------------------------------

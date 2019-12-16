@@ -1,0 +1,25 @@
+c----------------------------------------------------------------------
+c --- PARAMETER statements -- PXTRACT Preprocessor
+c----------------------------------------------------------------------
+c --- Specify model version
+      character*12 mver, mlevel
+      parameter(mver='4.25',mlevel='070327')
+c
+c --- Specify parameters
+      parameter(mxs=50, mxstn=230)
+      parameter(io2=2,io5=5,io6=3)
+      parameter(iomesg=0)
+c
+c --- Parameter definitions:
+c       MVER    - version number of PXTRACT
+c       MLEVEL  - level (e.g. release date code) of PXTRACT
+c       MXS     - maximum number of states to extract
+c       MXSTN   - maximum number of stations to extract
+c
+c --- FORTRAN I/O unit numbers: (THESE MUST BE < 6)
+c       IOMESG  - unit number for screen         - output
+c       IO5     - Control file (PXTRACT.INP)     - input  - formatted
+c       IO6     - Run list File (PXTRACT.LST)    - output - formatted
+c       IO2     - Input TD3240 data file (TD3240.DAT)
+c                                                - input  - formatted
+ 

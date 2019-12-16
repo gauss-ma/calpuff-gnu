@@ -1,0 +1,142 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /FILNAM/ -- CALPUFF file names               CALPUFF
+c----------------------------------------------------------------------
+c
+      character*132 pufinp,metdat,iscdat,plmdat,puflst,condat,
+     1 dfdat,wfdat,visdat,t2ddat,rhodat,lndat,ozdat,vddat,
+     2 chemdat,hildat,rctdat,prfdat,sfcdat,rstartb,rstarte,
+     3 cstdat,bdydat,flxdat,baldat,bcndat,fogdat,h2o2dat,debug
+      character*132 metdatl(mxmetdat)
+      character*132 ptdat(mxemdat),ardat(mxemdat),voldat(mxemdat)
+      logical lcfiles
+c
+      common/filnam/nmetdat,imetdat,nptdat,nardat,nvoldat,
+     1 pufinp,metdat,metdatl,iscdat,plmdat,puflst,condat,
+     2 dfdat,wfdat,visdat,t2ddat,rhodat,ptdat,voldat,ardat,lndat,ozdat,
+     3 vddat,chemdat,hildat,rctdat,prfdat,sfcdat,rstartb,rstarte,
+     4 cstdat,bdydat,flxdat,baldat,bcndat,fogdat,h2o2dat,debug
+      common/fillog/lcfiles
+c
+c --- COMMON BLOCK /FILNAM/, /FILLOG/ Variables:
+c         NMETDAT - integer - Number of names provided in METDATL
+c         IMETDAT - integer - Current METDATL file being used
+c          NPTDAT - integer - Number of names provided in PTDAT
+c          NARDAT - integer - Number of names provided in ARDAT
+c         NVOLDAT - integer - Number of names provided in VOLDAT
+c          PUFINP - c*132   - Path & filename for the control file
+c                             (default: CALPUFF.INP)
+c          METDAT - c*132   - Path & filename for the CALMET
+c                             binary meteorological file in
+c                             CALPUFF/CALGRID format
+c                             (default: CALMET.DAT)
+cMETDATL(mxmetdat) - c*132   - Path & filename for the LIST of CALMET
+c                   array     binary meteorological files
+c          ISCDAT - c*132   - Path & filename for the ISC-type of
+c                             ASCII meteorological file
+c                             (default: ISCMET.DAT)
+c          PLMDAT - c*132   - Path & filename for the AUSPLUME-type of
+c                             ASCII meteorological file
+c                             (default: PLMMET.DAT)
+c          PUFLST - c*132   - Path & filename for the output CALPUFF
+c                             list file
+c                             (default: CALPUFF.LST)
+c          CONDAT - c*132   - Path & filename for the output CALPUFF
+c                             unformatted concentration file
+c                             (default: CONC.DAT)
+c           DFDAT - c*132   - Path & filename for the output CALPUFF
+c                             unformatted dry deposition flux file
+c                             (default: DF.DAT)
+c           WFDAT - c*132   - Path & filename for the output CALPUFF
+c                             unformatted wet deposition flux file
+c                             (default: WF.DAT)
+c          VISDAT - c*132   - Path & filename for the output CALPUFF
+c                             RH data file for visibility calculations
+c                             (default: VISB.DAT)
+c          T2DDAT - c*132   - Path & filename for the output CALPUFF
+c                             2D Temperature data file for visibility
+c                             related processing
+c                             (default: TK2D.DAT)
+c          RHODAT - c*132   - Path & filename for the output CALPUFF
+c                             2D Density data file for visibility
+c                             related processing
+c                             (default: RHO2D.DAT)
+c  PTDAT(mxemdat) - c*132   - Path & filename for the input CALPUFF
+c                             file(s) containing point source emissions
+c                             with arbitrarily-varying source and
+c                             emission parameters
+c                             (default: PTEMARB.DAT, for 1 file)
+c VOLDAT(mxemdat) - c*132   - Path & filename for the input CALPUFF
+c                             file(s) containing volume sources
+c                             with arbitrarily-varying source and
+c                             emission parameters
+c                             (default: VOLEMARB.DAT, for 1 file)
+c  ARDAT(mxemdat) - c*132   - Path & filename for the input CALPUFF
+c                             file(s) containing buoyant area sources
+c                             with arbitrarily-varying location and
+c                             emissions
+c                             (default: BAEMARB.DAT, for 1 file)
+c           LNDAT - c*132   - Path & filename for the input CALPUFF
+c                             file containing buoyant line sources
+c                             with arbitrarily-varying location and
+c                             emissions
+c                             (default: LNEMARB.DAT)
+c           OZDAT - c*132   - Path & filename for the input CALPUFF
+c                             file with hourly ozone monitoring data
+c                             (default: OZONE.DAT)
+c           VDDAT - c*132   - Path & filename for the input CALPUFF
+c                             file with user-specified deposition
+c                             velocities
+c                             (default: VD.DAT)
+c         CHEMDAT - c*132   - Path & filename for the input CALPUFF
+c                             file with user-specified chemical
+c                             transformation rates
+c                             (default: CHEM.DAT)
+c          HILDAT - c*132   - Path & filename for the input CALPUFF
+c                             file with CTSG hill specifications from
+c                             the CTDM terrain processor
+c                             (default: HILL.DAT)
+c          RCTDAT - c*132   - Path & filename for the input CALPUFF
+c                             file with CTSG receptors from the
+c                             CTDM receptor generator
+c                             (default: HILLRCT.DAT)
+c          PRFDAT - c*132   - Path & filename for the input CALPUFF
+c                             file for "tower" met data, including
+c                             turbulence data
+c                             (default: PROFILE.DAT)
+c          SFCDAT - c*132   - Path & filename for the input CALPUFF
+c                             file of surface parameters
+c                             (default: SURFACE.DAT)
+c         RSTARTB - c*132   - Path & filename for the RESTART file used
+c                             at beginning of continuation run
+c         RSTARTE - c*132   - Path & filename for the RESTART file made
+c                             during current run (last update at end)
+c          CSTDAT - c*132   - Path & filename for the input CALPUFF
+c                             file with coast line data used with
+c                             sub-grid TIBL module
+c                             (default: COASTLN.DAT)
+c          BDYDAT - c*132   - Path & filename for the input CALPUFF
+c                             file with boundary data used for mass
+c                             flux module
+c                             (default: FLUXBDY.DAT)
+c          FLXDAT - c*132   - Path & filename for the output CALPUFF
+c                             file with hourly mass flux data
+c                             (default: MASSFLX.DAT)
+c          BALDAT - c*132   - Path & filename for the output CALPUFF
+c                             file with hourly mass balance data
+c                             (default: MASSBAL.DAT)
+c          BCNDAT - c*132   - Path & filename for the input CALPUFF
+c                             file with boundary condition data
+c                             (default: BCON.DAT)
+c          FOGDAT - c*132   - Path & filename for the output CALPUFF
+c                             file with data for FOG processor
+c                             (default: FOG.DAT)
+c         H2O2DAT - c*132   - Path & filename for the input CALPUFF
+c                             file with hourly H2O2 monitoring data
+c                             (default: H2O2.DAT)
+c           DEBUG - c*132   - Path & filename for the output CALPUFF
+c                             file containing debug puff/slug data
+c                             (default: DEBUG.DAT)
+c         LCFILES - logical - Switch indicating if all characters in the
+c                             filenames are to be converted to lower case
+c                             letters (LCFILES=T) or converted to UPPER
+c                             case letters (LCFILES=F).

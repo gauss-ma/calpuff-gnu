@@ -1,0 +1,136 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /LN2/ -- Emission parameters for buoyant     CALPUFF
+c                           line sources (variable)
+c----------------------------------------------------------------------
+c
+      character*12 fname5,label5,cslst5
+      character*16 cid5
+c
+      common/LN2/FNAME5,NLN2,NSE5,XNLAT1LN2,XNLAT2LN2,RNLAT0LN2,
+     1 RWLON0LN2,IVRS5,IBDAT5,IBTIM5,IEDAT5,IETIM5,
+     2 LABEL5,CSLST5(mxspec),XMWEM5(mxspec),IXREM5(mxspec),
+     3 CID5(mxlines),MXNSEG2,NLRISE2,IBEG5,IEND5,NLINES2,NL2(mxlngrp),
+     4 XL2(mxlngrp),HBL2(mxlngrp),WBL2(mxlngrp),WML2(mxlngrp),
+     5 DXL2(mxlngrp),FPRIMEL2(mxlngrp),WSEP2(mxlngrp),FPTOT2(mxlngrp),
+     6 FBPT2(mxlngrp),XL2BAR(mxlngrp),YL2BAR(mxlngrp),ORIENTL2(mxlngrp),
+     7 ILNGRP(mxlines),XL2BEGGRD(mxlines),YL2BEGGRD(mxlines),
+     8 XL2ENDGRD(mxlines),YL2ENDGRD(mxlines),HSL2(mxlines),
+     9 BELEVL2(mxlines),XVERTL2(4,mxlines),YVERTL2(4,mxlines),
+     & ARLINE2(mxlines),NSEG2(mxlines),QTL2(mxspec,mxlines),
+     1 NEWLN2(mxlines),
+     2 XLRISE2(mxrise,2,mxlngrp),ZLRISE2(mxrise,2,mxlngrp)
+c
+c --- COMMON BLOCK /LN2/ variables:
+c
+c           FNAME5 - char*12  - Data set name "LNEMARB"
+c             NLN2 - integer  - Total number of line sources
+c             NSE5 - integer  - Number of emitted species in file
+c        XNLAT1LN2 - real     - Standard parallel #1 for LC map
+c                               projection (degrees N. Latitude)
+c        XNLAT2LN2 - real     - Standard parallel #1 for LC map
+c                               projection (degrees N. Latitude)
+c        RNLAT0LN2 - real     - N. Latitude of origin of LC map
+c                               projection (degrees)
+c        RWLON0LN2 - real     - W. Longitude of origin of LC map
+c                               projection (degrees)
+c            IVRS5 - integer  - Data set version expressed as integer
+c                               (5.4 is 54)
+c           IBDAT5 - integer  - Date of the first data record in the
+c                               file  (YYJJJ, where YY=year,
+c                               JJJ=Julian day)
+c           IBTIM5 - integer  - Hour of the first data record in the
+c                               file  (00-23 LST)
+c           IEDAT5 - integer  - Date of the last data record in the
+c                               file  (YYJJJ, where YY=year,
+c                               JJJ=Julian day)
+c           IETIM5 - integer  - Hour of the last data record in the
+c                               file  (00-23 LST)
+c           LABEL5 - char*12  - Data set label
+c   CSLST5(mxspec) - char*12  - Species identifiers
+c   XMWEM5(mxspec) - real ar  - Species molecular weight
+c   IXREM5(mxspec) - int ar   - Cross-referencing array of "NSE5"
+c                               values relating species ordering
+c                               in the emissions file to the
+c                               ordering in the main conc. array
+c    CID5(mxlines) - char*16  - Line source names
+c          MXNSEG2 - integer  - Upper limit on number of segments
+c                               along line from which slugs are
+c                               generated
+c          NLRISE2 - integer  - Number of points used to tabulate
+c                               plume rise from group of lines
+c
+c ---  Variable data  -------------------------------------------------
+c
+c                 IBEG5 - integer    - Starting time for which emissions
+c                                      data in current set of
+c                                      records is valid (YYJJJHH)
+c                 IEND5 - integer    - Ending time for which emissions
+c                                      data in current set of
+c                                      records is valid (YYJJJHH)
+c               NLINES2 - integer    - Number of active line sources
+c
+c ---  Group Properties
+c
+c          NL2(mxlngrp) - int  array - Number of lines in each group
+c          XL2(mxlngrp) - real array - Average line source length (m)
+c         HBL2(mxlngrp) - real array - Average line source height (m)
+c         WBL2(mxlngrp) - real array - Average building width (m)
+c         WML2(mxlngrp) - real array - Average line source width (m)
+c         DXL2(mxlngrp) - real array - Average building separation (m)
+c     FPRIMEL2(mxlngrp) - real array - Average buoyancy parameter/line
+c                                      in units of (m**4/s**3)
+c        WSEP2(mxlngrp) - real array - Average separation between lines
+c                                      (WBL+DXL)  (m)
+c       FPTOT2(mxlngrp) - real array - Total buoyancy parameter
+c                                      (FPRIMEL*NLINES)
+c        FBPT2(mxlngrp) - real array - "Point Source" buoyancy parameter
+c                                      (FPTOT/pi)
+c       XL2BAR(mxlngrp) - real array - X-center of group (met grid)
+c       YL2BAR(mxlngrp) - real array - Y-center of group (met grid)
+c     ORIENTL2(mxlngrp) - real array - Orientation of group
+c                                      (radians, CW from N)
+c ---  Line Properties
+c
+c       ILNGRP(mxlines) - int array  - Group ID for each line
+c    XL2BEGGRD(mxlines) - real array - Beginning X coordinate of the lines
+c                                      (in met. grid units w/ origin at
+c                                      (0.0,0.0))
+c    YL2BEGGRD(mxlines) - real array - Beginning Y coordinate of the lines
+c                                      (in met. grid units w/ origin at
+c                                      (0.0,0.0))
+c    XL2ENDGRD(mxlines) - real array - Ending X coordinate of the lines
+c                                      (in met. grid units w/ origin at
+c                                      (0.0,0.0))
+c    YL2ENDGRD(mxlines) - real array - Ending Y coordinate of the lines
+c                                      (in met. grid units w/ origin at
+c                                      (0.0,0.0))
+c         HSL2(mxlines) - real array - Pollutant release height (m)
+c      BELEVL2(mxlines) - real array - Base elevation (MSL) of line
+c    XVERTL2(4,mxlines) - real array - X-coord. (met grid) of vertices
+c                                      defining 4 corners of each line
+c    YVERTL2(4,mxlines) - real array - Y-coord. (met grid) of vertices
+c                                      defining 4 corners of each line
+c      ARLINE2(mxlines) - real array - Area of line source (m**2)
+c        NSEG2(mxlines) - real array - Number of segments used for line
+c                                      in current step
+c  QTL2(mxspec,mxlines) - real array - Pollutant emission rates (g/s)
+c                                      for each line
+c       NEWLN2(mxlines) - integer arr- Number of puffs released by each
+c                                      source during the current step
+c     XLRISE2(mxrise,2,mxlngrp)
+c                       - real array - Distance from furthest upwind
+c                                      part of group of line sources,
+c                                      to points at which rise is
+c                                      tabulated (m); element 2=1 is for
+c                                      current met., element 2=2 is for
+c                                      previous period of met.
+c     ZLRISE2(mxrise,2,mxlngrp)
+c                       - real array - Computed rise at each XLRISE2,
+c                                      for puff released at the point
+c                                      farthest upwind (m); element 2=1
+c                                      is for current met., element 2=2
+c                                      is for previous period of met.
+c                       - ** note ** - Element 1 is at "XFB", the point
+c                                      in the group of line sources that
+c                                      is furthest downwind, while element
+c                                      NLRISE2 is at final rise.

@@ -1,0 +1,174 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /CTRL/ --- Control Variables                CALPOST
+c-----------------------------------------------------------------------
+      logical LG,LD,LCT,LDRING,LCTSG,LSCALE,LBACK,
+     *        L1PD,L1HR,L3HR,L24HR,LNAVG,LRUNL,
+     *        LT50,LTOPN,LEXCD,LECHO,L24ECHO,
+     *        LTIME,L24TSER,LPEAK,L24PEAK,
+     *        LXDAY,LXDAY1,LXDAY3,LXDAY24,LXDAYN,
+     *        LDEBUG,LVEXTHR,LPLT,LGRD,LVISIB,LVSR,LGEXCLUDE
+      logical LDOC
+      integer ndrecp(mxdrec)
+      integer ngrecp(mxgx,mxgy)
+      character*12 aspec
+      character*13 units
+      character*14 cdname
+      character*15 asplv
+      character*60 areaname
+      common/ctrl/isyr,ismo,isdy,jsday,ishr,ismin,issec,issec4,
+     *            ieyr,iemo,iedy,jeday,iehr,iemin,iesec,iesec4,btzone,
+     *            nper,ilayer,metrun,nrep,navg,navgh,navgm,navgs,
+     *            iper1,iper3,iper24,
+     *            ntop,itop(4),nrnk,nrnkv24,iecho(366),a,b,iprtu,
+     *            thresh1,thresh3,thresh24,threshN,
+     *            sthresh1,sthresh3,sthresh24,sthreshN,ncount,nday,
+     *            rscale,msrc,msampler,mdvis,mcalmpro,no2calc,mvischeck,
+     *            ndrecp,ibgrid,jbgrid,iegrid,jegrid,ngrecp,ngonoff,
+     *            LG,LD,LCT,LDRING,LCTSG,LSCALE,LBACK,
+     *            L1PD,L1HR,L3HR,L24HR,LNAVG,LRUNL,
+     *            LT50,LTOPN,LEXCD,LECHO,L24ECHO,
+     *            LTIME,L24TSER,LPEAK,L24PEAK,
+     *            LXDAY,LXDAY1,LXDAY3,LXDAY24,LXDAYN,
+     *            LDEBUG,LVEXTHR,LPLT,LGRD,LVISIB,LVSR,LGEXCLUDE,LDOC,
+     *            aspec,asplv,cdname,units,areaname
+c-----------------------------------------------------------------------
+c     DEFINITIONS   [i]=integer   [r]=real   [a]=array   [L]=logical
+c-----------------------------------------------------------------------
+c isyr,ismo,isdy Processing start time: year,month,day,hour,min,sec  [i]
+c ishr,ismin,issec  (ishr follows (0-23) time convention)
+c issec4         4-digit time(sec) = ismin*60 + issec                [i]
+c jsday          Julian day (computed)                               [i]
+c ieyr,iemo,iedy Processing end time: year,month,day,hour,min,sec    [i]
+c iehr,iemin,iesec  (iehr follows (0-23) time convention)
+c iesec4         4-digit time(sec) = iemin*60 + iesec                [i]
+c jeday          Julian day (computed)                               [i]
+c btzone         Base time zone for CALPUFF simulation               [r]
+c nper           Number of periods to process                        [i]
+c ilayer         Layer from which concentrations are processed;      [i]
+c                enter 1 for CALPUFF
+c metrun         Flag to run CALPOST on entire period in model file  [i]
+c                   0: Run period explicitly stated
+c                   1: Run entire period
+c nrep           Processing interval (hours) - 1=process every hour  [i]
+c                3=process every third hour, etc.
+c navg           User-specified averaging time (periods)             [i]
+c navg[h,m,s]    User-specified averaging time (hour,minute,second)  [i]
+c iper1          Number of periods equal to 1 hour                   [i]
+c iper3          Number of periods equal to 3 hours                  [i]
+c iper24         Number of periods equal to 24 hours                 [i]
+c ntop           Number of "top" concentrations at each rec. (<5)    [i]
+c itop           Ranks of "top" concs reported at each rec. (<5)    [ia]
+c nrnk           Largest rank in itop array                          [i]
+c nrnkv24        Number of days stored when ranking the top daily    [i]
+c                visibility impacts
+c iecho(366)     Array of days signalling which days of the year    [ia]
+c                are selected for detailed output (1=output)
+c a,b            Scaling (new=old*a+b): Not applied if 0.,0.         [r]
+c iprtu          Units indicator for output                          [i]
+c                      1)  g/m**3 (conc)  g/m**2/s (dep)
+c                      2) mg/m**3 (conc) mg/m**2/s (dep)
+c                      3) ug/m**3 (conc) ug/m**2/s (dep)
+c                      4) ng/m**3 (conc) ng/m**2/s (dep)
+c                      5) odour units
+c thresh[1,3,24,N]  Threshold values for counting exceedences        [r]
+c sthresh[1,3,24,N]  Threshold values in standard units              [r]
+c ncount         Number of exceedances allowed in period             [i]
+c nday           Number of days in (running) period                  [i]
+c rscale         Conversion factor from standard to user units       [r]
+c msrc           Source contribution processing flag                 [i]
+c                  0:  process TOTAL as reported
+c                  1:  sum all source contributions and process
+c                  2:  run in TRACEBACK mode to identify source
+c                      contributions at a SINGLE receptor
+c msampler       SAMPLER processing flag                             [i]
+c                  0:  do not use SAMPLER processing
+c                  1:  report total modeled impact at SAMPLER location
+c                      (list file)
+c                  2:  Run in TRACEBACK mode and report individual
+c                      source contributions at SAMPLER
+c                      (DAT-format file created for each data record
+c                      in SAMP.DAT)
+c                  3:  Run in TRACEBACK mode and report individual
+c                      source contributions at SAMPLER scaled by
+c                      measure provided in SAMP.DAT
+c                      (DAT-format file created for each data record
+c                      in SAMP.DAT)
+c mdvis          Visibility-change auxiliary output file flag        [i]
+c                  0:  Do Not create file
+c                  1:  Create file of DAILY (24 hour) Delta-Deciview
+c                  2:  Create file of DAILY (24 hour) Bext Change (%)
+c                  3:  Create file of HOURLY Delta-Deciview
+c                  4:  Create file of HOURLY Bext Change (%)
+c mcalmpro       CALM processing option flag for files produced by   [i]
+c                plume models that report zero concentrations during
+c                calm periods
+c                  0:  Option is not used for CALPUFF/CALGRID output
+c                  1:  Apply CALM processing procedures to
+c                      multiple-hour averages
+c no2calc        NO2 calculation flag                                [i]
+c                  0:  Read NO2 directly from file
+c                  1:  Specify a single NO2/NOx ratio (RNO2NOX)
+c                  2:  Specify a table NO2/NOx ratios (TNO2NOX)
+c mvischeck      Flag for checking visibility configuration          [i]
+c ndrecp         Discrete receptor processing flag array            [ia]
+c                  0:  do not process
+c                  1:  process (when LD is true)
+c                 -1:  process ALL (when LD is true)
+c ibgrid         Beginning cell X-index for gridded receptors        [i]
+c jbgrid         Beginning cell Y-index for gridded receptors        [i]
+c iegrid         Ending cell X-index for gridded receptors           [i]
+c jegrid         Ending cell Y-index for gridded receptors           [i]
+c ngrecp         Gridded receptor processing flag array             [ia]
+c                  0:  do not process
+c                  1:  process (when LG is true)
+c ngonoff        Number of records provided in control file to       [i]
+c                indentify gridded receptors that are excluded
+c LG             Include gridded receptors                           [L]
+c LD             Include discrete receptors                          [L]
+c LCT            Include discrete complex terrain receptors          [L]
+c LDRING         Report results for each ring of discrete receptors  [L]
+c                (only active when LD is true)
+c LCTSG          Logical signals presence of modeling data at CTSG   [L]
+c                receptors (deposition is not computed here)
+c LSCALE         Apply scaling factors a,b if .true.                 [L]
+c LBACK          Add hourly background if .true.                     [L]
+c L1PD           Process 1-pd averages (model output averages)       [L]
+c L1HR           Process 1-hr averages                               [L]
+c L3HR           Process 3-hr averages                               [L]
+c L24HR          Process 24-hr averages                              [L]
+c LNAVG          Process NAVG-hr averages                            [L]
+c LRUNL          Process Length-of-run averages                      [L]
+c LT50           Top 50 tables for selected avg.                     [L]
+c LTOPN          Top ntop tables for selected avg.                   [L]
+c LEXCD          Exceedence count for selected avg.                  [L]
+c LECHO          Output selected avgs. for days in IECHO array       [L]
+c L24ECHO        Output 24-hour avgs. for days in IECHO array        [L]
+c LTIME          Output timeseries of selected avgs. for days in     [L]
+c                IECHO array
+c L24TSER        Output timeseries of 24-hour avgs. for days in      [L]
+c                IECHO array
+c LPEAK          Output timeseries of peak values from selected avgs.[L]
+c                for days in IECHO array
+c L24PEAK        Output timeseries of peak 24-hour avgs. for days in [L]
+c                IECHO array
+c LXDAY          Daily exceedence counts processed                   [L]
+c LXDAY1         Daily exceedence count for 1-hr avg.                [L]
+c LXDAY3         Daily exceedence count for 3-hr avg.                [L]
+c LXDAY24        Daily exceedence count for 24-hr avg.               [L]
+c LXDAYN         Daily exceedence count for NAVG-hr avg.             [L]
+c LDEBUG         Logical to turn on selected output for debugging    [L]
+c LVEXTHR        Logical to turn on output for visibility extinction [L]
+c                information at each receptor (REPORT.HRV)
+c LPLT           Make plot-files for options selected                [L]
+c LGRD           Format plot-files as SURFER GRID-file when T        [L]
+c                Format plot-files as 'x,y,value ...'  when F
+c LVISIB         Visibility processing when true                     [L]
+c LVSR           Use visual range measurements when true             [L]
+c LGEXCLUDE      Specific gridded receptors are excluded             [L]
+c LDOC           Echo header documentation when true                 [L]
+c aspec          Species (SO2, SO4, NOx, HNO3, NO3) for CALPUFF;     [c]
+c                one of up to 36 for CALGRID
+c asplv          Combined species/level name                         [c]
+c cdname         concentration, dry deposition, or wet deposition    [c]
+c units          character label for output units                    [c]
+c areaname       Name of Class I Area for visibility-related data    [c]

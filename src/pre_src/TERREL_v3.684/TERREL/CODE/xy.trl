@@ -1,0 +1,25 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /XY/ -- Discrete location data                 TERREL
+c-----------------------------------------------------------------------
+      common /XY/ nxyrec,nxycol,xyradkm,
+     &            xreckm(mxrecxy),yreckm(mxrecxy),
+     &            elrecm(mxrecxy),zrecm(mxrecxy),
+     &            xx(4,mxrecxy),yy(4,mxrecxy),zz(4,mxrecxy),
+     &            distxy(4,mxrecxy)
+
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c nxyrec             number of discrete locations                    [i]
+c nxycol             number of columns in the receptor input file    [i]
+c                     2: (X,Y) only; 4: (X,Y,Elevation,Flagpole height)
+c xyradkm            search radius (km) for selection max elevation  [r]
+c xreckm(mxrecxy)    x-coordinate of discrete locations (km)        [ra]
+c yreckm(mxrecxy)    y-coordinate of discrete locations (km)        [ra]
+c elrecm(mxrecxy)    elevation at discrete locations (m)            [ra]
+c zrecm(mxrecxy)     discrete location height above ground (m)      [ra]
+c xx(4,mxrecxy)      x-coordinates for 4 DEM points nearest location[ra]
+c yy(4,mxrecxy)      y-coordinates for 4 DEM points nearest location[ra]
+c zz(4,mxrecxy)      elevations for 4 DEM points nearest location   [ra]
+c distxy(4,mxrecxy)  distance to 4 DEM points from location         [ra]
+c-----------------------------------------------------------------------

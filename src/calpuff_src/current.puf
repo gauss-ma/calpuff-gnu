@@ -1,0 +1,177 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /CURRENT/ -- Info. for current puff/slug     CALPUFF
+c----------------------------------------------------------------------
+c
+      logical lup1,lup2
+c
+      common/CURRENT/xb1,yb1,zb1,syb1,szb1,
+     1               xe1,ye1,ze1,sye1,sze1,
+     2               vtyb1,vtzb1,vtye1,vtze1,
+     3               vdyb1,vdzb1,vdye1,vdze1,
+     4               xb2,yb2,zb2,syb2,szb2,
+     5               xttb1,xtte1,tb1,te1,sym1,szm1,zm1,
+     6               xe2,ye2,ze2,sye2,sze2,
+     7               vtyb2,vtzb2,vtye2,vtze2,
+     8               vdyb2,vdzb2,vdye2,vdze2,
+     9               xttb2,xtte2,tb2,te2,
+     1               fracz1,fracz2,lup1,lup2,
+     2               ipnum,isnum,istype,icode,imet,
+     3               iage,speedi,srat,temis,bidsq,xfrise,zfrise,
+     4               sy0sq,vsetl,zplat,
+c ----------- POLYGON area source data ---------------
+     5               nside,xvert(mxvert),yvert(mxvert),
+     6               xv(mxvert),yv(mxvert),aream2,
+c ----------- POLYGON line source data ---------------
+     7               xshift,xupedge,
+c ----------- DISPERSION OPTION  data  ---------------
+     8               idopty,idoptz
+c
+c
+c --- COMMON BLOCK /CURRENT/ Variables:
+c
+c Puff or Older end of Slug -----
+c       XB1,YB1,ZB1 - real      -Coordinates (m) of the PUFF or OLDER
+c                                end of the SLUG at the BEGINNING (B)
+c                                of the time step (i.e., time = T).
+c         SYB1,SZB1 - real     - are the corresponding Sigmas (m) with
+c                                BID (note SX = SY assumed).
+c       XE1,YE1,ZE1 - real      -Coordinates (m) of the PUFF or OLDER
+c                                end of the SLUG at the END (E) of
+c                                the time step (i.e., time = T+DT).
+c         SYE1,SZE1 - real     - are the corresponding Sigmas (m) with
+c                                BID (note SX = SY assumed).
+c       VTYB1,VTZB1 - real     - Virtual travel TIME (s) for sigmas of
+c                                PUFF or OLDER end of SLUG at BEGINNING
+c                                of step
+c       VTYE1,VTZE1 - real     - Virtual travel TIME (s) for sigmas of
+c                                PUFF or OLDER end of SLUG at END
+c                                of step
+c       VDYB1,VDZB1 - real     - Virtual travel DIST (km) for sigmas of
+c                                PUFF or OLDER end of SLUG at BEGINNING
+c                                of step
+c       VDYE1,VDZE1 - real     - Virtual travel DIST (km) for sigmas of
+c                                PUFF or OLDER end of SLUG at END
+c                                of step
+c             XTTB1 - real     - Total travel distance of PUFF or OLDER
+c                                end of SLUG at the BEGINNING of the
+c                                time step.
+c             XTTE1 - real     - Total travel distance of PUFF or OLDER
+c                                end of SLUG at the END of the
+c                                time step.
+c               TB1 - real     - Total travel time of PUFF or OLDER
+c                                end of SLUG at the BEGINNING of the
+c                                time step.
+c               TE1 - real     - Total travel time of PUFF or OLDER
+c                                end of SLUG at the END of the
+c                                time step.
+c     SYM1,SZM1,ZM1 - real     - PUFF sigmas and ht (m) at midpoint
+c                                with BID
+c
+c Younger end of Slug ----------
+c       XB2,YB2,ZB2 - real     - Coordinates (m) of the YOUNGER end
+c                                of the SLUG at the BEGINNING (B) of
+c                                the time step (i.e., time = T).
+c         SYB2,SZB2 - real     - are the corresponding Sigmas (m) with
+c                                BID (note SX = SY assumed).
+c       XE2,YE2,ZE2 - real      -Coordinates (m) of the YOUNGER end
+c                                of the SLUG at the END (E) of
+c                                the time step (i.e., time = T+DT).
+c         SYE2,SZE2 - real     - are the corresponding Sigmas (m) with
+c                                BID (note SX = SY assumed).
+c       VTYB2,VTZB2 - real     - Virtual travel TIME (s) for sigmas of
+c                                YOUNGER end of SLUG at BEGINNING
+c                                of step
+c       VTYE2,VTZE2 - real     - Virtual travel TIME (s) for sigmas of
+c                                YOUNGER end of SLUG at END of step
+c       VDYB2,VDZB2 - real     - Virtual travel DIST (km) for sigmas of
+c                                YOUNGER end of SLUG at BEGINNING
+c                                of step
+c       VDYE2,VDZE2 - real     - Virtual travel DIST (km) for sigmas of
+c                                YOUNGER end of SLUG at END of step
+c             XTTB2 - real     - Total travel distance of YOUNGER end
+c                                at the BEGINNING of the time step.
+c             XTTE2 - real     - Total travel distance of YOUNGER end
+c                                at the END of the time step.
+c               TB2 - real     - Total travel time of YOUNGER end
+c                                at the BEGINNING of the time step.
+c               TE2 - real     - Total travel distance of YOUNGER end
+c                                at the END of the time step.
+c
+c Misc. Puff/Slug --------------
+c    FRACZ1, FRACZ2 - real     - Fraction of step beyond which puff ht
+c                                is constant for upslope flow, or up
+c                                to which puff height is constant for
+c                                downslope flow, for puff (1);
+c                                or for old (1) and new (2) end of slug
+c         LUP1,LUP2 - logical  - Flag for upslope flow when .TRUE. for
+c                                puff (1);   or for old (1) and new (2)
+c                                end of slug
+c             IPNUM - integer  - Current "Puff(Slug)" index number
+c             ISNUM - integer  - Associated source index
+c            ISTYPE - integer  - Associated source type:
+c                                1 = Point         Constant Emissions
+c                               (2)= Point         Variable Emissions
+c                                3 = Poly. Area    Constant Emissions
+c                               (4)= Poly. Area    Variable Emissions
+c                                5 = Line          Constant Emissions
+c                                6 = Volume        Constant Emissions
+c                               (7)= Grid Volume   Constant Emissions
+c                               (8)= Grid Volume   Variable Emissions
+c             ICODE - integer  - Current "Puff(Slug)" code
+c                                (see IPUFCD in /PUFF/)
+c              IMET - integer  - Met index for source tabulations such
+c                                as numerical plume rise
+c                                =1 current meteorology
+c                                =2 previous meteorology
+c                                =3 previous previous meteorology
+c                                =4 (etc.)
+c                                Limited by MXMETSAV parameter
+c              IAGE - integer  - Age indicator.
+c                                =0 implies material is being emitted.
+c                                >0 implies material is older.
+c            SPEEDI - real     - Wind speed at emission time (m/s)
+c              SRAT - real     - Ratio of the vector mean wind speed
+c                                to scalar speed at emission time
+c             TEMIS - real     - Duration of the original emission (s)
+c             BIDSQ - real     - Square of buoyancy-induced sigma at
+c                                final rise (m^2)
+c            XFRISE - real     - Distance to final rise (m)
+c            ZFRISE - real     - Final puff/slug rise (m) -- not height
+c             SY0SQ - real     - Square of sigma-y associated with area
+c                                source (m^2)
+c             VSETL - real     - Gravitational settling velocity (m/s)
+c                                for current puff
+c             ZPLAT - real     - Platform (downwash) ht above surface (m)
+c
+c             NSIDE - integer  - # sides of the polygon area source.
+c     XVERT(mxvert) - real     - X coordinates (m) of the vertices of
+c                                the polygon area source.
+c     YVERT(mxvert) - real     - Y coordinates (m) of the vertices of
+c                                the polygon area source.
+c        XV(mxvert) - real     - Upwind distances (m) from a receptor
+c                                to vertices of polygon area source.
+c        YV(mxvert) - real     - Crosswind distances (m) from receptor
+c                                to vertices of polygon area source.
+c            AREAM2 - real     - Area of source (m^2)
+c            XSHIFT - real     - Distance from upwind edge of block
+c                                of line sources to source of current
+c                                slug (m)
+c           XUPEDGE - real     - Distance from upwind edge of block
+c                                of line sources to receptor, along
+c                                current flow direction (m)
+c     IDOPTY,IDOPTZ - integer  - Dispersion option for sigma-y and
+c                                sigma-z (Derived from MDISP:1-5)
+c
+c *** Notes:
+c
+c --- Note that for IAGE = 0, (XB2,YB2,ZB2) = (XE2,YE2,ZE2) = (XS,YS,ZS)
+c     (i.e., where (XS,YS,ZS) are source coordinates) and
+c     (SYB2,SZB2) = (SYE2,SZE2) = (SY0,SZ0)  (i.e., where (SY0,SZ0) are
+c     the initial sigmas at the source).
+c
+c --- SRAT is the ratio of the vector mean wind speed at emission time
+c     to SPEEDI.  It is needed for model self-consistency and to avoid
+c     absurd results as the VMWS goes to zero.  Note that for most
+c     reasonable winds, SRAT > 0.95 so there are few significant
+c     problems.
+c --------------------------------------------------------------------

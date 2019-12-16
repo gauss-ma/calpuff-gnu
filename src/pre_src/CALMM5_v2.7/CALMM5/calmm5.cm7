@@ -1,0 +1,28 @@
+c --- calmm5.cm7 ----- 
+c     Common blocks and include-file for GRIB
+
+      character*4 gribid,c7777
+      dimension ingrib(mxlen), ione(mxone)
+      character one*(mxrd),inf*72, two*(mxcray)
+c      character one*1024,inf*80, two*60000 (For Frontier)
+      character*132 asum
+      integer*4 laspos,fgetc,fputc
+      integer*4 ibloc(4),lengrib,gribedi
+      integer*4 ipds(50),igds(50),ibds(50)
+
+      logical   newgrib
+      equivalence (one,ione),(two,ingrib)
+      save
+
+c      data gribid,c7777/'GRIB','7777'/
+c      data Nedit/1/
+
+      common /grib1/laspos,nedit,ndscale,nescale,nbits,refval
+     &       ,lenall,lens0,lens1,lens2,lens3,lens4,lens5
+     &       ,ivar_tab2,ilvltp,iheight,nzero,ilateql,id_grdconf
+     &       ,grdconf
+      common /grib2/ipds,igds,ibsd,ingrib,ione,iniyr,inimo
+     &       ,inidy,inihr,icentury,ihr_fst
+      common /grib3/gribid,c7777
+
+c --- end of calmm5.cm7

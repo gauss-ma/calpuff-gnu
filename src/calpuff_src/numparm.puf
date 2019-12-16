@@ -1,0 +1,36 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /NUMPARM/ -- Parameters used in the          CALPUFF
+c                               numerical plume rise algorithm
+c----------------------------------------------------------------------
+c
+      common/NUMPARM/gravi,rgas,zmin,ds0,nstep,slast,rp,alphap(mxent),
+     1 betap(mxent),xcat(mxentp1),nent,phicheck
+c
+c --- COMMON BLOCK /NUMPARM/ Variables:
+c
+c         GRAVI - real    - Acceleration due to gravity (m/s**2)
+c          RGAS - real    - Gas constant (m**2/s**2/deg. K)
+c          ZMIN - real    - Minimum plume centerline height (m)
+c           DS0 - real    - Step size (m) in the numerical plume
+c                           rise algorithm
+c         NSTEP - integer - Internal save frequency of plume rise
+c                           calculations (i.e., every DS*NSTEP meters)
+c                           (NOTE: this the frequency with which the
+c                           results are saved internally -- not that
+c                           passed back from the NUMRISE routine)
+c         SLAST - real    - Termination distance (m) of the plume rise
+c                           calculation
+c            RP - real    - Radiation coefficient (kg/m**2/deg. K**3/s)
+c   ALPHAP(mxent) - real array - Perturbed entrainment coefficients
+c                                (parallel)
+c    BETAP(mxent) - real array - Perturbed entrainment coefficients
+c                                (normal)
+c   XCAT(mxentp1) - real array - Downwind distances (m) for which each
+c                                perturbed entrainment coefficient
+c                                (ALPHAP, BETAP) is valid (NENT+1 values
+c                                for NENT entrainment coefficients).
+c            NENT - integer    - Number of perturbed entrainment
+c                                coefficients entered
+c       PHICHECK - real   - plume axis elevation angle (radians) at
+c                           which PRIME module checks for building
+c                           wake 'capture'

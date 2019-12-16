@@ -1,0 +1,28 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /SLUG/ -- Slug parameters                    CALPUFF
+c----------------------------------------------------------------------
+c
+      common/slug/xpe(mxpuff),ype(mxpuff),zpe(mxpuff),sigye(mxpuff),
+     1 sigze(mxpuff),xtote(mxpuff),tmtote(mxpuff),speed0(mxpuff)
+c
+c --- COMMON BLOCK /SLUG/ Variables:
+c    XPE(mxpuff) - real    - Met. grid X coordinate of
+c                            oldest end of slug
+c    YPE(mxpuff) - real    - Met. grid Y coordinate of
+c                            oldest end of slug
+c    ZPE(mxpuff) - real    - Height above ground (m) of
+c                            oldest end of slug after rise
+c                            (i.e., stack height + plume rise)
+c  SIGYE(mxpuff) - real    - Sigma y (m) for the
+c                            oldest end of slug without BID
+c  SIGZE(mxpuff) - real    - Sigma z (m) for the
+c                            oldest end of slug without BID
+c  XTOTE(mxpuff) - real    - Total integrated travel distance (m) of
+c                            the oldest end of slug
+c TMTOTE(mxpuff) - real    - Total integrated travel time (s) of
+c                            the oldest end of slug
+c----------------------------------------------------------------------
+c -----   Data associated with slug at the time of release  -----
+c----------------------------------------------------------------------
+c SPEED0(mxpuff) - real    - Transport (elongation) speed of fresh
+c                            slug (m/s)

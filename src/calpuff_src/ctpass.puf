@@ -1,0 +1,132 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /CTPASS/ --- CTSG Variables                   CALPUFF
+c-----------------------------------------------------------------------
+
+      real majaxw,minaxw
+      logical ldb
+
+      common/ctpass/nlev,ntpts,sz1,sz2,sy1,sy2,szr,syr,szmn,symn,
+     *              frac,twokz,twoky,xrctm(mxrect),yrctm(mxrect),
+     *              relief(mxhill),expo(2,mxhill),scale(2,mxhill),
+     *              axmax(2,mxhill),xc(mxhill),yc(mxhill),
+     *              thetah(mxhill),zgrid(mxhill),hda(mxhill),
+     *              ubyna(mxhill),ih,ip,ir,iregl,iregu,
+     *              z(mxlev),ws(mxlev),abvf(mxlev),
+     *              q,u,hd,ubyn,zlid,thetaw,
+     *              rotflo,rotang,alfw,beta,cbeta,d,
+     *              h,baxi,r,
+     *              xp,yp,xpf,ypf,zpuff,isc,
+     *              xr,yr,xrf,yrf,xre,yre,zrec,
+     *              x12f,x23f,xob,xbegin,xend,xspace,
+     *              t12p,t12rl,t12ru,tstep,tstart,timpg,
+     *              szimpg,syimpg,szesq,szosq,szpsq,szsq,at(2,mxtpts),
+     *              mhillt,nzh(mxhill),zh(mxcntr,mxhill),
+     *              majaxw(mxcntr,mxhill),minaxw(mxcntr,mxhill),
+     *              ldb,idebug
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c-----------------------------------------------------------------------
+c
+c --- NOTE:  horizontal coordinates are relative to MET grid origin (m)
+c
+c nlev           number of levels of met data used to calc. Hd       [i]
+c ntpts          number of points used to obtain flow factors        [i]
+c                along trajectory of puff over hill (should be odd)
+c sz1,sy1 (m)    puff sigmas at the start of the timestep            [r]
+c sz2,sy2 (m)    puff sigmas at the end of the timestep              [r]
+c szr,syr (m)    puff sigmas at the receptor                         [r]
+c szmn,symn(m)   minimum sigma-z and sigma y allowed                 [r]
+c frac           fraction of step from start to receptor position    [r]
+c twokz,twoky    diffusivities over the timestep                     [r]
+c xrctm,yrctm(m) CTSG receptor coordinates in meters                [ra]
+c relief (m)     height of crest of hill above base elevation       [ra]
+c expo           hill shape exponents for major and minor axes      [ra]
+c scale (m)      horizontal length scale along major and minor axes [ra]
+c axmax (m)      maximum axis lengths for major and minor axes      [ra]
+c xc,yc (m)      coordinates of center of hill                      [ra]
+c thetah (deg)   orientation of major axis of hill (CW from north)  [ra]
+c zgrid (m)      height of "base-plane" of hill above mean sea level[ra]
+c hda (m)        array of dividing-streamline heights               [ra]
+c                (1 for each hill)
+c ubyna (m)      array of U/N values (1 for each hill)              [ra]
+c ih             current hill-number (receptor loop - 0 denotes      [i]
+c                no hill)
+c ip             current puff-number (receptor loop)                 [i]
+c ir             current receptor-number (receptor loop)             [i]
+c iregl,iregu    region containing the receptor (l:lower; u:upper)   [i]
+c z (m)          height of met data level (above ground)            [ra]
+c ws (m/s)       wind speed at height z                             [ra]
+c abvf (1/s)     Brunt-Vaisala frequency in layer whose top is at z [ra]
+c q (g)          mass contained in current puff                      [r]
+c u (m/s)        wind speed for current puff                         [r]
+c hd, ubyn (m)   Hd and U/N for current hill                         [r]
+c zlid (m)       mixing lid for current puff                         [r]
+c thetaw (deg)   wind direction (CW from north) for current puff     [r]
+c rotflo (rad)   angle of rotation CCW from the geographic coord.    [r]
+c                system to the coord. system with x along the flow
+c rotang (rad)   angle of rotation CCW from hill-ellipse coord.      [r]
+c                system to the coord. system with x along the flow
+c alfw (rad)     wind direction CW from the major axis of            [r]
+c                hill-ellipse
+c beta (rad)     angle of rotation CCW from flow direction to the    [r]
+c                normal to the hill-ellipse at the stagnation-point
+c cbeta          COS(beta)                                           [r]
+c d (m)          distance between puff trajectory and stagnation     [r]
+c                streamline
+c h (m)          height of the current hill above grid elevation     [r]
+c baxi (1/m)     inverse of the minor semiaxis of the hill-ellipse   [r]
+c r              ratio of major axis to the minor axis of            [r]
+c                hill-ellipse
+c xp,yp (m)      grid coordinates of current puff                    [r]
+c xpf,ypf (m)    current puff position in flow coord. system         [r]
+c zpuff (m)      height of current puff above grid elevation         [r]
+c isc            stability class for current puff and timestep       [i]
+c xr,yr (m)      grid coordinates of current receptor                [r]
+c xrf,yrf (m)    current receptor position in flow coord. system     [r]
+c xre,yre (m)    current receptor position in hill-ellipse coord.    [r]
+c                system
+c zrec (m)       height of current receptor above grid elevation     [r]
+c                (note that receptors must be on the surface)
+c x12f,x23f (m)  intersection of puff trajectory with boundaries     [r]
+c                between regions 1&2, and 2&3 (flow coord. system)
+c xob (m)        x-coord. of the stagnation point in beta coord.     [r]
+c                system
+c xbegin,xend (m)location of beginning and ending points along       [r]
+c                trajectory for factors contained in array "at"
+c xspace (m)     spacing between points contained in array "at"      [r]
+c t12p (s)       travel time from puff position at start of period   [r]
+c                to x12f
+c t12rl,t12ru (s) travel time from x12f to the receptor position for [r]
+c                receptors in the lower (l) and upper (u) flows
+c tstep (s)      length of the time-step                             [r]
+c tstart (s)     age of the current puff at the start of the period  [r]
+c timpg (s)      age of the current puff at x12f                     [r]
+c szimpg (m)     sigma-z at the impingement point                    [r]
+c syimpg (m)     sigma-y at the impingement point                    [r]
+c szesq (m**2)   square of the effective sigma-z of the puff at the  [r]
+c                receptor
+c szosq (m**2)   square of the sigma-z of the puff at the x12f       [r]
+c                (or 1 sec. after release if timpg<0)
+c szsq (m**2)    square of the sigma-z of the puff at the receptor   [r]
+c                (no hill)
+c szpsq (m**2)   szsq-szosq                                          [r]
+c at             array of deformation factors (th,tl) at points     [ra]
+c                along the trajectory [at(1,-)=th, at(2,-)=tl]
+c
+c -------------- New data used to allow CTDM hill specification --------
+c mhillt         option to use hill information from:                [i]
+c                   1 = CTDM preprocessor
+c                   2 = original OPTHILL preprocessor
+c nzh            number of heights for which ellipse variables are  [ia]
+c                provided, specified for each hill
+c zh  (m )       heights for which ellipse variables are provided   [ra]
+c                (initially MSL, but referenced to grid cell elev
+c                 in CTINIT)
+c majaxw  (m)    length of major semi-axis of elliptical contour    [ra]
+c                for a specific value of zh
+c minaxw  (m)    length of minor semi-axis of elliptical contour    [ra]
+c                for a specific value of zh
+c ----------------------------------------------------------------------
+c ldb            debug control logical                               [l]
+c idebug         io unit for debug writes                            [l]
+c-----------------------------------------------------------------------

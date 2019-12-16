@@ -1,0 +1,124 @@
+
+
+
+                          PMERGE OUTPUT SUMMARY
+                   VERSION:  5.32     LEVEL:  070627  
+
+
+
+ 
+ -------------------------------------------------
+ NOTICE: Starting year in control file sets the
+         expected century for the simulation.  All
+         YY years are converted to YYYY years in
+         the range:  1940 2039
+ -------------------------------------------------
+ 
+ 
+Control file name     : pmerge.inp                                                                                                                          
+Output list file name : PMERGE.LST                                                                                                                          
+Output file name      : PRECIP.DAT                                                                                                                          
+ Continuation Run?     :  F
+ 
+
+
+ Time Zone      Station ID     Formatted TD3240 Precipitation
+                                       Input Files 
+
+     5           170273       170273.DAT                                                                                                                          
+     5           176905       176905.DAT                                                                                                                          
+     5           177325       177325.DAT                                                                                                                          
+     5           178641       178641.DAT                                                                                                                          
+     5           270741       270741.DAT                                                                                                                          
+     5           270998       270998.DAT                                                                                                                          
+     5           272842       272842.DAT                                                                                                                          
+     5           273182       273182.DAT                                                                                                                          
+     5           274732       274732.DAT                                                                                                                          
+     5           274808       274808.DAT                                                                                                                          
+     5           275639       275639.DAT                                                                                                                          
+     5           275780       275780.DAT                                                                                                                          
+     5           276234       276234.DAT                                                                                                                          
+     5           276818       276818.DAT                                                                                                                          
+     5           278885       278885.DAT                                                                                                                          
+     5           437054       437054.DAT                                                                                                                          
+
+
+ Period to Extract (in time zone  5):    1/ 1/1990   1:00  to   1/15/1990   0:00
+
+
+
+ Maximum Accumulation Period (hours):     12
+
+
+ PMERGE Stations in Output File:  
+    No.    ID            No.    ID            No.    ID            No.    ID
+
+     1   170273           5   270741           9   274732          13   276234
+     2   176905           6   270998          10   274808          14   276818
+     3   177325           7   272842          11   275639          15   278885
+     4   178641           8   273182          12   275780          16   437054
+
+
+
+ Summary of Data from Formatted TD3240 Precipitation Files: 
+
+
+                  Valid Hours:
+
+ Station   Zero  Nonzero  Accum    Total     %
+   IDs                    Period   Valid   Valid
+                                   Hours   Hours
+  170273    333       3       0      336   100.0
+  176905    327       9       0      336   100.0
+  177325    333       3       0      336   100.0
+  178641    333       3       0      336   100.0
+  270741    334       2       0      336   100.0
+  270998    334       2       0      336   100.0
+  272842    326       3       0      329    97.9
+  273182    334       2       0      336   100.0
+  274732    331       5       0      336   100.0
+  274808    334       2       0      336   100.0
+  275639    267      69       0      336   100.0
+  275780    334       2       0      336   100.0
+  276234    331       5       0      336   100.0
+  276818    326      10       0      336   100.0
+  278885    333       3       0      336   100.0
+  437054    334       2       0      336   100.0
+
+
+                  Invalid Hours:
+
+ Station   Flagged   Excessive   Missing Data   Missing Data    Total       %
+   IDs     Missing     Accum     Before First    After Last    Invalid   Invalid
+                       Period    Valid Record   Valid Record    Hours     Hours
+  170273        0          0            0             0            0        0.0
+  176905        0          0            0             0            0        0.0
+  177325        0          0            0             0            0        0.0
+  178641        0          0            0             0            0        0.0
+  270741        0          0            0             0            0        0.0
+  270998        0          0            0             0            0        0.0
+  272842        7          0            0             0            7        2.1
+  273182        0          0            0             0            0        0.0
+  274732        0          0            0             0            0        0.0
+  274808        0          0            0             0            0        0.0
+  275639        0          0            0             0            0        0.0
+  275780        0          0            0             0            0        0.0
+  276234        0          0            0             0            0        0.0
+  276818        0          0            0             0            0        0.0
+  278885        0          0            0             0            0        0.0
+  437054        0          0            0             0            0        0.0
+ 
+ 
+ 
+
+
+  LAST DAY/HOUR PROCESSED:
+     Year: 1990  Month:  1   Day: 15   Julian day:  15   Hour:  0
+
+
+  End of run -- Clock time: 23:02:40
+                      Date: 06-27-2007
+
+        Elapsed clock time:        0.0 (seconds)
+
+                  CPU time:        0.0 (seconds)

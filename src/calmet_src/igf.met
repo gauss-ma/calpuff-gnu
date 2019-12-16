@@ -1,0 +1,53 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /IGF/ -- IGF-CALMET.DAT data                 CALMET
+c---------------------------------------------------------------------- 
+
+      common/IGF/IBYRI,IBJULI,IBHRI, NXI,NYI,NZI,
+     2             XIGF(mxnxi,mxnyi),Yigf(mxnxi,mxnyi),
+     3             cellzci(mxnzi),nearsi(mxnxi,mxnyi),
+     4             z0i(mxnxi,mxnyi),
+     5             igrabi(mxnx,mxny,4),jgrabi(mxnx,mxny,4),
+     5             NSSTAi,NPSTAi,I2DMET,JBTZi,nfigf,Nigf
+
+              
+c
+c --- COMMON BLOCK /IGF/ Variables:
+c         IBYRI - integer - Year of beginning of data in the IGF-CALMET 
+c                           data file
+c        IBJULI - integer - Julian day of the start of the IGF-CALMET data
+c         IBHRI - integer - Starting hour (GMT) of the IGF-CALMET data
+c           NXI - integer - Number of grid cells in the X direction
+c                           in the extraction domain
+c           NYI - integer - Number of grid cells in the Y direction
+c                           in the extraction domain
+c           NZI - integer - Number of levels in the IGF-CALMET file
+c
+c     Xigf(mxnxi,mxnyi) - real array  - X coordinate of each IGF-CALMET grid cell
+c                                        in the CALMET grid system (in km)
+c     Yigf(mxnxi,mxnyi) - real array  - Y coordinate of each IGF-CALMET grid cell
+c                                        in the CALMET grid system (in km)
+c      z0i(mxnxi,mxnyi) - real array  - Roughness length at each IGF-CALMET grid cell
+c
+c      CELLZCI(mxnzi) - real array    - IGF-CALMET levels (height above ground in m)
+c NEARSi(mxnxi,mxnyi) - int array     - nearest surface station to each IGF-CALMET gridpoint
+c                                       in IGF calmet run 
+c
+c IGRABi(mxnx,mxny,4) - integer array - I index (1, 2, ... MXNXi) of four
+c                                       closest IGF-CALMET grid points to
+c                                       each CALMET grid point
+c JGRABi(mxnx,mxny,4) - integer array - J index (1, 2, ... MXNYi) of four
+c                                       closest IGF-CALMET grid points to
+c                                       each CALMET grid point
+c              NSSTAi - integer       - Number of surface met. stations in coarse 
+c                                       IGF CALMET.DAT file
+c              NPSTAi - integer       - Number of precipitation stations in coarse 
+c                                       IGF CALMET.DAT file in coarse IGF CALMET.DAT
+c              I2DMET - integer       - Flag for 2 D array of sfc met variables in
+c                                       IGF CALMET.DAT
+c                                       0: 2D arrays NOT available
+c                                       1: 2D arrays available
+c              JBTZi  - integer       - Timezone of IGF-CALMET runs (for 3D.DAT:LST =>0)
+c                                       (JBTZP>0 in Western Hemisphere)  
+c              nfigf  - integer       - IGF-CALMET file number currently accessed  
+c              Nigf  - integer       - Total number of IGF-CALMET files.
+

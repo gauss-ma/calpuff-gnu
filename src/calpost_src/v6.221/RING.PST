@@ -1,0 +1,17 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /RING/ --- Receptor Ring Variables            CALPOST
+c-----------------------------------------------------------------------
+      integer ndring
+      integer idring(mxdrec), nrrecp(mxring)
+      real rradkm(mxring)
+
+      common/ring/ndring,idring,nrrecp,rradkm
+c-----------------------------------------------------------------------
+c     DEFINITIONS   [i]=integer   [r]=real   [a]=array   [L]=logical
+c-----------------------------------------------------------------------
+c ndring         Number of discrete receptor rings                   [i]
+c idring         ID of ring for each discrete receptor              [ia]
+c nrrecp         Processing flag for ring                           [ia]
+c                  0:  do not process
+c                  1:  process (when LDRING is true)
+c rradkm         Ring radius (km) array                             [ra]

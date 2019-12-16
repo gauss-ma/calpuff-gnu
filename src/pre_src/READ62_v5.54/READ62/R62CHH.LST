@@ -1,0 +1,116 @@
+
+
+
+                          READ62 OUTPUT SUMMARY
+                   VERSION:  5.54         LEVEL:  070627      
+
+
+
+
+ STARTING DATE:                ENDING DATE:
+
+                YEAR = 1990                  YEAR = 1990
+          JULIAN DAY =    1            JULIAN DAY =   15
+                HOUR =    0 (GMT)            HOUR =   12 (GMT)
+
+
+ PRESSURE LEVELS EXTRACTED:
+
+                     SURFACE TO   500. MB
+
+
+ INPUT FILE FORMAT (1=TD6201,2=NCDC CD-ROM):   2
+ OUTPUT FILE FORMAT (1=/ DELIMITED,2=COMMA DELIMITED):   1
+
+
+ ALT. SOUNDING FILE FOR SUBSTITUTIONS IS NOT USED 
+
+
+ DATA LEVEL ELIMINATED IF HEIGHT MISSING ?         F
+
+ DATA LEVEL ELIMINATED IF TEMPERATURE MISSING ?    F
+
+ DATA LEVEL ELIMINATED IF WIND DIRECTION MISSING ? F
+
+ DATA LEVEL ELIMINATED IF WIND SPEED MISSING ?     F
+
+
+ MISSING PROFILE DATA EXTRAPOLATED TO TOP ?         F
+
+ Last valid data must be above pressure (mb):      850.0
+
+ MISSING PROFILE DATA EXTRAPOLATED TO SURFACE ?     F
+
+ First valid data must be below height (m AGL):      200.0
+
+
+ FILENAMES: 
+     Control file:          r62chh.inp                                                                                                                          
+     Input upper air file:  90010100.chh                                                                                                                        
+     Output upper air file: upchh.dat                                                                                                                           
+     Output list file:      r62chh.lst                                                                                                                          
+ 
+ -------------------------------------------------
+ NOTICE: Starting year in control file sets the
+         expected century for the simulation.  All
+         YY years are converted to YYYY years in
+         the range:  1940 2039
+ -------------------------------------------------
+ 
+ 
+ FSL Station ID used:         14684
+             WBAN ID:       14684
+              WMO ID:       74494
+ 
+
+ Temperature values used in range checks: 
+     TMIN = 175.0
+     TMAX = 322.0
+
+ Pressure values used in range checks: 
+     PMIN =    0.0
+     PMAX = 1040.0
+
+
+ THE FOLLOWING SOUNDINGS HAVE BEEN PROCESSED:
+
+       YEAR   MONTH   DAY   JULIAN DAY   HOUR (GMT)   NO. LEVELS EXTRACTED
+
+       1990     1       1         1          0                 28
+       1990     1       1         1         12                 19
+       1990     1       2         2          0                 30
+       1990     1       2         2         12                 32
+       1990     1       3         3          0                 24
+       1990     1       3         3         12                 34
+       1990     1       4         4          0                 25
+       1990     1       4         4         12                 34
+       1990     1       5         5          0                 22
+       1990     1       5         5         12                 29
+       1990     1       6         6          0                 17
+       1990     1       6         6         12                 34
+       1990     1       7         7          0                 19
+       1990     1       7         7         12                 33
+       1990     1       8         8          0                 23
+       1990     1       8         8         12                 37
+       1990     1       9         9          0                 38
+       1990     1       9         9         12                 39
+       1990     1      10        10          0                 26
+       1990     1      10        10         12                 21
+       1990     1      11        11          0                 29
+       1990     1      11        11         12                 30
+       1990     1      12        12          0                 38
+       1990     1      12        12         12                 19
+       1990     1      13        13          0                 27
+       1990     1      13        13         12                 33
+       1990     1      14        14          0                 18
+       1990     1      14        14         12                 29
+       1990     1      15        15          0                 23
+       1990     1      15        15         12                 34
+
+
+  End of run -- Clock time: 23:06:58
+                      Date: 06-27-2007
+
+        Elapsed Clock Time:        0.0 (seconds)
+
+                  CPU Time:        0.0 (seconds)

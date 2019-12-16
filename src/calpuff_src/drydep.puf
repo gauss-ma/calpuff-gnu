@@ -1,0 +1,27 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /DRYDEP/ -- Dry deposition flags             CALPUFF
+c----------------------------------------------------------------------
+c
+      common/DRYDEP/idryflg(mxspec),vduser(24,mxspec),nvduser,
+     1 zref,iveg
+c
+c --- COMMON BLOCK /DRYDEP/ Variable:
+c
+c     IDRYFLG(mxspec) - integer  - Array of dry deposition flags for
+c                                  each pollutant
+c                                    0 = No deposition
+c                                    1 = Resistance model - gas
+c                                    2 = Resistance model - particle
+c                                    3 = User-specified dep. velocities
+c   VDUSER(24,mxspec) - real     - Deposition velocity (m/s) for each
+c                                  hour of the day and species
+c                                  (missing values indicated by -999.)
+c             NVDUSER - integer  - Number of species for which the
+c                                  user-specified deposition velocities
+c                                  are used
+c                ZREF - real     - Reference height (m) for computing
+c                                  the atmospheric resistance
+c                IVEG - integer  - Vegetation index in unirrigated areas
+c                                   1=vegetation is active & unstressed
+c                                   2=vegetation is active & stressed
+c                                   3=vegetation is inactive

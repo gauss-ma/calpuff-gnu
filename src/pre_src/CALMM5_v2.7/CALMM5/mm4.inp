@@ -1,0 +1,13 @@
+CALMM5 MM4 Output for SW Wyoming Project
+domain2.mm5    ! MM5 data input file name (no space before or within filename)  
+mm5.mm4        ! CALMM5 output file name  (no space before or within filename)
+calmm5.lst     ! CALMM5 list file name    (no space before or within filename)  
+1              ! Options for selecting a region (1: use lat/long; 2: use J/I)
+40.8           ! Southernmost latitude    (positive for Northern Hemisphere)
+42.5           ! Northermost  latitude    (in degrees - decimals)
+-112.          ! Westernmost  longitude   (negative for Western Hemisphere)
+-110.4         ! Easternmost  longitude   (in degrees - decimals)
+95011001       ! Starting date (year-month-day-UTC hour)(yymmddhh)
+95011008       ! Ending date
+2              ! Output format (1,2,3,4,5 - see Note E for details)
+Keep this line - The following lines vary depending on the output format selected

@@ -1,0 +1,130 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /VISB/ --- Visibility Parameters            CALPOST
+c-----------------------------------------------------------------------
+      logical LVSO4,LVNO3,LVNO2,LVOC,LVPMC,LVPMF,LVEC,LVBK,LNEPHEL
+      logical LRHFAC,LAVER
+      character*12 specpmc,specpmf
+      common/visb/LVSO4,LVNO3,LVNO2,LVOC,LVPMC,LVPMF,LVEC,LVBK,LNEPHEL,
+     *           LRHFAC,mvisbk,mfrh,m8_mode,
+     *           bextbk,rhfrac,rhmax,frhmax,bextray,
+     *           eepmc,eepmf,eepmcbk,eeso4,eeno3,eeoc,eesoil,eeec,
+     *           eeso4s,eeno3s,eeocs,eeso4l,eeno3l,eeocl,eesalt,eeno2,
+     *           bkso4(12),bkno3(12),bkpmc(12),bkoc(12),
+     *           bksoil(12),bkec(12),bksalt(12),rhfac(12),irhmonth(12),
+     *           rhfsml(12),rhflrg(12),rhfsea(12),
+     *           bextdry,bexthyg,bextdry2(12),bexthyg2(12),
+     *           bexthygs2(12),bexthygl2(12),bextsalt2(12),
+     *           xSO4,xNO3,nwsta,idwsta(mxwsta),tzone(mxwsta),btzone2,
+     *           specpmc,specpmf,LAVER
+c-----------------------------------------------------------------------
+c     DEFINITIONS   [i]=integer   [r]=real   [a]=array   [L]=logical
+c-----------------------------------------------------------------------
+c LVSO4          Modeled sulfate included in extinction?             [L]
+c LVNO3          Modeled nitrate included in extinction?             [L]
+c LVNO2          Modeled NO2 included in extinction?                 [L]
+c LVOC           Modeled organic carbon included in extinction?      [L]
+c LVPMC          Modeled COARSE particulate included in extinction?  [L]
+c LVPMF          Modeled FINE particulate included in extinction?    [L]
+c LVEC           Modeled elemental carbon included in extinction?    [L]
+c LVBK           Background included in extinction?                  [L]
+c LNEPHEL        Background data from nephelometer? (MVISBK=4)       [L]
+c                (transmissometer data assumed if LNEPHEL=F)
+c LRHFAC         Monthly relative humidity factor provided?          [L]
+c                (computed from hourly RH if F)
+c LAVER          Method to compute 24h-average                       [L]
+c                   False - source light extinction is averaged
+c                        and background extinction is averaged, then
+c                          the ratio is done (Default)
+c                   True - the ratio of source light extinction over
+c                        background light extinction is 24h-averaged
+c mvisbk         Method used for background light extinction         [i]
+c                  1 =  Supply single light extinction coefficient
+c                  2 =  Compute extinction from monthly background
+c                       concentrations
+c                  3 =  Same as 2, but hour excluded when RH > RHMAX
+c                  4 =  Read measurement data from transmissometer file
+c                  5 =  Read measurement data from nprhelometer file
+c                  6 =  Same as 2, but FLAG RH factors are used for
+c                       both modeled and background
+c                  7 =  Same as 2, but DATSAV file visual range is used
+c                       for background calc when fog/precip observed
+c                  8 =  Same as 2 or 6, but IMPROVE 2006 RH factors are
+c                       used for both modeled and background sulfates
+c                       and nitrates, and background sea salt; and
+c                       extinction efficiencies of sulfates, nitrates,
+c                       and organics depend on concentration;
+c                       M8_MODE sets source of RH
+c mfrh           Method used for f(RH) hygroscopic growth curve      [i]
+c m8_mode        Visibility Method 8 mode                            [i]
+c                 1 = Use hourly RH values from VISB.DAT file with hourly
+c                     modeled and monthly background concentrations.
+c                 2 = Use monthly RHFAC with EPA (2003) f(RH) tabulation
+c                     with hourly modeled and monthly background concentrations.
+c                     (VISB.DAT file is NOT needed).
+c                 3 = Use monthly RHFAC with EPA (2003) f(RH) tabulation
+c                     with daily modeled and monthly background concentrations.
+c                     (VISB.DAT file is NOT needed).
+c                 4 = Use monthly RHFSML, RHFLRG, and RHFSEA with hourly modeled
+c                     and monthly background concentrations.
+c                     (VISB.DAT file is NOT needed).
+c                 5 = Use monthly RHFSML, RHFLRG, and RHFSEA with daily modeled
+c                     and monthly background concentrations.
+c                     (VISB.DAT file is NOT needed).
+c bextbk         Background light extinction (1/Mm)                  [r]
+c rhfrac         Fraction of bextbk affected by particle growth      [r]
+c rhmax          Maximum value of RH (%) for particle growth         [r]
+c frhmax         Growth factor for maximum value of RH (%)           [r]
+c bextray        Light extinction due to Rayleigh scattering (1/Mm)  [r]
+c
+c            ---   EE: Extinction Efficiency (1/Mm per ug/m**3)  ---
+c eepmc          Extinction efficiency of MODELED coarse PM          [r]
+c eepmf          Extinction efficiency of MODELED fine PM            [r]
+c eepmcbk        Extinction efficiency of BACKGROUND coarse PM       [r]
+c eeso4          Extinction efficiency of ammonium sulfate           [r]
+c eeno3          Extinction efficiency of ammonium nitrate           [r]
+c eeoc           Extinction efficiency of organic carbon             [r]
+c eesoil         Extinction efficiency of soil                       [r]
+c eeec           Extinction efficiency of elemental carbon           [r]
+c eeso4s         Extinction efficiency of ammonium sulfate (small)   [r]
+c eeno3s         Extinction efficiency of ammonium nitrate (small)   [r]
+c eeocs          Extinction efficiency of organic carbon (small)     [r]
+c eeso4l         Extinction efficiency of ammonium sulfate (large)   [r]
+c eeno3l         Extinction efficiency of ammonium nitrate (large)   [r]
+c eeocl          Extinction efficiency of organic carbon (large)     [r]
+c eesalt         Extinction efficiency of sea salt                   [r]
+c eeno2          Extinction efficiency of NO2 gas                    [r]
+c
+c bkso4(12)      Monthly background sulfate concentration (ug/m**3)  [ra]
+c bkno3(12)      Monthly background nitrate concentration (ug/m**3)  [ra]
+c bkpmc(12)      Monthly background coarse PM concentration (ug/m**3)[ra]
+c bkoc(12)       Monthly background organic carbon conc. (ug/m**3)   [ra]
+c bksoil(12)     Monthly background soil concentration (ug/m**3)     [ra]
+c bkec(12)       Monthly background elemental carbon conc. (ug/m**3) [ra]
+c bksalt(12)     Monthly background sea salt concentration (ug/m**3) [ra]
+c rhfac(12)      Monthly relative humidity factor                    [ra]
+c irhmonth(12)   Monthly relative humidity                           [ia]
+c rhfsml(12)     Monthly relative humidity factor for small sizes    [ra]
+c rhflrg(12)     Monthly relative humidity factor for large sizes    [ra]
+c rhfsea(12)     Monthly relative humidity factor for sea salt       [ra]
+c bextdry        Dry component of background light extinction (1/Mm) [r]
+c bexthyg        RH component of background light extinction (1/Mm)  [r]
+c bextdry2(12)   Dry component of background light extinction (1/Mm) [r]
+c bexthyg2(12)   RH component of background light extinction (1/Mm)  [r]
+c bexthygs2(12)  RH component of background light extinction (1/Mm)  [r]
+c                 (small particle component)
+c bexthygl2(12)  RH component of background light extinction (1/Mm)  [r]
+c                 (large particle component)
+c bextsalt2(12)  RH component of background light extinction (1/Mm)  [r]
+c                 (sea salt component)
+c xSO4,xNO3      Weight factors for ammonia salts defined as         [r]
+c                formula weight of salt / formula weight of anion
+c nwsta          Number of weather station IDs used from VSRN.DAT    [i]
+c idwsta(mxwsta) List of weather station IDs used from VSRN.DAT file [ia]
+c                when Method 7 is selected.  The order determines the
+c                station priority (hourly data taken from first station
+c                in list with valid data)
+c tzone(mxwsta)  List of time zones for weather stations used from   [ra]
+c                VSRN.DAT file when Method 7 is selected.
+c btzone2        Base time zone for CALPUFF simulation               [r]
+c specpmc        Species name for COARSE PM in MODEL.DAT file        [c]
+c specpmf        Species name for FINE PM in MODEL.DAT file          [c]

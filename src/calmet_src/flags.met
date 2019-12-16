@@ -1,0 +1,14 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /FLAGS/ -- Runtime message controls           CALMET
+c----------------------------------------------------------------------
+c
+      logical lmesg
+c
+      common/flags/lmesg,iomesg
+c
+c --- COMMON BLOCK /FLAGS/ Variables:
+c            LMESG - logical - Messages tracking progress of run
+c                              printed to the screen or disk file ?
+c                              (F = no, T = yes)
+c           IOMESG - integer - Fortran unit number of screen or disk
+c                              file for run progress messages

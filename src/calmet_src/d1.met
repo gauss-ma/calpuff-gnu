@@ -1,0 +1,15 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /D1/ -- Wind field common block #1            CALMET
+c----------------------------------------------------------------------
+c
+      COMMON /D1/ U(mxnx,mxny,mxnz),V(mxnx,mxny,mxnz),
+     1  W(mxnx,mxny,mxnzp1), UB(mxny,2,mxnz), VB(mxnx,2,mxnz),
+     1  USLOPE(mxnx,mxny,mxnz),  VSLOPE(mxnx,mxny,mxnz),
+     1  UG(mxnx,mxny,mxnz),  VG(mxnx,mxny,mxnz),
+     1  HTOPO(mxnx,mxny), HMAX(mxnx,mxny),
+     1  UTMXST(mxwnd), UTMYST(mxwnd), WT(mxwnd),
+     1  RS(mxwnd), IS(mxwnd), IST(mxwnd), JST(mxwnd),
+     1  US(mxnz,mxwnd), VS(mxnz,mxwnd),
+     1  CELLZB(mxnzp1), CELLZC(mxnz),
+     1  PEXP(7), FEXTRP(mxnz), DIV(mxnx,mxny,mxnz),
+     1  NINTRP(mxnz)

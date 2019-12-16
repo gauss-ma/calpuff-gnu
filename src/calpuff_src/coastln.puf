@@ -1,0 +1,36 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /COASTLN/ -- User-Supplied Coast Line Data   CALPUFF
+c----------------------------------------------------------------------
+c
+      logical*1 lcoast(mxnx,mxny)
+      common/COASTLN/ncoast,npcoast(2,mxcoast),coastgrd(2,mxptcst),
+     &               ymxpb(2,mxptcst),lwcell(2,mxptcst),lcoast
+c
+c --- COMMON BLOCK /COASTLN/ Variables:
+c
+c               NCOAST - integer - Number of coasts defined
+c   NPCOAST(2,mxcoast) - integer - Pointer to locations in COASTGRD
+c                                  array containing data for each coast
+c                                  where element 1 is the start and
+c                                  element 2 is the end
+c  COASTGRD(2,mxptcst) - real    - x,y coordinates (MET GRID UNITS) of
+c                                  points along each coast line, where                                  
+c                                  element 1 is x, element 2 is y
+c     YMXPB(2,mxptcst) - real    - slope 'm' and intercept 'b' for line
+c                                  defined by each coastline segment
+c                                  element 1 is 'm', element 2 is 'b'
+c    LWCELL(2,mxptcst) - integer - Cell index for nearest land cell and
+c                                  and water cell to each point in
+c                                  coast line, where element 1 is LAND,
+c                                  and element 2 is WATER
+c    LCOAST(mxnx,mxny) - logical - Logical marker indicating if a MET
+c                                  GRID cell contains a coastline
+c----------------------------------------------------------------------
+c NOTE:1.More than 1 coast can be defined, but all are appended in the
+c        COASTGRD array.  The NPCOAST provides the index for the start
+c        and the end of each coast line.  Also, the ordering of the
+c        points follows the convention that the water is to the RIGHT
+c        of the line traced out by these points.
+c      2.Cell index pointer LWCELL assumes that the nx*ny possible
+c        locations correspond to 1D list in which ny rows of nx values
+c        each are appended, where the first nx values are for iy=1.

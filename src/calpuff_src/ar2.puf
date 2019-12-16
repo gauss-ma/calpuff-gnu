@@ -1,0 +1,107 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /AR2/ -- Variable Area source data           CALPUFF
+c
+c----------------------------------------------------------------------
+c
+      character*12 fname3,label3,cslst3
+      character*16 cid3,baemunit
+c
+      common/AR2/NAR2,IUTMZ3,NSE3,
+     1           XNLAT1AR2,XNLAT2AR2,RNLAT0AR2,RWLON0AR2,
+     2           IVRS3(mxemdat),IBSRC3(mxemdat),IESRC3(mxemdat),
+     3           IBDAT3(mxemdat),IBTIM3(mxemdat),IEDAT3(mxemdat),
+     4           IETIM3(mxemdat),XMWEM3(mxspec),IXREM3(mxspec),
+     5           IBEG3(mxemdat),IEND3(mxemdat),
+     6           XAR2GRD(mxvertp1,mxarea),YAR2GRD(mxvertp1,mxarea),
+     7           NVERT2(mxarea),HTAR2(mxarea),TKAR2(mxarea),
+     8           ELAR2(mxarea),WEFAR2(mxarea),REFAR2(mxarea),
+     9           SZ0AR2(mxarea),AREA2(mxarea),QAR2(mxspec,mxarea),
+     &           NEWAR2(mxarea),NTR0,
+c     0           XTR(mxrise,mxarea),ZTR(mxrise,mxarea),
+c     1           RTR(mxrise,mxarea),
+     2           FNAME3,LABEL3(mxemdat),CSLST3(mxspec),
+     3           CID3(mxarea),BAEMUNIT(mxarea)
+c
+c --- COMMON BLOCK /AR2/ Variables:
+c
+c             NAR2 - integer  - Number of discrete area sources
+c           IUTMZ3 - integer  - UTM zone for coordinates
+c             NSE3 - integer  - Number of emitted species in file
+c        XNLAT1AR2 - real     - Standard parallel #1 for LC map
+c                               projection (degrees N. Latitude)
+c        XNLAT2AR2 - real     - Standard parallel #1 for LC map
+c                               projection (degrees N. Latitude)
+c        RNLAT0AR2 - real     - N. Latitude of origin of LC map
+c                               projection (degrees)
+c        RWLON0AR2 - real     - W. Longitude of origin of LC map
+c                               projection (degrees)
+c   IVRS3(mxemdat) - integer  - Data set version expressed as integer
+c                               (5.4 is 54)
+c  IBSRC3(mxemdat) - integer  - Index for first source in a
+c                               BAEMARB.DAT file
+c  IESRC3(mxemdat) - integer  - Index for last source in a
+c                               BAEMARB.DAT file
+c  IBDAT3(mxemdat) - integer  - Date of the first data record in the
+c                               file  (YYYYJJJ, where YYYY=year,
+c                               JJJ=Julian day)
+c  IBTIM3(mxemdat) - integer  - Hour of the first data record in the
+c                               file  (00-23 LST)
+c  IEDAT3(mxemdat) - integer  - Date of the last data record in the
+c                               file  (YYYYJJJ, where YYYY=year,
+c                               JJJ=Julian day)
+c  IETIM3(mxemdat) - integer  - Hour of the last data record in the
+c                               file  (00-23 LST)
+c   XMWEM3(mxspec) - real     - Molecular weight for each species
+c   IXREM3(mxspec) - integer  - Cross referencing array of NSE3
+c                               values relating species ordering
+c                               in the emissions file to the
+c                               ordering in the main conc. array
+c
+c ---  Variable data  ---
+c
+c  IBEG3(mxemdat) - integer  - Starting time for which emissions
+c                               data in current set of
+c                               records is valid (YYYYJJJHH)
+c  IEND3(mxemdat) - integer  - Ending time for which emissions
+c                               data in current set of
+c                               records is valid (YYYYJJJHH)
+c XAR2GRD(mxvertp1,mxarea) - real - X coordinate of a vertex of a
+c                                   discrete area source in grid units
+c                                   (i.e., origin at (0.0,0.0))
+c YAR2GRD(mxvertp1,mxarea) - real - Y coordinate of a vertex of a
+c                                   discrete area source in grid units
+c                                   (i.e., origin at (0.0,0.0))
+c   NVERT2(mxarea) - real     - Number of sides bounding area
+c
+c (NOTE:  The mean x,y for the polygon is computed as vertex NVERT+1)
+c
+c    HTAR2(mxarea) - real     - Effective release height (m)
+c    TKAR2(mxarea) - real     - Temperature of release (K)
+c    ELAR2(mxarea) - real     - Elevation of ground (m)
+c   WEFAR2(mxarea) - real     - Effective rise velocity (m/s)
+c   REFAR2(mxarea) - real     - Effective radius of source (m)
+c   SZ0AR2(mxarea) - real     - Initial sigma-z of source (m)
+c    AREA2(mxarea) - real     - Area of each source (m^2)
+c
+c (NOTE:  The initial sigma-y is computed as function of wind direction)
+c
+c QAR2(mxspec,mxarea) - real  - Emission rate (g/s) for each
+c                                  pollutant
+c   NEWAR2(mxarea) - integer  - Number of puffs released by each
+c                               source during the current step
+c
+c
+c ---  Numerical Plume Rise Data ---
+c
+c                NTR - integer  - Number of points in trajectory arrays
+c XTR(mxrise,mxarea) - real     - Downwind distance (m) for trajectory
+c ZTR(mxrise,mxarea) - real     - Height above ground (m) for trajectory
+c RTR(mxrise,mxarea) - real     - Plume radius (m)
+c
+c ---  Character data ---
+c           FNAME3 - char*12    - Data set name "BAEMARB"
+c  LABEL3(mxemdat) - char*12    - Data set label
+c   CSLST3(mxspec) - char*12    - Species identifiers
+c     CID3(mxarea) - char*16    - Source identifiers
+c BAEMUNIT(mxarea) - char*16    - Emissions units for each source
+c                                 ('g/m2/s'  OR  'g/s')

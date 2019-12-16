@@ -1,0 +1,93 @@
+
+
+
+                          SMERGE OUTPUT SUMMARY
+                   VERSION:  5.57     LEVEL:  070627  
+
+
+
+ 
+ -------------------------------------------------
+ NOTICE: Starting year in control file sets the
+         expected century for the simulation.  All
+         YY years are converted to YYYY years in
+         the range:  1940 2039
+ -------------------------------------------------
+ 
+ 
+ Control file name: smerge2.inp                                                                                                                         
+ Output list file name: smerge2.lst                                                                                                                         
+ Output file name: surf.dat                                                                                                                            
+ Continuation Run?  T
+ Previous SMERGE output data file: firstrun.dat                                                                                                                        
+ 
+
+
+ Station ID  Time Zone      SAMSON Surface Data  
+                                   Input Files 
+
+      14764       5        portlnd.cdr                                                                                                                         
+
+
+ Period to Extract (in time zone  5):    1/ 8/1990   1:00  to   1/15/1990   0:00
+
+
+
+                          ********************
+
+
+ Data Read from Existing Surface Data Input File:
+ 
+ 
+SURF.DAT        2.0             Header structure with coordinate parameters                     
+   1
+Produced by SMERGE Version: 5.57  Level: 070627                                 
+NONE    
+   Time Zone:     5
+   File Format (1=unformatted,2=formatted):  2
+   Packing Code:  0
+
+   Period (in time zone 5):    1/ 8/1990   1:00  to   1/15/1990   0:00
+
+   Stations Available in Existing Surface Data Input File:  
+    No.       ID         No.       ID         No.       ID         No.       ID
+
+     1       14606        2       14611        3       14745        4       14742
+
+
+                          ********************
+
+
+ No. Missing Values for    WS    WD ICEIL   ICC TEMPK   IRH  PRES
+                            0     0     0     0     0     0     0
+
+
+                          ********************
+
+
+
+ Characteristics of SMERGE Output (SURF.DAT) File:
+
+   Time Zone:     5
+   File Format (1=unformatted, 2=formatted):  2
+
+ Surface Stations in Output File:  
+    No.       ID         No.       ID         No.       ID         No.       ID
+
+     1       14606        3       14745        4       14742        5       14764
+     2       14611
+ 
+ 
+ 
+
+
+  LAST DAY/HOUR PROCESSED:
+     Year: 1990  Month:  1   Day: 15   Julian day:  15   Hour:  0
+
+
+  End of run -- Clock time: 22:57:13
+                      Date: 06-27-2007
+
+        Elapsed clock time:        0.0 (seconds)
+
+                  CPU time:        0.0 (seconds)

@@ -1,0 +1,41 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /VISEXT/ --- Visibility Extinction arrays    CALPOST
+c-----------------------------------------------------------------------
+      common/visext/av24s4g(mxgx,mxgy),av24s4d(mxdrec),av24s4t(mxctrec),
+     &              av24n3g(mxgx,mxgy),av24n3d(mxdrec),av24n3t(mxctrec),
+     &              av24n2g(mxgx,mxgy),av24n2d(mxdrec),av24n2t(mxctrec),
+     &              av24ocg(mxgx,mxgy),av24ocd(mxdrec),av24oct(mxctrec),
+     &              av24ecg(mxgx,mxgy),av24ecd(mxdrec),av24ect(mxctrec),
+     &              av24pcg(mxgx,mxgy),av24pcd(mxdrec),av24pct(mxctrec),
+     &              av24pfg(mxgx,mxgy),av24pfd(mxdrec),av24pft(mxctrec),
+     &              gso4(mxgx,mxgy),dso4(mxdrec),tso4(mxctrec),
+     &              gno3(mxgx,mxgy),dno3(mxdrec),tno3(mxctrec),
+     &              gno2(mxgx,mxgy),dno2(mxdrec),tno2(mxctrec),
+     &              gpmc(mxgx,mxgy),dpmc(mxdrec),tpmc(mxctrec),
+     &              gpmf(mxgx,mxgy),dpmf(mxdrec),tpmf(mxctrec),
+     &              goc(mxgx,mxgy),doc(mxdrec),toc(mxctrec),
+     &              gec(mxgx,mxgy),dec(mxdrec),tec(mxctrec)
+c-----------------------------------------------------------------------
+c     DEFINITIONS   [i]=integer   [r]=real   [a]=array   [L]=logical
+c-----------------------------------------------------------------------
+c  Arrays for summing/averaging extinction coefficients for each
+c  modeled species, for 24-hour visibility analyses
+c
+c av24s4[g,d,t] Current 24 sum/average of sulfate BEXT              [ra]
+c av24n3[g,d,t] Current 24 sum/average of nitrate BEXT              [ra]
+c av24n2[g,d,t] Current 24 sum/average of NO2 BEXT                  [ra]
+c av24oc[g,d,t] Current 24 sum/average of organic carbon BEXT       [ra]
+c av24ec[g,d,t] Current 24 sum/average of elemental carbon BEXT     [ra]
+c av24pc[g,d,t] Current 24 sum/average of coarse PM BEXT            [ra]
+c av24pf[g,d,t] Current 24 sum/average of fine PM BEXT              [ra]
+c
+c  Arrays for hourly extinction coefficients for each
+c  modeled species
+c
+c [g,d,t]so4    Current hour sulfate BEXT                           [ra]
+c [g,d,t]no3    Current hour nitrate BEXT                           [ra]
+c [g,d,t]no2    Current hour NO2 BEXT                               [ra]
+c [g,d,t]oc     Current hour organic carbon BEXT                    [ra]
+c [g,d,t]ec     Current hour elemental carbon BEXT                  [ra]
+c [g,d,t]pmc    Current hour coarse PM BEXT                         [ra]
+c [g,d,t]pmf    Current hour fine PM BEXT                           [ra]

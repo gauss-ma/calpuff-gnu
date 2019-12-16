@@ -1,0 +1,145 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /PT2/ -- Pt. source emission parameters      CALPUFF
+c                           Arbitrarily-varying (PTEMARB)
+c----------------------------------------------------------------------
+c
+      character*12 fname2,label2,cslst2
+      character*16 cid2
+c
+      common/PT2/NPT2,IUTMZ2,NSE2,XNLAT1PT2,XNLAT2PT2,RNLAT0PT2,
+     1           RWLON0PT2,MFPT2(mxemdat),IVRS2(mxemdat),
+     2           IBSRC2(mxemdat),IESRC2(mxemdat),IBDAT2(mxemdat),
+     3           IBTIM2(mxemdat),IEDAT2(mxemdat),IETIM2(mxemdat),
+     4           XMWEM2(mxspec),IXREM2(mxspec),TIEM2(8,mxpt2),
+     5           BHT2(36,mxpt2),BWD2(36,mxpt2),BLN2(36,mxpt2),
+     6           XBADJ2(36,mxpt2),YBADJ2(36,mxpt2),ZPLATPT2(mxpt2),
+     7           IBEG2(mxemdat),IEND2(mxemdat),TSTAK2(mxpt2),
+     8           EXITW2(mxpt2),SYIPT2(mxpt2),SZIPT2(mxpt2),
+     9           QSTAK2(mxspec,mxpt2),NEWPT2(mxpt2),
+     1       NTRPT2(mxpt2),XTRPT2(mxrise,mxpt2),ZTRPT2(mxrise,mxpt2),
+     2       RTRPT2(mxrise,mxpt2),HTRPT2(mxrise,mxpt2),
+     3       NWKPT2(mxpt2),XWKPT2(mxrise,mxpt2),SYWKPT2(mxrise,mxpt2),
+     4       SZWKPT2(mxrise,mxpt2),DRWKPT2(mxrise,mxpt2),
+     5       NCVPT2(mxpt2),XCVPT2(mxrise,mxpt2),SYCVPT2(mxrise,mxpt2),
+     6       SZCVPT2(mxrise,mxpt2),FQCVPT2(mxpt2),
+     7           FNAME2,LABEL2(mxemdat),CSLST2(mxspec),CID2(mxpt2)
+c
+c --- COMMON BLOCK /PT2/ Variables:
+c             NPT2 - integer    - Number of pt. sources in the file
+c           IUTMZ2 - integer    - UTM zone in which stack coordinates
+c                                 are specified
+c             NSE2 - integer    - Number of emitted species in the file
+c        XNLAT1PT2 - real       - Standard parallel #1 for LC map
+c                                 projection (degrees N. Latitude)
+c        XNLAT2PT2 - real       - Standard parallel #1 for LC map
+c                                 projection (degrees N. Latitude)
+c        RNLAT0PT2 - real       - N. Latitude of origin of LC map
+c                                 projection (degrees)
+c        RWLON0PT2 - real       - W. Longitude of origin of LC map
+c                                 projection (degrees)
+c   MFPT2(mxemdat) - integer    - Flag for file type
+c                                 0: UNFORMATTED
+c                                 1: FORMATTED
+c   IVRS2(mxemdat) - integer    - Data set version expressed as integer
+c                                 (5.4 is 54)
+c  IBSRC2(mxemdat) - integer    - Index for first source in a
+c                                 PTEMARB.DAT file
+c  IESRC2(mxemdat) - integer    - Index for last source in a
+c                                 PTEMARB.DAT file
+c  IBDAT2(mxemdat) - integer    - Date of the first data record in the
+c                                 file  (YYYYJJJ, where YYYY=year,
+c                                 JJJ=Julian day)
+c  IBTIM2(mxemdat) - integer    - Hour of the first data record in the
+c                                 file  (00-23 LST)
+c  IEDAT2(mxemdat) - integer    - Date of the last data record in the
+c                                 file  (YYYYJJJ, where YYYY=year,
+c                                 JJJ=Julian day)
+c  IETIM2(mxemdat) - integer    - Hour of the last data record in the
+c                                 file  (00-23 LST)
+c   XMWEM2(mxspec) - real       - Molecular weight for each species
+c   IXREM2(mxspec) - integer    - Cross referencing array of NSE2
+c                                 values relating species ordering
+c                                 in the emissions file to the
+c                                 ordering in the main conc. array
+c   TIEM2(8,mxpt2) - real       - Time-invariant data for arbitrarily-
+c                                 varying point source emissions
+c                                 (1,-) = X coordinate of source (in
+c                                         met. grid units -- converted
+c                                         from UTM data in PTEMARB file)
+c                                 (2,-) = Y coordinate of source (in
+c                                         met. grid units -- converted
+c                                         from UTM data in PTEMARB file)
+c                                 (3,-) = Stack height (m)
+c                                 (4,-) = Stack diameter (m)
+c                                 (5,-) = Stack base elevation (m)
+c                                 (6,-) = Building downwash flag
+c                                         0. No downwash
+c                                         1. Downwash bldgs on surface
+c                                         2. Downwash bldgs raised
+c                                 (7,-) = Vertical momentum flux factor
+c                                         (0.0 to 1.0) to simulate rain
+c                                         hat structures
+c                                 (8,-) = User-defined flag (e.g.,
+c                                         fuel code)
+c  ZPLATPT2(mxpt2) - real       - Platform height for elevated bldgs (m)
+c                                 (provided if BDW flag is 2.)
+c   BHT2(36,mxpt2) - real       - Array of direction-specific bldg hts
+c                                 (above platform if BDW flag is 2.)
+c                                 for each 10 deg. from N (m)
+c   BWD2(36,mxpt2) - real       - Array of direction-specific building
+c                                 widths for each 10 deg. from N (m)
+c   BLN2(36,mxpt2) - real       - Wind direction specific building
+c                                 lengths (m)
+c XBADJ2(36,mxpt2) - real       - Wind direction specific along-wind
+c                                 distance from stack to center of
+c                                 upwind face of projected building,
+c                                 x-axis lies along the flow (m)
+c YBADJ2(36,mxpt2) - real       - Wind direction specific cross-wind
+c                                 distance from stack to center of
+c                                 upwind face of projected building,
+c                                 x-axis lies along the flow (m)
+c
+c ---  Variable data  ---
+c        IBEG2(mxemdat) - integer  - Starting time for which emissions
+c                                    data in current set of
+c                                    records is valid (YYYYJJJHH)
+c        IEND2(mxemdat) - integer  - Ending time for which emissions
+c                                    data in current set of
+c                                    records is valid (YYYYJJJHH)
+c         TSTAK2(mxpt2) - real     - Exit temperature (deg. K)
+c         EXITW2(mxpt2) - real     - Exit velocity (m/s)
+c         SYIPT2(mxpt2) - real     - Initial sigma-y (m)
+c         SZIPT2(mxpt2) - real     - Initial sigma-z (m)
+c  QSTAK2(mxspec,mxpt2) - real     - Emission rate (g/s) for each
+c         NEWPT2(mxpt2) - integer  - Number of puffs released by each
+c                                    source during the current time step
+c
+c ---  Numerical Plume Rise & PRIME Downwash Arrays ---
+c
+c        NTRPT2(mxpt2) - integer  - Number points in trajectory arrays
+c XTRPT2(mxrise,mxpt2) - real     - Downwind distance (m) of trajectory
+c ZTRPT2(mxrise,mxpt2) - real     - Height (m AGL) of trajectory
+c RTRPT2(mxrise,mxpt2) - real     - Plume radius (m)
+c HTRPT2(mxrise,mxpt2) - real     - Plume rise (m) without streamline
+c                                   modifications (used for BID)
+c
+c        NWKPT2(mxpt2) - integer  - Number points in wake arrays
+c XWKPT2(mxrise,mxpt2) - real     - Downwind distance (m) in wake
+cSYWKPT2(mxrise,mxpt2) - real     - Sigma-y (m) in wake
+cSZWKPT2(mxrise,mxpt2) - real     - Sigma-z (m) in wake
+cDRWKPT2(mxrise,mxpt2) - real     - Plume growth rate expressed as
+c                                   d/dx(plume radius) for equivalent
+c                                   top-hat
+c
+c        NCVPT2(mxpt2) - integer  - Number points in cavity arrays
+c XCVPT2(mxrise,mxpt2) - real     - Downwind distance (m) in cavity
+cSYCVPT2(mxrise,mxpt2) - real     - Sigma-y (m) in cavity
+cSZCVPT2(mxrise,mxpt2) - real     - Sigma-z (m) in cavity
+c       FQCVPT2(mxpt2) - real     - Fraction of emission rate captured
+c                                   in the cavity
+c
+c ---  Character data ---
+c           FNAME2 - char*12    - Data set name "PTEMARB"
+c  LABEL2(mxemdat) - char*12    - Data set label
+c   CSLST2(mxspec) - char*12    - Species identifiers
+c      CID2(mxpt2) - char*16    - Source identifiers

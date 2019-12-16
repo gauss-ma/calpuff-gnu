@@ -1,0 +1,153 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /HEAD/ --- Modeling Variables               CALPOST
+c-----------------------------------------------------------------------
+      logical LSGRID,LCOMPRS
+      character*6 avtime
+      character*12 amodel,aver,alev
+      character*15 asplst(mxsplv)
+      character*16 aspunit(mxsplv)
+      character*80 atitle(3)
+
+      character*4 utmhem
+      character*8 datum,pmap, abtz
+      character*12 daten
+      character*16 clat0,clon0,clat1,clat2
+      character*16 cpver,crhver
+
+      common/head/msyr,mjsday,mshr,mssec,xbtz,nsecdt,mnrun,mavgpd,
+     *            mnper,mavg,iptime,irhtime,isrcinfo,isrcindv,
+     *            ielmet,jelmet,delx,dely,nz,
+     *            xorigkm,yorigkm,nssta,
+     *            iastar,iastop,jastar,jastop,
+     *            isastr,isastp,jsastr,jsastp,
+     *            ngx,ngy,ngrec,
+     *            meshdn,npts,nareas,nlines,nvols,
+     *            npt1,npt2,nar1,nar2,nln1,nln2,nvl1,nvl2,
+     *            ndrec,nctrec,LSGRID,nszout,
+     *            xgrd(mxgx,mxgy),ygrd(mxgx,mxgy),
+     *            xrec(mxdrec),yrec(mxdrec),zrec(mxdrec),
+     *            xctr(mxctrec),yctr(mxctrec),zctr(mxctrec),
+     *            ihill(mxctrec),
+     *            xkmsta(mxss),ykmsta(mxss),nears(mxgx,mxgy),
+     *            lcomprs,i2drh,iutmzn,feast,fnorth,
+     *            rnlat0,relon0,xlat1,xlat2,
+     *            amodel,aver,alev,atitle,avtime,asplst,aspunit,abtz,
+     *            pmap,utmhem,datum,daten,clat0,clon0,clat1,clat2,
+     *            cpver,crhver
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c                       [c]=character   [L]=logical
+c-----------------------------------------------------------------------
+c msyr,mjsday,  Starting time of run: yr, Julian day, hour, second   [i]
+c   mshr,mssec
+c xbtz          Base time zone                                       [r]
+c nsecdt        Number of seconds in one model step                  [i]
+c mnrun         Number of model steps in model run                   [i]
+c mavgpd        Averaging time in model steps for results reported   [i]
+c               by model
+c mnper         Number of averaging periods contained in model output[i]
+c mavg          Averaging time in AVTIME units                       [i]
+c               computed as  mavg*nsecdt/[1, 60, or 3600]seconds
+c iptime        Time marker format in CALPUFF output file            [i]
+c                 1:  End-time format
+c                 2:  Begin-time/End-time format
+c irhtime       Time marker format in CALPUFF VISB file              [i]
+c                 1:  End-time format
+c                 2:  Begin-time/End-time format
+c isrcinfo      Flag for source information in CALPUFF output file   [i]
+c                 0:  Number of sources
+c                 1:  Names and locations of each source
+c isrcindv      Flag for individual source contributions in CALPUFF  [i]
+c               output file  
+c                 0:  Total from all sources
+c                 1:  Individual plus total from all sources
+c ielmet        Number of met. grid points (x-direction)             [i]
+c jelmet        Number of met. grid points (y-direction)             [i]
+c delx (km)     Grid spacing in x-direction                          [r]
+c dely (km)     Grid spacing in y-direction                          [r]
+c nz            Number of layers (=1 for CALPUFF)                    [i]
+c iastar        Start of computational grid (x-direction)            [i]
+c iastop        End of computational grid (x-direction)              [i]
+c jastar        Start of computational grid (y-direction)            [i]
+c jastop        End of computational grid (y-direction)              [i]
+c isastr        Start of sampling grid (x-direction)                 [i]
+c isastp        End of sampling grid (x-direction)                   [i]
+c jsastr        Start of sampling grid (y-direction)                 [i]
+c jsastp        End of sampling grid (y-direction)                   [i]
+c ngx,ngy       Actual dimensions of gridded receptor array          [i]
+c ngrec         Actual number of gridded receptors                   [i]
+c meshdn        Sampling grid spacing factor                         [i]
+c npts          Number of point sources                              [i]
+c nareas        Number of area sources                               [i]
+c ndrec         Number of discrete receptors                         [i]
+c nlines        Number of line sources                               [i]
+c nvols         Number of volume sources                             [i]
+c npt1          Number of point sources (Control File)               [i]
+c npt2          Number of point sources (Var. Emissions File)        [i]
+c nar1          Number of area sources (Control File)                [i]
+c nar2          Number of area sources (Var. Emissions File)         [i]
+c nln1          Number of line sources (Control File)                [i]
+c nln2          Number of line sources (Var. Emissions File)         [i]
+c nvol1         Number of volume sources (Control File)              [i]
+c nvol2         Number of volume sources (Var. Emissions File)       [i]
+c nctrec        Number of complex terrain receptors                  [i]
+c LSGRID        Gridded receptors included? (T=yes)                  [L]
+c nszout        Number of chemical species/level combinations        [i]
+c xgrd (km)     X-coordinate gridded receptors                      [ra]
+c ygrd (km)     Y-coordinate gridded receptors                      [ra]
+c xrec (km)     X-coordinate discrete receptors                     [ra]
+c yrec (km)     Y-coordinate discrete receptors                     [ra]
+c zrec (m)      Height of discrete receptors above sea level        [ra]
+c xctr (km)     X-coordinate discrete receptors (complex terrain)   [ra]
+c yctr (km)     Y-coordinate discrete receptors (complex terrain)   [ra]
+c zctr (m)      Height of complex terrain receptors above sea level [ra]
+c ihill         Hill identification number for complex terrain      [ia]
+c               receptors
+c lcomprs       Logical indicating whether data on disk are          [L]
+c               compressed
+c i2drh         Flag for 2D array of relative humidity               [i]
+c amodel        Name of the model used to produce concentrations     [c]
+c aver          Version number of model                              [c]
+c alev          Level of revision of model                           [c]
+c atitle        Title for run                                       [ca]
+c avtime        Averaging time units (second, minute, or hour)       [c]
+c asplst        List of species/level names                         [ca]
+c aspunit       List of units for each species/level                [ca]
+c abtz          XBTZ as UTC string (e.g. UTC-0500)                   [a]
+c-----------------------------------------------------------------------
+c IUTMZN        - integer   - UTM zone for UTM projection
+c FEAST  (km)   - real      - False Easting at projection origin
+c FNORTH (km)   - real      - False Northing at projection origin
+c RNLAT0,       - real      - N. latitude & E. longitude of x=0 and y=0
+c RELON0 (deg)                of map projection (Used only if PMAP =
+c                             LCC, PS, EM, TTM or LAZA) 
+c                             NOTE: longitude neg in western hemisphere
+c XLAT1,        - real      - Matching N. latitude(s) for projection
+c XLAT2 (deg)                 (Used only if PMAP= LCC, PS, or EM)
+c                             LCC :  Projection cone slices through
+c                                    Earth's surface at XLAT1 and XLAT2
+c                             PS  :  Projection plane slices through
+c                                    Earth at XLAT1
+c                             EM  :  Projection cylinder slices through
+c                                    Earth at [+/-] XLAT1
+c-----------------------------------------------------------------------
+c PMAP          - character - Character code for output map projection
+c                             UTM :  Universal Transverse Mercator
+c                             LCC :  Lambert Conformal Conic
+c                             PS  :  Polar Stereographic
+c                             EM  :  Equatorial Mercator
+c                             LAZA:  Lambert Azimuthal Equal Area
+c                             TTM :  Tangential Transverse Mercator
+c UTMHEM        - character - Base hemisphere for UTM projection
+c                             (S=southern, N=northern)
+c DATUM         - character - Datum-Region for grid coordinates
+c DATEN         - character - NIMA date for datum parameters
+c                             (MM-DD-YYYY  )
+c CLAT0         - character - Character version of RNLAT0
+c CLON0         - character - Character version of RELON0
+c CLAT1         - character - Character version of XLAT1
+c CLAT2         - character - Character version of XLAT2
+c-----------------------------------------------------------------------
+c cpver         CALPUFF output dataset version                       [c]
+c crhver        CALPUFF VISB dataset version                         [c]
+c-----------------------------------------------------------------------

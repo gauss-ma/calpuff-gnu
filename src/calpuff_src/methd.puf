@@ -1,0 +1,133 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /METHD/ -- Header record information from    CALPUFF
+c                             meteorological data file(s)
+c----------------------------------------------------------------------
+c
+      logical lcalgrd
+      logical*4 llconfm
+      character*8 levmet
+      character*4 utmhemm
+      character*8 datumm,pmapm
+      character*12 datenm
+c
+      common/METHD/levmet,dversm,nxm,nym,nzm,xgridm,xorigm,yorigm,
+     1 xbtzm,xlat0m,xlon0m,llconfm,rlat0m,rlon0m,xlat1m,xlat2m,
+     2 nssta,nusta,npsta,nlu,iwat1,iwat2,zfacem(mxnzp1),
+     3 xssta(mxss),yssta(mxss),xlatss(mxss),xlonss(mxss),
+     4 xusta(mxus),yusta(mxus),xpsta(mxps),ypsta(mxps),
+     5 z0(mxnx,mxny),ilandu(mxnx,mxny),elev(mxnx,mxny),
+     6 xlai(mxnx,mxny),nears(mxnx,mxny),lcalgrd,
+     7 anemht,imixctdm,isigmav,ilanduin,z0in,xlaiin,
+     8 elevin,xlatin,xlonin,nss,i2dmet,
+     9 iutmznm,feastm,fnorthm,pmapm,datumm,datenm,utmhemm
+c
+c --- COMMON BLOCK /METHD/ Variables:
+c           LEVMET - character- Level of CALMET that generated met file
+c           DVERSM - real     - Dataset version number for CALMET file
+c              NXM - integer  - Number of CALMET grid points in
+c                               X direction
+c              NYM - integer  - Number of CALMET grid points in
+c                               Y direction
+c              NZM - integer  - Number of CALMET vertical levels
+c           XGRIDM - real     - CALMET grid spacing (m)
+c           XORIGM - real     - Reference X coordinate (m) of
+c                               southwest corner of CALMET grid
+c           YORIGM - real     - Reference Y coordinate (m) of
+c                               southwest corner of CALMET grid
+c            XBTZM - real     - Base time zone of CALMET data
+c           XLAT0M - real     - Reference N LATITUDE (deg) of
+c                               southwest corner of CALMET grid
+c           XLON0M - real     - Reference W LONGITUDE (deg) of
+c                               southwest corner of CALMET grid
+c          LLCONFM - logical  - Lambert Conformal Map Projection used
+c                               instead of UTM when TRUE
+c RLAT0M,       - real      - N. latitude & W. longitude of x=0 and y=0
+c RLON0M (deg)                of map projection (Used only if PMAP =
+c                             LCC, PS, EM, TTM or LAZA) 
+c                             NOTE: longitude POS in western hemisphere
+c XLAT1M,       - real      - Matching N. latitude(s) for projection
+c XLAT2M (deg)                (Used only if PMAP= LCC, PS, or EM)
+c                             LCC :  Projection cone slices through
+c                                    Earth's surface at XLAT1 and XLAT2
+c                             PS  :  Projection plane slices through
+c                                    Earth at XLAT1
+c                             EM  :  Projection cylinder slices through
+c                                    Earth at [+/-] XLAT1
+c            NSSTA - integer  - Number of surface met. stations
+c            NUSTA - integer  - Number of upper air stations
+c            NPSTA - integer  - Number of preciitation stations
+c              NLU - integer  - Number of land use categories
+c     IWAT1, IWAT2 - integers - Land use categories from IWAT1 through
+c                               IWAT2 correspond to water
+c   ZFACEM(mxnzp1) - real     - CALMET cell face heights (m)
+c                               (NZM+1 values)
+c      XSSTA(mxss) - real     - X coordinate of each surface
+c                               meteorological station
+c      YSSTA(mxss) - real     - Y coordinate of each surface
+c                               meteorological station
+c     XLATSS(mxss) - real     - N Latitude of each surface
+c                               meteorological station (degrees)
+c     YLONSS(mxss) - real     - W Longitude of each surface
+c                               meteorological station (degrees)
+c      XUSTA(mxus) - real     - X coordinate of each upper air
+c                               meteorological station
+c      YUSTA(mxus) - real     - Y coordinate of each upper air
+c                               meteorological station
+c      XPSTA(mxps) - real     - X coordinate of each precipitation
+c                               station
+c      YPSTA(mxps) - real     - Y coordinate of each precipitation
+c                               station
+c    Z0(mxnx,mxny) - real     - Average surface roughness lengths (m)
+c                               for each grid cell
+c ILANDU(mxnx,mxny)- real     - Land use category for each grid cell
+c                               NOTE: negative values indicate IRRIGATED
+c                               land use
+c  ELEV(mxnx,mxny) - real     - Average terrain height (m) above sea
+c                               level for each grid cell
+c  XLAI(mxnx,mxny) - real     - Leaf area index for each grid cell
+c NEARS(mxnx,mxny) - integer  - Closest surface met. station to each
+c                               grid point
+c          LCALGRD - logical  - Control variable indicating if special
+c                               meteorological fields required by
+c                               CALGRID are stored in the met. file
+c *** For METFM = 2,3
+c           ANEMHT - real     - Height (m) at which single-point wind
+c                               measurements are made
+c *** For METFM = 4
+c         IMIXCTDM - integer  - Flag to select mixing height from CTDM
+c                               SURFACE file
+c                                0:  select calculated mixing ht.
+c                                1:  select observed mixing ht.
+c
+c         ISIGMAV  - integer  - Flag for units of PROFILE.DAT sigma
+c                                0:  sigma-theta (deg)
+c                                1:  sigma-v (m/s)
+c *** For METFM = 2,3,4 --- Used to initialize 2-D arrays
+c        ILANDUIN  - integer  - Single land use code for domain
+c            Z0IN  - integer  - Single roughness length (m) for domain
+c          XLAIIN  - integer  - Single leaf area index for domain
+c          ELEVIN  - real     - Single elevation (m MSL) for domain
+c *** For METFM = 2,3,4 --- Used to initialize 1-D arrays
+c          XLATIN  - real     - N Latitude for single met station (deg)
+c          XLONIN  - real     - W Longitude for single met station (deg)
+c *** For METFM = 1     --- Used to place surface station lat/lon
+c                               in control file
+c             NSS - integer   - Number of surface met. stations
+c          I2DMET - integer   - Flag for 2 D array of sfc met
+c                                0: 2D arrays NOT available
+c                                1: 2D array available
+c IUTMZNM       - integer   - UTM zone for UTM projection
+c FEASTM (km)   - real      - False Easting at projection origin
+c FNORTHM(km)   - real      - False Northing at projection origin
+c PMAPM         - character - Character code for output map projection
+c                             UTM :  Universal Transverse Mercator
+c                             LCC :  Lambert Conformal Conic
+c                             PS  :  Polar Stereographic
+c                             EM  :  Equatorial Mercator
+c                             LAZA:  Lambert Azimuthal Equal Area
+c                             TTM :  Tangential Transverse Mercator
+c UTMHEMM       - character - Base hemisphere for UTM projection
+c                             (S=southern, N=northern)
+c DATUMM        - character - Datum-Region for grid coordinates
+c DATENM        - character - NIMA date for datum parameters
+c                             (MM-DD-YYYY  )

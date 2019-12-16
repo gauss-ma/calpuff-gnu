@@ -1,0 +1,26 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /LUTABS/ -- Land use tabulations              CTGCOMP
+c-----------------------------------------------------------------------
+c
+      common/LUTABS/lumap(92),itab(mc),nzcat(mzct),nlcd92(mnlcd),
+     & nlcd01(mnlcd),ideftyp
+c
+c-----------------------------------------------------------------------
+c     DEFINITIONS  [i]=integer   [r]=real   [l]=logical   [c]=character
+c-----------------------------------------------------------------------
+c lumap(92)      Land use map converting USGS 92 category system to [ia]
+c                the standard CALMET 38 category system
+c itab(mc)       Land use map converting GLOBAL 'mc' category system[ia]
+c                to the USGS 92 category system (mc is set in PARAMS.CTG)
+c nzcat(mzct)    Land use map converting New Zealand 'mzct' category[ia] 
+c                system to USGS 92 category system (mzct is set in
+c                PARAMS.CTG)
+c nlcd92(mnlcd)  Land use map converting NLCD 1992 'mnlcd' cattegory[ia] 
+c                system to USGS 92 category system (mnlcd is set in
+c                PARAMS.CTG)
+c nlcd01(mnlcd)  Land use map converting NLCD 2001 'mnlcd' cattegory[ia] 
+c                system to USGS 92 category system (mnlcd is set in
+c                PARAMS.CTG) (as of 2005, NLCD 2001 very incomplete)
+c ideftyp        Default land use for points incorrectly identified  [i]
+c                as ocean (coast line processing)
+c-----------------------------------------------------------------------

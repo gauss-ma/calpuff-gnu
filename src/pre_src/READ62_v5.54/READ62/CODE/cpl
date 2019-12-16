@@ -1,0 +1,54 @@
+Lahey/Fujitsu Fortran 95 Express Release 7.10.02  S/N: 003050432726350
+Copyright (C) 1994-2004 Lahey Computer Systems.  All rights reserved.
+Copyright (C) 1998-2004 FUJITSU LIMITED. All rights reserved.
+Compiling program unit main at line 1:
+Compiling program unit __BLKDT__ at line 260:
+Compiling program unit xtractll at line 300:
+Compiling program unit yr4 at line 251:
+Compiling program unit yr4c at line 302:
+Compiling program unit qayr4 at line 346:
+Compiling program unit julday at line 433:
+Compiling program unit grday at line 498:
+Compiling program unit dedat at line 548:
+Compiling program unit deltt at line 576:
+Compiling program unit incr at line 642:
+Compiling program unit indecr at line 736:
+Compiling program unit incrs at line 815:
+Compiling program unit deltsec at line 882:
+Compiling program unit midnite at line 926:
+Compiling program unit utcbasr at line 995:
+Compiling program unit basrutc at line 1031:
+Compiling program unit filcase at line 1078:
+Compiling program unit readin at line 1152:
+Compiling program unit altonu at line 1785:
+Compiling program unit deblnk at line 2097:
+Compiling program unit deplus at line 2158:
+Compiling program unit tright at line 2214:
+Compiling program unit tleft at line 2292:
+Compiling program unit setvar at line 2371:
+Compiling program unit allcap at line 2453:
+Compiling program unit datetm at line 2505:
+Compiling program unit etime at line 2578:
+Compiling program unit undrflw at line 2599:
+Compiling program unit comline at line 2632:
+Compiling program unit setup at line 304:
+Compiling program unit readcf at line 457:
+Compiling program unit qainp at line 609:
+Compiling program unit comp at line 737:
+Compiling program unit GOOD at line 1516:
+Compiling program unit wrhd at line 1562:
+Compiling program unit rdhdsub at line 1699:
+Compiling program unit nextsub at line 1759:
+Compiling program unit rdsub at line 1814:
+Compiling program unit submiss at line 1933:
+Compiling program unit subrep at line 2043:
+Compiling program unit RDSTA at line 2141:
+Compiling program unit fin at line 2265:
+Encountered 0 errors, 0 warnings in file read62.for.
+Microsoft (R) Incremental Linker Version 6.00.8447
+Copyright (C) Microsoft Corp 1992-1998. All rights reserved.
+
+LINK : warning LNK4005: no objects used from library c:\LF9571\Bin\..\lib\fj90b.lib
+LINK : warning LNK4005: no objects used from library c:\LF9571\Bin\..\lib\advapi32.lib
+LINK : warning LNK4005: no objects used from library c:\LF9571\Bin\..\lib\uuid.lib
+Compiling file read62.for.

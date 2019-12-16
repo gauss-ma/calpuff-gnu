@@ -1,0 +1,48 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /CONC/ --- Concentration Data               CALPOST
+c-----------------------------------------------------------------------
+      common/conc/myrb,mjdayb,mhrb,msecb,myre,mjdaye,mhre,msece,
+     *            concg(mxgx,mxgy),concd(mxdrec),conct(mxctrec),
+     *            aconcg(mxgx,mxgy,mxspec),aconcd(mxdrec,mxspec),
+     *            aconct(mxctrec,mxspec),
+     *            gbext0(mxgx,mxgy),dbext0(mxdrec),tbext0(mxctrec),
+     *            gfrh(mxgx,mxgy),dfrh(mxdrec),tfrh(mxctrec),
+     *            gfrhs(mxgx,mxgy),dfrhs(mxdrec),tfrhs(mxctrec),
+     *            gfrhl(mxgx,mxgy),dfrhl(mxdrec),tfrhl(mxctrec),
+     *            gfrhss(mxgx,mxgy),dfrhss(mxdrec),tfrhss(mxctrec)
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c                       [c]=character   [L]=logical
+c-----------------------------------------------------------------------
+c myrb,mjdayb,   Beginning date and time of current concentration    [i]
+c   mhrb,msecb   average
+c myre,mjdaye,   Ending date and time of current concentration       [i]
+c   mhre,msece   average
+c concg          Gridded array of current concentrations            [ra]
+c                (single selected species)
+c concd          Vector of current discrete concentrations          [ra]
+c                (single selected species)
+c conct          Vector of current complex terrain concentrations   [ra]
+c                (single selected species)
+c aconcg         Gridded array of current concentrations            [ra]
+c                (all species)
+c aconcd         Vector of current discrete concentrations          [ra]
+c                (all species)
+c aconct         Vector of current complex terrain concentrations   [ra]
+c                (all species)
+c gbext0         Gridded array of background light extinction       [ra]
+c dbext0         Vector of current discrete background light ext.   [r]
+c tbext0         Vector of current complex terrain bkgd light ext.  [r]
+c gfrh           Gridded array of relative humidity growth factor   [ra]
+c gfrhs          (for small particle component)                     [ra]
+c gfrhl          (for large particle component)                     [ra]
+c gfrhss         (for sea salt component)                           [ra]
+c dfrh           Vector of current discrete RH growth factor        [ra]
+c dfrhs          (for small particle component)                     [ra]
+c dfrhl          (for large particle component)                     [ra]
+c dfrhss         (for sea salt component)                           [ra]
+c tfrh           Vector of current complex terrain RH growth factor [ra]
+c tfrhs          (for small particle component)                     [ra]
+c tfrhl          (for large particle component)                     [ra]
+c tfrhss         (for sea salt component)                           [ra]
+c-----------------------------------------------------------------------

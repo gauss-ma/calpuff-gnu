@@ -1,0 +1,22 @@
+c-----------------------------------------------------------------------
+c --- READ62    Version: 5.1            Level: 020614       STATION.R62
+c               D. Strimaitis, EarthTech
+c
+c PURPOSE:      Station variables
+c-----------------------------------------------------------------------
+c
+      character*4 cname
+      character*8 stnid
+      character*16 clat,clon
+
+      common/station/istz,ielevm,stnid,cname,clat,clon
+c
+c --- COMMON BLOCK /STATION/ Variables:
+c
+c --- Data for station-files read in 
+c          ISTZ - integer  - Time zone (0 for GMT here)
+c        IELEVM - integer  - Station elevation (m MSL)
+c         STNID - char*8   - Station ID
+c         CNAME - char*4   - Name of station (----)
+c          CLAT - char*16  - Latitude of station (deg[N/S])
+c          CLON - char*16  - Longitude of station (deg[E/W])

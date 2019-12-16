@@ -1,0 +1,61 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /GEN/ -- General run control information,    CALPUFF
+c                           file types
+c----------------------------------------------------------------------
+c
+      character*12 cspec,cgrup
+c
+      common/gen/ibyr,ibmo,ibdy,ibhr,irlg,nspec,nsdd,nse,ngrup,
+     1 isplst(4,mxspec),cspec(mxspec),xmol(mxspec),cgrup(mxgrup),
+     2 ispgrp(mxspec),metfm,mprffm,metrun,mrestart,nrespd
+c
+c --- COMMON BLOCK /GEN/ Variables:
+c             IBYR - integer - Beginning year of run (4 digits)
+c             IBMO - integer - Beginning month of run
+c             IBDY - integer - Beginning day of run
+c             IBHR - integer - Beginning hour of run
+c             IRLG - integer - Run length (hours)
+c            NSPEC - integer - Total number of chemical species
+c                              (advected + steady-state species)
+c             NSDD - integer - Number of species dry deposited
+c              NSE - integer - Number of species emitted
+c            NGRUP - integer - Number of Species-Groups
+c ISPLST(4,mxspec) - integer - Flags indicating which species are
+c                              (1,-)=modeled, (2,-) emitted (0=NO, 1=YES),
+c                              (3,-)=dry deposition flag (0=no dep.,
+c                              1=resistance model (gas), 2=resistance
+c                              model (particle), 3=user-specified)
+c                              (4,-)=species-group flag (0=not in group,
+c                              1=group1, 2=group2, etc.)
+c    CSPEC(mxspec) - char*12 - List of chemical species
+c     XMOL(mxspec) - real    - Molecular weight for each species
+c    CGRUP(mxgrup) - char*12 - List of names for grouped species
+c   ISPGRP(mxspec) - integer - Index of group to which species belong
+c            METFM - integer - Meteorological data input format flag
+c                                 1 = CALMET/AUSMET binary format
+c                                     (CALMET.DAT, AUSMET.DAT)
+c                                 2 = ISC ASCII file (ISCMET.DAT)
+c                                 3 = AUSPLUME ASCII file (PLMMET.DAT)
+c                                 4 = CTDM PROFILE & SURFACE files
+c                                 5 = AERMET PROFILE & SURFACE files
+c           MPRFFM - integer - Meteorological Profile Data Format
+c                                 1 = CTDM plus tower file (PROFILE.DAT)
+c                                 2 = AERMET tower file (PROFILE.DAT)
+c           METRUN - integer - Option to run ALL of the met periods
+c                              found in the met files
+c                                 0 = Run period defined by the user
+c                                 1 = Run all periods found
+c         MRESTART - integer - Option to create/use a restart file
+c                                 0 = No restart files read or written
+c                                 1 = Old restart file used at start
+c                                     of a continuation run with "old"
+c                                     puffs from the preceding period;
+c                                 2 = New restart file made during run
+c                                 3 = Old restart file used at start
+c                                     of a continuation run with "old"
+c                                     puffs from the preceding period;
+c                                     << AND >>
+c                                     New restart file made during run
+c           NRESPD - integer - Number of periods in Restart output cycle
+c                                 0 = File written only at last period
+c                                >0 = File updated every NRESPD periods

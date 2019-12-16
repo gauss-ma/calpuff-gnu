@@ -1,0 +1,32 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /MSBAL/ -- arrays for Mass Balance Output     CALPUFF
+c----------------------------------------------------------------------
+c
+      logical lbc
+      common/MSBAL/balinp(mxspec),balout(mxspec),baltrn(mxspec),
+     &             balwet(mxspec),baldry(mxspec),baltot(mxspec,2),
+     &             balinpbc(mxspec),baloutbc(mxspec),baltrnbc(mxspec),
+     &             balwetbc(mxspec),baldrybc(mxspec),baltotbc(mxspec,2),
+     &             lbc
+c
+c --- COMMON BLOCK /MSBAL/ Variables:
+c
+c       BALINP(mxspec) - real    - Mass of each species emitted
+c                                  during current hour (g)
+c       BALOUT(mxspec) - real    - Mass of each species advected
+c                                  during current hour (g)
+c       BALTRN(mxspec) - real    - Mass of each species transformed
+c                                  during current hour ( +/- g)
+c       BALWET(mxspec) - real    - Mass of each species removed (wet
+c                                  depletion) during current hour (g)
+c       BALDRY(mxspec) - real    - Mass of each species removed (dry
+c                                  depletion) during current hour (g)
+c     BALTOT(mxspec,2) - real    - Mass of each species in domain at
+c                                  end of current hour (g) below(1)
+c                                  and above(2) surface mixed layer
+c
+c --- Above array names are repeated with 'BC' appended to store the
+c --- corresponding information for mass that enters domain through
+c --- the boundary conditions
+c
+c                  LBC - logical - Boundary condition mass reported?

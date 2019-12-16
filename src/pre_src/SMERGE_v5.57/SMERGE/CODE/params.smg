@@ -1,0 +1,49 @@
+c----------------------------------------------------------------------
+c --- PARAMETER statements                                       SMERGE
+c----------------------------------------------------------------------
+c --- Specify model version
+      character*12 mver, mlevel
+      integer envpop
+      parameter(mver='5.57',mlevel='070627')
+      parameter(envpop=0)
+c
+c --- Specify parameters
+      parameter(mxff=150)
+      parameter(mxss=250)
+      parameter(io5=1,io6=2,ioprev=3,iosurf=4,iossta=5,ioff=10)
+      parameter(iovsrn=8)
+      parameter(ioprec=9)
+      parameter(iomesg=0)
+c
+c --- GENERAL PARAMETER definitions:
+c          MVER - Version number of SMERGE
+c        MLEVEL - Level (e.g. release date code) of SMERGE
+c        ENVPOP - toggle environment configurations (these will evolve
+c                 in time) - Current meaning:
+c                   ENVPOP=0  SURF.DAT header as in 1/2000 Users Guide
+c                   ENVPOP=1  SURF.DAT header w/draft station locations
+c          MXFF - Maximum number of formatted station data files
+c          MXSS - Maximum number of surface met stations
+c
+c --- FORTRAN I/O unit numbers:
+c           IO5 - Control file (SMERGE.INP)     - input  - formatted
+c           IO6 - List file (SMERGE.LST)        - output - formatted
+c        IOPREV - Previous SMERGE output file
+c                                    (PREV.DAT) - input  - either format
+c        IOSURF - SMERGE output file (SURF.DAT) - input  - either format
+c        IOSSTA - Input file of station location data
+c                                    (SSTA.TXT) - input  - formatted
+c        IOVSRN - Present weather - visibility output file 
+c                                    (VSRN.DAT) - output - formatted
+c        IOPREC - PRECIP output file for data provided
+c                 in extended CD144 data record
+c                                  (PRECIP.DAT) - output - formatted
+c          IOFF - Formatted station files are   - input  - formatted
+c                 opened using unit IOFF and above
+c        IOMESG - Fortran unit number for screen- output - formatted
+c                 output (NOTE: This unit is
+c                 NOT opened -- it must be a
+c                 preconnected unit to the screen)
+c -----------------------------------------------------------------
+
+ 

@@ -1,0 +1,131 @@
+-------------------------------------------------------------------------------
+
+                 READ62 PROCESSOR CONTROL FILE
+                 -----------------------------
+
+  CALMET accepts upper air data (wind and temperature soundings) from
+  UP.DAT files, where each UP.DAT file contains data for one station.
+  READ62 processes soundings from standard NCDC data formats, reports
+  problems with data entries, and produces an output file in the UP.DAT
+  format.  NCDC formats supported include TD-6201 and FSL.
+
+-------------------------------------------------------------------------------
+
+INPUT GROUP: 0 -- Input and Output Files
+--------------
+
+
+     Input and Output files:
+     -----------------------
+
+     Default Name  Type          File Name
+     ------------  ----          ---------
+    SOUNDING.DAT      input    ! INDAT = 90010100.ALB      !
+    SUBSOUND.DAT      input    * SUBDAT =            *
+    UP.DAT           output    ! UPDAT = UPALB.DAT      !
+    READ62.LST       output    ! RUNLST = R62ALB.LST    !
+
+    All file names will be converted to lower case if LCFILES = T
+    Otherwise, if LCFILES = F, file names will be converted to UPPER CASE
+    (LCFILES)       Default: T       ! LCFILES = T     !
+        T = lower case
+        F = UPPER CASE
+
+     NOTE: file/path names can be up to 70 characters in length
+
+!END!
+
+--------------------------------------------------------------------------------
+
+INPUT GROUP: 1 -- Run control parameters
+--------------
+
+ --- Processing Period ---
+
+       Starting date:  Year (IBYR) -- No default   ! IBYR = 1990  !
+                      Month (IBMO) -- No default   ! IBMO = 1  !
+                        Day (IBDY) -- No default   ! IBDY = 01  !
+          [00-23 UTC]  Hour (IBHR) -- No default   ! IBHR = 0  !
+
+       Ending date:    Year (IEYR) -- No default   ! IEYR = 1990  !
+                      Month (IEMO) -- No default   ! IEMO = 1  !
+                        Day (IEDY) -- No default   ! IEDY = 15  !
+          [00-23 UTC]  Hour (IBHR) -- No default   ! IEHR = 12  !
+
+
+     ---------------
+     NOTE:  The hour is defined by the time at the end of the hour
+            in Universal Time (UTC), also known as Greenwich Mean
+            Time (GMT).
+
+
+ --- File Options ---
+
+     Type of NCDC input sounding data file
+     (JDAT)                     No Default      ! JDAT = 2     !
+        1 = TD-6201 format
+        2 = NCDC FSL format
+
+     Type of SUBSTITUTE UP.DAT input sounding data file
+     (ISUB)                     Default: 0      ! ISUB =0     !
+     0 = NO substitute sounding file is used
+     1 = Delimiter between data in a sounding level is a slash (/)
+         and wind speed and direction are written as integers
+     2 = Delimiter between data in a sounding level is a comma (,)
+         and all data are written as reals (more significant digits)
+
+     Format used in UP.DAT output data records
+     (IFMT)                     Default: 2      ! IFMT = 1     !
+        1 = Delimiter between data in a sounding level is a slash (/)
+            and wind speed and direction are written as integers
+        2 = Delimiter between data in a sounding level is a comma (,)
+            and all data are written as reals (more significant digits)
+
+ --- Processing Options ---
+
+     Top pressure (mb) level for which data are extracted (e.g., 850 mb,
+     700 mb, 500 mb, etc.).  Pressure level must correspond to a height
+     that equals or exceeds the top of the CALMET modeling domain, or
+     else CALMET will stop with an error message.
+     (PSTOP)                    Default: 700.   ! PSTOP = 500     !
+
+     Missing data control options to determine when a sounding level
+     is rejected, and when an incomplete sounding level is written to
+     the UP.DAT file with missing value indicators.  The missing value
+     indicators are:
+             Height         = 9999  (9999.0)
+             Temperature = 999.9
+             Wind Direction = 999   (999.0)
+             Wind Speed     = 999   (999.0)
+     Eliminate level if at least one of the following is missing?
+     (LHT)   Height             Default: F      ! LHT   = F     !
+     (LTEMP) Temperature        Default: F      ! LTEMP = F   !
+     (LWD)   Wind Direction     Default: F      ! LWD   = F     !
+     (LWS)   Wind Speed         Default: F      ! LWS   = F     !
+
+
+     Sounding repair options to automatically fix-up certain deficiencies
+     identified in the sounding data.  Any deficiencies not addressed will
+     be identified in the UP.DAT output file and must be addressed by the
+     user before that file can be used in CALMET.  Note that the repair
+     options selected will be applied before any sounding replacement is
+     done (soundings are replaced using the SUBSOUND.DAT file only if the
+     ISUB variable is not zero).
+
+     (1) Extrapolation to extend missing profile data to PSTOP pressure level?
+     - Wind speed and direction are constant with height
+     - Temperature gradient is constant with height
+     - Valid data must exist at heights as great as PVTOP (mb) pressure level
+     (LXTOP)                Default: F      ! LXTOP   = F     !
+     (PVTOP)                Default: 850.   ! PVTOP   = 850    !
+
+     (2) Extrapolation to extend missing profile data to surface?
+     - Wind  direction is constant with height
+     - Wind  speed is set with first valid speed, extrapolated to 10m
+       using the neutral power law
+     - Valid data must exist within first ZVSFC (m) of the surface
+     - Temperature is NOT extrapolated
+     (LXSFC)                Default: F      ! LXSFC   = F     !
+     (ZVSFC)                Default: 200.   ! ZVSFC   = 200    !
+
+!END!

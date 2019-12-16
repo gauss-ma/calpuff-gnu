@@ -1,0 +1,98 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /LN1/ -- Emission parameters for buoyant     CALPUFF
+c                           line sources
+c----------------------------------------------------------------------
+      character*16 cnamln1
+c
+      common/LN1/NLINES,XL,HBL,WBL,WML,DXL,FPRIMEL,WSEP,FPTOT,FBPT,
+     1 XLBEGGRD(mxlines),YLBEGGRD(mxlines),XLENDGRD(mxlines),
+     2 YLENDGRD(mxlines),HSL(mxlines),BELEVL(mxlines),
+     3 XVERTL(4,mxlines),YVERTL(4,mxlines),ARLINE(mxlines),
+     4 XLBAR,YLBAR,ORIENTL,MXNSEG,NSEG(mxlines),QTL(mxspec,mxlines),
+     5 NEWLN1(mxlines),NLRISE,XLRISE(mxrise,2),ZLRISE(mxrise,2),
+     6 ILNU,ivln1(mxspec,mxlines),iq12ln1(mxspec,mxlines),
+     7 CNAMLN1(mxlines)
+c
+c --- COMMON BLOCK /LINES/ variables:
+c                NLINES - integer    - Number of line sources
+c                    XL - real       - Average line source length (m)
+c                   HBL - real       - Average line source height (m)
+c                   WBL - real       - Average building width (m)
+c                   WML - real       - Average line source width (m)
+c                   DXL - real       - Average building separation (m)
+c               FPRIMEL - real       - Average buoyancy parameter/line
+c                                      in units of (m**4/s**3)
+c                  WSEP - real       - Average separation between lines
+c                                      (WBL+DXL)  (m)
+c                 FPTOT - real       - Total buoyancy parameter
+c                                      (FPRIMEL*NLINES)
+c                  FBPT - real       - "Point Source" buoyancy parameter
+c                                      (FPTOT/pi)
+c     XLBEGGRD(mxlines) - real array - Beginning X coordinate of the lines
+c                                      (in met. grid units w/ origin at
+c                                      (0.0,0.0))
+c     YLBEGGRD(mxlines) - real array - Beginning Y coordinate of the lines
+c                                      (in met. grid units w/ origin at
+c                                      (0.0,0.0))
+c     XLENDGRD(mxlines) - real array - Ending X coordinate of the lines
+c                                      (in met. grid units w/ origin at
+c                                      (0.0,0.0))
+c     YLENDGRD(mxlines) - real array - Ending Y coordinate of the lines
+c                                      (in met. grid units w/ origin at
+c                                      (0.0,0.0))
+c          HSL(mxlines) - real array - Pollutant release height (m)
+c       BELEVL(mxlines) - real array - Base elevation (MSL) of line
+c     XVERTL(4,mxlines) - real array - X-coord. (met grid) of vertices
+c                                      defining 4 corners of each line
+c     YVERTL(4,mxlines) - real array - Y-coord. (met grid) of vertices
+c                                      defining 4 corners of each line
+c       ARLINE(mxlines) - real array - Area of line source (m**2)
+c           XLBAR,YLBAR - real       - Center of array of lines (met grid)
+c               ORIENTL - real       - Orientation of array of lines
+c                                      (radians, CW from N)
+c                MXNSEG - integer    - Upper limit on number of segments
+c                                      along line from which slugs are
+c                                      generated
+c         NSEG(mxlines) - real array - Number of segments used for line
+c                                      in current step
+c   QTL(mxspec,mxlines) - real array - Pollutant emission rates (g/s)
+c                                      for each line
+c       NEWLN1(mxlines) - integer arr- Number of puffs released by each
+c                                      source during the current step
+c                NLRISE - integer    - Number of points used to tabulate
+c                                      plume rise from block of lines
+c      XLRISE(mxrise,2) - real array - Distance from furthest upwind
+c                                      part of group of line sources,
+c                                      to points at which rise is
+c                                      tabulated (m); element 2=1 is for
+c                                      current met., element 2=2 is for
+c                                      previous period of met.
+c      ZLRISE(mxrise,2) - real array - Computed rise at each XLRISE dist,
+c                                      for puff released at the point
+c                                      farthest upwind (m); element 2=1
+c                                      is for current met., element 2=2
+c                                      is for previous period of met.
+c                       - ** note ** - Element 1 is at "XFB", the point
+c                                      in the group of line sources that
+c                                      is furthest downwind, while element
+c                                      NLRISE is at final rise.
+c                  ILNU - integer    - Units for emission rates in
+c                                      control file
+c                                      1:   g/s
+c                                      2:  kg/hr
+c                                      3:  lb/hr
+c                                      4:  ton/yr
+c                                      5:  Odour Unit * m**3/s
+c                                      6:  Odour Unit * m**3/min
+c IVLN1(mxspec,mxlines) - integer arr- IVARY flag defining how emission
+c                                      rate scaling factors vary
+c                                      0:  NO variation
+c                                      1:  Diurnal (24 values)
+c                                      2:  Monthly (12 values)
+c                                      3:  Hour & Season (96 values)
+c                                      4:  Speed & Stability (36 values)
+c                                      5:  Temperature (12 values)
+c IQ12LN1(mxspec,mxlines) - int. arr - Pointer for starting address in
+c                                      VQFAC array to assign scaling
+c                                      factors for this source/species
+c        CNAMLN1(mxlines) - c*16 arr - Source names

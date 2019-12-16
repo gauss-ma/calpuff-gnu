@@ -1,0 +1,84 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /OUTPT/ -- Output option flags               CALPUFF
+c----------------------------------------------------------------------
+c
+      logical ldebug,lcomprs
+      common/OUTPT/icon,ivis,it2d,irho,idry,iwet,ifog,icprt,idprt,
+     1 iwprt,icfrq,idfrq,iwfrq,iprtu,ioutop(7,mxspec),imesg,
+     2 imflx,imbal,iqaplot,msource,ldebug,ipfdeb,npfdeb,nn1,nn2,lcomprs
+c
+c --- COMMON BLOCK /OUTPT/ Variables:
+c
+c              ICON - integer    - Flag controlling creation of an
+c                                  output CONCENTRATION file
+c                                  (0=do not create, 1=create)
+c              IVIS - integer    - Flag controlling creation of an
+c                                  output VISIBILITY file
+c                                  (0=do not create, 1=create)
+c              IT2D - integer    - Flag controlling creation of an
+c                                  output 2D Temperature file
+c                                  (0=do not create, 1=create)
+c              IRHO - integer    - Flag controlling creation of an
+c                                  output 2D Density file
+c                                  (0=do not create, 1=create)
+c              IDRY - integer    - Flag controlling creation of an
+c                                  output DRY FLUX file
+c                                  (0=do not create, 1=create)
+c              IWET - integer    - Flag controlling creation of an
+c                                  output WET FLUX file
+c                                  (0=do not create, 1=create)
+c              IFOG - integer    - Flag controlling creation of an
+c                                  output FOG Model file
+c                                  (0=do not create, 1=create)
+c             ICPRT - integer    - Flag controlling line printer output
+c                                  of concentrations
+c                                  (0=do not print, 1=print)
+c             IDPRT - integer    - Flag controlling line printer output
+c                                  of dry fluxes
+c                                  (0=do not print, 1=print)
+c             IWPRT - integer    - Flag controlling line printer output
+c                                  of wet fluxes
+c                                  (0=do not print, 1=print)
+c             ICFRQ - integer    - Print interval (hours) for line
+c                                  printer concentration output
+c             IDFRQ - integer    - Print interval (hours) for line
+c                                  printer dry flux output
+c             IWFRQ - integer    - Print interval (hours) for line
+c                                  printer wet flux output
+c             IPRTU - integer    - Units for printing output:
+c                                   1)  g/m**3 (conc)  g/m**2/s (dep)
+c                                   2) mg/m**3 (conc) mg/m**2/s (dep)
+c                                   3) ug/m**3 (conc) ug/m**2/s (dep)
+c                                   4) ng/m**3 (conc) ng/m**2/s (dep)
+c                                   5) odour units
+c  IOUTOP(7,mxspec) - real       - Control variables indicating
+c                                  which species concentrations are
+c                                  printed (1,-), stored on disk (2,-),
+c                                  which dry fluxes are
+c                                  printed (3,-), stored on disk (4,-),
+c                                  which wet fluxes are
+c                                  printed (5,-), stored on disk (6,-),
+c                                  which mass fluxes are
+c                                  stored on disk (7,-)
+c             IMESG - integer    - Flag controlling output of runtime
+c                                  messages to the screen tracking the
+c                                  progress of the run
+c            IMFLX - integer     - Flag controlling creation of an
+c                                  output MASS FLUX file
+c                                  (0=do not create, 1=create)
+c            IMBAL - integer     - Flag controlling creation of an
+c                                  output MASS BALANCE file
+c                                  (0=do not create, 1=create)
+c          IQAPLOT - integer     - Flag controlling creation of set of
+c                                  QA plot files
+c                                  (0=do not create, 1=create)
+c          MSOURCE - integer     - Individual source contribution saved?
+c                                  (0 = no,  1 = yes)
+c           LDEBUG - logical     - Debug switch (debug output if .TRUE.)
+c           IPFBUG - integer     - ID of first puff tracked in DEBUG
+c           NPFBUG - integer     - Number of puffs tracked in DEBUG
+c              NN1 - integer     - Met. period to start DEBUG output
+c              NN2 - integer     - Met. period to endt DEBUG output
+c          LCOMPRS - logical     - Compress option for binary output
+c                                  fields (T=compress on, F=compress
+c                                  off)

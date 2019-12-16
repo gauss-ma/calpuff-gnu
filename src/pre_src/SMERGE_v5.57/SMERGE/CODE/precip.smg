@@ -1,0 +1,42 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /CONTROL/ -- run control variables            SMERGE
+c----------------------------------------------------------------------
+c
+
+      common/precip/iotz,ioform,iopack,ispack,inform,
+     1               jdat,jtxt,nff,ibstn(mxss),nbstn,nstnb,ntstn,
+     4               lprev
+c
+c --- COMMON BLOCK /PRECIP/ Variables:
+c          IOTZ - integer    - Requested time zone of data for
+c                              output SURF.DAT file
+c        IOFORM - integer    - Output SURF.DAT format
+c                              (1 = unformatted, 2 = formatted)
+c        IOPACK - integer    - Data packing code for output file
+c                              (0 = unpacked, 1 = packed)
+c                              (USED ONLY IF IOFORM=1, unformatted)
+c        ISPACK - integer    - Data packing code for existing surface
+c                              data input file
+c                              (0 = unpacked, 1 = packed)
+c        INFORM - integer    - Existing surface data input file format
+c                              (1=unformatted,2=formatted) (USED ONLY
+c                              IF NSF = 1)
+c          JDAT - integer    - Type of input surface data
+c                              (1 = CD144, 2 = SAMSON, 3 = HUSWO)
+c                              (4 = Extended CD144)
+c          JTXT - integer    - Type of station information file
+c                              (1 = User-prep, 2 = WMO Master)
+c           NFF - integer    - Number of formatted CD144, SAMSON or
+c                              HUSWO surface input files (stations)
+c         IBSTN - int. array - Array of station numbers of the
+c                              stations in the previous SURF.DAT file to
+c                              extract
+c                              (USED ONLY IF: LPREV=T, NBSTN .GT. 0)
+c         NBSTN - integer    - Number of stations to extract from the
+c                              previous SURF.DAT file (0 = all
+c                              stations in file) (USED ONLY IF LPREV=T)
+c         NSTNB - integer    - Number of stations in the previous
+c                              SURF.DAT file
+c         NTSTN - integer    - Number of stations written to output file
+c         LPREV - logical    - Flag denoting use of previous SURF.DAT
+c                              file for continuation run

@@ -1,0 +1,115 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /MM4HDO/ -- MM4/MM5/3D.DAT data                      CALMET
+c---------------------------------------------------------------------- 
+      character*8 datum3d
+      character*16 cname3d,cver3d
+      character*64 ctitle3d
+      character*132 comm3d
+
+
+      common/MM4HDO/IBYRM,IBJULM,IBHRM,IEYRM,IEJULM,IEHRM,NXMM4,NYMM4,
+     1             NZP,PTOPMM4,I1,J1,NXP,NYP,
+     2             SIGMA(mxnzp),XLAT4(mxnxp,mxnyp),XLONG4(mxnxp,mxnyp),
+     3             IELEV4(mxnxp,mxnyp),ILU4(mxnxp,mxnyp),
+     4             XLCMM4(mxnxp,mxnyp),YLCMM4(mxnxp,mxnyp),
+     4             X04(mxnxp*mxnyp),Y04(mxnxp*mxnyp),
+     4             INEARG(mxnxp,mxnyp),JNEARG(mxnxp,mxnyp),
+     5             IGRAB(mxnx,mxny,4),JGRAB(mxnx,mxny,4),
+     5             IGRABW(mxnx,mxny),JGRABW(mxnx,mxny),
+     6             IOUTMM5,IMM53D,ISTEPPG,
+     7             NCOMM3D,CNAME3D,CVER3D,CTITLE3D,COMM3D, 
+     7             DATUM3D,NM3D,ILUOC3D
+c
+c --- COMMON BLOCK /MM4HDO/ Variables:
+c         IBYRM - integer - Year of beginning of data in the MM4/MM5 
+c                           data file
+c        IBJULM - integer - Julian day of the start of the MM4/MM5 data
+c         IBHRM - integer - Starting hour (GMT) of the MM4/MM5 data
+c         IEYRM - integer - Ending year of the MM4/MM5 data
+c        IEJULM - integer - Ending Julian day of the MM4/MM5 data
+c         IEHRM - integer - Ending hour (GMT) of the MM4/MM5 data
+c         NXMM4 - integer - Number of X cells in the original MM4/MM5
+c                           modeling domain
+c         NYMM4 - integer - Number of Y cells in the original MM4/MM5
+c                           modeling domain
+c           NZP - integer - Number of levels in the MM4/MM5 file
+c       PTOPMM4 - real    - Top pressure level (mb) of data in the
+c                           MM4/MM5 file
+c            I1 - integer - X index of the lower left corner of the
+c                           extraction domain
+c            J1 - integer - Y index of the lower left corner of the
+c                           extraction domain
+c           NXP - integer - Number of grid cells in the X direction
+c                           in the extraction domain
+c           NYP - integer - Number of grid cells in the Y direction
+c                           in the extraction domain
+c        SIGMA(mxnzp) - real array    - Array of sigma levels defining
+c                                       each of the NZP MM4/MM5 layers
+c  XLAT4(mxnxp,mxnyp) - real array    - Latitude (deg.) of each MM4/MM5
+c                                       grid point (positive in NH,
+c                                       negative in SH).
+c XLONG4(mxnxp,mxnyp) - real array    - Longitude (deg.) of each MM4/MM5
+c                                       grid point (N.B.  MM4/MM5 convention
+c                                       is different from CALMET convention,
+c                                       i.e., positive for Eastern Hemisphere
+c                                       and negative for Western Hemisphere)
+c IELEV4(mxnxp,mxnyp) - integer array - Terrain elevation (m) of each grid 
+c                                       point in the MM4/MM5 extraction 
+c                                       subdomain
+c   ILU4(mxnxp,mxnyp) - integer array - Land use code of each grid point
+c                                       in the MM4/MM5 extraction subdomain
+c XLCMM4(mxnxp,mxnyp) - real array    - X coordinate of each MM5 grid cell
+c                                       in the CALMET Lambert Conformal
+c                                       grid system (in km)
+c YLCMM4(mxnxp,mxnyp) - real array    - Y coordinate of each MM5 grid cell
+c                                       in the CALMET Lambert Conformal
+c                                       grid system (in km)
+c    X04(mxnxp*mxnyp) - real array    - X coordinate of each MM5 grid cell
+c                                       relative to the domain origin
+c                                       (in meters)
+c    Y04(mxnxp*mxnyp) - real array    - Y coordinate of each MM5 grid cell
+c                                       relative to the domain origin
+c                                       (in meters)
+c  INEARG(mxnxp,mxnyp) - integer array - I index (1, 2, ... MXNX) of 
+c                                       closest  CALMET grid point to
+c                                       MM4/MM5/3D grid point
+c  JNEARG(mxnxp,mxnyp) - integer array - J index (1, 2, ... MXNY) of 
+c                                       closest  CALMET grid point to
+c                                       MM4/MM5/3D grid point
+c  IGRAB(mxnx,mxny,4) - integer array - I index (1, 2, ... MXNXP) of four
+c                                       closest MM4/MM5 grid points to
+c                                       each CALMET grid point
+c  JGRAB(mxnx,mxny,4) - integer array - J index (1, 2, ... MXNYP) of four
+c                                       closest MM4/MM5 grid points to
+c                                       each CALMET grid point
+c  IGRABW(mxnx,mxny) - integer array - I index (1, 2, ... MXNXP) of 
+c                                       closest 3D.DAT ocean grid point to
+c                                       each CALMET offshore grid point
+c  JGRABW(mxnx,mxny) - integer array - J index (1, 2, ... MXNYP) of 
+c                                       closest 3D.DAT ocean grid point to
+c                                       each CALMET offshore grid point
+c             IOUTMM5 - integer       - Flag indicating contents of the
+c                                       MM5.DAT file
+c              IMM53D - integer       - Flag indicating if MM5 file in 
+c                                       MM5.DAT format (IMM53D=0), 
+c                                       3D.DAT format  (IMM53D=1) (< V2.0)
+c                                       3D.DAT format  (IMM53D=2) (V2.0+)
+c             ISTEPPG - integer       - MM5 Timestep (hr) (default isteppg=1)  
+c             NCOMM3D - integer       - Number of comment lines in 3D.DAT
+c                                       file (used only with 3D.DAT files
+c                                       Version 2.0 or later) 
+c             CNAME3D - character*16  - Dataset name (3D.DAT - used only for
+c                                       3D.DAT Version 2.0 or later)
+c              CVER3D - character*16  - Dataset version (used only for 3D.DAT
+c                                       files Version 2.0 or later)
+c            CTITLE3D - character*64  - Dataset title (used only for 3D.DAT
+c                                       file Version 2.0 or later)
+c              COMM3D - character*132 - Character variable to hold one record 
+c                                       of comments from the 3D.DAT file 
+c                                       (used only for 3D.DAT file Version 2.0 
+c                                       or later)
+c            DATUM3D  - character     - Datum-Region for mesoscale model
+c              NM3D   - integer       - Number of MM4/MM5/3D.DAT files 
+c            ILUOC3D  - integer       - Land Use category flagging ocean surface
+c                                       in 3D.DAT datasets (only used for ITWPROG=2)
+

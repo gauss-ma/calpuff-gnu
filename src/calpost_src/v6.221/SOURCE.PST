@@ -1,0 +1,23 @@
+c-----------------------------------------------------------------------
+c --- COMMON BLOCK /SOURCE/ --- Source Contribution Data        CALPOST
+c-----------------------------------------------------------------------
+      character*16 csource(0:mxsrc)
+      logical LGS,LDS
+      common/source/ nsrc,xsrckm(0:mxsrc),ysrckm(0:mxsrc),isrec,jsrec,
+     &               LGS,LDS,csource
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c                       [c]=character   [L]=logical
+c-----------------------------------------------------------------------
+c nsrc           Total number of sources                             [i]
+c xsrckm         X (Easting, km) coordinate of source               [ra]
+c ysrckm         Y (Northing, km) coordinate of source              [ra]
+c isrec          Receptor index 1 for TRACEBACK receptor             [i]
+c jsrec          Receptor index 2 for TRACEBACK receptor             [i]
+c LGS            TRACEBACK receptor is gridded?  (T/F)               [l]
+c LDS            TRACEBACK receptor is discrete?  (T/F)              [l]
+c csource        Name of source                                     [ca]
+c-----------------------------------------------------------------------
+c   NOTE: Arrays are dimensioned 0 to mxsrc so that the information
+c         for the TOTAL over all sources can be assigned to element 0
+c-----------------------------------------------------------------------

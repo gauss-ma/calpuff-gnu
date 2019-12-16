@@ -1,0 +1,27 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /STATION/ -- Station variables                BUOY
+c----------------------------------------------------------------------
+c
+       real banm, rasn, rwsn, bx, by
+       character*5 bnum,pbnum
+       character*132 bnam
+       character*3 btyp
+       character*16 blat,blon
+       integer inumb, ipnumb
+       integer idnum
+       character*70 abtz
+       character*8 axtz
+
+       common/station/banm,bnum,bnam,blat,blon,bx,by,btyp,inumb,
+     &  ipnumb,pbnum(mxprv),abtz,axtz, rasn, rwsn, idnum
+c
+c --- COMMON BLOCK /STATION/ Variables:
+c
+c --- Data for station-files read in 
+c          BNUM - integer array - Station ID for each formatted surface
+c                                 data input file
+c          BNAM - char*4 array  - Name of each station (----)
+c          BLAT - char*16 array - Latitude of each station (deg[N/S])
+c          BLON - char*16 array - Longitude of each station (deg[E/W])
+c          BANM  - real array    - Anemometer height at each station (m)
+c

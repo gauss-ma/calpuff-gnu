@@ -1,0 +1,71 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /RESTARTHD/ -- Header record information     CALPUFF
+c                                 in RESTART file
+c----------------------------------------------------------------------
+c
+      character*16 rstrtnam,rstrtver
+      character*64 rstrtmod
+
+      common/RESTARTHD/rstrtnam,rstrtver,rstrtmod,
+     &            ntabpt1,nmetpt1,nsrcpt1,
+     &            ntabpt2,nmetpt2,nqempt2,nsrcpt2,
+     &            ntabar1,nmetar1,nsrcar1,
+     &            ntabar2,nmetar2,nqemar2,nsrcar2,
+     &            ntabln1,nmetln1,nsrcln1,
+     &            ntabln2,nmetln2,nqemln2,nsrcln2,
+     &            ntabvl1,nmetvl1,nsrcvl1,
+     &            ntabvl2,nmetvl2,nqemvl2,nsrcvl2
+c
+c --- COMMON BLOCK /RESTARTHD/ Variables:
+c         RSTRTNAM - character- Dataset name
+c         RSTRTVER - character- Dataset version
+c         RSTRTMOD - character- Dataset modifier (doc)
+c
+c
+c
+c----------------------------------------------------------------------
+c --- The following information is not used (080520), but retained
+c --- for future potential use
+c----------------------------------------------------------------------
+c --- Control File Line Sources
+c          NTABLN1 - integer  - Number of points in table
+c          NMETLN1 - integer  - Number of met periods stored
+c          NSRCLN1 - integer  - Number of sources stored
+c --- Variable Emissions File Line Sources
+c          NTABLN2 - integer  - Number of points in table
+c          NMETLN2 - integer  - Number of met periods stored
+c          NQEMLN2 - integer  - Number of emission periods stored
+c          NSRCLN2 - integer  - Number of sources stored
+c
+c --- The following source types do not currently use tables from
+c --- past met periods, and should be configured to generate no
+c --- data records in the RESTART file.
+c
+c --- Control File Point Sources
+c          NTABPT1 - integer  - Number of points in table
+c          NMETPT1 - integer  - Number of met periods stored
+c          NSRCPT1 - integer  - Number of sources stored
+c --- Variable Emissions File Point Sources
+c          NTABPT2 - integer  - Number of points in table
+c          NMETPT2 - integer  - Number of met periods stored
+c          NQEMPT2 - integer  - Number of emission periods stored
+c          NSRCPT2 - integer  - Number of sources stored
+c --- Control File Area Sources
+c          NTABAR1 - integer  - Number of points in table
+c          NMETAR1 - integer  - Number of met periods stored
+c          NSRCAR1 - integer  - Number of sources stored
+c --- Variable Emissions File Area Sources
+c          NTABAR2 - integer  - Number of points in table
+c          NMETAR2 - integer  - Number of met periods stored
+c          NQEMAR2 - integer  - Number of emission periods stored
+c          NSRCAR2 - integer  - Number of sources stored
+c --- Control File Volume Sources
+c          NTABVL1 - integer  - Number of points in table
+c          NMETVL1 - integer  - Number of met periods stored
+c          NSRCVL1 - integer  - Number of sources stored
+c --- Variable Emissions File Volume Sources
+c          NTABVL2 - integer  - Number of points in table
+c          NMETVL2 - integer  - Number of met periods stored
+c          NQEMVL2 - integer  - Number of emission periods stored
+c          NSRCVL2 - integer  - Number of sources stored
+c----------------------------------------------------------------------

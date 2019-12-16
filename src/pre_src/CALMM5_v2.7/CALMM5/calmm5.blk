@@ -1,0 +1,66 @@
+C Data Blocks for CALMM5.F
+
+c *********************************************************************
+      block data General
+
+c     Initial general-use data in common blocks
+
+      include 'calmm5.par'
+      include 'calmm5.cm1'
+      include 'calmm5.cm3'
+
+      data fmiss/1.0E35/
+      data fmiss_mm5/-999./
+      data options/'direct'/
+c      data options/'sequential'/
+
+      data igrdt,ipbl,ishf,ilhf,iustr,iswdn,ilwdn,it2,iq2
+     &     ,iu10,iv10,isst
+     &     /0,0,0,0,0,0,0,0,0,0,0,0/
+
+      data v3mm5namepk/'U','V','T','W','Q','CLW','RNW','ICE','SNOW'
+     &    ,'GRAUPEL','PP'/
+      data v2mm5namepk/'RAIN CON','RAIN NON','SNOWCOVR','GROUND T'
+     &    ,'PBL HGT','SHFLUX','LHFLUX','UST','SWDOWN','LWDOWN'
+     &    ,'T2','Q2','U10','V10','TSEASFC'/
+      data newtime/.TRUE./
+
+c Not used 2-Ds
+c     &     ,iu10,iv10,ist1,ist2,ist3,ist4,ist5,ist6
+c     &    ,'SOIL T 1','SOIL T 2','SOIL T 3','SOIL T 4','SOIL T 5'
+c     &    ,'SOIL T 6','REGIME','SWOUT','LWOUT'
+
+      end
+
+c *********************************************************************
+      block data VIS5D_INITIAL
+
+      include 'v5df.h'
+      include 'calmm5.cm5'
+
+C Initialize the common block for VIS5D 
+C Initialize the variables to missing values
+      data nr,nc / IMISSING, IMISSING /
+      data (nl(i),i=1,MAXVARS) / MAXVARS*IMISSING /
+      data numtimes,numvars / IMISSING, IMISSING /
+      data (varname(i),i=1,MAXVARS) / MAXVARS*"          " /
+      data (dates(i),i=1,MAXTIMES) / MAXTIMES*IMISSING /
+      data (times(i),i=1,MAXTIMES) / MAXTIMES*IMISSING /
+      data compressmode / 1 /
+      data projection / IMISSING /
+      data (proj_args(i),i=1,100) / 100*MISSING /
+      data vertical / IMISSING /
+      data (vert_args(i),i=1,MAXLEVELS) / MAXLEVELS*MISSING /
+
+      end
+
+c *********************************************************************
+      block data GRIB_INITIAL
+
+      include 'calmm5.par'
+      include 'calmm5.cm7'
+
+      data gribid,c7777/'GRIB','7777'/
+      data Nedit/1/
+
+      end

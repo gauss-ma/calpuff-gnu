@@ -1,0 +1,67 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /MAP/ -- Map Projection & Datum               CALMET
+c----------------------------------------------------------------------
+      logical*4 lutm,llcc,lps,lem,llaza,lttm
+      character*4 utmhem
+      character*8 datum,pmap
+      character*12 daten,cactionll
+      real*8 vectill(9),vectoll(9)
+
+      character*16 clat0,clon0,clat1,clat2
+c
+      common/map/vectill,vectoll,lutm,llcc,lps,lem,llaza,lttm,
+     &           iutmzn,conec,feast,fnorth,
+     &           rnlat0,relon0,rlat0,rlon0,xlat1,xlat2,
+     &           pmap,utmhem,datum,daten,clat0,clon0,clat1,clat2,
+     &           cactionll
+c
+c --- COMMON BLOCK /MAP/ Variables:
+c
+c VECTILL       - real(9)   - Mapping vector from (X,Y)CALMET to Lat,Lon
+c VECTOLL       - real(9)   - Mapping vector from (X,Y)CALMET to Lat,Lon
+c LUTM          - logical*4 - Flag for Universal Transverse Mercator
+c LLCC          - logical*4 - Flag for Lambert Conformal Conic
+c LPS           - logical*4 - Flag for Polar Stereographic
+c LEM           - logical*4 - Flag for Equatorial Mercator
+c LLAZA         - logical*4 - Flag for Lambert Azimuthal Equal Area
+c LTTM          - logical*4 - Flag for Tangential Transverse Mercator
+c
+c IUTMZN        - integer   - UTM zone for UTM projection
+c CONEC         - real      - "Constant of cone" for 2 standard
+c                             parallels that define Lambert Conformal
+c                             grid
+c FEAST  (km)   - real      - False Easting at projection origin
+c FNORTH (km)   - real      - False Northing at projection origin
+c RNLAT0,       - real      - N. latitude & E. longitude of x=0 and y=0
+c RELON0 (deg)                of map projection (Used only if PMAP =
+c                             LCC, PS, EM, TTM or LAZA) 
+c                             NOTE: longitude neg in western hemisphere
+c RLAT0,RLON0   - real      - N. latitude & W. longitude of x=0 and y=0
+c                             of map projection (degrees, + = N,W)
+c                             (Much of code written for W. Longitude,
+c                              so RLAT0=RNLAT0 and RLON0=-RELON0
+c XLAT1,        - real      - Matching N. latitude(s) for projection
+c XLAT2 (deg)                 (Used only if PMAP= LCC, PS, or EM)
+c                             LCC :  Projection cone slices through
+c                                    Earth's surface at XLAT1 and XLAT2
+c                             PS  :  Projection plane slices through
+c                                    Earth at XLAT1
+c                             EM  :  Projection cylinder slices through
+c                                    Earth at [+/-] XLAT1
+c PMAP          - character - Character code for output map projection
+c                             UTM :  Universal Transverse Mercator
+c                             LCC :  Lambert Conformal Conic
+c                             PS  :  Polar Stereographic
+c                             EM  :  Equatorial Mercator
+c                             LAZA:  Lambert Azimuthal Equal Area
+c                             TTM :  Tangential Transverse Mercator
+c UTMHEM        - character - Base hemisphere for UTM projection
+c                             (S=southern, N=northern)
+c DATUM         - character - Datum-Region for grid coordinates
+c DATEN         - character - NIMA date for datum parameters
+c                             (MM-DD-YYYY  )
+c CLAT0         - character - Character version of RNLAT0
+c CLON0         - character - Character version of RELON0
+c CLAT1         - character - Character version of XLAT1
+c CLAT2         - character - Character version of XLAT2
+c CACTIONLL     - character - Mapping action from (X,Y)CALMET to Lat,Lon

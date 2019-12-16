@@ -1,0 +1,25 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /DISPDAT/ -- Dispersion parameters           CALPUFF
+c
+c----------------------------------------------------------------------
+c
+      common/DISPDAT/SYTDEP,JSUP,CONK1,CONK2,IURB1,IURB2,AVET,PGTIME
+c
+c --- COMMON BLOCK /DISPDAT/ Variables:
+c
+c        SYTDEP - real     - Horizontal sigma (m) beyond which
+c                            time dependent growth assumed.
+c          JSUP - integer  - Stability class used to determine plume
+c                            growth rates for puffs above the boundary
+c                            layer
+c         CONK1 - real     - Vertical dispersion constant for stable
+c                            conditions
+c         CONK2 - real     - Vertical dispersion constant for neutral/
+c                            unstable conditions
+c        IURB1, - integers - Range of land use categories for which
+c        IURB2               urban dispersion is assumed
+c          AVET - real     - Averaging time of concentrations (minutes)
+c                            (used to adjust PG sigma y with eqn.
+c                            (AVET/PGTIME)**0.2
+c        PGTIME - real     - Averaging time (minutes) assumed for
+c                            PG sigma y curves

@@ -1,0 +1,359 @@
+GEO.DAT file - System Demonstration - 99 X 99 grid
+--------------------- Run title (1 line) --------------------------------------
+
+                 MAKEGEO PROCESSOR CONTROL FILE
+                 ------------------------------
+
+  MAKEGEO creates the geophysical data file (GEO.DAT) for CALMET.  Using
+  the fractional land use data from CTGPROC (LU.DAT), it calculates the
+  dominant land use for each cell and computes weighted surface parameters.
+  It may also remap land use categories if desired.  Terrain data can
+  be obtained from TERREL, or provided in a file of similar format
+  (TERR.DAT).
+
+-------------------------------------------------------------------------------
+
+INPUT GROUP: 0 -- Input and Output Files
+--------------
+
+     Default Name  Type          File Name
+     ------------  ----          ---------
+     LU.DAT        input    ! LUDAT   =lu1km.dat   !
+     LU2.DAT       input    ! LU2DAT  =luglobe.dat !
+     TERR.DAT      input    ! TERRDAT =terr1km.dat !
+     GEO.DAT       output   ! GEODAT  =geo1km.dat  !
+     MAKEGEO.LST   output   ! RUNLST  =geo1km.lst  !
+     QALUSE.GRD    output   * LUGRD   =qaluse.grd  *
+     QATERR.GRD    output   * TEGRD   =qaterr.grd  *
+
+     All file names will be converted to lower case if LCFILES = T
+     Otherwise, if LCFILES = F, file names will be converted to UPPER CASE
+     (LCFILES)                  Default: T      ! LCFILES = F !
+        T = lower case
+        F = UPPER CASE
+
+     NOTE: File/path names can be up to 70 characters in length
+
+!END!
+
+--------------------------------------------------------------------------------
+
+INPUT GROUP: 1 -- Run control parameters
+--------------
+
+   Terrain Processing Control
+
+     Read in a gridded terrain file?
+     (LTERR)                    Default: T      ! LTERR = T !
+        T = terrain elevations in GEO.DAT read from TERR.DAT
+        F = terrain elevations in GEO.DAT are zero
+
+
+   Land Use Processing Control
+
+   A second file of fractional land use (LU2.DAT) may be provided for
+   use when a cell in the primary land use file (LU.DAT) has no indicated
+   land use.  This option allows a lower resolution dataset to supplement
+   a higher resolution dataset where the higher resolution data are
+   unavailable.
+
+     Read in a second fractional land use file?
+     (LLU2)                     Default: F      ! LLU2 = F !
+        T = supplemental fractional land use read from LU2.DAT
+        F = no supplemental fractional land use data are available
+
+
+   QA information for 1 cell in the grid can be written to the list
+   file.  Identify the cell by its grid location (IX,IY).
+   No QA output is generated if either index is outside your grid.  For
+   example, using 0 for either turns the QA output off.
+
+     Location of grid cell for QA output
+     (IXQA)                     Default: 0      ! IXQA = 0 !
+     (IYQA)                     Default: 0      ! IYQA = 0 !
+
+!END!
+
+--------------------------------------------------------------------------------
+
+INPUT GROUP: 2 -- Map Projection and Grid Information for Output
+--------------
+
+     Projection
+     ----------
+
+     Map projection for all X,Y (km)
+     (PMAP)                     Default: UTM    ! PMAP = UTM !
+
+         UTM :  Universal Transverse Mercator
+         TTM :  Tangential Transverse Mercator
+         LCC :  Lambert Conformal Conic
+         PS  :  Polar Stereographic
+         EM  :  Equatorial Mercator
+         LAZA:  Lambert Azimuthal Equal Area
+
+     False Easting and Northing (km) at the projection origin
+     (Used only if PMAP= TTM, LCC, or LAZA)
+     (FEAST)                    Default=0.0     ! FEAST  = 0.0 !
+     (FNORTH)                   Default=0.0     ! FNORTH = 0.0 !
+
+     UTM zone (1 to 60)
+     (Used only if PMAP=UTM)
+     (IUTMZN)                   No Default      ! IUTMZN = 19 !
+
+     Hemisphere for UTM projection?
+     (Used only if PMAP=UTM)
+     (UTMHEM)                   Default: N      ! UTMHEM = N !
+         N   :  Northern hemisphere projection
+         S   :  Southern hemisphere projection
+
+     Latitude and Longitude (decimal degrees) of projection origin
+     (Used only if PMAP= TTM, LCC, PS, EM, or LAZA)
+     (RLAT0)                    No Default      ! RLAT0 = 40.0N !
+     (RLON0)                    No Default      ! RLON0 = 70.0W !
+
+         TTM :  RLON0 identifies central (true N/S) meridian of projection
+                RLAT0 selected for convenience
+         LCC :  RLON0 identifies central (true N/S) meridian of projection
+                RLAT0 selected for convenience
+         PS  :  RLON0 identifies central (grid N/S) meridian of projection
+                RLAT0 selected for convenience
+         EM  :  RLON0 identifies central meridian of projection
+                RLAT0 is REPLACED by 0.0N (Equator)
+         LAZA:  RLON0 identifies longitude of tangent-point of mapping plane
+                RLAT0 identifies latitude of tangent-point of mapping plane
+
+     Matching parallel(s) of latitude (decimal degrees) for projection
+     (Used only if PMAP= LCC or PS)
+     (RLAT1)                    No Default      ! RLAT1 = 30.0N !
+     (RLAT2)                    No Default      ! RLAT2 = 60.0N !
+
+         LCC :  Projection cone slices through Earth's surface at RLAT1 and RLAT2
+         PS  :  Projection plane slices through Earth at RLAT1
+                (RLAT2 is not used)
+
+     ----------
+     Note:  Latitudes and longitudes should be positive, and include a
+            letter N,S,E, or W indicating north or south latitude, and
+            east or west longitude.  For example,
+            35.9  N Latitude  =  35.9N
+            118.7 E Longitude = 118.7E
+
+
+     Output Datum-Region
+     -------------------
+
+     The Datum-Region for the output coordinates is identified by a character
+     string.  Many mapping products currently available use the model of the
+     Earth known as the World Geodetic System 1984 (WGS-84).  Other local
+     models may be in use, and their selection in TERREL will make its output
+     consistent with local mapping products.  The list of Datum-Regions with
+     official transformation parameters is provided by the National Imagery and
+     and Mapping Agency (NIMA).
+
+     Datum-region for output coordinates
+     (DATUM)                    Default: WGS-84    ! DATUM = WGS-84 !
+
+
+
+     Grid
+     ----
+
+     Reference coordinates X,Y (km) assigned to the southwest corner 
+     of grid cell (1,1)  (lower left corner of grid)
+     (XREFKM)                   No Default      ! XREFKM = 310.0  !
+     (YREFKM)                   No Default      ! YREFKM = 4820.0 !
+
+     Cartesian grid definition
+     No. X grid cells (NX)      No default      ! NX =   99  !
+     No. Y grid cells (NY)      No default      ! NY =   99  !
+     Grid Spacing (DGRIDKM)     No default      ! DGRIDKM = 1. !
+     in kilometers
+
+
+!END!
+
+--------------------------------------------------------------------------------
+
+INPUT GROUP: 3 -- Output Land Use
+--------------
+
+-------------
+Subgroup (3a)
+-------------
+
+     Number of output land use categories
+     (NOUTCAT)                  Default: 14     ! NOUTCAT = 14 !
+
+     Output land use categories assigned to water
+     range from IWAT1 to IWAT2 (inclusive)
+     (IWAT1)                    Default: 50     ! IWAT1 = 50 !
+     (IWAT2)                    Default: 55     ! IWAT2 = 55 !
+
+!END!
+
+
+-------------
+Subgroup (3b)
+-------------
+                                                       a
+           OUTPUT LAND USE CATEGORIES (NOUTCAT entries)
+           --------------------------------------------
+
+! OUTCAT =   10, 20, -20, 30, 40, 51, 54, 55    !  !END!
+! OUTCAT =   60, 61,  62, 70, 80, 90            !  !END!
+
+-------------
+    a
+     List categories in ascending order (absolute value), with up to 10
+     per line.  Each line is treated as a separate input subgroup and
+     therefore must end with an input group terminator.
+
+
+
+--------------------------------------------------------------------------------
+
+INPUT GROUP: 4 -- Input Land Use (Defaults are set for USGS categories)
+--------------
+
+-------------
+Subgroup (4a)
+-------------
+
+     Number of input land use categories
+     (NINCAT)                   Default: 38     ! NINCAT = 38 !
+
+     Number of input water categories
+     (NUMWAT)                   Default: 5      ! NUMWAT = 5  !
+
+     Number of input categories that are split
+     by apportioning area among the other land
+     use categories
+     (NSPLIT)                   Default: 0      ! NSPLIT = 0  !
+
+     Minimum fraction of cell covered by water required
+     to define the dominant land use as water
+     (CFRACT)                   Default: 0.5    ! CFRACT = 0.5  !
+
+     Land use category assigned to cell when
+     no land use data are found
+     (IMISS)                    Default: 55     ! IMISS = 55  !
+
+     Minimum total fractional land use expected
+     in a cell when land use data are available
+     (FLUMIN)                   Default: 0.96   ! FLUMIN = 0.96 !
+
+!END!
+
+
+-------------
+Subgroup (4b)
+-------------
+                                                              a
+           LAND USE PROPERTIES AND OUTPUT MAP (NINCAT entries)
+           ---------------------------------------------------
+
+     Input                                 Soil   Anthropogenic Leaf   Output
+    Category    z0     Albedo    Bowen   Heat Flux  Heat Flux   Area  Category
+       ID       (m)   (0 to 1)   Ratio   Parameter  (W/m**2)   Index     ID
+     ------   ------   ------    ------  ---------  --------   ------  ------
+
+! X =   11,     0.5,    0.18,     1.0,     0.20,      0.0,      1.0,     10  !  !END!
+! X =   12,     1.0,    0.18,     1.5,     0.25,      0.0,      0.2,     10  !  !END!
+! X =   13,     1.0,    0.18,     1.5,     0.25,      0.0,      0.2,     10  !  !END!
+! X =   14,     1.0,    0.18,     1.5,     0.25,      0.0,      0.2,     10  !  !END!
+! X =   15,     1.0,    0.18,     1.5,     0.25,      0.0,      0.2,     10  !  !END!
+! X =   16,     1.0,    0.18,     1.5,     0.25,      0.0,      0.2,     10  !  !END!
+! X =   17,     1.0,    0.18,     1.5,     0.25,      0.0,      0.2,     10  !  !END!
+! X =   21,    0.25,    0.15,     1.0,     0.15,      0.0,      3.0,     20  !  !END!
+! X =   22,    0.25,    0.15,     1.0,     0.15,      0.0,      3.0,     20  !  !END!
+! X =   23,    0.25,    0.15,     1.0,     0.15,      0.0,      3.0,     20  !  !END!
+! X =   24,    0.25,    0.15,     1.0,     0.15,      0.0,      3.0,     20  !  !END!
+! X =   31,    0.05,    0.25,     1.0,     0.15,      0.0,      0.5,     30  !  !END!
+! X =   32,    0.05,    0.25,     1.0,     0.15,      0.0,      0.5,     30  !  !END!
+! X =   33,    0.05,    0.25,     1.0,     0.15,      0.0,      0.5,     30  !  !END!
+! X =   41,     1.0,     0.1,     1.0,     0.15,      0.0,      7.0,     40  !  !END!
+! X =   42,     1.0,     0.1,     1.0,     0.15,      0.0,      7.0,     40  !  !END!
+! X =   43,     1.0,     0.1,     1.0,     0.15,      0.0,      7.0,     40  !  !END!
+! X =   51,   0.001,     0.1,     0.0,      1.0,      0.0,      0.0,     51  !  !END!
+! X =   52,   0.001,     0.1,     0.0,      1.0,      0.0,      0.0,     51  !  !END!
+! X =   53,   0.001,     0.1,     0.0,      1.0,      0.0,      0.0,     51  !  !END!
+! X =   54,   0.001,     0.1,     0.0,      1.0,      0.0,      0.0,     54  !  !END!
+! X =   55,   0.001,     0.1,     0.0,      1.0,      0.0,      0.0,     55  !  !END!
+! X =   61,     1.0,     0.1,     0.5,     0.25,      0.0,      2.0,     61  !  !END!
+! X =   62,     0.2,     0.1,     0.1,     0.25,      0.0,      1.0,     62  !  !END!
+! X =   71,    0.05,     0.3,     1.0,     0.15,      0.0,     0.05,     70  !  !END!
+! X =   72,    0.05,     0.3,     1.0,     0.15,      0.0,     0.05,     70  !  !END!
+! X =   73,    0.05,     0.3,     1.0,     0.15,      0.0,     0.05,     70  !  !END!
+! X =   74,    0.05,     0.3,     1.0,     0.15,      0.0,     0.05,     70  !  !END!
+! X =   75,    0.05,     0.3,     1.0,     0.15,      0.0,     0.05,     70  !  !END!
+! X =   76,    0.05,     0.3,     1.0,     0.15,      0.0,     0.05,     70  !  !END!
+! X =   77,    0.05,     0.3,     1.0,     0.15,      0.0,     0.05,     70  !  !END!
+! X =   81,     0.2,     0.3,     0.5,     0.15,      0.0,      0.0,     80  !  !END!
+! X =   82,     0.2,     0.3,     0.5,     0.15,      0.0,      0.0,     80  !  !END!
+! X =   83,     0.2,     0.3,     0.5,     0.15,      0.0,      0.0,     80  !  !END!
+! X =   84,     0.2,     0.3,     0.5,     0.15,      0.0,      0.0,     80  !  !END!
+! X =   85,     0.2,     0.3,     0.5,     0.15,      0.0,      0.0,     80  !  !END!
+! X =   91,    0.05,     0.7,     0.5,     0.15,      0.0,      0.0,     90  !  !END!
+! X =   92,    0.05,     0.7,     0.5,     0.15,      0.0,      0.0,     90  !  !END!
+
+-------------
+    a
+     Data for each land use category are treated as a separate input
+     subgroup and therefore must end with an input group terminator.
+
+
+
+-------------
+Subgroup (4c)
+-------------
+                                                             a
+           INPUT CATEGORIES DEFINED AS WATER (NUMWAT entries)
+           --------------------------------------------------
+
+           ! IWAT =   51  !  !END!
+           ! IWAT =   52  !  !END!
+           ! IWAT =   53  !  !END!
+           ! IWAT =   54  !  !END!
+           ! IWAT =   55  !  !END!
+
+-------------
+    a
+     Each water category ID is read as a separate input
+     subgroup and therefore must end with an input group terminator.
+
+
+
+-------------
+Subgroup (4d)
+-------------
+                                                         a
+           CATEGORY SPLIT INFORMATION (NSPLIT Categories)
+           ----------------------------------------------
+
+            Split        To       Amount
+           Category   Category   of Split
+              ID         ID        (%)
+           --------   --------   --------
+
+* XSPLIT =    14,        76,       15.8  *  *END*
+* XSPLIT =    14,        77,       84.2  *  *END*
+
+-------------
+    a
+     Each assignment is read as a separate input subgroup and therefore
+     must end with an input group terminator.  A total of NSPLIT input
+     land use categories must be listed, and the % split from each one
+     of these to all receiving land use categories must sum to 100.0%
+
+
+
+--------------------------------------------------------------------------------
+NIMA Datum-Regions  (Documentation Section)
+--------------------------------------------------------------------------------
+     WGS-84    WGS-84 Reference Ellipsoid and Geoid, Global coverage (WGS84)
+     NAS-C     NORTH AMERICAN 1927 Clarke 1866 Spheroid, MEAN FOR CONUS (NAD27)
+     NAR-C     NORTH AMERICAN 1983 GRS 80 Spheroid, MEAN FOR CONUS (NAD83)
+     NWS-84    NWS 6370KM Radius, Sphere
+     ESR-S     ESRI REFERENCE 6371KM Radius, Sphere
+

@@ -1,0 +1,95 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /GRID/ -- Grid parameters                    CALPUFF
+c----------------------------------------------------------------------
+c
+      logical lsamp
+c
+      common/GRID/nx,ny,nz,dgrid,dgridi,xorig,yorig,
+     1 zface(mxnzp1),xtz,ibcomp,jbcomp,iecomp,jecomp,
+     2 lsamp,ibsamp,jbsamp,iesamp,jesamp,meshdn,nxcmp,nycmp,
+     3 nxsam,nysam,delsam,sam2grid,nxm1,nxm2,nym1,nym2,nzp1,
+     4 zgpt(mxnz),elevg(mxnxg,mxnyg),relief(5,mxnx,mxny),
+     5 dzval,ivalw(mxvalz,mxnx,mxny),
+     6 xlatm(mxnx,mxny),xlonm(mxnx,mxny)
+c
+c --- COMMON BLOCK /GRID/ Variables:
+c              NX - integer    - Number of METEOROLOGICAL grid points
+c                                in X direction
+c              NY - integer    - Number of METEOROLOGICAL grid points
+c                                in Y direction
+c              NZ - integer    - Number of vertical levels
+c           DGRID - real       - METEOROLOGICAL grid spacing (m)
+c          DGRIDI - real       - 1./DGRID
+c           XORIG - real       - Reference X coordinate (m) of
+c                                southwest corner of grid
+c           YORIG - real       - Reference Y coordinate (m) of
+c                                southwest corner of grid
+c   ZFACE(mxnzp1) - real       - Cell face heights (m) (NZP1 values)
+c             XTZ - real       - Base time zone
+c                                (5.=EST, 6.=CST, 7.=MST, 8.=PST)
+c          IBCOMP - integer    - Element number of the met. grid
+c                                defining the beginning of the
+c                                computational grid in the X direction
+c          JBCOMP - integer    - Element number of the met. grid
+c                                defining the beginning of the
+c                                computational grid in the Y direction
+c          IECOMP - integer    - Element number of the met. grid
+c                                defining the end of the computational
+c                                grid in the X direction
+c          JECOMP - integer    - Element number of the met. grid
+c                                defining the end of the computational
+c                                grid in the Y direction
+c           LSAMP - logical    - Flag indicating if gridded receptor
+c                                (sampling) grid is used (T=yes, F=no)
+c          IBSAMP - integer    - Element number of the met. grid
+c                                defining the beginning of the
+c                                sampling grid in the X direction
+c          JBSAMP - integer    - Element number of the met. grid
+c                                defining the beginning of the
+c                                sampling grid in the Y direction
+c          IESAMP - integer    - Element number of the met. grid
+c                                defining the end of the sampling
+c                                grid in the X direction
+c          JESAMP - integer    - Element number of the met. grid
+c                                defining the end of the sampling
+c                                grid in the Y direction
+c          MESHDN - integer    - Nesting factor of the sampling grid.
+c                                The sampling grid spacing (in meters)
+c                                is DGRID/MESHDN
+c
+c --- Computed variables
+c           NXCMP - integer    - Number of COMPUTATIONAL grid points in
+c                                the X direction
+c           NYCMP - integer    - Number of COMPUTATIONAL grid points in
+c                                the Y direction
+c           NXSAM - integer    - Number of SAMPLING grid points in the
+c                                X direction
+c           NYSAM - integer    - Number of SAMPLING grid points in the
+c                                Y direction
+c          DELSAM - real       - SAMPLING grid spacing (m)
+c        SAM2GRID - real       - SAMPLING grid spacing (met grid)
+c            NZP1 - integer    - Number of vertical cell faces (NZ+1)
+c            NXM1 - integer    - NX-1
+c            NXM2 - integer    - NX-2
+c            NYM1 - integer    - NY-1
+c            NYM2 - integer    - NY-2
+c      ZGPT(mxnz) - real       - Grid point heights (m) (NZ values)
+c
+c --- Terrain for Gridded Receptors
+c ELEVG(mxngx,mxngy) - real    - Terrain elevation (m MSL) at rec.
+c
+c --- Local Terrain Relief and Valley Width for MCTADJ = 2
+c RELIEF(5,mxnx,mxny) - real   - Local terrain elevation differences (m)
+c                                along 4 directions for each Met cell
+c                                1: N/S
+c                                2: NE/SW
+c                                3: E/W
+c                                4: SE/NW
+c                                And
+c                                5: the peak elevation (m MSL)
+c           DZVAL - real       - Height increment (m) for the MXVALZ
+c                                elements stored in IVALW array
+c IVALW(mxvalz,mxnx,mxny)
+c                 - integer    - Local valley width (met grid cells)
+c      XLATM(mxnx,mxny) - real - N.Latitude of MET gridpoints 
+c      XLONM(mxnx,mxny) - real - W.Longitude of MET gridpoints 

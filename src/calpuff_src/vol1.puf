@@ -1,0 +1,50 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /VOL1/ -- Volume source data for discrete    CALPUFF
+c                            sources with constant emissions
+c----------------------------------------------------------------------
+      character*16 CNAMVL1
+c
+      common/VOL1/XVL1GRD(mxvol),YVL1GRD(mxvol),HTVL1(mxvol),
+     1 ELVL1(mxvol),SY0VL1(mxvol),SZ0VL1(mxvol),QVL1(mxspec,mxvol),
+     2 NEWVL1(mxvol),NVL1,
+     3 IVLU,ivvl1(mxspec,mxvol),iq12vl1(mxspec,mxvol),
+     4 CNAMVL1(mxvol)
+c
+c --- COMMON BLOCK /VOL1/ Variables:
+c
+c         XVL1GRD(mxvol) - real     - X coordinate of a volume
+c                                     source in grid units
+c                                     (i.e., origin at (0.0,0.0))
+c         YVL1GRD(mxvol) - real     - Y coordinate of a volume
+c                                     source in grid units
+c                                     (i.e., origin at (0.0,0.0))
+c           HTVL1(mxvol) - real     - Effective release height (m)
+c           ELVL1(mxvol) - real     - Ground elevation (m) above sea
+c                                     level
+c          SY0VL1(mxvol) - real     - Initial sigma y (m)
+c          SZ0VL1(mxvol) - real     - Initial sigma z (m)
+c     QVL1(mxspec,mxvol) - real     - Emission rate (g/s) for each
+c                                     pollutant
+c                   NVL1 - integer  - Number of volume sources
+c          NEWVL1(mxvol) - integer  - Number of puffs released by each
+c                                     source during the current step
+c                   IVLU - integer  - Units for emission rates in
+c                                     control file
+c                                     1:   g/s
+c                                     2:  kg/hr
+c                                     3:  lb/hr
+c                                     4:  ton/yr
+c                                     5:  Odour Unit * m**3/s
+c                                     6:  Odour Unit * m**3/min
+c    IVVL1(mxspec,mxvol) - integer  - IVARY flag defining how emission
+c                                     rate scaling factors vary
+c                                     0:  NO variation
+c                                     1:  Diurnal (24 values)
+c                                     2:  Monthly (12 values)
+c                                     3:  Hour & Season (96 values)
+c                                     4:  Speed & Stability (36 values)
+c                                     5:  Temperature (12 values)
+c  IQ12VL1(mxspec,mxvol) - integer  - Pointer for starting address in
+c                                     VQFAC array to assign scaling
+c                                     factors for this source/species
+c         CNAMVL1(mxvol) - c*16 arr - Source names

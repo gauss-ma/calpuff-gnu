@@ -1,0 +1,64 @@
+c --- calmm5.cm4 -----
+c     Common blocks for MM5 variables
+
+C 3-D variables in equivalence
+
+      common /variable3d/x3dpk(mxnx,mxny,mxnz,n3dpk)
+
+      dimension 
+     1  u (mxnx,mxny,mxnz),    v(mxnx,mxny,mxnz), tk(mxnx,mxny,mxnz)
+     2 ,w(mxnx,mxny,mxnz),     q(mxnx,mxny,mxnz), qc(mxnx,mxny,mxnz)
+     3 ,qr(mxnx,mxny,mxnz),   qi(mxnx,mxny,mxnz), qs(mxnx,mxny,mxnz)
+     4 ,qg(mxnx,mxny,mxnz),   pp(mxnx,mxny,mxnz)
+
+      equivalence
+     1  (u,x3dpk(1,1,1,1)),  (v,x3dpk(1,1,1,2)),(tk,x3dpk(1,1,1,3))
+     2 ,(w,x3dpk(1,1,1,4)),  (q,x3dpk(1,1,1,5)),(qc,x3dpk(1,1,1,6))
+     3 ,(qr,x3dpk(1,1,1,7)),(qi,x3dpk(1,1,1,8)),(qs,x3dpk(1,1,1,9))
+     4 ,(qg,x3dpk(1,1,1,10)),(pp,x3dpk(1,1,1,11))
+
+C 3-D variables NOT in equivalence
+      common /variable3d2/
+     6  p (mxnx,mxny,mxnz),  z(mxnx,mxny,mxnz),  rh(mxnx,mxny,mxnz) 
+     7 ,qsat(mxnx,mxny,mxnz),pref(mxnx,mxny,mxnz),
+     8  ws(mxnx,mxny,mxnz),wd(mxnx,mxny,mxnz) 
+
+C 2-D variables in equivalence
+      common /variable2d/x2dpk(mxnx,mxny,n2dpk)
+
+      dimension
+     1  raincon(mxnx,mxny),rainst(mxnx,mxny)
+     2 ,snow(mxnx,mxny),   grdt(mxnx,mxny)
+     3 ,pblh(mxnx,mxny),   fluxsh(mxnx,mxny)
+     4 ,fluxlh(mxnx,mxny), ust(mxnx,mxny)
+     5 ,radswd(mxnx,mxny), radlwd(mxnx,mxny)
+     6 ,t2(mxnx,mxny),     q2(mxnx,mxny)
+     7 ,u10(mxnx,mxny),    v10(mxnx,mxny)
+     8 ,sst(mxnx,mxny)
+
+      equivalence
+     1  (raincon,x2dpk(1,1,1)),(rainst,x2dpk(1,1,2))
+     2 ,(snow,x2dpk(1,1,3)),   (grdt,x2dpk(1,1,4))
+     3 ,(pblh,x2dpk(1,1,5)),   (fluxsh,x2dpk(1,1,6))
+     4 ,(fluxlh,x2dpk(1,1,7)), (ust,x2dpk(1,1,8))
+     5 ,(radswd,x2dpk(1,1,9)), (radlwd,x2dpk(1,1,10))
+     6 ,(t2,x2dpk(1,1,11)),    (q2,x2dpk(1,1,12))
+     7 ,(u10,x2dpk(1,1,13)),   (v10,x2dpk(1,1,14))
+     8 ,(sst,x2dpk(1,1,15))
+
+C 2-D variables NOT in equivalence
+      common /variable2d2/
+     1  pstar(mxnx,mxny), pstarcrs(mxnx,mxny),psldot(mxnx,mxny),
+     2  rain(mxnx,mxny),  rainold(mxnx,mxny), radswo(mxnx,mxny),
+     3  radlwo(mxnx,mxny),pblr(mxnx,mxny),    wd10(mxnx,mxny),
+     4  ws10(mxnx,mxny),  slt1(mxnx,mxny),    slt2(mxnx,mxny),  
+     5  slt3(mxnx,mxny),  slt4(mxnx,mxny),    slt5(mxnx,mxny),  
+     6  slt6(mxnx,mxny)
+
+C Constant 2-D variables
+      common /constant/
+     1   elev(mxnx,mxny),rlat(mxnx,mxny),rlon(mxnx,mxny)
+     2  ,rland(mxnx,mxny),rlatcrs(mxnx,mxny),rloncrs(mxnx,mxny)
+     3  ,elevcrs(mxnx,mxny)
+
+

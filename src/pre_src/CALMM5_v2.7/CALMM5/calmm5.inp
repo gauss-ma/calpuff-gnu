@@ -1,0 +1,19 @@
+3D.DAT for Saudi 2004 MM5 - Domain 1
+1                 ! Number of MM5 Output files (0 for auto)
+G:\Domi_MM5_03\case02\20031230\junk.dat  ! MM5 input file name (no space before or within filename)
+test.m3d ! CALMM5 output file name  (no space before or within filename)
+test.lst  ! CALMM5 list file name (no space before or within filename)  
+2       ! Options for selecting a region (1: use lat/long; 2: use J/I)
+10      ! Southernmost latitude (in decimal, positive for NH), or J1/Y1
+12      ! Northermost  latitude (in decimal, positive for NH), or J2/Y2
+25      ! Westernmost  longitude (in decimal, negative for WH), or I1/X1
+27      ! Easternmost  longitude (in decimal, negative for WH), or I2/X2
+2003123006         ! Starting date (year-month-day-UTC hour)(yymmddhh)
+2003123007         ! Ending date
+1                  ! Output format (1,2,3,4,5, 6 - see readme.cm5 for details)
+Keep this line - The following lines vary depending on the output format selected
+1 1 1 1 0          ! Output W, RH, cloud and rain, ice and snow, graupel
+1                  ! Flag for 2-D variables output (1/0: output/not)
+test.m2d           ! File name for 2-D variable output (needed only 2-D Flag=1)
+1                  ! Lowest extraction level in MM5 
+29                 ! Highest extraction level in MM5 

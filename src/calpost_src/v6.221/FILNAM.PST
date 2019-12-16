@@ -1,0 +1,64 @@
+c----------------------------------------------------------------------
+c --- COMMON BLOCK /FILNAM/ -- CALPOST file names               CALPOST
+c----------------------------------------------------------------------
+c
+      character*132 pstinp,pstlst,moddat,visdat,backdat,vsrdat,
+     &              sampdat,vpltdat,plpath,tspath,dvisdat,met1dat
+      character*8 tunam,xunam,tsunam
+      logical lcfiles
+c
+      common/filnam/npath,ntspath,nxunam,ntunam,ntsunam,
+     &              pstinp,pstlst,moddat,visdat,sampdat,
+     &              backdat,vsrdat,vpltdat,dvisdat,met1dat,
+     &              plpath,tspath,tunam,xunam,tsunam
+      common/fillog/lcfiles
+c
+c --- COMMON BLOCK /FILNAM/, /FILLOG/ Variables:
+c           NPATH - integer - Number of characters in PATH for plot-files
+c         NTSPATH - integer - Number of characters in PATH for timeseries
+c          NXUNAM - integer - Number of user characters in name for
+c                             exceedence plot-files
+c          NTUNAM - integer - Number of user characters in name for
+c                             TOP-rank plot-files
+c         NTSUNAM - integer - Number of user characters in name for
+c                             time-series plot-files
+c          PSTINP - char*132- Path & filename for the control file
+c                             (default: CALPOST.INP)
+c          PSTLST - char*132- Path & filename for the output CALPOST
+c                             list file
+c                             (default: CALPOST.LST)
+c          MODDAT - char*132- Path & filename for the output CALPUFF
+c                             unformatted concentration/wet/dry flux
+c                             file (default: MODEL.DAT)
+c          VISDAT - char*132- Path & filename for the output CALPUFF
+c                             data file for visibility calculations
+c                             (default: VISB.DAT)
+c         SAMPDAT - char*132- Path & filename for the SAMPLER data file
+c                             (default: SAMP.DAT)
+c         BACKDAT - char*132- Path & filename for the background data file
+c                             (default: BACK.DAT)
+c          VSRDAT - char*132- Path & filename for the input file of
+c                             hourly visual range measurements
+c                             (default: VSRN.DAT)
+c                             Echo results using DATA format
+c         VPLTDAT - char*132- Path & filename template for plot-file of
+c                             VISIBILITY results using DATA format
+c         DVISDAT - char*132- Path & filename for the auxiliary output 
+c                             file with change in visibility at each
+c                             receptor
+c                             (default: DELVIS.DAT)
+c         MET1DAT - char*132- Path & filename for the single-station met
+c                             file needed for the CALM PROCESSING option
+c                             (NOT used with CALPUFF/CALGRID files)
+c          PLPATH - char*132- PATH for plot-files
+c          TSPATH - char*132- PATH for timeseries
+c           XUNAM - char*8  - User characters in name for
+c                             exceedence plot-files
+c           TUNAM - char*8  - User characters in name for
+c                             TOP-rank plot-files
+c          TSUNAM - char*8  - User characters in name for
+c                             time-series plot-files
+c         LCFILES - logical - Switch indicating if all characters in the
+c                             filenames are to be converted to lower case
+c                             letters (LCFILES=T) or converted to UPPER
+c                             case letters (LCFILES=F).
