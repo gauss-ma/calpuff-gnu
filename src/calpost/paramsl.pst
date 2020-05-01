@@ -1,0 +1,101 @@
+c-----------------------------------------------------------------------
+c  PARAMETERS -- Array dimensions and I/O units                  CALPOST
+c-----------------------------------------------------------------------
+c --- Specify model version
+      character*12 mver, mlevel
+      parameter(mver='6.221',mlevel='080724')
+c --- Specify application size
+      PARAMETER(mxgx=265)
+      PARAMETER(mxgy=265)
+      PARAMETER(mxgrec=mxgx*mxgy)
+      PARAMETER(mxdrec=10000, mxring=40)
+      PARAMETER(mxctrec=1000)
+c     PARAMETER(mxtser=30)		!modificado por ramiro
+      PARAMETER(mxtser=50000)		!modificado por ramiro
+      PARAMETER(mxnz=1,mxspec=20)
+      PARAMETER(mxsplv=mxnz*mxspec)
+      PARAMETER(mxss=350)
+      PARAMETER(mxwsta=30)
+      PARAMETER(mxday=366)
+c ---      PARAMETER(mxday=400)
+      PARAMETER(mxnxp=200,mxnyp=200,mxnzp=50)
+      PARAMETER(mxwin=10)
+      PARAMETER(mxrnk=10,mxtop=4)             !Keep mxtop=4
+      PARAMETER(mxsamp=10,mxsdat=500)
+      PARAMETER(mxv24=999)
+
+c --- Set the number of sources equal to the max number of discrete
+c --- recptors to facilitate using those recptor arrays for TRACEBACK
+      parameter(mxsrc=mxdrec)
+
+      PARAMETER(icols=25)
+      PARAMETER(in1=4,in2=5,in3=9,in4=18,in5=19,in6=7,in7=10)
+      PARAMETER(io1=8,io6=6)
+      PARAMETER(iot1=21,iot3=22,iot24=23,iotn=24,iotp=25)
+      PARAMETER(iop1=26,iop3=27,iop24=28,iopn=29,iopp=30)
+      PARAMETER(mapu=11)
+      PARAMETER(iox1=12,iox2=13,iox3=14,iox4=15)
+      PARAMETER(iowx1=31,iowx2=32,iohrv=33,iodv=34)
+      parameter(mxsg=4)
+c-----------------------------------------------------------------------
+c     DEFINITIONS       [i]=integer     [r]=real        [a]=array
+c-----------------------------------------------------------------------
+c mxgx           maximum number gridded receptors along "x"          [i]
+c mxgy           maximum number gridded receptors along "y"          [i]
+c mxgrec         product mxgx*mxgy                                   [i]
+c mxdrec         maximum number of discrete receptors                [i]
+c mxsrc          maximum number of sources [equals mxdrec]           [i]
+c mxring         maximum number of discrete receptor "rings"         [i]
+c mxctrec        maximum number of complex terrain (CTSG) receptors  [i]
+c mxtser         maximum number of receptors in timeseries output    [i]
+c mxnz           maximum number of levels                            [i]
+c mxspec         maximum number of species                           [i]
+c mxsplv         max number of chemical species * max number levels  [i]
+c mxss           max number of surface stations in CALMET/CALPUFF    [i]
+c mxwsta         max number of weather stations in VSRN.DAT (DATSAV3)[i]
+c mxday          max number of days in run for violation option      [i]
+c mxwin          max number of days in window (for violation search) [i]
+c mxrnk          max rank of top-ranked concentrations               [i]
+c mxtop          max number of top-ranked concentrations             [i]
+c mxsamp         max number of samplers in SAMPDAT file              [i]
+c mxsdat         max number of data records in SAMPDAT file          [i]
+c mxv24          max number of ranked daily visibility peaks         [i]
+c icols          number of columns in gridded integer output         [i]
+c in1            unit number for "concentration" input file          [i]
+c in2            unit number for control file input                  [i]
+c in3            unit number for input file of RH data               [i]
+c in4            unit number for input file of background data       [i]
+c in5            unit number for input file of visual range data     [i]
+c in6            unit number for SAMPLER data                        [i]
+c in7            unit number for Single-Point met data (MCALMPRO)    [i]
+c io1            unit number for output list file                    [i]
+c io6            unit number for standard output (error messages)    [i]
+c iot1           unit number for timeseries file (1hr avg)           [i]
+c iot3           unit number for timeseries file (3hr avg)           [i]
+c iot24          unit number for timeseries file (24hr avg)          [i]
+c iotn           unit number for timeseries file (Nhr avg)           [i]
+c iotp           unit number for timeseries file (1-Pd)              [i]
+c iop1           unit number for peak value file (1hr avg)           [i]
+c iop3           unit number for peak value file (3hr avg)           [i]
+c iop24          unit number for peak value file (24hr avg)          [i]
+c iopn           unit number for peak value file (Nhr avg)           [i]
+c iopp           unit number for peak value file (1-Pd)              [i]
+c mapu           unit number for current plot-file                   [i]
+c iox1           unit number for scratch file (extinction summary)   [i]
+c iox2           unit number for scratch file (deciview summary)     [i]
+c iox3           unit number for scratch file (run length extinction)[i]
+c iox4           unit number for scratch file (run length deciview)  [i]
+c iowx1          unit number for scratch file (weather data image 1) [i]
+c                (saved as DEBUG.WX1 when LDEBUG=T)
+c iowx2          unit number for scratch file (weather data image 2) [i]
+c                (saved as DEBUG.WX2 when LDEBUG=T)
+c iohrv          unit number for hourly visibility calculation       [i]
+c                details (saved as DEBUG.HRV when LDEBUG=T)
+c iodv           unit number for change in visibility output file    [i]
+c mxnxp          maximum number of MM5 grid point over X             [i]
+c mxnyp          maximum number of MM5 grid point over Y             [i]
+c mxnzp          maximum number of MM5 layers                        [i]
+c-----------------------------------------------------------------------
+c
+c --- CONTROL FILE READER definitions:
+c          MXSG - Maximum number of input groups in control file
