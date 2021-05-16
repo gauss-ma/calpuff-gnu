@@ -1,0 +1,7 @@
+C Common blocks for CALWRF
+C
+	dimension alim3d(2,n3d),alim2d(2,n2d)
+
+        character*8 cname3d(n3d),cname2d(n2d)
+	
+	common /qachk/alim3d,alim2d,cname3d,cname2d

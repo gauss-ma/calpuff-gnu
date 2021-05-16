@@ -1,0 +1,42 @@
+c --- CALWRF.BLK ------
+c     Data block in general use
+
+      Block data General
+
+      parameter(n3d=12,n2d=15)
+      include 'calwrf.cm3'
+
+C     Limit of 3D variable
+C     Pr,GH,VPT,Humid, U, V,WP,CLD,RAIN,ICE,SNOW,GRAUP
+      data ((alim3d(i,j),i=1,2),j=1,12)
+     &           /10,1100        ! PRS    
+     &           ,0,35000        ! GH
+     &           ,150,330        ! TK
+     &           ,0,360          ! WD
+     &           ,0,150          ! WS
+     &           ,-50,50         ! W
+     &           ,0,50           ! Q
+     &           ,0,50           ! WCLD
+     &           ,0,50           ! WRAN
+     &           ,0,50           ! WICE
+     &           ,0,50           ! WSNW
+     &           ,0,50/          ! WGRP
+
+      data ((alim2d(i,j),i=1,2),j=1,10)
+     &           /500,1100       ! PS    
+     &           ,0,50           ! PRE
+     &           ,0.0,1.1        ! SNOW Cover
+     &           ,0,1500         ! RADSW
+     &           ,0,1000         ! RADLW
+     &           ,210,330        ! T2
+     &           ,0,50           ! Q2
+     &           ,0,360          ! WD10
+     &           ,0,50           ! WS10
+     &           ,0,350/         ! SST (include 0 and land T)
+
+      data (cname3d(i),i=1,12)/'PRESS','GH','TK','WD','WS'
+     &    ,'WW','QQ','WCLD','WRAN','WICE','WSNW','WGRP'/
+      data (cname2d(i),i=1,10)/'SLP','RAIN','SNWC'
+     &   ,'SWR','LWR','T2','Q2','WD10','WS10','SST'/
+
+      end

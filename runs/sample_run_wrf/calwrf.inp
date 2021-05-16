@@ -1,0 +1,40 @@
+Create 3D.DAT file for WRF output
+calwrf.lst          ! Log file name
+test5.m3d 	    ! Output file name
+-1,-1,-1,-1,-1,-1   ! Beg/End I/J/K ("-" for all)
+2009031407          ! Start datetime (UTC yyyymmddhh, "-" for all)
+2009031408          ! End   datetime (UTC yyyymmddhh, "-" for all)
+1                   ! Number of WRF output files
+wrf_out/wrfout_bahia_2009mar_gocart ! File name of wrf output (Loop over files
+
+*****   Below are comments *****************************************
+
+Create 3D.DAT file for WRF output (full domain and time-period)
+calwrf.lst           ! Log file name
+calwrf_em.m3d        ! Output file name
+-1,-1,-1,-1,-1,-1    ! Beg/End I/J/K ("-" for all)
+-1                   ! Start datetime (UTC yyyymmddhh, "-" for all)
+-1                   ! End   datetime (UTC yyyymmddhh, "-" for all)
+1                    ! Number of WRF output files
+wrfout_070427.dat    ! File name of wrf output (Loop over files)
+
+
+Create 3D.DAT file for WRF output (full domain and time-period)
+calwrf.lst          ! Log file name
+calwrf.dat3         ! Output file name
+-9,-9,-9,-9,-9,-9   ! Beg/End I/J/K ("-" for all)
+-9                  ! Start datetime (UTC yyyymmddhh, "-" for all)
+-9                  ! End   datetime (UTC yyyymmddhh, "-" for all)
+1                   ! Number of WRF output files
+wrfout_d01_2007-01-01_000000 ! File name of wrf output (Loop over files)
+
+
+Create 3D.DAT file for WRF output (sub domain and time-period)
+calwrf.lst          ! Log file name
+calwrf_070427.m3d   ! Output file name
+1,163,1,121,1,27    ! Beg/End I/J/K
+2007042700          ! Start datetime (UTC yyyymmddhh, "-" for all)
+2007042704          ! End   datetime (UTC yyyymmddhh, "-" for all)
+1                   ! Number of WRF output files
+wrfout_070427.dat   ! File name of wrf output (Loop over files)
+

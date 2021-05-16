@@ -1,4 +1,4 @@
-FC=gfortran-9
+FC=gfortran
 FCFLAGS=-c -O2 -static -std=legacy -mtune=native -fbacktrace -fcheck=bounds #-mtune=native#-fcheck=bounds
 LDFLAGS=
 OBJECTS=read62.o

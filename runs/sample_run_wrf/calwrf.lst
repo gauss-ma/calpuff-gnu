@@ -1,0 +1,15 @@
+ CALWRF Code ----- Version:v2.0.3           Level:190426          
+Create 3D.DAT file for WRF output
+calwrf.inp
+calwrf.lst
+test5.m3d
+ Beg/End I/J/K:    -1    -1    -1    -1    -1    -1
+ Beg/End Dates:  2009031407
+ Beg/End Dates:  2009031408
+  WRF Output files:           1
+   1 WRF File: wrf_out/wrfout_bahia_2009mar_gocart
+  Set 2D.DAT flag to 1:           1
+  Default 2D.DAT filename:test5.m2d
+  IOSRF (0-No 2D.DAT, 1-2D.DAT created):           1
+ Processing WRF File:   1  wrf_out/wrfout_bahia_2009mar_gocart
+  Open WRF netcdf file            1 : wrf_out/wrfout_bahia_2009mar_gocart

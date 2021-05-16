@@ -1,0 +1,67 @@
+C Common blocks for CALWRF
+C
+	character*132 title
+	character*132 fct,flg,fin,fio,fsrf
+        character*132 comment,blank132	
+	character*132 flnames(mxfiles)
+	character*80 blank,buff,cinfo
+	character*10,cdate,ctm,czone
+	character*4 cmap,utmhem
+	character*8 cmapi,cmapo
+        character*8 cdatumi,cdatumo
+        character*12 caction
+
+	real*8 vecti(9),vecto(9)
+
+	logical static
+
+	character*64 datamod
+	character*16 codever,codelevel
+	character*16 cmodel,cmodel_ver
+        character*16 name3d,name2d,dataver,datalevel
+
+c --- v1.4_x1.0, Level 121203
+        character*16 dataver3d,dataver2d
+	
+	character*80 v3dnames(n3d),v2dnames(n2d2),vname
+	character*80 vattnames(ngatts)
+	character*80 c2ddscp,c2dunits,c2dlabels(n2d2)
+
+	dimension i3dpk(n3d),i2dpk(n2d)
+
+	dimension xgatts(ngatts),xcmp(mxcmp)
+	integer vdate(8)
+	dimension xwrk(4)
+
+  	integer   :: map_proj
+  	real      :: truelat1, truelat2, stand_lon, cone
+
+	common /ctrstr/title,fct,flg,fin,fio,fsrf,flnames,datamod
+     1         ,codever,codelevel,dataver,datalevel,name3d,name2d
+     2         ,cmap,cmodel,cmodel_ver,comment
+     3         ,dataver2d,dataver3d
+	common /ctrval/ib,ie,jb,je,kb,ke,idateb,idatee,nfiles,nvars
+     1         ,ncomm,nxsub,nysub,nzsub,nhours,ncmp,idateb1
+     2         ,idatenext,id_precip,iosrf
+	common /varbs/v3dnames,v2dnames,vname,vattnames
+     1         ,buff,blank,blank132,vdate,c2ddscp,c2dunits,c2dlabels
+	common /ncdf1/istat,ncid,natts,cone,xgatts,truelat1, truelat2
+     1         ,stand_lon,map_proj
+	common /ncdf2/op_rot
+
+C       codever:   CLWRF code version
+C 	codelevel: CALWRF code level
+c --- v1.4_x1.0, Level 121203
+c --- dataver and datalevel no longer used
+C	dataver:   3D.DAT version
+C       datalevel: 3D.DAT level
+c --- v1.4_x1.0, Level 121203
+c --- dataver2d and dataver3d added
+c	dataver2d: 2D.DAT version
+c	dataver3d: 3D.DAT version
+C       name3d:    3D.DAT name
+C       name2d:    2D.DAT name
+C       v3dnames:  3D variables from WRF
+C       v2dnames:  2D variables from WRF
+C       vattnames: Global attribues from WRF
+C       xgatts:    Values of global attributes 

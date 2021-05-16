@@ -1,0 +1,61 @@
+C Common block 2 for CLAWRF
+C
+  	character (len=80) :: varnam, att_name, value_chr, ctime
+  	character (len=80) :: att_sav(10)
+  	integer            :: dimids(10), FieldType
+  	character (len=80) ::  units, MemoryOrder, description, stagger
+	logical            :: op_att, op_diag, op_rot
+  	integer i,j,k,ivtype, length,length_input,time1,time2
+  	integer id_var, idvar, id_att, attlen, ios
+  	integer nDims, nVars, nAtts, unlimDimID, dims(4)
+	integer unit_place,order_place, nVars_sav
+  	integer type_to_get, dims3, id_time, n_times, itimes, iatt
+
+C ---   1-D
+  	real, allocatable, dimension(:)  :: value_real,sig
+
+C ---   2-D
+  	real, allocatable, dimension(:,:) :: xlat,xlong,diff,alpha
+  	real, allocatable, dimension(:,:) :: xkm,ykm
+  	real, allocatable, dimension(:,:) :: ter,alu,x2tmp
+  	real, allocatable, dimension(:,:) :: ppnow,ppold,ppcur
+     &                                     ,ppc,ppcold,ppccur
+     &                                   ,ppnc,ppncold,ppnccur
+  	real, allocatable, dimension(:,:) :: u10,v10,ws10,wd10
+  	real, allocatable, dimension(:,:) :: u10t,v10t
+
+C ---   3-D
+  	real, allocatable, dimension(:,:,:)     :: data_r
+  	integer, allocatable, dimension(:,:,:)  :: data_i
+  	real, allocatable, dimension(:,:,:) :: uu,vv,pp,gh,tk,ww
+  	real, allocatable, dimension(:,:,:) :: ws,wd,alpha3,xtmp
+  	real, allocatable, dimension(:,:,:) :: gh2,uu2,vv2,ww2
+  	real, allocatable, dimension(:,:,:) :: uu2t,vv2t
+
+	double precision,  allocatable, dimension(:,:,:) :: data_dp_r
+
+  	character (len=80) :: times(mxhrs), dname,dnames(mxdms)
+	integer   :: ndates(mxhrs),nsecs(mxhrs)
+  	integer   :: istart(4), istartp(4), iend(4), ismp(4)
+  	integer   :: istart_t(2), iend_t(2)
+  	real      :: sv_r, minvalue_r, maxvalue_r
+  	integer   :: sv_i, minvalue_i, maxvalue_i, value_int
+  	integer   :: wedim, sndim, btdim, kk, ii, dval,dvals(mxdms)
+	integer   :: wedims, sndims, btdims
+
+c  	integer                :: ts_xy(3)
+c  	real                   :: ts_ll(3)
+c  	character (len=10)     :: ts_var(100)
+c  	integer                :: ts_i
+c  	character (len=2)      :: ts_type
+
+C ----  Arrarys needed by 3D.DAT
+  	real, allocatable, dimension(:,:,:,:) :: x3d,x3dpk
+	real, allocatable, dimension(:,:,:)   :: x2d,x2dpk
+C       Order in x3d (12): P,H,T,U,V,W,Q,Wc,Wr,Wi,Ws,Wg
+C       Order in x2d (10): Ps,PRE,ISNOW,RSWD,RLWD,T2,Q2,U10,V10,SST
+C       Order in x3dpk (12): Backup array of x3d
+C       Order in x2dpk (10): Backup array for x2d
+
+C ----      
+	equivalence (wedim,nx),(sndim,ny),(btdim,nz)

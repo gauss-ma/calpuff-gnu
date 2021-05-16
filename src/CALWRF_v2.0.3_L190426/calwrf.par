@@ -1,0 +1,20 @@
+C Parameter file for CALWRF
+C
+	include 'netcdf.inc'
+
+	parameter(in=20,io=10,isrf=11,ilg=12,ict=13)
+	parameter(mxfiles=100,mxhrs=9000,mxcmp=5)
+	parameter(n3d=12,n2d=15,n2d2=n2d+2)
+	parameter(mxdms=10)  ! maximum dimensions
+	parameter(ngatts=24) ! global attributes needed
+	parameter(PI = 3.141592653589793)
+  	parameter(RPD = PI/180.,RDP=180./PI)
+  	parameter(wpdmin = 0.00499)
+
+C       mxfiles: Maximum of WRF output files processed
+C       mxhrs:   Maximum hours processed
+C       n3d:     3D variables extracted from WRF
+C       n2d:     2D variables extracted from WRF
+C       mxdms:   Maximum diemsions in WRF
+C       ngatts:  Global attribtes from WRF
+C  	wpdmin:  Minumum vertical velocity equal to zero)

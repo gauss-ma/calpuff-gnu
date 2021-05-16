@@ -1,0 +1,35 @@
+# NetCDF C Configuration Summary
+==============================
+
+# General
+-------
+NetCDF Version:		4.4.0
+Configured On:		Sat May 15 11:45:50 -03 2021
+Host System:		i686-pc-linux-gnu
+Build Directory: 	/home/rama/git/hub/calpuff/calwrf/src/netcdf-4.4.0
+Install Prefix:         /home/rama/git/hub/calpuff/calwrf/lib/netcdf
+
+# Compiling Options
+-----------------
+C Compiler:		/usr/bin/gcc
+CFLAGS:			-g -O2
+CPPFLAGS:		
+LDFLAGS:		
+AM_CFLAGS:		
+AM_CPPFLAGS:		
+AM_LDFLAGS:		
+Shared Library:		yes
+Static Library:		yes
+Extra libraries:	-lm 
+
+# Features
+--------
+NetCDF-2 API:		yes
+HDF4 Support:		no
+NetCDF-4 API:		no
+NC-4 Parallel Support:	no
+PNetCDF Support:	no
+DAP Support:		no
+Diskless Support:	yes
+MMap Support:		no
+JNA Support:		no
