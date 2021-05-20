@@ -1965,7 +1965,7 @@ c     9/14/2009
 
       vattnames(1)='DX'
       vattnames(2)='DY'
-      vattnames(3)='DYN_OPT'
+      vattnames(3)='FEEDBACK' !'DYN_OPT'
       vattnames(4)='MP_PHYSICS'
       vattnames(5)='RA_LW_PHYSICS'
       vattnames(6)='RA_SW_PHYSICS'
@@ -1998,16 +1998,16 @@ C --- Check valid files
       istat=NF_GET_ATT_TEXT(ncid,nf_global,att_name,value_chr)
       istat=NF_INQ_ATT(ncid,nf_global,att_name,ivtype,attlen)
 
-      if(INDEX(value_chr,'OUTPUT FROM WRF V2') == 0)then
-         if(INDEX(value_chr,'OUTPUT FROM WRF V3') == 0)then
-           if(INDEX(value_chr,'OUTPUT FROM WRF V4') == 0)then
-            !! diagnostics only available for wrfout data
-            print*,"This is not a wrfout file "
-            print*,"No 3D.DAT will be created"
-            stop
-           endif
-         endif
-      endif
+      !if(INDEX(value_chr,'OUTPUT FROM WRF V2') == 0)then
+      !   if(INDEX(value_chr,'OUTPUT FROM WRF V3') == 0)then
+      !     if(INDEX(value_chr,'OUTPUT FROM WRF V4') == 0)then
+      !     !! diagnostics only available for wrfout data
+      !     print*,"This is not a wrfout file "
+      !     print*,"No 3D.DAT will be created"
+      !     stop
+      !    endif
+      !  endif
+      !endif
 
       nt1=INDEX(value_chr,'WRF')
       nt2=len_trim(value_chr)

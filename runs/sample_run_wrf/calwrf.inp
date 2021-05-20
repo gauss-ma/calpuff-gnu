@@ -5,7 +5,7 @@ test5.m3d 	    ! Output file name
 2009031407          ! Start datetime (UTC yyyymmddhh, "-" for all)
 2009031408          ! End   datetime (UTC yyyymmddhh, "-" for all)
 1                   ! Number of WRF output files
-wrf_out/wrfout_bahia_2009mar_gocart ! File name of wrf output (Loop over files
+wrf_out/wrfout_d01_2009-03-14_00:00:00.nc ! File name of wrf output (Loop over files
 
 *****   Below are comments *****************************************
 
